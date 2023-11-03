@@ -6,7 +6,7 @@
 #    By: jofilipe <jofilipe@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/02 17:32:15 by jofilipe          #+#    #+#              #
-#    Updated: 2023/11/02 17:42:28 by jofilipe         ###   ########.fr        #
+#    Updated: 2023/11/03 18:57:14 by jofilipe         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,15 +20,21 @@ PURPLE  = \033[1;35m
 CYAN    = \033[1;36m
 WHITE   = \033[1;37m
 
-NAME = philo
+NAME = minishell
 
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -g -pthread
+CFLAGS = -Wall -Wextra -Werror -g -lreadline
 RM = rm -rf
 
 LIBFT = libft/libft.a
 
-SRCS =
+SRCS =	mandatory/main.c\
+		mandatory/exec.c\
+		mandatory/readline.c\
+		mandatory/get_user.c\
+		
+
+
 
 
 OBJS = $(SRCS:%.c=%.o)
@@ -41,13 +47,13 @@ $(LIBFT):
 $(NAME): $(OBJS) $(LIBFT)
 		@$(CC) $(CFLAGS) $(OBJS) $(LIBFT) -o $(NAME)
 		clear
-		echo "$(BLUE) _      _  _      _  ____  _     _____ _     _    ";
-		echo "$(WHITE)/ \__/|/ \/ \  /|/ \/ ___\/ \ /|/  __// \   / \   ";
-		echo "$(BLUE)| |\/||| || |\ ||| ||    \| |_|||  \  | |   | |   ";
-		echo "$(WHITE)| |  ||| || | \||| |\___ || | |||  /_ | |_/\| |_/\";
-		echo "$(BLUE)\_/  \|\_/\_/  \|\_/\____/\_/ \|\____\\____/\____/";
-		echo "$(WHITE)                                                  ";
-		echo ""
+		echo "$(BLUE)  __  __ _       _     _          _ _ ";
+		echo "$(WHITE) |  \/  (_)     (_)   | |        | | |";
+		echo "$(BLUE) | \  / |_ _ __  _ ___| |__   ___| | |";
+		echo "$(WHITE) | |\/| | | '_ \| / __| '_ \ / _ \ | |";
+		echo "$(BLUE) | |  | | | | | | \__ \ | | |  __/ | |";
+		echo "$(WHITE) |_|  |_|_|_| |_|_|___/_| |_|\___|_|_|";
+		echo "                                      ";
 		echo "$(GREEN)Minishell is ready to go!$(RESET)"
 
 

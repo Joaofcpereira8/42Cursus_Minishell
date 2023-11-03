@@ -1,18 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   get_user.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jofilipe <jofilipe@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/02 18:26:42 by jofilipe          #+#    #+#             */
-/*   Updated: 2023/11/03 19:02:15 by jofilipe         ###   ########.fr       */
+/*   Created: 2023/11/03 18:56:59 by jofilipe          #+#    #+#             */
+/*   Updated: 2023/11/03 18:59:37 by jofilipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int main(void)
+static	void	ft_get_env(char **user, char **session)
 {
-	
+	user = getenv("USER");
+	session = getenv("SESSION_MANAGER");
 }
