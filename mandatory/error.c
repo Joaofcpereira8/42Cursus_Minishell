@@ -1,33 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bbento-e <bbento-e@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/02 18:26:42 by jofilipe          #+#    #+#             */
-/*   Updated: 2023/11/04 19:19:38 by bbento-e         ###   ########.fr       */
+/*   Created: 2023/11/04 19:02:29 by bbento-e          #+#    #+#             */
+/*   Updated: 2023/11/04 19:28:06 by bbento-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int check_args(char **str)
+int err_handler(char c)
 {
-	if (check_spec(str) == -1)
-		return (err_handler("q"));
-	return (0);
-}
-
-int main(int argc, char *argv[])
-{
-	if (argc == 1)
-	{
-		if (check_args != -1)
-		{
-			/* code */
-		}
-	}
-	else
-		return (0);
+	if (c == 'a')
+		printf("Wrong number of arguments");
+	else if (c == 's')
+		printf("");
+	else if (c == 'q')
+		printf("Error: Unclosed quotes or special characters!");
+	return (-1);
 }
