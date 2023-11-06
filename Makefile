@@ -6,7 +6,7 @@
 #    By: jofilipe <jofilipe@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/02 17:32:15 by jofilipe          #+#    #+#              #
-#    Updated: 2023/11/03 18:57:14 by jofilipe         ###   ########.fr        #
+#    Updated: 2023/11/06 14:37:11 by jofilipe         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,7 @@ WHITE   = \033[1;37m
 NAME = minishell
 
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -g -lreadline
+CFLAGS = -Wall -Wextra -Werror -g #-lreadline
 RM = rm -rf
 
 LIBFT = libft/libft.a
@@ -32,6 +32,8 @@ SRCS =	mandatory/main.c\
 		mandatory/exec.c\
 		mandatory/readline.c\
 		mandatory/get_user.c\
+		mandatory/special.c\
+		mandatory/parser.c\
 		
 
 

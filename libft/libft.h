@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jofilipe <jofilipe@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jofilipe <jofilipe@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 10:07:23 by jofilipe          #+#    #+#             */
-/*   Updated: 2022/11/22 13:39:35 by jofilipe         ###   ########.fr       */
+/*   Updated: 2023/11/06 15:50:55 by jofilipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,20 +17,6 @@
 # include <stdlib.h>
 # include <stdio.h>
 # include <stdarg.h>
-
-# ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 1
-# endif
-
-# ifndef MAX_FILES
-#  define MAX_FILES 500
-# endif
-
-typedef struct s_list
-{
-	void			*content;
-	struct s_list	*next;
-}					t_list;
 
 int		ft_isalpha(int c);
 int		ft_isdigit(int c);
@@ -67,6 +53,15 @@ void	ft_putchar_fd(char c, int fd);
 void	ft_putstr_fd(char *s, int fd);
 void	ft_putendl_fd(char *s, int fd);
 void	ft_putnbr_fd(int n, int fd);
+
+/*----lists----*/
+
+typedef struct s_list
+{
+	void			*content;
+	struct s_list	*next;
+}					t_list;
+
 t_list	*ft_lstnew(void *content);
 void	ft_lstadd_front(t_list **lst, t_list *new);
 int		ft_lstsize(t_list *lst);
@@ -76,6 +71,8 @@ void	ft_lstdelone(t_list *lst, void (*del)(void *));
 void	ft_lstclear(t_list **lst, void (*del)(void *));
 void	ft_lstiter(t_list *lst, void (*f)(void *));
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
+
+/*----ft_printf.c----*/
 int		ft_printf(const char *str, ...);
 int		ft_printf_unsigned(unsigned int num);
 int		ft_printf_string(char *str);
@@ -84,5 +81,16 @@ int		ft_printf_char(char c);
 char	ft_checkconversion(char var);
 int		ft_printf_hexa(unsigned long hexa, char c);
 int		ft_printf_pointer(unsigned long num);
+
+/*----get_next_line.c----*/
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 1
+# endif
+
+# ifndef MAX_FILES
+#  define MAX_FILES 500
+# endif
+
 char	*get_next_line(int fd);
+
 #endif

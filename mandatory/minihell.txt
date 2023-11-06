@@ -1,0 +1,22 @@
+#estrutura
+
+num pipes
+num comandos
+historico de comandos
+env
+pwd absolute
+pwd relative
+
+
+#Parser
+
+estrutura command table?
+executar os comandos
+
+LEXER-> pega nos caracteres e poe em tokens e o Parser processa os tokens de acordo
+com a gramatica e constoi a command table
+
+/*Cada comando esta dentro de um array e o pipe, se calhar, e o index de cada comando*/
+
+fazer o nosso strtok :'(
+
