@@ -6,7 +6,7 @@
 /*   By: jofilipe <jofilipe@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 18:26:52 by jofilipe          #+#    #+#             */
-/*   Updated: 2023/11/08 12:33:11 by jofilipe         ###   ########.fr       */
+/*   Updated: 2023/11/08 16:22:44 by jofilipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@
 
 typedef struct s_data
 {
-	char	*env;
-	char	*pid;
+	char	**env;
+	int		pid;
 	char	*command;
 }			t_data;
 
@@ -48,6 +48,6 @@ int				iseven(int s_trig);
 int				err_handler(char c);
 
 /*----utils.c----*/
-int				check_args(char **str)
+int				check_args(char **str);
 
 #endif
