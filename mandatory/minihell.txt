@@ -14,9 +14,13 @@ estrutura command table?
 executar os comandos
 
 LEXER-> pega nos caracteres e poe em tokens e o Parser processa os tokens de acordo
-com a gramatica e constoi a command table
+com a gramatica e constroi a command table
 
-/*Cada comando esta dentro de um array e o pipe, se calhar, e o index de cada comando*/
+/*Cada comando está dentro de um array e o pipe, se calhar, é o index de cada comando*/
 
 fazer o nosso strtok :'(
 
+#Builtins
+
+para chamar os Builtins, fazer strcmpr do argumento para
+ver se está a chamar a funcao

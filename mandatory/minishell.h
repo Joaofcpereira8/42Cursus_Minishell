@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bbento-e <bbento-e@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: jofilipe <jofilipe@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 18:26:52 by jofilipe          #+#    #+#             */
-/*   Updated: 2023/11/04 19:40:06 by bbento-e         ###   ########.fr       */
+/*   Updated: 2023/11/08 12:33:11 by jofilipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,13 +34,20 @@ int				ft_execvp();
 /*----get_user.c----*/
 static	void	ft_get_env(char **user, char **session);
 
-// Checks
-int				check_spec(char **str);
+/*----parser.c----*/
 
-// Utils
+
+/*----readline.c.c----*/
+
+
+/*----special.c----*/
+int				check_spec(char **str);
 int				iseven(int s_trig);
 
-// Errors
+/*----error.c----*/
 int				err_handler(char c);
+
+/*----utils.c----*/
+int				check_args(char **str)
 
 #endif

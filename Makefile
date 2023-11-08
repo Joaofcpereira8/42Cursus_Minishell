@@ -6,7 +6,7 @@
 #    By: jofilipe <jofilipe@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/02 17:32:15 by jofilipe          #+#    #+#              #
-#    Updated: 2023/11/06 14:37:11 by jofilipe         ###   ########.fr        #
+#    Updated: 2023/11/08 12:29:36 by jofilipe         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,7 +34,15 @@ SRCS =	mandatory/main.c\
 		mandatory/get_user.c\
 		mandatory/special.c\
 		mandatory/parser.c\
-		
+		mandatory/error.c\
+		mandatory/utils.c\
+		mandatory/builtins/cd.c\
+		mandatory/builtins/echo.c\
+		mandatory/builtins/env.c\
+		mandatory/builtins/exit.c\
+		mandatory/builtins/export.c\
+		mandatory/builtins/pwd.c\
+		mandatory/builtins/unset.c\
 
 
 
