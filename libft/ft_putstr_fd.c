@@ -3,14 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jofilipe <jofilipe@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jofilipe <jofilipe@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 12:07:50 by jofilipe          #+#    #+#             */
-/*   Updated: 2022/11/22 13:40:25 by jofilipe         ###   ########.fr       */
+/*   Updated: 2023/11/09 15:24:32 by jofilipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
+/**
+ * Write a string to the specified file descriptor.
+ *
+ * @param s String to be written.
+ * @param fd File descriptor to write to.
+ */
 
 void	ft_putstr_fd(char *s, int fd)
 {

@@ -3,14 +3,24 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jofilipe <jofilipe@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jofilipe <jofilipe@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 18:35:28 by jofilipe          #+#    #+#             */
-/*   Updated: 2022/11/22 11:25:40 by jofilipe         ###   ########.fr       */
+/*   Updated: 2023/11/09 15:28:38 by jofilipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
+/**
+ * Copy a string with a size limit on the destination buffer.
+ *
+ * @param dest Destination buffer.
+ * @param src Source string to be copied.
+ * @param size Size of the destination buffer.
+ *
+ * @return Returns the length of the source string.
+ */
 
 size_t	ft_strlcpy(char *dest, char *src, size_t size)
 {

@@ -3,14 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   ft_isprint.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jofilipe <jofilipe@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jofilipe <jofilipe@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 15:20:59 by jofilipe          #+#    #+#             */
-/*   Updated: 2022/11/29 16:55:46 by jofilipe         ###   ########.fr       */
+/*   Updated: 2023/11/09 15:07:53 by jofilipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
+/**
+ * Check if a character is a printable character.
+ *
+ * @param c Character to be checked.
+ *
+ * @return Returns 1 if the character is a printable character, 0 otherwise.
+ */
 
 int	ft_isprint(int c)
 {

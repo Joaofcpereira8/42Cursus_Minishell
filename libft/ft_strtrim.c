@@ -3,14 +3,24 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jofilipe <jofilipe@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jofilipe <jofilipe@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 10:42:27 by jofilipe          #+#    #+#             */
-/*   Updated: 2022/11/29 16:58:58 by jofilipe         ###   ########.fr       */
+/*   Updated: 2023/11/09 18:13:59 by jofilipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
+/**
+ * Trim characters specified in the set from the beginning and end of a string.
+ *
+ * @param s1 String to trim.
+ * @param set Set of characters to trim.
+ *
+ * @return Returns a new string with leading and trailing characters from set removed,
+ *         or NULL if memory allocation fails.
+ */
 
 char	*ft_strtrim(char *s1, char *set)
 {

@@ -3,14 +3,24 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jofilipe <jofilipe@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jofilipe <jofilipe@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/06 17:47:11 by jofilipe          #+#    #+#             */
-/*   Updated: 2022/11/29 16:58:44 by jofilipe         ###   ########.fr       */
+/*   Updated: 2023/11/09 18:13:25 by jofilipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
+/**
+ * Locate a substring within a string, up to a specified length.
+ *
+ * @param big Main string to search within.
+ * @param little Substring to search for.
+ * @param len Maximum number of characters to consider in big.
+ *
+ * @return Returns a pointer to the first occurrence of little in big, or NULL if not found.
+ */
 
 char	*ft_strnstr(const char *big, const char *little, size_t len)
 {

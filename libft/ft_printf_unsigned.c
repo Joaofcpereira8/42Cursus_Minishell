@@ -3,14 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf_unsigned.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jofilipe <jofilipe@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jofilipe <jofilipe@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 10:29:11 by jofilipe          #+#    #+#             */
-/*   Updated: 2022/12/07 14:43:13 by jofilipe         ###   ########.fr       */
+/*   Updated: 2023/11/09 15:17:07 by jofilipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
+/**
+ * Print an unsigned integer to the standard output.
+ *
+ * @param num Unsigned integer to be printed.
+ *
+ * @return Returns the number of characters printed.
+ */
 
 int	ft_printf_unsigned(unsigned int num)
 {

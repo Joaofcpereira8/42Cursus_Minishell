@@ -3,14 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jofilipe <jofilipe@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jofilipe <jofilipe@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 09:48:53 by jofilipe          #+#    #+#             */
-/*   Updated: 2022/11/29 16:56:45 by jofilipe         ###   ########.fr       */
+/*   Updated: 2023/11/09 15:25:30 by jofilipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
+/**
+ * Count the number of words in a string delimited by a specified character.
+ *
+ * @param s String to count words in.
+ * @param c Delimiter character.
+ *
+ * @return Returns the number of words in the string.
+ */
 
 static char	ft_countwords(char *s, char c)
 {
@@ -31,6 +40,15 @@ static char	ft_countwords(char *s, char c)
 	return (wordcount);
 }
 
+/**
+ * Get the length of a word in a string until a specified delimiter character.
+ *
+ * @param s String containing the word.
+ * @param c Delimiter character.
+ *
+ * @return Returns the length of the word.
+ */
+
 static int	ft_wordlen(const char *s, char c)
 {
 	int	i;
@@ -40,6 +58,15 @@ static int	ft_wordlen(const char *s, char c)
 		i++;
 	return (i);
 }
+
+/**
+ * Split a string into an array of words based on a specified delimiter character.
+ *
+ * @param s String to be split.
+ * @param c Delimiter character.
+ *
+ * @return Returns an array of strings containing the words.
+ */
 
 char	**ft_split(char const *s, char c)
 {

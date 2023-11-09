@@ -3,14 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstsize.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jofilipe <jofilipe@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jofilipe <jofilipe@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 15:13:01 by jofilipe          #+#    #+#             */
-/*   Updated: 2022/11/18 16:13:45 by jofilipe         ###   ########.fr       */
+/*   Updated: 2023/11/09 15:11:35 by jofilipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
+/**
+ * Get the size of a linked list.
+ *
+ * @param lst The first element of the list.
+ *
+ * @return Returns the number of elements in the list.
+ */
 
 int	ft_lstsize(t_list *lst)
 {

@@ -3,14 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf_hexa.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jofilipe <jofilipe@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jofilipe <jofilipe@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 10:28:59 by jofilipe          #+#    #+#             */
-/*   Updated: 2022/12/07 15:49:46 by jofilipe         ###   ########.fr       */
+/*   Updated: 2023/11/09 15:16:06 by jofilipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
+/**
+ * Print an unsigned long integer in hexadecimal format to the standard output.
+ *
+ * @param hexa Unsigned long integer to be printed in hexadecimal.
+ * @param c Character indicating whether to print in lowercase ('x') or uppercase ('X').
+ *
+ * @return Returns the number of characters printed.
+ */
 
 int	ft_printf_hexa(unsigned long hexa, char c)
 {

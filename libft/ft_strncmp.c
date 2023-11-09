@@ -3,14 +3,26 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jofilipe <jofilipe@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jofilipe <jofilipe@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/06 17:11:23 by jofilipe          #+#    #+#             */
-/*   Updated: 2022/11/29 16:58:38 by jofilipe         ###   ########.fr       */
+/*   Updated: 2023/11/09 18:12:57 by jofilipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
+/**
+ * Compare two strings up to a specified number of characters.
+ *
+ * @param str1 First string to compare.
+ * @param str2 Second string to compare.
+ * @param n Number of characters to compare.
+ *
+ * @return Returns an integer less than, equal to, or greater than zero if the first n characters
+ *         of str1 are found, respectively, to be less than, to match, or be greater than
+ *         the first n characters of str2.
+ */
 
 int	ft_strncmp(const char *str1, const char *str2, size_t n)
 {

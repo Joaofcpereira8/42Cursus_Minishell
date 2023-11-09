@@ -3,14 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jofilipe <jofilipe@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jofilipe <jofilipe@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 10:29:15 by jofilipe          #+#    #+#             */
-/*   Updated: 2023/01/24 11:40:35 by jofilipe         ###   ########.fr       */
+/*   Updated: 2023/11/09 15:17:45 by jofilipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
+/**
+ * Check and print the corresponding value based on the specifier in the printf format.
+ *
+ * @param specifier Format specifier character.
+ * @param var Variable argument list.
+ *
+ * @return Returns the number of characters printed.
+ */
 
 int	ft_checkprintf(char specifier, va_list var)
 {
@@ -33,6 +42,14 @@ int	ft_checkprintf(char specifier, va_list var)
 		bytes = ft_printf_pointer(va_arg(var, unsigned long));
 	return (bytes);
 }
+
+/**
+ * Custom implementation of printf.
+ *
+ * @param str Format string.
+ *
+ * @return Returns the number of characters printed.
+ */
 
 int	ft_printf(const char *str, ...)
 {

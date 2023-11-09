@@ -3,14 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstlast.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jofilipe <jofilipe@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jofilipe <jofilipe@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 16:16:15 by jofilipe          #+#    #+#             */
-/*   Updated: 2022/11/22 13:44:21 by jofilipe         ###   ########.fr       */
+/*   Updated: 2023/11/09 15:10:44 by jofilipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
+/**
+ * Get the last element of a linked list.
+ *
+ * @param lst The first element of the list.
+ *
+ * @return Returns a pointer to the last element of the list.
+ *         Returns NULL if the list is empty.
+ */
 
 t_list	*ft_lstlast(t_list *lst)
 {

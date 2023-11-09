@@ -3,14 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf_char.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jofilipe <jofilipe@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jofilipe <jofilipe@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 10:28:50 by jofilipe          #+#    #+#             */
-/*   Updated: 2022/12/07 11:19:55 by jofilipe         ###   ########.fr       */
+/*   Updated: 2023/11/09 15:14:13 by jofilipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
+/**
+ * Print a character to the standard output.
+ *
+ * @param c Character to be printed.
+ *
+ * @return Returns the number of characters printed (1).
+ */
 
 int	ft_printf_char(char c)
 {

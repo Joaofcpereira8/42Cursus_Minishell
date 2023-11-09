@@ -3,14 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   ft_tolower.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jofilipe <jofilipe@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jofilipe <jofilipe@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/06 13:40:49 by jofilipe          #+#    #+#             */
-/*   Updated: 2022/11/29 16:59:08 by jofilipe         ###   ########.fr       */
+/*   Updated: 2023/11/09 18:16:05 by jofilipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
+/**
+ * Convert an uppercase letter to its corresponding lowercase letter.
+ *
+ * @param c Character to convert.
+ *
+ * @return Returns the lowercase equivalent of the character, if it is an uppercase letter;
+ *         otherwise, returns the original character.
+ */
 
 int	ft_tolower(int c)
 {

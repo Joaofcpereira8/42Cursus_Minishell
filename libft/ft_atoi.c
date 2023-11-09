@@ -3,14 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jofilipe <jofilipe@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jofilipe <jofilipe@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/06 17:51:41 by jofilipe          #+#    #+#             */
-/*   Updated: 2022/11/29 16:54:54 by jofilipe         ###   ########.fr       */
+/*   Updated: 2023/11/09 14:50:05 by jofilipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
+/**
+ * ft_see_spaces - Function to skip leading whitespaces and identify sign.
+ *
+ * @param str Input string.
+ * @param ptr_i Pointer to the index where parsing should start.
+ *
+ * @return Returns the sign of the numeric value (1 or -1).
+ */
 
 static int	ft_see_spaces(const char *str, int *ptr_i)
 {
@@ -30,6 +39,14 @@ static int	ft_see_spaces(const char *str, int *ptr_i)
 	*ptr_i = i;
 	return (negative);
 }
+
+/**
+ * ft_atoi - Convert ASCII string to integer.
+ *
+ * @param str Input string to be converted.
+ *
+ * @return Returns the converted integer value.
+ */
 
 int	ft_atoi(const char *str)
 {

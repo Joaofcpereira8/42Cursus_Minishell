@@ -3,14 +3,24 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jofilipe <jofilipe@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jofilipe <jofilipe@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 14:02:26 by jofilipe          #+#    #+#             */
-/*   Updated: 2022/11/29 16:56:19 by jofilipe         ###   ########.fr       */
+/*   Updated: 2023/11/09 15:13:39 by jofilipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
+/**
+ * Copy a block of memory from source to destination, handling overlapping regions.
+ *
+ * @param dest Pointer to the destination block of memory.
+ * @param src Pointer to the source block of memory.
+ * @param n Number of bytes to copy.
+ *
+ * @return Returns a pointer to the destination block of memory.
+ */
 
 void	*ft_memmove(void *dest, const void *src, size_t n)
 {

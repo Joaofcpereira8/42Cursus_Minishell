@@ -3,14 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   ft_striteri.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jofilipe <jofilipe@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jofilipe <jofilipe@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 15:38:59 by jofilipe          #+#    #+#             */
-/*   Updated: 2022/11/29 16:57:52 by jofilipe         ###   ########.fr       */
+/*   Updated: 2023/11/09 15:27:16 by jofilipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
+/**
+ * Apply a function to each character of a string, passing its index as the first argument.
+ *
+ * @param s String to iterate over.
+ * @param f Pointer to the function to apply.
+ */
 
 void	ft_striteri(char *s, void (*f)(unsigned int, char*))
 {

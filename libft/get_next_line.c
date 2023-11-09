@@ -1,16 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
+/*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jofilipe <jofilipe@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jofilipe <jofilipe@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/10 13:43:50 by jofilipe          #+#    #+#             */
-/*   Updated: 2023/06/29 19:05:31 by jofilipe         ###   ########.fr       */
+/*   Updated: 2023/11/09 18:18:03 by jofilipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
+/**
+ * Read a line from a file descriptor.
+ *
+ * @param fd File descriptor to read from.
+ * @param buffer Temporary buffer to store read data.
+ * @param stash Stash to store remaining data from the last read.
+ *
+ * @return Returns a line read from the file descriptor, or NULL if an error occurs.
+ */
 
 static char	*ft_get_line(int fd, char *buffer, char *stash)
 {
@@ -37,6 +47,14 @@ static char	*ft_get_line(int fd, char *buffer, char *stash)
 	return (stash);
 }
 
+/**
+ * Get the stash containing remaining data after a newline character in the line.
+ *
+ * @param line Line to extract the stash from.
+ *
+ * @return Returns the stash, or NULL if no newline character is found.
+ */
+
 static char	*ft_get_stash(char *line)
 {
 	int		i;
@@ -56,6 +74,14 @@ static char	*ft_get_stash(char *line)
 	line[i + 1] = '\0';
 	return (stash);
 }
+
+/**
+ * Get the next line from a file descriptor.
+ *
+ * @param fd File descriptor to read from.
+ *
+ * @return Returns the next line read from the file descriptor, or NULL if an error occurs or the end of file is reached.
+ */
 
 char	*get_next_line(int fd)
 {

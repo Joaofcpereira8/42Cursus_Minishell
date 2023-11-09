@@ -3,14 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstiter.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jofilipe <jofilipe@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jofilipe <jofilipe@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 16:26:22 by jofilipe          #+#    #+#             */
-/*   Updated: 2022/11/22 12:09:35 by jofilipe         ###   ########.fr       */
+/*   Updated: 2023/11/09 15:10:27 by jofilipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
+/**
+ * Iterate through a linked list and apply a function to each element's content.
+ *
+ * @param lst The first element of the list.
+ * @param f The function to be applied to each element's content.
+ */
 
 void	ft_lstiter(t_list *lst, void (*f)(void *))
 {

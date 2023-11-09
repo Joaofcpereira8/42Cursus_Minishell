@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jofilipe <jofilipe@student.42.fr>          +#+  +:+       +#+         #
+#    By: jofilipe <jofilipe@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/08 12:16:23 by jofilipe          #+#    #+#              #
-#    Updated: 2023/02/23 15:48:49 by jofilipe         ###   ########.fr        #
+#    Updated: 2023/11/09 15:03:55 by jofilipe         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,7 +45,7 @@ SRC = ft_atoi.c \
 		ft_substr.c \
 		ft_tolower.c \
 		ft_toupper.c \
-		ft_checkconversion.c \
+		ft_printf_checkconversion.c \
 		ft_printf.c \
 		ft_printf_char.c \
 		ft_printf_digit.c \

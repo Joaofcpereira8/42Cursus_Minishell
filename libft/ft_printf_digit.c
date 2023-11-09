@@ -3,14 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf_digit.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jofilipe <jofilipe@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jofilipe <jofilipe@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 10:28:55 by jofilipe          #+#    #+#             */
-/*   Updated: 2023/01/19 13:48:47 by jofilipe         ###   ########.fr       */
+/*   Updated: 2023/11/09 15:14:30 by jofilipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
+/**
+ * Print a long integer to the standard output.
+ *
+ * @param num Integer to be printed.
+ *
+ * @return Returns the number of characters printed.
+ */
 
 int	ft_printf_digit(long num)
 {

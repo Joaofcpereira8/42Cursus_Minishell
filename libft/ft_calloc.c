@@ -3,14 +3,24 @@
 /*                                                        :::      ::::::::   */
 /*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jofilipe <jofilipe@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jofilipe <jofilipe@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 16:47:51 by jofilipe          #+#    #+#             */
-/*   Updated: 2022/11/29 16:55:16 by jofilipe         ###   ########.fr       */
+/*   Updated: 2023/11/09 15:03:08 by jofilipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
+/**
+ * Allocate and zero-initialize a block of memory.
+ *
+ * @param nmemb Number of elements.
+ * @param size Size of each element.
+ *
+ * @return Returns a pointer to the allocated memory block.
+ *         Returns NULL if allocation fails.
+ */
 
 void	*ft_calloc(size_t nmemb, size_t size)
 {

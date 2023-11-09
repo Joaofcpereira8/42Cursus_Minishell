@@ -3,14 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   ft_isalnum.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jofilipe <jofilipe@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jofilipe <jofilipe@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 14:47:02 by jofilipe          #+#    #+#             */
-/*   Updated: 2022/11/29 16:55:23 by jofilipe         ###   ########.fr       */
+/*   Updated: 2023/11/09 15:06:58 by jofilipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
+/**
+ * Check if a character is alphanumeric.
+ *
+ * @param c Character to be checked.
+ *
+ * @return Returns 1 if the character is alphanumeric, 0 otherwise.
+ */
 
 int	ft_isalnum(int c)
 {

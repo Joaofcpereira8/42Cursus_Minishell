@@ -3,14 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jofilipe <jofilipe@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jofilipe <jofilipe@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 09:48:06 by jofilipe          #+#    #+#             */
-/*   Updated: 2022/11/29 16:55:50 by jofilipe         ###   ########.fr       */
+/*   Updated: 2023/11/09 15:08:41 by jofilipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
+/**
+ * Calculate the absolute value of a number.
+ *
+ * @param nbr Number to find the absolute value of.
+ *
+ * @return Returns the absolute value of the input number.
+ */
 
 static int	absolute_value(int nbr)
 {
@@ -18,6 +26,14 @@ static int	absolute_value(int nbr)
 		return (-nbr);
 	return (nbr);
 }
+
+/**
+ * Count the number of digits in an integer.
+ *
+ * @param nbr Integer to count digits of.
+ *
+ * @return Returns the count of digits in the input integer.
+ */
 
 static int	ft_digit_count(int nbr)
 {
@@ -33,6 +49,15 @@ static int	ft_digit_count(int nbr)
 	}
 	return (count);
 }
+
+/**
+ * Convert an integer to a string.
+ *
+ * @param n Integer to be converted.
+ *
+ * @return Returns the string representation of the input integer.
+ *         Returns NULL if memory allocation fails.
+ */
 
 char	*ft_itoa(int n)
 {

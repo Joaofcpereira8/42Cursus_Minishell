@@ -3,14 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf_pointer.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jofilipe <jofilipe@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jofilipe <jofilipe@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 10:29:01 by jofilipe          #+#    #+#             */
-/*   Updated: 2022/12/07 15:51:17 by jofilipe         ###   ########.fr       */
+/*   Updated: 2023/11/09 15:16:25 by jofilipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
+/**
+ * Print a pointer address in hexadecimal format to the standard output.
+ *
+ * @param num Pointer address to be printed.
+ *
+ * @return Returns the number of characters printed.
+ */
 
 int	ft_printf_pointer(unsigned long num)
 {

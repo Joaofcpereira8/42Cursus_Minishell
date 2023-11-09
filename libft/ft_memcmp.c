@@ -3,14 +3,26 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jofilipe <jofilipe@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jofilipe <jofilipe@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/06 17:45:34 by jofilipe          #+#    #+#             */
-/*   Updated: 2022/11/29 16:56:08 by jofilipe         ###   ########.fr       */
+/*   Updated: 2023/11/09 15:13:05 by jofilipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
+/**
+ * Compare two blocks of memory.
+ *
+ * @param str1 Pointer to the first block of memory.
+ * @param str2 Pointer to the second block of memory.
+ * @param n Number of bytes to compare.
+ *
+ * @return Returns an integer less than, equal to, or greater than zero if the first
+ *         n bytes of str1 are found, respectively, to be less than, to match,
+ *         or be greater than the first n bytes of str2.
+ */
 
 int	ft_memcmp(const void *str1, const void *str2, size_t n)
 {
