@@ -6,7 +6,7 @@
 /*   By: jofilipe <jofilipe@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 12:21:39 by jofilipe          #+#    #+#             */
-/*   Updated: 2023/11/09 15:22:43 by jofilipe         ###   ########.fr       */
+/*   Updated: 2023/11/10 14:09:40 by jofilipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@
  * @param n Integer to be written.
  * @param fd File descriptor to write to.
  */
-
 void	ft_putnbr_fd(int n, int fd)
 {
 	if (n == -2147483648)

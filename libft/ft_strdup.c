@@ -6,7 +6,7 @@
 /*   By: jofilipe <jofilipe@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 11:17:46 by jofilipe          #+#    #+#             */
-/*   Updated: 2023/11/09 15:26:57 by jofilipe         ###   ########.fr       */
+/*   Updated: 2023/11/10 14:10:26 by jofilipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@
  *
  * @param str String to be duplicated.
  *
- * @return Returns a pointer to the duplicated string, or NULL if memory allocation fails.
+ * @return Returns a pointer to the duplicated string, or NULL if memory
+ *         allocation fails.
  */
-
 char	*ft_strdup(const char *str)
 {
 	char	*memalloc;

@@ -6,7 +6,7 @@
 /*   By: jofilipe <jofilipe@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 14:42:50 by jofilipe          #+#    #+#             */
-/*   Updated: 2023/11/09 15:07:41 by jofilipe         ###   ########.fr       */
+/*   Updated: 2023/11/10 14:04:43 by jofilipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@
  *
  * @return Returns 1 if the character is a digit, 0 otherwise.
  */
-
 int	ft_isdigit(int c)
 {
 	if (c >= '0' && c <= '9')

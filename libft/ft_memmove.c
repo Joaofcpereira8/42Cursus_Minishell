@@ -6,14 +6,15 @@
 /*   By: jofilipe <jofilipe@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 14:02:26 by jofilipe          #+#    #+#             */
-/*   Updated: 2023/11/09 15:13:39 by jofilipe         ###   ########.fr       */
+/*   Updated: 2023/11/10 14:08:03 by jofilipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
 /**
- * Copy a block of memory from source to destination, handling overlapping regions.
+ * Copy a block of memory from source to destination, handling
+ * overlapping regions.
  *
  * @param dest Pointer to the destination block of memory.
  * @param src Pointer to the source block of memory.
@@ -21,7 +22,6 @@
  *
  * @return Returns a pointer to the destination block of memory.
  */
-
 void	*ft_memmove(void *dest, const void *src, size_t n)
 {
 	size_t	i;

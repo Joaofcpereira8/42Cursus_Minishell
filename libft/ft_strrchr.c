@@ -6,7 +6,7 @@
 /*   By: jofilipe <jofilipe@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/06 16:26:43 by jofilipe          #+#    #+#             */
-/*   Updated: 2023/11/09 18:13:41 by jofilipe         ###   ########.fr       */
+/*   Updated: 2023/11/10 14:13:23 by jofilipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@
  * @param str String to search within.
  * @param c Character to locate.
  *
- * @return Returns a pointer to the last occurrence of c in str, or NULL if not found.
+ * @return Returns a pointer to the last occurrence of c in str,
+ *         or NULL if not found.
  */
-
 char	*ft_strrchr(const char *str, int c)
 {
 	int	i;

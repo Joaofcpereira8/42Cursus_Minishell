@@ -6,7 +6,7 @@
 /*   By: jofilipe <jofilipe@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 15:13:01 by jofilipe          #+#    #+#             */
-/*   Updated: 2023/11/09 15:11:35 by jofilipe         ###   ########.fr       */
+/*   Updated: 2023/11/10 14:06:33 by jofilipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@
  *
  * @return Returns the number of elements in the list.
  */
-
 int	ft_lstsize(t_list *lst)
 {
 	int		count;

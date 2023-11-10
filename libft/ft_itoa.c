@@ -6,7 +6,7 @@
 /*   By: jofilipe <jofilipe@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 09:48:06 by jofilipe          #+#    #+#             */
-/*   Updated: 2023/11/09 15:08:41 by jofilipe         ###   ########.fr       */
+/*   Updated: 2023/11/10 14:04:57 by jofilipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@
  *
  * @return Returns the absolute value of the input number.
  */
-
 static int	absolute_value(int nbr)
 {
 	if (nbr < 0)
@@ -34,7 +33,6 @@ static int	absolute_value(int nbr)
  *
  * @return Returns the count of digits in the input integer.
  */
-
 static int	ft_digit_count(int nbr)
 {
 	int	count;
@@ -58,7 +56,6 @@ static int	ft_digit_count(int nbr)
  * @return Returns the string representation of the input integer.
  *         Returns NULL if memory allocation fails.
  */
-
 char	*ft_itoa(int n)
 {
 	char	*str;

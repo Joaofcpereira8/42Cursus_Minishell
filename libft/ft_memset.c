@@ -6,7 +6,7 @@
 /*   By: jofilipe <jofilipe@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 15:44:56 by jofilipe          #+#    #+#             */
-/*   Updated: 2023/11/09 15:13:56 by jofilipe         ###   ########.fr       */
+/*   Updated: 2023/11/10 14:08:07 by jofilipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@
  *
  * @return Returns a pointer to the block of memory.
  */
-
 void	*ft_memset(void *str, int c, size_t len)
 {
 	size_t	i;

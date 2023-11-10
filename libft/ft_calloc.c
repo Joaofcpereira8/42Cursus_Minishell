@@ -6,7 +6,7 @@
 /*   By: jofilipe <jofilipe@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 16:47:51 by jofilipe          #+#    #+#             */
-/*   Updated: 2023/11/09 15:03:08 by jofilipe         ###   ########.fr       */
+/*   Updated: 2023/11/10 14:04:27 by jofilipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@
  * @return Returns a pointer to the allocated memory block.
  *         Returns NULL if allocation fails.
  */
-
 void	*ft_calloc(size_t nmemb, size_t size)
 {
 	char	*ptr;

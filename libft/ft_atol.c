@@ -6,7 +6,7 @@
 /*   By: jofilipe <jofilipe@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 10:36:37 by jofilipe          #+#    #+#             */
-/*   Updated: 2023/11/09 14:50:46 by jofilipe         ###   ########.fr       */
+/*   Updated: 2023/11/10 14:04:21 by jofilipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@
  *
  * @return Returns the converted long integer value.
  */
-
 long	ft_atol(const char *str)
 {
 	int				i;

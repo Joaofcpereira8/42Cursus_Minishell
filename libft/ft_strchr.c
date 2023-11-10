@@ -6,7 +6,7 @@
 /*   By: jofilipe <jofilipe@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/06 13:41:58 by jofilipe          #+#    #+#             */
-/*   Updated: 2023/11/09 15:25:55 by jofilipe         ###   ########.fr       */
+/*   Updated: 2023/11/10 14:10:16 by jofilipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,9 @@
  * @param str String to search.
  * @param c Character to locate.
  *
- * @return Returns a pointer to the first occurrence of the character in the string,
- *         or NULL if the character is not found.
+ * @return Returns a pointer to the first occurrence of the character
+ * in the string, or NULL if the character is not found.
  */
-
 char	*ft_strchr(const char *str, int c)
 {
 	while (*str != c && *str != '\0')

@@ -6,7 +6,7 @@
 /*   By: jofilipe <jofilipe@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 15:33:11 by jofilipe          #+#    #+#             */
-/*   Updated: 2023/11/09 15:28:56 by jofilipe         ###   ########.fr       */
+/*   Updated: 2023/11/10 14:11:17 by jofilipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@
  *
  * @return Returns the length of the string.
  */
-
 size_t	ft_strlen(const char *str)
 {
 	int	i;

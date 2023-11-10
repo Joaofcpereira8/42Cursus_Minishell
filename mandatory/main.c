@@ -6,7 +6,7 @@
 /*   By: jofilipe <jofilipe@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 18:26:42 by jofilipe          #+#    #+#             */
-/*   Updated: 2023/11/08 15:20:09 by jofilipe         ###   ########.fr       */
+/*   Updated: 2023/11/09 18:40:08 by jofilipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,12 @@ int	g_exit_status = 0;
  *
  */
 
-int main(int argc, char *argv[], char **envp)
+int main(int argc, char *argv[], char **env)
 {
 	(void)argv;
-	
+
 	if (argc > 1)
-		return(printf("Too much arguments! Use only one argument."));
+		return(ft_putstr_fd("Too much arguments! Use only ./minishell\n", 2), 1);
 	else
 	{
 		/*inits*/

@@ -6,7 +6,7 @@
 /*   By: jofilipe <jofilipe@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 10:42:27 by jofilipe          #+#    #+#             */
-/*   Updated: 2023/11/09 18:13:59 by jofilipe         ###   ########.fr       */
+/*   Updated: 2023/11/10 14:13:21 by jofilipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,9 @@
  * @param s1 String to trim.
  * @param set Set of characters to trim.
  *
- * @return Returns a new string with leading and trailing characters from set removed,
- *         or NULL if memory allocation fails.
+ * @return Returns a new string with leading and trailing characters from
+ *         set removed, or NULL if memory allocation fails.
  */
-
 char	*ft_strtrim(char *s1, char *set)
 {
 	char	*result;

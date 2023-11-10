@@ -6,7 +6,7 @@
 /*   By: jofilipe <jofilipe@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 15:20:59 by jofilipe          #+#    #+#             */
-/*   Updated: 2023/11/09 15:07:53 by jofilipe         ###   ########.fr       */
+/*   Updated: 2023/11/10 14:04:47 by jofilipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@
  *
  * @return Returns 1 if the character is a printable character, 0 otherwise.
  */
-
 int	ft_isprint(int c)
 {
 	if (c >= 32 && c <= 126)

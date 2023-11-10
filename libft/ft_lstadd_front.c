@@ -6,7 +6,7 @@
 /*   By: jofilipe <jofilipe@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 14:54:16 by jofilipe          #+#    #+#             */
-/*   Updated: 2023/11/09 15:09:44 by jofilipe         ###   ########.fr       */
+/*   Updated: 2023/11/10 14:05:08 by jofilipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@
  * @param lst A pointer to a pointer to the first element of the list.
  * @param new The new element to be added to the list.
  */
-
 void	ft_lstadd_front(t_list **lst, t_list *new)
 {
 	if (lst)

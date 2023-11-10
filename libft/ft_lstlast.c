@@ -6,7 +6,7 @@
 /*   By: jofilipe <jofilipe@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 16:16:15 by jofilipe          #+#    #+#             */
-/*   Updated: 2023/11/09 15:10:44 by jofilipe         ###   ########.fr       */
+/*   Updated: 2023/11/10 14:05:44 by jofilipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@
  * @return Returns a pointer to the last element of the list.
  *         Returns NULL if the list is empty.
  */
-
 t_list	*ft_lstlast(t_list *lst)
 {
 	t_list	*currentelement;

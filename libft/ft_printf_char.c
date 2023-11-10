@@ -6,7 +6,7 @@
 /*   By: jofilipe <jofilipe@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 10:28:50 by jofilipe          #+#    #+#             */
-/*   Updated: 2023/11/09 15:14:13 by jofilipe         ###   ########.fr       */
+/*   Updated: 2023/11/10 14:08:10 by jofilipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@
  *
  * @return Returns the number of characters printed (1).
  */
-
 int	ft_printf_char(char c)
 {
 	write(1, &c, 1);

@@ -6,7 +6,7 @@
 /*   By: jofilipe <jofilipe@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/06 17:51:41 by jofilipe          #+#    #+#             */
-/*   Updated: 2023/11/09 14:50:05 by jofilipe         ###   ########.fr       */
+/*   Updated: 2023/11/10 14:02:55 by jofilipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@
  *
  * @return Returns the sign of the numeric value (1 or -1).
  */
-
 static int	ft_see_spaces(const char *str, int *ptr_i)
 {
 	int	negative;
@@ -47,7 +46,6 @@ static int	ft_see_spaces(const char *str, int *ptr_i)
  *
  * @return Returns the converted integer value.
  */
-
 int	ft_atoi(const char *str)
 {
 	int		i;

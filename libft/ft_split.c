@@ -6,7 +6,7 @@
 /*   By: jofilipe <jofilipe@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 09:48:53 by jofilipe          #+#    #+#             */
-/*   Updated: 2023/11/09 15:25:30 by jofilipe         ###   ########.fr       */
+/*   Updated: 2023/11/10 14:10:06 by jofilipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@
  *
  * @return Returns the number of words in the string.
  */
-
 static char	ft_countwords(char *s, char c)
 {
 	int	i;
@@ -48,7 +47,6 @@ static char	ft_countwords(char *s, char c)
  *
  * @return Returns the length of the word.
  */
-
 static int	ft_wordlen(const char *s, char c)
 {
 	int	i;
@@ -60,14 +58,14 @@ static int	ft_wordlen(const char *s, char c)
 }
 
 /**
- * Split a string into an array of words based on a specified delimiter character.
+ * Split a string into an array of words based on a specified
+ * delimiter character.
  *
  * @param s String to be split.
  * @param c Delimiter character.
  *
  * @return Returns an array of strings containing the words.
  */
-
 char	**ft_split(char const *s, char c)
 {
 	char	**words;

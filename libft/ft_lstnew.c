@@ -6,7 +6,7 @@
 /*   By: jofilipe <jofilipe@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 11:22:11 by jofilipe          #+#    #+#             */
-/*   Updated: 2023/11/09 15:11:19 by jofilipe         ###   ########.fr       */
+/*   Updated: 2023/11/10 14:06:28 by jofilipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@
  * @return Returns a pointer to the new list element.
  *         Returns NULL if memory allocation fails.
  */
-
 t_list	*ft_lstnew(void *content)
 {
 	t_list	*ptr;

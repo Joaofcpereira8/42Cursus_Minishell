@@ -6,7 +6,7 @@
 /*   By: jofilipe <jofilipe@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 16:33:47 by jofilipe          #+#    #+#             */
-/*   Updated: 2023/11/09 15:27:38 by jofilipe         ###   ########.fr       */
+/*   Updated: 2023/11/10 14:04:00 by jofilipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,9 @@
  * @param str1 First string.
  * @param str2 Second string.
  *
- * @return Returns a new string containing the concatenated content of str1 and str2,
- *         or NULL if memory allocation fails.
+ * @return Returns a new string containing the concatenated content of str1
+ *         and str2, or NULL if memory allocation fails.
  */
-
 char	*ft_strjoin(char const *str1, char const *str2)
 {
 	char		*memall;
