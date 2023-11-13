@@ -6,7 +6,7 @@
 /*   By: jofilipe <jofilipe@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 18:26:52 by jofilipe          #+#    #+#             */
-/*   Updated: 2023/11/08 16:22:44 by jofilipe         ###   ########.fr       */
+/*   Updated: 2023/11/10 16:52:53 by jofilipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,21 +21,42 @@
 # include <sys/wait.h>
 # include <readline/readline.h>
 
+# define MAX_TOKEN_SIZE
+# define MAX_INPUT_SIZE 1024
+
+typedef enum {
+	KEYWORD,
+	IDENTIFIERS,
+	OPERATORS,
+	LITERALS,
+	PUNCTUATION,
+	COMMENTS,
+	SPECIAL_SYMBOLS,
+	WHITESPACE,
+	EOF_TOKEN
+}				token_type;
+
+typedef struct s_token
+{
+	token_type	type;
+	char		value[MAX_TOKEN_SIZE];
+}				t_token;
+
 typedef struct s_data
 {
-	char	**env;
-	int		pid;
-	char	*command;
-}			t_data;
+	char		**env;
+	int			pid;
+	char		*command;
+}				t_data;
 
 /*----exec.c----*/
 int				ft_execvp();
 
 /*----get_user.c----*/
-static	void	ft_get_env(char **user, char **session);
+/*static*/	void	ft_get_env(char **user, char **session);
 
 /*----parser.c----*/
-
+void			exec_command(char **argv, char **env);
 
 /*----readline.c.c----*/
 
