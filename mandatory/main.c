@@ -6,7 +6,7 @@
 /*   By: jofilipe <jofilipe@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 18:26:42 by jofilipe          #+#    #+#             */
-/*   Updated: 2023/11/10 16:49:19 by jofilipe         ###   ########.fr       */
+/*   Updated: 2023/11/14 15:10:55 by jofilipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,13 +31,13 @@ int main(int argc, char *argv[], char **env)
 	char	*session;
 
 	if (argc > 1)
-		return(ft_putstr_fd("Too much arguments! Use only ./minishell\n", 2), 1);
+		return(err_handler('a'));
 	else
 	{
 		ft_get_env(&user, &session);
 		while (1)
 		{
-			printf("[%s@%s]$ ", user, session);
+			printf("%s@%s$ ", user, session);
 			if (fgets(input, sizeof(input), stdin) == NULL)
 			{
 				perror("fgets");
