@@ -14,8 +14,8 @@
 
 /*vai buscar o user e o lugar onde se encontra nas
 variaveis de ambiente*/
-/*static*/	void	ft_get_env(char **user, char **session)
+/*static*/	void	ft_get_env(t_env_detail env_det)
 {
-	*user = getenv("USER");
-	*session = getenv("SESSION_MANAGER");
+	env_det.user = getenv("USER");
+	env_det.local = getenv("SESSION_MANAGER");
 }

@@ -24,7 +24,8 @@
 # define MAX_TOKEN_SIZE
 # define MAX_INPUT_SIZE 1024
 
-typedef enum {
+typedef enum e_tok_type
+{
 	KEYWORD,
 	IDENTIFIERS,
 	OPERATORS,
@@ -33,12 +34,18 @@ typedef enum {
 	COMMENTS,
 	SPECIAL_SYMBOLS,
 	WHITESPACE,
-	EOF_TOKEN
-}				token_type;
+	EOF_TOKE,
+}				t_tok_type;
+
+typedef struct s_env_detail
+{
+    char    *user;
+    char    *local;
+}               t_env_detail;
 
 typedef struct s_token
 {
-	token_type	type;
+	t_tok_type 	type;
 	char		value[MAX_TOKEN_SIZE];
 }				t_token;
 
@@ -53,7 +60,7 @@ typedef struct s_data
 int				ft_execvp();
 
 /*----get_user.c----*/
-/*static*/	void	ft_get_env(char **user, char **session);
+/*static*/	void	ft_get_env(t_env_detail env_det);
 
 /*----parser.c----*/
 void			exec_command(char **argv, char **env);

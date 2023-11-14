@@ -18,9 +18,13 @@ com a gramatica e constroi a command table
 
 /*Cada comando está dentro de um array e o pipe, se calhar, é o index de cada comando*/
 
+Tokens-> aatribui cada palavra a um tipo de token
+
 fazer o nosso strtok :'(
 
 #Builtins
 
 para chamar os Builtins, fazer strcmpr do argumento para
 ver se está a chamar a funcao
+
+

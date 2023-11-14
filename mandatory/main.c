@@ -22,7 +22,6 @@ int	g_exit_status = 0;
  * @param envp Variaveis de ambiente.
  *
  */
-
 int main(int argc, char *argv[], char **env)
 {
 	(void)argv;
@@ -36,21 +35,19 @@ int main(int argc, char *argv[], char **env)
 	{
 		ft_get_env(&user, &session);
 		while (1)
-		{
-			printf("%s@%s$ ", user, session);
-			if (fgets(input, sizeof(input), stdin) == NULL)
-			{
-				perror("fgets");
-				exit(EXIT_FAILURE);
-			}
-		}
-		size_t len = strlen(input);
-		if (len > 0 && input[len - 1] == '\n')
-		{
-			input[len - 1] = '\0';
-		}
-		char *args[] = {input, NULL};
-		exec_command(args, env);
+        {
+            printf("%s@%s$ ", user, session);
+            if (fgets(input, sizeof(input), stdin) == NULL) {
+                perror("fgets");
+                exit(EXIT_FAILURE);
+            }
+            size_t len = strlen(input);
+            if (len > 0 && input[len - 1] == '\n') {
+                input[len - 1] = '\0';
+            }
+            char *args[] = {input, NULL};
+            exec_command(args, env);
+        }
 	}
 	return (0);
 }
