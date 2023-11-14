@@ -6,7 +6,7 @@
 #    By: jofilipe <jofilipe@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/02 17:32:15 by jofilipe          #+#    #+#              #
-#    Updated: 2023/11/08 12:29:36 by jofilipe         ###   ########.fr        #
+#    Updated: 2023/11/14 15:08:25 by jofilipe         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,7 +40,7 @@ SRCS =	mandatory/main.c\
 		mandatory/builtins/echo.c\
 		mandatory/builtins/env.c\
 		mandatory/builtins/exit.c\
-		mandatory/builtins/export.c\
+		mandatory/builtins/export_1.c\
 		mandatory/builtins/pwd.c\
 		mandatory/builtins/unset.c\
 
@@ -49,7 +49,7 @@ SRCS =	mandatory/main.c\
 
 OBJS = $(SRCS:%.c=%.o)
 
-all: $(NAME)
+all: $(LIBFT) $(NAME)
 
 $(LIBFT):
 	@$(MAKE) -C ./libft
@@ -69,11 +69,11 @@ $(NAME): $(OBJS) $(LIBFT)
 
 clean:
 	@$(MAKE) clean -C ./libft
-	@$(RM) $(OBJS)
+	@$(RM) $(OBJS) $(LIBFT)
 
 fclean: clean
 	@$(MAKE) clean -C ./libft
-	@$(RM) $(NAME)
+	@$(RM) $(NAME) $(LIBFT)
 	echo "$(RED)Objects and executable files have been erased!$(RESET)"
 
 re: fclean all

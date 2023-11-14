@@ -6,7 +6,7 @@
 #    By: jofilipe <jofilipe@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/08 12:16:23 by jofilipe          #+#    #+#              #
-#    Updated: 2023/11/09 15:03:55 by jofilipe         ###   ########.fr        #
+#    Updated: 2023/11/14 15:05:57 by jofilipe         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,6 +45,15 @@ SRC = ft_atoi.c \
 		ft_substr.c \
 		ft_tolower.c \
 		ft_toupper.c \
+		ft_lstnew.c \
+		ft_lstadd_front.c \
+		ft_lstsize.c \
+		ft_lstlast.c \
+		ft_lstadd_back.c \
+		ft_lstdelone.c \
+		ft_lstclear.c \
+		ft_lstiter.c \
+		ft_lstmap.c \
 		ft_printf_checkconversion.c \
 		ft_printf.c \
 		ft_printf_char.c \
@@ -53,7 +62,6 @@ SRC = ft_atoi.c \
 		ft_printf_string.c \
 		ft_printf_unsigned.c \
 		ft_printf_hexa.c \
-		ft_checkconversion.c \
 		ft_printf.c \
 		ft_printf_char.c \
 		ft_printf_digit.c \
@@ -64,18 +72,6 @@ SRC = ft_atoi.c \
 		get_next_line.c \
 
 OBJ = $(SRC:.c=.o)
-
-BONUS = ft_lstnew.c \
-		ft_lstadd_front.c \
-		ft_lstsize.c \
-		ft_lstlast.c \
-		ft_lstadd_back.c \
-		ft_lstdelone.c \
-		ft_lstclear.c \
-		ft_lstiter.c \
-		ft_lstmap.c \
-
-BONUS_OBJ = $(BONUS:.c=.o)
 
 NAME = libft.a
 
@@ -90,7 +86,7 @@ $(NAME): $(OBJ)
 	@ranlib $(NAME)
 
 clean:
-	@rm -rf $(OBJ) $(BONUS_OBJ)
+	@rm -rf $(OBJ)
 
 fclean: clean
 	@rm -rf $(NAME)
@@ -98,10 +94,3 @@ fclean: clean
 
 re: fclean all
 
-bonus: $(OBJ) $(BONUS_OBJ)
-	@ar rcs $(NAME) $(OBJ) $(BONUS_OBJ)
-	@ranlib $(NAME)
-
-so:
-	$(CC) -nostartfiles -fPIC $(CFLAGS) $(SRC)
-	gcc -nostartfiles -shared -o libft.so $(OBJ) $(BONUS_OBJ)
