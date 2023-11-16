@@ -6,7 +6,7 @@
 /*   By: jofilipe <jofilipe@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 18:26:52 by jofilipe          #+#    #+#             */
-/*   Updated: 2023/11/10 16:52:53 by jofilipe         ###   ########.fr       */
+/*   Updated: 2023/11/16 18:06:18 by bbento-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,8 @@ typedef enum e_tok_type
 typedef struct s_env_detail
 {
     char    *user;
-    char    *local;
+    char    *sesh;
+    char    *path;
 }               t_env_detail;
 
 typedef struct s_token
@@ -60,7 +61,7 @@ typedef struct s_data
 int				ft_execvp();
 
 /*----get_user.c----*/
-/*static*/	void	ft_get_env(t_env_detail env_det);
+/*static*/	void	ft_get_env(t_env_detail *envi);
 
 /*----parser.c----*/
 void			exec_command(char **argv, char **env);

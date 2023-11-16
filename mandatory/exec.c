@@ -6,14 +6,15 @@
 /*   By: jofilipe <jofilipe@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 17:39:49 by jofilipe          #+#    #+#             */
-/*   Updated: 2023/11/10 16:55:00 by jofilipe         ###   ########.fr       */
+/*   Updated: 2023/11/16 17:59:52 by bbento-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
 //execve - executes the program
-/* int	ft_execve()
+ int	ft_execve()
 {
+	return (0);
+}
 
-} */

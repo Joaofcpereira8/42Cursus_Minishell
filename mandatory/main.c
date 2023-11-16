@@ -6,7 +6,7 @@
 /*   By: jofilipe <jofilipe@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 18:26:42 by jofilipe          #+#    #+#             */
-/*   Updated: 2023/11/14 15:10:55 by jofilipe         ###   ########.fr       */
+/*   Updated: 2023/11/16 18:18:53 by bbento-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,17 +26,18 @@ int main(int argc, char *argv[], char **env)
 {
 	(void)argv;
 	char	input[MAX_INPUT_SIZE];
-	char	*user;
-	char	*session;
+	t_env_detail envi;
+/*	char	*user = NULL;
+	char	*session = NULL;*/
 
 	if (argc > 1)
 		return(err_handler('a'));
 	else
 	{
-		ft_get_env(&user, &session);
+		ft_get_env(&envi);
 		while (1)
         {
-            printf("%s@%s$ ", user, session);
+            printf("%s@%s:~%s$ ", envi.user, envi.sesh, envi.path);
             if (fgets(input, sizeof(input), stdin) == NULL) {
                 perror("fgets");
                 exit(EXIT_FAILURE);
