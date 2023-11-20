@@ -6,7 +6,7 @@
 /*   By: jofilipe <jofilipe@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 18:26:52 by jofilipe          #+#    #+#             */
-/*   Updated: 2023/11/16 18:06:18 by bbento-e         ###   ########.fr       */
+/*   Updated: 2023/11/20 18:34:22 by jofilipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,12 @@
 # include <unistd.h>
 # include <sys/wait.h>
 # include <readline/readline.h>
+# include <readline/history.h>
 
-# define MAX_TOKEN_SIZE
+
 # define MAX_INPUT_SIZE 1024
 
-typedef enum e_tok_type
+typedef enum e_type
 {
 	KEYWORD,
 	IDENTIFIERS,
@@ -35,19 +36,19 @@ typedef enum e_tok_type
 	SPECIAL_SYMBOLS,
 	WHITESPACE,
 	EOF_TOKE,
-}				t_tok_type;
+}				t_type;
 
 typedef struct s_env_detail
 {
-    char    *user;
-    char    *sesh;
-    char    *path;
-}               t_env_detail;
+	char	*user;
+	char	*sesh;
+	char	*path;
+}				t_env_detail;
 
 typedef struct s_token
 {
-	t_tok_type 	type;
-	char		value[MAX_TOKEN_SIZE];
+	char	*str;
+	t_type	type;
 }				t_token;
 
 typedef struct s_data
@@ -55,13 +56,16 @@ typedef struct s_data
 	char		**env;
 	int			pid;
 	char		*command;
+	char		*cwd;
 }				t_data;
 
 /*----exec.c----*/
 int				ft_execvp();
 
 /*----get_user.c----*/
-/*static*/	void	ft_get_env(t_env_detail *envi);
+int				ft_get_env(t_env_detail *envi);
+char			*get_path(void);
+char			path_finder(t_data *data);
 
 /*----parser.c----*/
 void			exec_command(char **argv, char **env);

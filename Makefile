@@ -6,7 +6,7 @@
 #    By: jofilipe <jofilipe@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/02 17:32:15 by jofilipe          #+#    #+#              #
-#    Updated: 2023/11/14 15:08:25 by jofilipe         ###   ########.fr        #
+#    Updated: 2023/11/20 18:42:19 by jofilipe         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,7 @@ WHITE   = \033[1;37m
 NAME = minishell
 
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -g #-lreadline
+CFLAGS = -Wall -Wextra -Werror -g
 RM = rm -rf
 
 LIBFT = libft/libft.a
@@ -36,6 +36,7 @@ SRCS =	mandatory/main.c\
 		mandatory/parser.c\
 		mandatory/error.c\
 		mandatory/utils.c\
+		mandatory/path_finder.c \
 		mandatory/builtins/cd.c\
 		mandatory/builtins/echo.c\
 		mandatory/builtins/env.c\
@@ -55,7 +56,7 @@ $(LIBFT):
 	@$(MAKE) -C ./libft
 
 $(NAME): $(OBJS) $(LIBFT)
-		@$(CC) $(CFLAGS) $(OBJS) $(LIBFT) -o $(NAME)
+		@$(CC) $(CFLAGS) $(OBJS) -lreadline $(LIBFT) -o $(NAME)
 		clear
 		echo "$(BLUE)  __  __ _       _     _          _ _ ";
 		echo "$(WHITE) |  \/  (_)     (_)   | |        | | |";
