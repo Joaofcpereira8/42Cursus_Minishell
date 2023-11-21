@@ -6,9 +6,14 @@
 /*   By: jofilipe <jofilipe@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 12:34:25 by jofilipe          #+#    #+#             */
-/*   Updated: 2023/11/08 12:23:59 by jofilipe         ###   ########.fr       */
+/*   Updated: 2023/11/21 19:03:56 by bbento-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
+int	minicd(t_data *data, char **args)
+{
+	(void)data;
+	(void)args;
+}

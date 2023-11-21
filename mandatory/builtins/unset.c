@@ -11,3 +11,9 @@
 /* ************************************************************************** */
 
 #include "../minishell.h"
+
+int	miniunset(t_data *data, char **args)
+{
+	(void)data;
+	(void)args;
+}

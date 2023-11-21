@@ -3,11 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   export.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jofilipe <jofilipe@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: bbento-e <bbento-e@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/07 12:34:31 by jofilipe          #+#    #+#             */
-/*   Updated: 2023/11/08 12:24:42 by jofilipe         ###   ########.fr       */
+/*   Created: 2023/11/21 19:13:24 by bbento-e          #+#    #+#             */
+/*   Updated: 2023/11/21 19:13:53 by bbento-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
+
+int	miniexport(t_data *data, char **args)
+{
+	(void)data;
+	(void)args;
+}

@@ -11,3 +11,9 @@
 /* ************************************************************************** */
 
 #include "../minishell.h"
+
+int	miniexit(t_data *data, char **args)
+{
+	(void)data;
+	(void)args;
+}

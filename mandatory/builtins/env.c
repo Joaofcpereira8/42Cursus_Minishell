@@ -6,8 +6,14 @@
 /*   By: jofilipe <jofilipe@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 12:34:41 by jofilipe          #+#    #+#             */
-/*   Updated: 2023/11/08 12:24:31 by jofilipe         ###   ########.fr       */
+/*   Updated: 2023/11/21 19:06:33 by bbento-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
+
+int	minienv(t_data *data, char **args)
+{
+	(void)data;
+	(void)args;
+}

@@ -6,7 +6,7 @@
 /*   By: jofilipe <jofilipe@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 18:26:52 by jofilipe          #+#    #+#             */
-/*   Updated: 2023/11/20 18:34:22 by jofilipe         ###   ########.fr       */
+/*   Updated: 2023/11/21 19:15:19 by bbento-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,32 +55,44 @@ typedef struct s_data
 {
 	char		**env;
 	int			pid;
-	char		*command;
+	char		*comm;
 	char		*cwd;
 }				t_data;
 
-/*----exec.c----*/
+// ------ EXEC ------
 int				ft_execvp();
 
-/*----get_user.c----*/
-int				ft_get_env(t_env_detail *envi);
-char			*get_path(void);
-char			path_finder(t_data *data);
+// ------ USER ------
+char	*get_path(void);
+char	path_finder(t_data *data);
+int		ft_get_env(t_env_detail *envi);
 
-/*----parser.c----*/
-void			exec_command(char **argv, char **env);
+// ----- BUILT-INs -----
+int		minicd(t_data *data, char **args);
+int		minipdw(t_data *data, char **args);
+int		minienv(t_data *data, char **args);
+int		miniexit(t_data *data, char **args);
+int		miniecho(t_data *data, char **args);
+int		miniunset(t_data *data, char **args);
+int		miniexport(t_data *data, char **args);
+int		built_type(t_data *data, char **args);
+int		builttype_next(t_data *data, char **args);
+
+
+// ----- PARSER -----
+void	exec_command(char **argv, char **env);
 
 /*----readline.c.c----*/
 
 
 /*----special.c----*/
-int				check_spec(char **str);
-int				iseven(int s_trig);
+int		iseven(int s_trig);
+int		check_spec(char **str);
 
-/*----error.c----*/
-int				err_handler(char c);
+// ------ ERRORS -----
+int		err_handler(char c);
 
-/*----utils.c----*/
+// ----- UTILS -----
 int				check_args(char **str);
 
 #endif
