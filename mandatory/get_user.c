@@ -6,7 +6,7 @@
 /*   By: jofilipe <jofilipe@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 18:56:59 by jofilipe          #+#    #+#             */
-/*   Updated: 2023/11/22 12:56:22 by bbento-e         ###   ########.fr       */
+/*   Updated: 2023/11/22 14:14:13 by bbento-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,10 +45,10 @@ void	get_session(t_env_detail *envi)
 	i = 0;
 	char *mngr = getenv("SESSION_MANAGER");
 	// Find the position of '@'
-	char *at = strchr(mngr, '@');
+	char *at = ft_strchr(mngr, '@');
 
 	// Find the position of ':'
-	char *col = strchr(mngr, ':');
+	char *col = ft_strchr(mngr, ':');
 
 	// Check if both '@' and ':' are found
 	if (at != NULL && col != NULL && at < col)
@@ -70,8 +70,7 @@ int	ft_get_env(t_env_detail *envi)
 		return -1;
 	}
 	envi->user = getenv("USER");
-	//envi->sesh = getenv("SESSION_MANAGER");
-	get_session(envi);
+	envi->sesh = "minishell";// getenv("SESSION_MANAGER");
 	envi->path = getenv("PATH");
 	return(0);
 }

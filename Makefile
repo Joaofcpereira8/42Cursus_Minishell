@@ -54,7 +54,7 @@ OBJS = $(SRCS:%.c=%.o)
 all: $(LIBFT) $(NAME)
 
 $(LIBFT):
-	@$(MAKE) -C ./libft
+	@$(MAKE) -C ./libft -j
 
 $(NAME): $(OBJS) $(LIBFT)
 		@$(CC) $(CFLAGS) $(OBJS) -lreadline $(LIBFT) -o $(NAME)

@@ -6,15 +6,41 @@
 /*   By: jofilipe <jofilipe@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 17:39:49 by jofilipe          #+#    #+#             */
-/*   Updated: 2023/11/16 17:59:52 by bbento-e         ###   ########.fr       */
+/*   Updated: 2023/11/22 17:58:19 by bbento-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-//execve - executes the program
- int	ft_execve()
+void	exec_command(t_data *data, char **argv, char **env)
 {
-	return (0);
+	pid_t	pid;
+	int		i;
+
+	pid = fork();
+	i = 0;
+	if (pid < 0)
+		perror("fork");
+	else if (pid == 0)
+	{
+		//Child process
+		while (data->paths[i])
+		{
+			if (access(,))
+				execve(argv[0], argv, env);
+			perror("execve");
+			i++;
+		}
+		exit(EXIT_FAILURE);
+	}
+	else
+	{
+		//Parent process
+		waitpid(pid, NULL, 0);
+	}
 }
 
+void get_paths(t_data *data)
+{
+	data->paths = ft_split(getenv("PATH"), ':');
+}

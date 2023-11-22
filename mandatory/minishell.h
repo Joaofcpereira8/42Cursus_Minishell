@@ -6,7 +6,7 @@
 /*   By: jofilipe <jofilipe@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 18:26:52 by jofilipe          #+#    #+#             */
-/*   Updated: 2023/11/22 12:27:54 by bbento-e         ###   ########.fr       */
+/*   Updated: 2023/11/22 17:56:07 by bbento-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ typedef struct s_data
 	int			pid;
 	char		*comm;
 	char		*cwd;
+	char 		**paths;
 }				t_data;
 
 // ------ EXEC ------
@@ -81,7 +82,7 @@ int		builttype_next(t_data *data, char **args);
 
 
 // ----- PARSER -----
-void	exec_command(char **argv, char **env);
+void	exec_command(t_data *data, char **argv, char **env);
 
 /*----readline.c.c----*/
 
