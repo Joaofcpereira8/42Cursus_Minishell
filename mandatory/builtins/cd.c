@@ -6,7 +6,7 @@
 /*   By: jofilipe <jofilipe@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 12:34:25 by jofilipe          #+#    #+#             */
-/*   Updated: 2023/11/21 19:03:56 by bbento-e         ###   ########.fr       */
+/*   Updated: 2023/11/22 12:02:15 by bbento-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,4 +16,5 @@ int	minicd(t_data *data, char **args)
 {
 	(void)data;
 	(void)args;
+	return (0);
 }

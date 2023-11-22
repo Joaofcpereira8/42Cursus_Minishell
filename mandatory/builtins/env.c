@@ -16,4 +16,5 @@ int	minienv(t_data *data, char **args)
 {
 	(void)data;
 	(void)args;
+	return (0);
 }

@@ -37,11 +37,12 @@ SRCS =	mandatory/main.c\
 		mandatory/error.c\
 		mandatory/utils.c\
 		mandatory/path_finder.c \
+		mandatory/builtins/builtin.c\
 		mandatory/builtins/cd.c\
 		mandatory/builtins/echo.c\
 		mandatory/builtins/env.c\
 		mandatory/builtins/exit.c\
-		mandatory/builtins/export_1.c\
+		mandatory/builtins/exprt.c\
 		mandatory/builtins/pwd.c\
 		mandatory/builtins/unset.c\
 

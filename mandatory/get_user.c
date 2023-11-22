@@ -6,7 +6,7 @@
 /*   By: jofilipe <jofilipe@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 18:56:59 by jofilipe          #+#    #+#             */
-/*   Updated: 2023/11/20 18:37:41 by jofilipe         ###   ########.fr       */
+/*   Updated: 2023/11/22 12:56:22 by bbento-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,29 @@ char	*get_path(void)
 	return (result);
 }
 
+void	get_session(t_env_detail *envi)
+{
+	int i;
+
+	i = 0;
+	char *mngr = getenv("SESSION_MANAGER");
+	// Find the position of '@'
+	char *at = strchr(mngr, '@');
+
+	// Find the position of ':'
+	char *col = strchr(mngr, ':');
+
+	// Check if both '@' and ':' are found
+	if (at != NULL && col != NULL && at < col)
+	{
+		size_t len = col - (at + 1);
+		char trim[len + 1];
+		strncpy(trim, at + 1, len);
+		trim[len] = '\0';
+		envi->sesh = trim;
+	}
+}
+
 /*mudar o path tanto da estrutura como da funcao, pois o path vai ser sempre alterado e a funcao é static*/
 int	ft_get_env(t_env_detail *envi)
 {
@@ -47,7 +70,8 @@ int	ft_get_env(t_env_detail *envi)
 		return -1;
 	}
 	envi->user = getenv("USER");
-	envi->sesh = getenv("SESSION_MANAGER");
+	//envi->sesh = getenv("SESSION_MANAGER");
+	get_session(envi);
 	envi->path = getenv("PATH");
 	return(0);
 }

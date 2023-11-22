@@ -19,4 +19,5 @@ int	miniecho(t_data *data, char **args)
 	{
 		// -n     do not output the trailing newline
 	}
+	return (0);
 }

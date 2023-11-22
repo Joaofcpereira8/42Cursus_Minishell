@@ -6,7 +6,7 @@
 /*   By: bbento-e <bbento-e@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 18:59:11 by bbento-e          #+#    #+#             */
-/*   Updated: 2023/11/21 19:15:59 by bbento-e         ###   ########.fr       */
+/*   Updated: 2023/11/22 12:31:57 by bbento-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,13 +24,15 @@ int	built_type(t_data *data, char **args)
 	}
 	else if (strcmp(data->comm, "pwd"))
 	{
-		minipdw(data, args);
+		minipdw(data);
 	}
 	else if (strcmp(data->comm, "export"))
 	{
 		miniexport(data, args);
 	}
-	builttype_next(data, args);
+	else
+		return (builttype_next(data, args));
+	return (0);
 }
 
 int	builttype_next(t_data *data, char **args)
@@ -47,4 +49,7 @@ int	builttype_next(t_data *data, char **args)
 	{
 		miniexit(data, args);
 	}
+	else
+		return (-1);
+	return (0);
 }

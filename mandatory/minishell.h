@@ -6,7 +6,7 @@
 /*   By: jofilipe <jofilipe@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 18:26:52 by jofilipe          #+#    #+#             */
-/*   Updated: 2023/11/21 19:15:19 by bbento-e         ###   ########.fr       */
+/*   Updated: 2023/11/22 12:27:54 by bbento-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ typedef struct s_token
 typedef struct s_data
 {
 	char		**env;
+	char		*pwd;
 	int			pid;
 	char		*comm;
 	char		*cwd;
@@ -68,8 +69,8 @@ char	path_finder(t_data *data);
 int		ft_get_env(t_env_detail *envi);
 
 // ----- BUILT-INs -----
+int		minipdw(t_data *data);
 int		minicd(t_data *data, char **args);
-int		minipdw(t_data *data, char **args);
 int		minienv(t_data *data, char **args);
 int		miniexit(t_data *data, char **args);
 int		miniecho(t_data *data, char **args);
