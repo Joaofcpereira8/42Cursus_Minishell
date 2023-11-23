@@ -61,7 +61,6 @@ void	get_session(t_env_detail *envi)
 	}
 }
 
-/*mudar o path tanto da estrutura como da funcao, pois o path vai ser sempre alterado e a funcao é static*/
 int	ft_get_env(t_env_detail *envi)
 {
 	if (!envi)
@@ -71,11 +70,11 @@ int	ft_get_env(t_env_detail *envi)
 	}
 	envi->user = getenv("USER");
 	envi->sesh = "minishell";// getenv("SESSION_MANAGER");
-	envi->path = getenv("PATH");
+	envi->path_env = getenv("PATH");
 	return(0);
 }
 
-char	path_finder(t_data *data)
+char	p_finder(t_data *data)
 {
 	data->cwd = get_path();
 	return(0);

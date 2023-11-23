@@ -18,3 +18,8 @@ int check_args(char **str)
 		return (err_handler('q'));
 	return (0);
 }
+
+char    split_path(char **path)
+{
+    
+}

@@ -49,7 +49,7 @@ int main(int argc, char *argv[], char **env)
             char *args[] = {input, NULL};
 			data.comm = args[0];
 			if (built_type(&data, args) == -1)
-            	exec_command(args, env);
+            	exec_command(&data, args, env);
         }
 	}
 	return (0);

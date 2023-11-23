@@ -26,7 +26,8 @@ void	exec_command(t_data *data, char **argv, char **env)
 		//Child process
 		while (data->paths[i])
 		{
-			if (access(,))
+            split_path();//separar os paths e por a / para aceder as pastas do sistema
+			if (access())
 				execve(argv[0], argv, env);
 			perror("execve");
 			i++;
@@ -40,7 +41,7 @@ void	exec_command(t_data *data, char **argv, char **env)
 	}
 }
 
-void get_paths(t_data *data)
-{
-	data->paths = ft_split(getenv("PATH"), ':');
-}
+//void get_paths(t_data *data)
+//{
+//	data->paths = ft_split(getenv("PATH"), ':');
+//}

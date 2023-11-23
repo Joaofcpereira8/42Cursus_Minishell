@@ -31,11 +31,11 @@ int	built_type(t_data *data, char **args)
 		miniexport(data, args);
 	}
 	else
-		return (builttype_next(data, args));
+		return (built_type_next(data, args));
 	return (0);
 }
 
-int	builttype_next(t_data *data, char **args)
+int	built_type_next(t_data *data, char **args)
 {
 	if(ft_strncmp(data->comm, "unset", 5) == 0)
 	{

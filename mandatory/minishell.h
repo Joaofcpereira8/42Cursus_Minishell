@@ -42,7 +42,7 @@ typedef struct s_env_detail
 {
 	char	*user;
 	char	*sesh;
-	char	*path;
+	char	*path_env;
 }				t_env_detail;
 
 typedef struct s_token
@@ -66,7 +66,7 @@ int				ft_execvp();
 
 // ------ USER ------
 char	*get_path(void);
-char	path_finder(t_data *data);
+char	pwd_finder(t_data *data);
 int		ft_get_env(t_env_detail *envi);
 
 // ----- BUILT-INs -----
@@ -78,7 +78,7 @@ int		miniecho(t_data *data, char **args);
 int		miniunset(t_data *data, char **args);
 int		miniexport(t_data *data, char **args);
 int		built_type(t_data *data, char **args);
-int		builttype_next(t_data *data, char **args);
+int		built_type_next(t_data *data, char **args);
 
 
 // ----- PARSER -----
@@ -95,6 +95,6 @@ int		check_spec(char **str);
 int		err_handler(char c);
 
 // ----- UTILS -----
-int				check_args(char **str);
+int		check_args(char **str);
 
 #endif
