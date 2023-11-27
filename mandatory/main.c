@@ -6,7 +6,7 @@
 /*   By: jofilipe <jofilipe@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 18:26:42 by jofilipe          #+#    #+#             */
-/*   Updated: 2023/11/22 14:16:06 by bbento-e         ###   ########.fr       */
+/*   Updated: 2023/11/27 17:56:48 by bbento-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,16 +36,15 @@ int main(int argc, char *argv[], char **env)
 		ft_get_env(&envi);
 		while (1)
         {
-            printf("%s@%s:~/%s$ ", envi.user, envi.sesh, data.cwd);
-            input = readline("");
+            //printf("%s@%s:~/%s$ ", envi.user, envi.sesh, data.cwd);
+            input = readline(envi.user);
  			/*if () {
                 perror("fgets");
                 exit(EXIT_FAILURE);
             } */
             size_t len = strlen(input);
-            if (len > 0 && input[len - 1] == '\n') {
-                input[len - 1] = '\0';
-            }
+            if (len > 0 && input[len + 1] == '\n')
+                input[len + 1] = '\0';
             char *args[] = {input, NULL};
 			data.comm = args[0];
 			if (built_type(&data, args) == -1)

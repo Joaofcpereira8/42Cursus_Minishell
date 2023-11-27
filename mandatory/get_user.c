@@ -6,7 +6,7 @@
 /*   By: jofilipe <jofilipe@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 18:56:59 by jofilipe          #+#    #+#             */
-/*   Updated: 2023/11/22 14:14:13 by bbento-e         ###   ########.fr       */
+/*   Updated: 2023/11/27 18:03:09 by bbento-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,17 +61,20 @@ void	get_session(t_env_detail *envi)
 	}
 }
 
-int	ft_get_env(t_env_detail *envi)
+char	*ft_get_env(t_env_detail *envi)
 {
+	char	*env;
 	if (!envi)
-	{
-		// Invalid argument, return an error code
 		return -1;
-	}
 	envi->user = getenv("USER");
-	envi->sesh = "minishell";// getenv("SESSION_MANAGER");
-	envi->path_env = getenv("PATH");
-	return(0);
+	envi->sesh = "minishell";
+	// envi->path_env = getenv("PATH");
+	env = ft_strjoin(env, envi->user);
+	env = ft_strjoin(env, "@");
+	env = ft_strjoin(env, envi->sesh);
+	env = ft_strjoin(env, ":~/$ ");
+	env = ft_strjoin(env, ":~/$ ");
+	return (env);
 }
 
 char	p_finder(t_data *data)
