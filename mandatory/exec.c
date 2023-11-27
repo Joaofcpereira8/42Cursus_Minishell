@@ -6,14 +6,30 @@
 /*   By: jofilipe <jofilipe@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 17:39:49 by jofilipe          #+#    #+#             */
-/*   Updated: 2023/11/22 17:58:19 by bbento-e         ###   ########.fr       */
+/*   Updated: 2023/11/27 15:22:33 by bbento-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	exec_command(t_data *data, char **argv, char **env)
+char	*path_join(char *path, char *cm)
 {
+	char	*slashed;
+
+	slashed = ft_strjoin(path, "/");
+	path = ft_strjoin(slashed, cm);
+	free(slashed);
+	return(path);
+}
+
+void	get_paths(t_data *data)
+{
+	data->paths = ft_split(getenv("PATH"), ':');
+}
+
+void	exec_command(t_data *data, char **args, char **env)
+{
+	char	*path;
 	pid_t	pid;
 	int		i;
 
@@ -23,25 +39,16 @@ void	exec_command(t_data *data, char **argv, char **env)
 		perror("fork");
 	else if (pid == 0)
 	{
-		//Child process
+		get_paths(data);
+		path = path_join(data->paths[i], args[0]);
 		while (data->paths[i])
 		{
-            split_path();//separar os paths e por a / para aceder as pastas do sistema
-			if (access())
-				execve(argv[0], argv, env);
-			perror("execve");
+			if (access(path, X_OK) == 0)
+				execve(path, args, env);
+			else if (!data->paths[i + 1])
+				perror("execve");
 			i++;
 		}
-		exit(EXIT_FAILURE);
-	}
-	else
-	{
-		//Parent process
-		waitpid(pid, NULL, 0);
+		return ;
 	}
 }
-
-//void get_paths(t_data *data)
-//{
-//	data->paths = ft_split(getenv("PATH"), ':');
-//}

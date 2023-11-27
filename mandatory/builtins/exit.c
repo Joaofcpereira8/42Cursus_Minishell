@@ -6,15 +6,15 @@
 /*   By: jofilipe <jofilipe@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 12:31:12 by jofilipe          #+#    #+#             */
-/*   Updated: 2023/11/08 12:24:39 by jofilipe         ###   ########.fr       */
+/*   Updated: 2023/11/27 15:16:31 by bbento-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-int	miniexit(t_data *data, char **args)
+void	miniexit(t_data *data, char **args)
 {
 	(void)data;
 	(void)args;
-	return (0);
+	exit(0);
 }
