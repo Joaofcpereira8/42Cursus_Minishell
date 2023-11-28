@@ -6,7 +6,7 @@
 /*   By: jofilipe <jofilipe@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 18:26:42 by jofilipe          #+#    #+#             */
-/*   Updated: 2023/11/27 17:56:48 by bbento-e         ###   ########.fr       */
+/*   Updated: 2023/11/28 17:35:26 by bbento-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int main(int argc, char *argv[], char **env)
 		while (1)
         {
             //printf("%s@%s:~/%s$ ", envi.user, envi.sesh, data.cwd);
-            input = readline(envi.user);
+            input = readline(envi.prompt);
  			/*if () {
                 perror("fgets");
                 exit(EXIT_FAILURE);

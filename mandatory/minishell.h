@@ -6,7 +6,7 @@
 /*   By: jofilipe <jofilipe@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 18:26:52 by jofilipe          #+#    #+#             */
-/*   Updated: 2023/11/27 18:03:18 by bbento-e         ###   ########.fr       */
+/*   Updated: 2023/11/28 17:18:35 by bbento-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ typedef struct s_env_detail
 	char	*user;
 	char	*sesh;
 	char	*path_env;
+	char	*prompt;
 }				t_env_detail;
 
 typedef struct s_token
@@ -69,7 +70,7 @@ void	exec_command(t_data *data, char **args, char **env);
 // ------ USER ------
 char	*get_path(void);
 char	pwd_finder(t_data *data);
-char	*ft_get_env(t_env_detail *envi);
+void	ft_get_env(t_env_detail *envi);
 
 // ----- BUILT-INs -----
 int		minipdw(t_data *data);

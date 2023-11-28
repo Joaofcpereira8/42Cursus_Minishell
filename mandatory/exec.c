@@ -6,7 +6,7 @@
 /*   By: jofilipe <jofilipe@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 17:39:49 by jofilipe          #+#    #+#             */
-/*   Updated: 2023/11/27 15:22:33 by bbento-e         ###   ########.fr       */
+/*   Updated: 2023/11/28 17:06:07 by bbento-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@ char	*path_join(char *path, char *cm)
 	char	*slashed;
 
 	slashed = ft_strjoin(path, "/");
-	path = ft_strjoin(slashed, cm);
-	free(slashed);
-	return(path);
+	slashed = ft_strjoin(slashed, cm);
+	//free(slashed);
+	return(slashed);
 }
 
 void	get_paths(t_data *data)
