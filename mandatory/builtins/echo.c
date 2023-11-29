@@ -6,7 +6,7 @@
 /*   By: bbento-e <bbento-e@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 12:11:51 by bbento-e          #+#    #+#             */
-/*   Updated: 2023/11/29 12:11:53 by bbento-e         ###   ########.fr       */
+/*   Updated: 2023/11/29 12:18:01 by bbento-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@ int	miniecho(t_data *data, char **args)
 	int	i;
 	int nl;
 
-	/*args[1] = " ";
+	args[1] = " "; // for -n
 	args[2] = "hello ";
-	args[3] = "world";*/
+	args[3] = "world";
 	nl = 1;
 	i = 1;
 	(void)data;
@@ -34,7 +34,7 @@ int	miniecho(t_data *data, char **args)
 		i++;
 	}
 	if (nl == 0)
-		printf("%%\t");
+		printf("%%");
 	else
 		printf("\n");
 	wait(NULL);
