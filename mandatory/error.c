@@ -6,19 +6,24 @@
 /*   By: bbento-e <bbento-e@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/04 19:02:29 by bbento-e          #+#    #+#             */
-/*   Updated: 2023/11/16 11:56:23 by bbento-e         ###   ########.fr       */
+/*   Updated: 2023/11/29 18:55:13 by bbento-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int err_handler(char c)
+int err_handler(char c, char *cmd)
 {
 	if (c == 'a')
 		printf("Wrong number of arguments!\nUse ./minishell");
 	else if (c == 's')
-		printf("");
+		printf("Unexpected error");
 	else if (c == 'q')
-		printf("Error: Unclosed quotes or special characters!");
+		printf("minishell: Error: Unclosed quotes or special characters!\n");
+	else if (c == 'c')
+		printf("minishell: Error: Too many arguments for command!"
+			   "\nTry 'man %s' for more information\n", cmd);
+	else if (c == 'd')
+		printf("minishell: Error: No such file or directory!\n");
 	return (-1);
 }

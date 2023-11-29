@@ -6,7 +6,7 @@
 /*   By: jofilipe <jofilipe@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 18:26:52 by jofilipe          #+#    #+#             */
-/*   Updated: 2023/11/29 12:30:46 by bbento-e         ###   ########.fr       */
+/*   Updated: 2023/11/29 18:45:48 by bbento-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,12 +55,12 @@ typedef struct s_token
 typedef struct s_data
 {
 	char		**env;
+	char 		*oldpwd;
 	char		*pwd;
 	int			pid;
 	char		*comm;
 	char		*cwd;
 	char 		**paths;
-	int 		teste;
 }				t_data;
 
 // ------ EXECVE ------
@@ -90,7 +90,7 @@ int		iseven(int s_trig);
 int		check_spec(char **str);
 
 // ------ ERRORS -----
-int		err_handler(char c);
+int err_handler(char c, char *cmd);
 
 // ----- UTILS -----
 int		check_args(char **str);
