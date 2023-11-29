@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   echo.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jofilipe <jofilipe@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: bbento-e <bbento-e@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/07 12:28:32 by jofilipe          #+#    #+#             */
-/*   Updated: 2023/11/21 19:09:13 by bbento-e         ###   ########.fr       */
+/*   Created: 2023/11/29 12:11:51 by bbento-e          #+#    #+#             */
+/*   Updated: 2023/11/29 12:11:53 by bbento-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,29 @@
 
 int	miniecho(t_data *data, char **args)
 {
+	int	i;
+	int nl;
+
+	/*args[1] = " ";
+	args[2] = "hello ";
+	args[3] = "world";*/
+	nl = 1;
+	i = 1;
 	(void)data;
-	if(args[0][0] == '-' && args[0][1] == 'n')
+	if(args[1][0] && args[1][0] == '-' && args[1][1] == 'n')
 	{
-		// -n     do not output the trailing newline
+		nl = 0;
+		i++;
 	}
+	while (args[i])
+	{
+		printf("%s", args[i]);
+		i++;
+	}
+	if (nl == 0)
+		printf("%%\t");
+	else
+		printf("\n");
+	wait(NULL);
 	return (0);
 }
