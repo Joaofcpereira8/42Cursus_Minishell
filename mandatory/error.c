@@ -24,6 +24,6 @@ int err_handler(char c, char *cmd)
 		printf("minishell: Error: Too many arguments for command!"
 			   "\nTry 'man %s' for more information\n", cmd);
 	else if (c == 'd')
-		printf("minishell: Error: No such file or directory!\n");
+		printf("minishell: Error: No such file or directory!\n 9l 5");
 	return (-1);
 }
