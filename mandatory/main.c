@@ -6,7 +6,7 @@
 /*   By: jofilipe <jofilipe@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 18:26:42 by jofilipe          #+#    #+#             */
-/*   Updated: 2023/11/29 18:39:52 by bbento-e         ###   ########.fr       */
+/*   Updated: 2023/12/05 17:26:49 by bbento-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ int	g_exit_status = 0;
  * @param envp Variaveis de ambiente.
  *
  */
+
 int main(int argc, char *argv[], char **env)
 {
 	(void)argv;

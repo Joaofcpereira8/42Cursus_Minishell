@@ -6,7 +6,7 @@
 /*   By: jofilipe <jofilipe@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 18:56:59 by jofilipe          #+#    #+#             */
-/*   Updated: 2023/11/29 11:25:32 by bbento-e         ###   ########.fr       */
+/*   Updated: 2023/12/05 17:23:07 by bbento-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ void	ft_get_env(t_env_detail *envi)
 	env = ft_strjoin(env, envi->user);
 	env = ft_strjoin(env, "@");
 	env = ft_strjoin(env, envi->sesh);
-	envi->prompt = ft_strjoin(env, ":~/$ ");
+	env = ft_strjoin(env, ":~/");
+	envi->prompt = ft_strjoin(env, "$ ");
 	free(env);
 }
