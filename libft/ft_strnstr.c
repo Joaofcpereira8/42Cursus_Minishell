@@ -22,7 +22,7 @@
  * @return Returns a pointer to the first occurrence of little in big,
  *         or NULL if not found.
  */
-char	*ft_strnstr(const char *big, const char *little, size_t len)
+char	* ft_strnstr(const char *big, const char *little, size_t len)
 {
 	size_t	i;
 	size_t	j;
