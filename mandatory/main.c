@@ -6,7 +6,7 @@
 /*   By: jofilipe <jofilipe@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 18:26:42 by jofilipe          #+#    #+#             */
-/*   Updated: 2023/12/06 15:09:45 by bbento-e         ###   ########.fr       */
+/*   Updated: 2023/12/06 15:31:00 by bbento-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	g_exit_status = 0;
 
 void	init(t_data *data)
 {
-	data->oldpwd = getcwd(0, 0);
+	data->oldpwd = getenv("OLDPWD");
 	data->pwd = getcwd(0, 0);
 }
 
