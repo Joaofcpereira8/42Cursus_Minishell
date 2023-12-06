@@ -6,7 +6,7 @@
 /*   By: jofilipe <jofilipe@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 18:26:42 by jofilipe          #+#    #+#             */
-/*   Updated: 2023/12/05 17:26:49 by bbento-e         ###   ########.fr       */
+/*   Updated: 2023/12/06 15:09:45 by bbento-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,12 @@ int	g_exit_status = 0;
  *
  */
 
+void	init(t_data *data)
+{
+	data->oldpwd = getcwd(0, 0);
+	data->pwd = getcwd(0, 0);
+}
+
 int main(int argc, char *argv[], char **env)
 {
 	(void)argv;
@@ -34,6 +40,7 @@ int main(int argc, char *argv[], char **env)
 		return(err_handler('a', NULL));
 	else
 	{
+		init(&data);
 		ft_get_env(&envi);
 		while (1)
 		{

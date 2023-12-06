@@ -6,7 +6,7 @@
 /*   By: jofilipe <jofilipe@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 18:26:52 by jofilipe          #+#    #+#             */
-/*   Updated: 2023/12/05 17:23:14 by bbento-e         ###   ########.fr       */
+/*   Updated: 2023/12/06 15:09:33 by bbento-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,6 @@ char	*path_join(char *path, char *cm);
 void	exec_command(t_data *data, char **args, char **env);
 
 // ------ USER ------
-char	*get_path(void);
 char	pwd_finder(t_data *data);
 void	ft_get_env(t_env_detail *envi);
 
