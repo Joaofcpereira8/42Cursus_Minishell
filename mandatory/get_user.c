@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "includes/minishell.h"
 
 /*vai buscar o user e o lugar onde se encontra nas
 variaveis de ambiente*/

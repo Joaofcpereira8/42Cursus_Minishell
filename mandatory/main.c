@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "includes/minishell.h"
 
 int	g_exit_status = 0;
 
@@ -36,17 +36,17 @@ int main(int argc, char *argv[], char **env)
 	{
 		ft_get_env(&envi);
 		while (1)
-        {
-            input = readline(envi.prompt);
+		{
+			input = readline(envi.prompt);
 			add_history(input);
-            size_t len = strlen(input);
-            if (len > 0 && input[len + 1] == '\n')
-                input[len + 1] = '\0';
-            char *args[] = {input, NULL};
+			size_t len = strlen(input);
+			if (len > 0 && input[len + 1] == '\n')
+				input[len + 1] = '\0';
+			char *args[] = {input, NULL};
 			data.comm = args[0];
 			if (built_type(&data, args) == -1)
-            	exec_command(&data, args, env);
+				exec_command(&data, args, env);
 			free(input);
-        }
+		}
 	}
 }
