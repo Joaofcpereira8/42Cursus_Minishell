@@ -6,7 +6,7 @@
 /*   By: jofilipe <jofilipe@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 18:26:52 by jofilipe          #+#    #+#             */
-/*   Updated: 2023/12/06 15:09:33 by bbento-e         ###   ########.fr       */
+/*   Updated: 2023/12/07 16:00:52 by bbento-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ typedef struct s_data
 	char		*comm;
 	char		*cwd;
 	char 		**paths;
+	int 		path_change;
 }				t_data;
 
 // ------ EXECVE ------

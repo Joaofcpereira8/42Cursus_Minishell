@@ -6,7 +6,7 @@
 /*   By: bbento-e <bbento-e@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 12:11:46 by bbento-e          #+#    #+#             */
-/*   Updated: 2023/12/06 15:16:16 by bbento-e         ###   ########.fr       */
+/*   Updated: 2023/12/07 15:55:09 by bbento-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ int	handle_minus(t_data *data)
 		//free(data->pwd);
 		data->oldpwd = data->pwd;
 		data->pwd = getcwd(0, 0);
+		data->path_change = 1;
 		return (printf("%s\n", data->pwd));
 	}
 	else
@@ -40,6 +41,7 @@ int	minicd(t_data *data, char **args)
 		data->oldpwd = data->pwd;
 		//free(data->pwd);
 		data->pwd = getcwd(0, 0);
+		data->path_change = 1;
 	}
 	else
 		return (err_handler('d', NULL));

@@ -6,7 +6,7 @@
 /*   By: jofilipe <jofilipe@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 18:26:42 by jofilipe          #+#    #+#             */
-/*   Updated: 2023/12/06 15:52:41 by bbento-e         ###   ########.fr       */
+/*   Updated: 2023/12/07 16:00:48 by bbento-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ void	init(t_data *data)
 {
 	data->oldpwd = getenv("OLDPWD");
 	data->pwd = getcwd(0, 0);
+	data->path_change = 0;
 }
 
 int main(int argc, char *argv[], char **env)
@@ -41,9 +42,14 @@ int main(int argc, char *argv[], char **env)
 	else
 	{
 		init(&data);
+		ft_get_env(&envi);
 		while (1)
 		{
-			ft_get_env(&envi);
+			if (data.path_change == 1)
+			{
+				ft_get_env(&envi);
+				data.path_change = 0;
+			}
 			input = readline(envi.prompt);
 			add_history(input);
 			size_t len = strlen(input);
