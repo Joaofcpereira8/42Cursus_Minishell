@@ -54,7 +54,6 @@ typedef struct s_token
 
 typedef struct s_data
 {
-	char		**env;
 	char 		*oldpwd;
 	char		*pwd;
 	int			pid;
@@ -63,6 +62,17 @@ typedef struct s_data
 	char 		**paths;
 	int 		path_change;
 }				t_data;
+
+//working on the real deal
+typedef struct s_mini_env
+{
+	int		fd_in;
+	int		fd_out;
+	int		exit_status;
+	int		command_num;
+	char	*cwd;
+	char	*input;
+};
 
 // ------ EXECVE ------
 void	get_paths(t_data *data);
