@@ -63,7 +63,7 @@ typedef struct s_data
 	int 		path_change;
 }				t_data;
 
-//working on the real deal
+//working on the real deal.
 typedef struct s_mini_env
 {
 	int		fd_in;
