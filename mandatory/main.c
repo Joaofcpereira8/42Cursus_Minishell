@@ -6,13 +6,11 @@
 /*   By: jofilipe <jofilipe@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 18:26:42 by jofilipe          #+#    #+#             */
-/*   Updated: 2023/12/07 16:00:48 by bbento-e         ###   ########.fr       */
+/*   Updated: 2024/01/03 14:43:31 by jofilipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/minishell.h"
-
-int	g_exit_status = 0;
 
 /**
  * Main program.
@@ -23,6 +21,12 @@ int	g_exit_status = 0;
  *
  */
 
+void	mini_init(char	**env)
+{
+	ft_bzero(mini_shell(), sizeof(t_mini_env));
+	(mini_shell()->env_amb_list) = envlist(env);
+}
+
 void	init(t_data *data)
 {
 	data->oldpwd = getenv("OLDPWD");
@@ -32,6 +36,9 @@ void	init(t_data *data)
 
 int main(int argc, char *argv[], char **env)
 {
+	//variavel da estrutura
+	mini_init(env);
+
 	(void)argv;
 	char			*input;
 	t_env_detail	envi;

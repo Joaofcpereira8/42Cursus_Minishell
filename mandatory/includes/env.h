@@ -33,7 +33,7 @@ typedef struct s_env
  * @param type Name of the env.
  * @param info Info in each env variable.
  */
-t_env	*env_list(char *type, char * info);
+t_env	*new_env(char *type, char *info);
 
 t_env	*add_env();
 #endif

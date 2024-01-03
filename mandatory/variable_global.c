@@ -1,23 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   variable_global.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jofilipe <jofilipe@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/08 12:29:02 by jofilipe          #+#    #+#             */
-/*   Updated: 2023/11/29 18:54:40 by bbento-e         ###   ########.fr       */
+/*   Created: 2024/01/03 12:32:26 by jofilipe          #+#    #+#             */
+/*   Updated: 2024/01/03 12:32:26 by jofilipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/minishell.h"
 
-int	ft_strlen_flag(char const *str, char flag)
+t_mini_env	*mini_shell(void)
 {
-	int	i;
+	static t_mini_env mini_shell;
 
-	i = 0;
-	while(str[i] && str[i] != flag)
-		i++;
-	return(i);
+	return (&mini_shell);
 }

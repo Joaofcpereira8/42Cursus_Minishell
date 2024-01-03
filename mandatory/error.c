@@ -27,3 +27,10 @@ int err_handler(char c, char *cmd)
 		printf("minishell: Error: No such file or directory!\n");
 	return (-1);
 }
+
+int check_args(char **str)
+{
+	if (check_spec(str) == -1)
+		return (err_handler('q', NULL));
+	return (0);
+}

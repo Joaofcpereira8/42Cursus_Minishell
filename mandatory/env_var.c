@@ -12,7 +12,7 @@
 
 #include "includes/env.h"
 
-t_env	*env_list(char *type, char * info)
+t_env	*new_env(char *type, char *info)
 {
 	t_env *env;
 
@@ -21,5 +21,6 @@ t_env	*env_list(char *type, char * info)
 		return (NULL);
 	env->type = type;
 	env->info = info;
+	return (env);
 }
 

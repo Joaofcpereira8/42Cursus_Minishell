@@ -22,6 +22,8 @@
 # include <readline/readline.h>
 # include <readline/history.h>
 
+# include "env.h"
+
 
 # define MAX_INPUT_SIZE 1024
 
@@ -69,40 +71,51 @@ typedef struct s_mini_env
 	int		fd_in;
 	int		fd_out;
 	int		exit_status;
-	int		command_num;
+	int		cmd_num;
 	char	*cwd;
 	char	*input;
+	char	*prompt;
+	char	**path;
+	t_list	**env_amb_list;
 }			t_mini_env;
 
 // ------ EXECVE ------
-void	get_paths(t_data *data);
-char	*path_join(char *path, char *cm);
-void	exec_command(t_data *data, char **args, char **env);
+void		get_paths(t_data *data);
+char		*path_join(char *path, char *cm);
+void		exec_command(t_data *data, char **args, char **env);
 
 // ------ USER ------
-char	pwd_finder(t_data *data);
-void	ft_get_env(t_env_detail *envi);
+char		pwd_finder(t_data *data);
+void		ft_get_env(t_env_detail *envi);
 
 // ----- BUILT-INs -----
-int		minipdw(t_data *data);
-int		minicd(t_data *data, char **args);
-int		minienv(t_data *data, char **args);
-int		miniecho(t_data *data, char **args);
-void	miniexit(t_data *data, char **args);
-int		miniunset(t_data *data, char **args);
-int		miniexport(t_data *data, char **args);
-int		built_type(t_data *data, char **args);
-int		built_type_next(t_data *data, char **args);
-
+int			minipdw(t_data *data);
+int			minicd(t_data *data, char **args);
+int			minienv(t_data *data, char **args);
+int			miniecho(t_data *data, char **args);
+void		miniexit(t_data *data, char **args);
+int			miniunset(t_data *data, char **args);
+int			miniexport(t_data *data, char **args);
+int			built_type(t_data *data, char **args);
+int			built_type_next(t_data *data, char **args);
 
 // ----- PARSER -----
-int		iseven(int s_trig);
-int		check_spec(char **str);
+int			iseven(int s_trig);
+int			check_spec(char **str);
 
 // ------ ERRORS -----
-int err_handler(char c, char *cmd);
+int			err_handler(char c, char *cmd);
+int			check_args(char **str);
 
 // ----- UTILS -----
-int		check_args(char **str);
+int			ft_strlen_flag(char const *str, char flag);
+
+// ---- VARIABLE_GLOBAL ----
+t_mini_env	*mini_shell(void);
+
+// ---- ENV_VAR_LIST ----
+t_list		*envlist(char **env);
+int			mat_env_list(char **mat);
+void		add_env_vars(int **envlist, char *container);
 
 #endif
