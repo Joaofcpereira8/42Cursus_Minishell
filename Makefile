@@ -37,7 +37,7 @@ SRCS =	mandatory/main.c\
 		mandatory/error.c\
 		mandatory/utils.c\
 		mandatory/variable_global.c\
-		mandatory/env_amb_list.c\
+		mandatory/env_var_list.c\
 		mandatory/path_finder.c \
 		mandatory/env_var.c \
 		mandatory/builtins/builtin.c\

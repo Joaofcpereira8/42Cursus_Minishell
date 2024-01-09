@@ -14,6 +14,9 @@
 # define MINISHELL_H
 
 # include "../../libft/libft.h"
+# include "env.h"
+
+
 # include <stdio.h>
 # include <stdlib.h>
 # include <string.h>
@@ -21,8 +24,6 @@
 # include <sys/wait.h>
 # include <readline/readline.h>
 # include <readline/history.h>
-
-# include "env.h"
 
 
 # define MAX_INPUT_SIZE 1024
@@ -75,8 +76,9 @@ typedef struct s_mini_env
 	char	*cwd;
 	char	*input;
 	char	*prompt;
+    char    **env;
 	char	**path;
-	t_list	**env_amb_list;
+	t_list	*env_amb_list;
 }			t_mini_env;
 
 // ------ EXECVE ------
@@ -109,13 +111,23 @@ int			check_args(char **str);
 
 // ----- UTILS -----
 int			ft_strlen_flag(char const *str, char flag);
+int			sz_env_list(char **env);
+void        list_delete(void *list);
+char        **add_to_mat(char **mat1, char *str);
 
 // ---- VARIABLE_GLOBAL ----
 t_mini_env	*mini_shell(void);
 
+// ---- ENV ----
+void        env_update(void);
+char        **env_to_mat(t_list *env_list);
+
+// ---- ENV_VAR ----
+
+
 // ---- ENV_VAR_LIST ----
 t_list		*envlist(char **env);
-int			mat_env_list(char **mat);
-void		add_env_vars(int **envlist, char *container);
-
+void		add_env_vars(t_list **envlist, char *container);
+t_env	    *new_env_list(char *type, char *info);
+t_env       *env_verif(t_list *env, char *type);
 #endif

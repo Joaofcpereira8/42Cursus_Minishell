@@ -25,6 +25,12 @@ void	mini_init(char	**env)
 {
 	ft_bzero(mini_shell(), sizeof(t_mini_env));
 	(mini_shell()->env_amb_list) = envlist(env);
+    env_update();
+    (mini_shell()->exit_status) = 0;
+    (mini_shell()->cwd) = getcwd(0, 0);
+    (mini_shell()->fd_in) = STDIN_FILENO;
+    (mini_shell()->fd_out) = STDOUT_FILENO;
+    return ;
 }
 
 void	init(t_data *data)
@@ -34,12 +40,13 @@ void	init(t_data *data)
 	data->path_change = 0;
 }
 
-int main(int argc, char *argv[], char **env)
+int main(int argc, char **argv, char **env)
 {
-	//variavel da estrutura
+    (void)argc;
+    (void)argv;
 	mini_init(env);
 
-	(void)argv;
+
 	char			*input;
 	t_env_detail	envi;
 	t_data			data;

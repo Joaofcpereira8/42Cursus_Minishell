@@ -43,7 +43,7 @@ int	built_type_next(t_data *data, char **args)
 	}
 	else if (ft_strncmp(data->comm, "env", 3) == 0)
 	{
-		minienv(data, args);
+		//minienv(data, args);
 	}
 	else if (ft_strncmp(data->comm, "exit", 4) == 0)
 	{
