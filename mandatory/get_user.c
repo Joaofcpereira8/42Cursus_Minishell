@@ -15,7 +15,7 @@
 /*vai buscar o user e o lugar onde se encontra nas
 variaveis de ambiente*/
 
-//void	ft_get_env(t_env_detail *envi)
+//void	ft_get_env1(t_env_detail *envi)
 //{
 //	char	*env = NULL;
 //	int		i;

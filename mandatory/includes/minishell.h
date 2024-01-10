@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bbento-e <bbento-e@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: jofilipe <jofilipe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 18:26:52 by jofilipe          #+#    #+#             */
-/*   Updated: 2023/12/13 16:15:45 by bbento-e         ###   ########.fr       */
+/*   Updated: 2024/01/10 09:55:05 by jofilipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ void		exec_command(t_data *data, char **args, char **env);
 
 // ------ USER ------
 char		pwd_finder(t_data *data);
-void		ft_get_env(t_env_detail *envi);
+void		ft_get_env1(t_env_detail *envi);
 
 // ----- BUILT-INs -----
 int			minipdw(t_data *data);
@@ -112,15 +112,16 @@ int			check_args(char **str);
 // ----- UTILS -----
 int			ft_strlen_flag(char const *str, char flag);
 int			sz_env_list(char **env);
-void        list_delete(void *list);
-char        **add_to_mat(char **mat1, char *str);
+void		list_delete(void *list);
+char		**add_to_mat(char **mat1, char *str);
 
 // ---- VARIABLE_GLOBAL ----
 t_mini_env	*mini_shell(void);
 
 // ---- ENV ----
-void        env_update(void);
-char        **env_to_mat(t_list *env_list);
+void		env_update(void);
+char		**env_to_mat(t_list *env_list);
+char		*ft_get_env(char *type);
 
 // ---- ENV_VAR ----
 
@@ -128,6 +129,6 @@ char        **env_to_mat(t_list *env_list);
 // ---- ENV_VAR_LIST ----
 t_list		*envlist(char **env);
 void		add_env_vars(t_list **envlist, char *container);
-t_env	    *new_env_list(char *type, char *info);
-t_env       *env_verif(t_list *env, char *type);
+t_env		*new_env_list(char *type, char *info);
+t_env		*env_verif(t_list *env, char *type);
 #endif
