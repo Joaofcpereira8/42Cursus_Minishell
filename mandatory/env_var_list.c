@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   env_amb_list.c                                     :+:      :+:    :+:   */
+/*   env_var_list.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jofilipe <jofilipe@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: jofilipe <jofilipe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 15:13:59 by jofilipe          #+#    #+#             */
-/*   Updated: 2024/01/03 15:13:59 by jofilipe         ###   ########.fr       */
+/*   Updated: 2024/01/10 10:11:57 by jofilipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,30 +47,30 @@ void	add_env_vars(t_list **envlist, char *container)
 
 t_env	*new_env_list(char *type, char *info)
 {
-    t_env *env;
+	t_env *env;
 
-    env = ft_calloc(1, sizeof(t_env));
-    if (!env)
-        return (NULL);
-    env->type = type;
-    env->info = info;
-    return(env);
+	env = ft_calloc(1, sizeof(t_env));
+	if (!env)
+		return (NULL);
+	env->type = type;
+	env->info = info;
+	return(env);
 }
 
-t_env   *env_verif(t_list *env, char *type)
+t_env	*env_verif(t_list *env, char *type)
 {
-    t_list  *now;
-    t_env   *envs;
+	t_list  *now;
+	t_env   *envs;
 
-    if(!env)
-        return(NULL);
-    now = env;
-    while(now)
-    {
-        envs = (t_env *)now->content;
-        if(!ft_strcmp(type, envs->type))
-            return(envs);
-        now = now->next;
-    }
-    return(NULL);
+	if(!env)
+		return(NULL);
+	now = env;
+	while(now)
+	{
+		envs = (t_env *)now->content;
+		if(!ft_strcmp(type, envs->type))
+			return(envs);
+		now = now->next;
+	}
+	return(NULL);
 }

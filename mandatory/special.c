@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   special.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bbento-e <bbento-e@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: jofilipe <jofilipe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/04 19:15:45 by bbento-e          #+#    #+#             */
-/*   Updated: 2023/11/14 15:18:58 by bbento-e         ###   ########.fr       */
+/*   Updated: 2024/01/10 10:10:35 by jofilipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/minishell.h"
 
-int iseven(int s_trig)
+int	iseven(int s_trig)
 {
 	if(s_trig % 2 != 0)
 		return (-1);

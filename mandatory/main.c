@@ -6,7 +6,7 @@
 /*   By: jofilipe <jofilipe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 18:26:42 by jofilipe          #+#    #+#             */
-/*   Updated: 2024/01/10 09:55:25 by jofilipe         ###   ########.fr       */
+/*   Updated: 2024/01/10 10:10:55 by jofilipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	init(t_data *data)
 	data->path_change = 0;
 }
 
-int main(int argc, char **argv, char **env)
+int	main(int argc, char **argv, char **env)
 {
 	(void)argc;
 	(void)argv;
@@ -51,7 +51,7 @@ int main(int argc, char **argv, char **env)
 	t_env_detail	envi;
 	t_data			data;
 
-	if (argc > 1)
+	if	(argc > 1)
 		return(err_handler('a', NULL));
 	else
 	{
