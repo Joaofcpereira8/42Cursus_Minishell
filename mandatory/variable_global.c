@@ -12,6 +12,12 @@
 
 #include "includes/minishell.h"
 
+/*Concept called "singleton".
+The mini_shell function returns a pointer to a static instance of t_mini_shell.
+Static variables in C are allocated for the lifetime of the
+program, not just the lifetime of the function call, so the t_mini_shell ms
+instance will persist between calls to mini_shell().*/
+
 t_mini_env	*mini_shell(void)
 {
 	static t_mini_env mini_shell;
