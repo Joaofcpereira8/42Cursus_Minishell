@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   env.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jofilipe <jofilipe@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jofilipe <jofilipe@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 12:11:57 by bbento-e          #+#    #+#             */
-/*   Updated: 2024/01/10 09:54:47 by jofilipe         ###   ########.fr       */
+/*   Updated: 2024/01/16 15:00:13 by jofilipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,16 @@
 
 /*vai buscar o user e o lugar onde se encontra nas
 variaveis de ambiente*/
+
+void	minienv(t_list *env_amb_list)
+{
+	(void)env_amb_list;
+	int i = -1;
+	while(mini_shell()->env[i] != NULL)
+	{
+		printf("%s\n",mini_shell()->env[++i]);
+	}
+}
 
 void	ft_get_env1(t_env_detail *envi)
 {

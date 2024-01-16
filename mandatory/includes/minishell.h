@@ -76,7 +76,7 @@ typedef struct s_mini_env
 	char	*cwd;
 	char	*input;
 	char	*prompt;
-    char    **env;
+	char	**env;
 	char	**path;
 	t_list	*env_amb_list;
 }			t_mini_env;
@@ -93,7 +93,7 @@ void		ft_get_env1(t_env_detail *envi);
 // ----- BUILT-INs -----
 int			minipdw(t_data *data);
 int			minicd(t_data *data, char **args);
-int			minienv(t_data *data, char **args);
+void		minienv(t_list *env_amb_list);
 int			miniecho(t_data *data, char **args);
 void		miniexit(t_data *data, char **args);
 int			miniunset(t_data *data, char **args);

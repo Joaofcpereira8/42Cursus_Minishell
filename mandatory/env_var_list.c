@@ -59,8 +59,8 @@ t_env	*new_env_list(char *type, char *info)
 
 t_env	*env_verif(t_list *env, char *type)
 {
-	t_list  *now;
-	t_env   *envs;
+	t_list	*now;
+	t_env	*envs;
 
 	if(!env)
 		return(NULL);
