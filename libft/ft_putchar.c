@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   readline.c                                         :+:      :+:    :+:   */
+/*   ft_putchar.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jofilipe <jofilipe@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/03 18:20:26 by jofilipe          #+#    #+#             */
-/*   Updated: 2023/11/10 16:55:18 by jofilipe         ###   ########.fr       */
+/*   Created: 2024/01/17 12:17:30 by jofilipe          #+#    #+#             */
+/*   Updated: 2024/01/17 12:17:30 by jofilipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/minishell.h"
+#include "libft.h"
 
-/* int	ft_readline()
+void	ft_putchar(char c)
 {
-
-} */
+	write(1, &c, 1);
+}

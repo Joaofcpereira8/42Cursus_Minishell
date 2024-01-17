@@ -30,7 +30,6 @@ LIBFT = libft/libft.a
 
 SRCS =	mandatory/main.c\
 		mandatory/exec.c\
-		mandatory/readline.c\
 		mandatory/get_user.c\
 		mandatory/special.c\
 		mandatory/parser.c\
@@ -38,8 +37,8 @@ SRCS =	mandatory/main.c\
 		mandatory/utils.c\
 		mandatory/variable_global.c\
 		mandatory/env_var_list.c\
-		mandatory/path_finder.c \
 		mandatory/env_var.c \
+		mandatory/redirect.c \
 		mandatory/builtins/builtin.c\
 		mandatory/builtins/cd.c\
 		mandatory/builtins/echo.c\
