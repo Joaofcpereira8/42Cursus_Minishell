@@ -12,3 +12,7 @@
 
 #include "includes/minishell.h"
 
+void	to_token(void)
+{
+
+}
