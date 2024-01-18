@@ -21,7 +21,6 @@
 # include <stdlib.h>
 # include <string.h>
 # include <unistd.h>
-# include <fcntl.h>
 # include <sys/wait.h>
 # include <readline/readline.h>
 # include <readline/history.h>
@@ -77,7 +76,7 @@ typedef struct s_mini_env
 	char	*cwd;
 	char	*input;
 	char	*prompt;
-	char	**env;
+    char    **env;
 	char	**path;
 	t_list	*env_amb_list;
 }			t_mini_env;
@@ -94,7 +93,7 @@ void		ft_get_env1(t_env_detail *envi);
 // ----- BUILT-INs -----
 int			minipdw(t_data *data);
 int			minicd(t_data *data, char **args);
-void		minienv(t_list *env_amb_list);
+int			minienv(t_data *data, char **args);
 int			miniecho(t_data *data, char **args);
 void		miniexit(t_data *data, char **args);
 int			miniunset(t_data *data, char **args);
@@ -124,12 +123,8 @@ void		env_update(void);
 char		**env_to_mat(t_list *env_list);
 char		*ft_get_env(char *type);
 
-// ---- REDIRECT ----
-//int			test_char(const unsigned char c);
-//static void	init_redirect(int *file_desc, int *copy_out);
-//static void	reset_output(int *copy_out);
-//static int compare_results(const unsigned char c, const int fd);
-//static void clean_up(FILE * file);
+// ---- ENV_VAR ----
+
 
 // ---- ENV_VAR_LIST ----
 t_list		*envlist(char **env);
