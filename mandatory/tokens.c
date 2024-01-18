@@ -14,5 +14,5 @@
 
 void	to_token(void)
 {
-
+	void;
 }
