@@ -24,7 +24,7 @@ char	*path_join(char *path, char *cm)
 
 void	get_paths(t_data *data)
 {
-	data->paths = ft_split(getenv("PATH"), ':');
+	data->paths = ft_split(ft_get_env("PATH"), ':');
 }
 
 void	exec_command(t_data *data, char **args, char **env)

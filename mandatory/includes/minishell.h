@@ -125,11 +125,11 @@ char		**env_to_mat(t_list *env_list);
 char		*ft_get_env(char *type);
 
 // ---- REDIRECT ----
-int			test_char(const unsigned char c);
-static void	init_redirect(int *file_desc, int *copy_out);
-static void	reset_output(int *copy_out);
-static int compare_results(const unsigned char c, const int fd);
-static void clean_up(FILE * file);
+//int			test_char(const unsigned char c);
+//static void	init_redirect(int *file_desc, int *copy_out);
+//static void	reset_output(int *copy_out);
+//static int compare_results(const unsigned char c, const int fd);
+//static void clean_up(FILE * file);
 
 // ---- ENV_VAR_LIST ----
 t_list		*envlist(char **env);
