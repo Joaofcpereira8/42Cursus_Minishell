@@ -41,14 +41,6 @@ typedef enum e_type
 	EOF_TOKE,
 }				t_type;
 
-typedef struct s_env_detail
-{
-	char	*user;
-	char	*sesh;
-	char	*path_env;
-	char	*prompt;
-}				t_env_detail;
-
 typedef struct s_token
 {
 	char	*str;
@@ -76,10 +68,17 @@ typedef struct s_mini_env
 	char	*cwd;
 	char	*input;
 	char	*prompt;
-    char    **env;
+	char	**env;
 	char	**path;
 	t_list	*env_amb_list;
 }			t_mini_env;
+
+typedef struct s_env_detail
+{
+	char	*user;
+	char	*sesh;
+	char	*prompt;
+}				t_env_detail;
 
 // ------ EXECVE ------
 void		get_paths(t_data *data);
@@ -93,7 +92,7 @@ void		ft_get_env1(t_env_detail *envi);
 // ----- BUILT-INs -----
 int			minipdw(t_data *data);
 int			minicd(t_data *data, char **args);
-int			minienv(t_data *data, char **args);
+void			minienv(t_list *env_amb_list);
 int			miniecho(t_data *data, char **args);
 void		miniexit(t_data *data, char **args);
 int			miniunset(t_data *data, char **args);

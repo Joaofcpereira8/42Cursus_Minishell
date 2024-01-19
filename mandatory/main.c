@@ -35,7 +35,7 @@ void	mini_init(char	**env)
 
 void	init(t_data *data)
 {
-	data->oldpwd = getenv("OLDPWD");
+	data->oldpwd = ft_get_env("OLDPWD");
 	data->pwd = getcwd(0, 0);
 	data->path_change = 0;
 }

@@ -35,7 +35,7 @@ void	ft_get_env1(t_env_detail *envi)
 	if (!envi)
 		return ;
 	// data->path_change = 0;
-	envi->user = getenv("USER");
+	envi->user = ft_get_env("USER");
 	a =  ft_strlen(envi->user);
 	envi->sesh = "minishell";
 	env = ft_strjoin(env, envi->user);
@@ -61,7 +61,7 @@ void	env_update(void)
 
 char	**env_to_mat(t_list *env_list)
 {
-	t_env   *env;
+	t_env	*env;
 	char	*tmp1;
 	char	*tmp2;
 	char	**matrix;
