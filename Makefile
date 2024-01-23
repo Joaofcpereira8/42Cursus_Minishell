@@ -36,6 +36,8 @@ SRCS =	mandatory/main.c\
 		mandatory/utils.c\
 		mandatory/variable_global.c\
 		mandatory/env_var_list.c\
+		mandatory/tokens.c \
+		mandatory/input_verif.c \
 		mandatory/builtins/builtin.c\
 		mandatory/builtins/cd.c\
 		mandatory/builtins/echo.c\

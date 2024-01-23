@@ -24,6 +24,7 @@
 # include <sys/wait.h>
 # include <readline/readline.h>
 # include <readline/history.h>
+# include <stdbool.h>
 
 
 # define MAX_INPUT_SIZE 1024
@@ -49,14 +50,17 @@ typedef struct s_token
 
 typedef struct s_data
 {
-	char 		*oldpwd;
+	char		*oldpwd;
 	char		*pwd;
 	int			pid;
 	char		*comm;
-	char 		**paths;
+	char		**paths;
 }				t_data;
 
 //working on the real deal.
+//experimentar input como char **
+//e quando encontra um | ou >>
+//incrementa para o proximo array
 typedef struct s_mini_env
 {
 	int		fd_in;
@@ -66,7 +70,7 @@ typedef struct s_mini_env
 	char	*cwd;
 	char	*input;
 	char	*prompt;
-    char    **env;
+	char	**env;
 	char	**path;
 	t_list	*env_amb_list;
 }			t_mini_env;
@@ -83,7 +87,7 @@ void		get_prompt(t_mini_env *envp);
 // ----- BUILT-INs -----
 int			minipdw(t_data *data);
 int			minicd(t_data *data, char **args);
-void			minienv(t_list *env_amb_list);
+void		minienv(t_list *env_amb_list);
 int			miniecho(t_data *data, char **args);
 void		miniexit(t_data *data, char **args);
 int			miniunset(t_data *data, char **args);
@@ -114,11 +118,15 @@ char		**env_to_mat(t_list *env_list);
 char		*ft_get_env(char *type);
 
 // ---- PARSER ----
-void parser(void);
+void		parser(void);
 
 // ---- ENV_VAR_LIST ----
 t_list		*envlist(char **env);
 void		add_env_vars(t_list **envlist, char *container);
 t_env		*new_env_list(char *type, char *info);
 t_env		*env_verif(t_list *env, char *type);
+
+// ---- INPUT_VERIF ----
+int			metacharacters_verif(void);
+
 #endif
