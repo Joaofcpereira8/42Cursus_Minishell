@@ -41,14 +41,6 @@ typedef enum e_type
 	EOF_TOKE,
 }				t_type;
 
-typedef struct s_env_detail
-{
-	char	*user;
-	char	*sesh;
-	char	*path_env;
-	char	*prompt;
-}				t_env_detail;
-
 typedef struct s_token
 {
 	char	*str;
@@ -61,9 +53,7 @@ typedef struct s_data
 	char		*pwd;
 	int			pid;
 	char		*comm;
-	char		*cwd;
 	char 		**paths;
-	int 		path_change;
 }				t_data;
 
 //working on the real deal.
@@ -84,16 +74,16 @@ typedef struct s_mini_env
 // ------ EXECVE ------
 void		get_paths(t_data *data);
 char		*path_join(char *path, char *cm);
-void		exec_command(t_data *data, char **args, char **env);
+void		exec_command(t_data *data, char **args, t_mini_env *envp);
 
 // ------ USER ------
 char		pwd_finder(t_data *data);
-void		ft_get_env1(t_env_detail *envi);
+void		get_prompt(t_mini_env *envp);
 
 // ----- BUILT-INs -----
 int			minipdw(t_data *data);
 int			minicd(t_data *data, char **args);
-int			minienv(t_data *data, char **args);
+void			minienv(t_list *env_amb_list);
 int			miniecho(t_data *data, char **args);
 void		miniexit(t_data *data, char **args);
 int			miniunset(t_data *data, char **args);
@@ -123,8 +113,8 @@ void		env_update(void);
 char		**env_to_mat(t_list *env_list);
 char		*ft_get_env(char *type);
 
-// ---- ENV_VAR ----
-
+// ---- PARSER ----
+void parser(void);
 
 // ---- ENV_VAR_LIST ----
 t_list		*envlist(char **env);

@@ -19,7 +19,7 @@ int	handle_minus(t_data *data)
 		//free(data->pwd);
 		data->oldpwd = data->pwd;
 		data->pwd = getcwd(0, 0);
-		data->path_change = 1;
+		//data->path_change = 1;
 		return (printf("%s\n", data->pwd));
 	}
 	else
@@ -41,7 +41,7 @@ int	minicd(t_data *data, char **args)
 		data->oldpwd = data->pwd;
 		//free(data->pwd);
 		data->pwd = getcwd(0, 0);
-		data->path_change = 1;
+		//data->path_change = 1;
 	}
 	else
 		return (err_handler('d', NULL));

@@ -19,32 +19,32 @@ void	minienv(t_list *env_amb_list)
 {
 	(void)env_amb_list;
 	int i = -1;
-	while(mini_shell()->env[i] != NULL)
-	{
+	while(mini_shell()->env[i])
 		printf("%s\n",mini_shell()->env[++i]);
-	}
 }
 
-void	ft_get_env1(t_env_detail *envi)
+void	get_prompt(t_mini_env *envp)
 {
 	char	*env = NULL;
+    char    *user = NULL;
+    char    *sesh = NULL;
 	int		i;
 	int		a;
 
-	i = ft_strlen(getcwd(0, 0));
-	if (!envi)
-		return ;
-	// data->path_change = 0;
-	envi->user = getenv("USER");
-	a =  ft_strlen(envi->user);
-	envi->sesh = "minishell";
-	env = ft_strjoin(env, envi->user);
-	env = ft_strjoin(env, "@");
-	env = ft_strjoin(env, envi->sesh);
-	env = ft_strjoin(env, ":~");
-	env = ft_strjoin(env, ft_substr(ft_strnstr(getcwd(0, 0), envi->user, i), a, i));
-	envi->prompt = ft_strjoin(env, "/$ ");
+    i = ft_strlen(getcwd(0, 0));
+	user = ft_get_env("USER");
+	a =  ft_strlen(user);
+	sesh = "minishell";
+    env = ft_strjoin(env, user);
+    env = ft_strjoin(env, "@");
+    env = ft_strjoin(env, sesh);
+    env = ft_strjoin(env, ":~");
+    env = ft_strjoin(env, ft_substr(ft_strnstr(getcwd(0, 0), user, i), a, i));
+	//mini_shell()->prompt = ft_strjoin(env, "/$ ");
+    envp->prompt = ft_strjoin(env, "/$ ");
 	free(env);
+    free(user);
+    //free(sesh);
 }
 
 void	env_update(void)
