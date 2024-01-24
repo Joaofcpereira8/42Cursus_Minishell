@@ -38,4 +38,10 @@ int	check_args(char **str)
 		return (err_handler('q', NULL));
 	return (0);
 }
-0
+
+int	pars_error(char *c, int ex_stat)
+{
+	if (c == "u_c")
+		printf("minishell: unclosed quotes");
+	mini_shell()->exit_status = ex_stat;
+}

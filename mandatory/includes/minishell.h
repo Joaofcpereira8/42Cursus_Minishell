@@ -116,7 +116,7 @@ int			sz_env_list(char **env);
 void		list_delete(void *list);
 char		**add_to_mat(char **mat1, char *str);
 int			is_every_space(char *str);
-
+int			pars_error(char *c, int ex_sta);
 
 // ---- VARIABLE_GLOBAL ---- //
 t_mini_env	*mini_shell(void);
@@ -133,6 +133,6 @@ t_env		*new_env_list(char *type, char *info);
 t_env		*env_verif(t_list *env, char *type);
 
 // ---- INPUT_VERIF ---- //
-int			metacharacters_verif(void);
+bool		metacharacters_verif(void);
 
 #endif
