@@ -6,7 +6,7 @@
 /*   By: jofilipe <jofilipe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 18:26:52 by jofilipe          #+#    #+#             */
-/*   Updated: 2024/01/10 09:55:05 by jofilipe         ###   ########.fr       */
+/*   Updated: 2024/01/24 11:56:24 by bbento-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@
 # include <readline/readline.h>
 # include <readline/history.h>
 # include <stdbool.h>
-
 
 # define MAX_INPUT_SIZE 1024
 
@@ -75,16 +74,16 @@ typedef struct s_mini_env
 	t_list	*env_amb_list;
 }			t_mini_env;
 
-// ------ EXECVE ------
+// ------ EXECVE ------ //
 void		get_paths(t_data *data);
 char		*path_join(char *path, char *cm);
 void		exec_command(t_data *data, char **args, t_mini_env *envp);
 
-// ------ USER ------
+// ------ USER ------ //
 char		pwd_finder(t_data *data);
 void		get_prompt(t_mini_env *envp);
 
-// ----- BUILT-INs -----
+// ----- BUILT-INs ----- //
 int			minipdw(t_data *data);
 int			minicd(t_data *data, char **args);
 void		minienv(t_list *env_amb_list);
@@ -95,38 +94,43 @@ int			miniexport(t_data *data, char **args);
 int			built_type(t_data *data, char **args);
 int			built_type_next(t_data *data, char **args);
 
-// ----- PARSER -----
+// ----- PARSER ----- //
 int			iseven(int s_trig);
 int			check_spec(char **str);
+void		parser(void);
 
-// ------ ERRORS -----
+// ----- REDIRECTS ---- //
+int			redirects(t_data *data, char **comm);
+int			handle_hdoc(t_data *data, char **comm);
+int			handle_appnd(t_data *data, char **comm);
+int			handle_input(t_data *data, char **comm);
+int			handle_output(t_data *data, char **comm);
+
+// ------ ERRORS ----- //
 int			err_handler(char c, char *cmd);
 int			check_args(char **str);
 
-// ----- UTILS -----
+// ----- UTILS ----- //
 int			ft_strlen_flag(char const *str, char flag);
 int			sz_env_list(char **env);
 void		list_delete(void *list);
 char		**add_to_mat(char **mat1, char *str);
 
-// ---- VARIABLE_GLOBAL ----
+// ---- VARIABLE_GLOBAL ---- //
 t_mini_env	*mini_shell(void);
 
-// ---- ENV ----
+// ---- ENV ---- //
 void		env_update(void);
 char		**env_to_mat(t_list *env_list);
 char		*ft_get_env(char *type);
 
-// ---- PARSER ----
-void		parser(void);
-
-// ---- ENV_VAR_LIST ----
+// ---- ENV_VAR_LIST ---- //
 t_list		*envlist(char **env);
 void		add_env_vars(t_list **envlist, char *container);
 t_env		*new_env_list(char *type, char *info);
 t_env		*env_verif(t_list *env, char *type);
 
-// ---- INPUT_VERIF ----
+// ---- INPUT_VERIF ---- //
 int			metacharacters_verif(void);
 
 #endif

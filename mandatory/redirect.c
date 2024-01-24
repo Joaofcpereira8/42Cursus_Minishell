@@ -6,7 +6,7 @@
 /*   By: jofilipe <jofilipe@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 12:05:45 by jofilipe          #+#    #+#             */
-/*   Updated: 2024/01/17 12:05:45 by jofilipe         ###   ########.fr       */
+/*   Updated: 2024/01/24 12:02:17 by bbento-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,3 +73,39 @@ static void clean_up(FILE * file)
 		exit (1);
 	}
 }*/
+
+int redirects(t_data *data, char **comm)
+{
+	int i;
+	i = 0;
+
+	while (comm[i])
+	{
+		if (comm[i][0] == '>')
+			return (handle_input(data, comm));
+		else if (comm[i][0] == '<')
+			return (handle_output(data, comm));
+		i++;
+	}
+	return (0);
+}
+
+int handle_input(t_data *data, char **comm)
+{
+	return (err_handler('r', ">"));
+}
+
+int handle_output(t_data *data, char **comm)
+{
+
+}
+
+int handle_hdoc(t_data *data, char **comm)
+{
+
+}
+
+int handle_appnd(t_data *data, char **comm)
+{
+
+}
