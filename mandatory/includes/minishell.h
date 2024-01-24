@@ -115,6 +115,8 @@ int			ft_strlen_flag(char const *str, char flag);
 int			sz_env_list(char **env);
 void		list_delete(void *list);
 char		**add_to_mat(char **mat1, char *str);
+int			is_every_space(char *str);
+
 
 // ---- VARIABLE_GLOBAL ---- //
 t_mini_env	*mini_shell(void);

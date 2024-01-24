@@ -14,7 +14,7 @@
 
 int	ft_strlen_flag(char const *str, char flag)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (str[i] && str[i] != flag)
@@ -24,7 +24,7 @@ int	ft_strlen_flag(char const *str, char flag)
 
 int	sz_env_list(char **env)
 {
-	int i;
+	int	i;
 
 	if (!env)
 		return (-1);
@@ -36,22 +36,22 @@ int	sz_env_list(char **env)
 
 void	list_delete(void *list)
 {
-	int i;
-	char **prov_lst;
+	int		i;
+	char	**prov_lst;
 
 	if (!list)
-		return;
+		return ;
 	i = 0;
 	prov_lst = (char **)list;
 	while (prov_lst[i])
-		free(prov_lst[i++]); //
+		free(prov_lst[i++]);
 	free(list);
 }
 
 char	**add_to_mat(char **mat1, char *str)
 {
-	char **mat2;
-	int i;
+	char	**mat2;
+	int		i;
 
 	i = -1;
 	mat2 = ft_calloc(sz_env_list(mat1) + 2, sizeof(char *));
@@ -63,4 +63,16 @@ char	**add_to_mat(char **mat1, char *str)
 	mat2[i] = str;
 	list_delete(mat1);
 	return (mat2);
+}
+
+int	is_every_space(char *str)
+{
+	int	i;
+
+		i = 0;
+	while (str[i])
+	{
+		if (str[i] != '\b' && str[i] != '\t' && str[i] != '\n'
+			&& str[i] != '\v' && str[i] != '\f' && str[i] != )
+	}
 }
