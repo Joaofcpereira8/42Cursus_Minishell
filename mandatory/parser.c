@@ -6,7 +6,7 @@
 /*   By: jofilipe <jofilipe@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 14:33:40 by jofilipe          #+#    #+#             */
-/*   Updated: 2024/01/25 14:47:42 by bbento-e         ###   ########.fr       */
+/*   Updated: 2024/01/25 15:38:05 by jofilipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,15 @@ void	parser(void)
 	{
 		get_prompt(mini_shell());
 		input = readline(mini_shell()->prompt);
-		//se nao houver prompt(ctrl + d, etc) clear history e dar free a tudo
+		if (!mini_shell()->input)
+		{
+			//se nao houver prompt(ctrl + d, etc)
+			//clear history e dar free a tudo
+		}
 		add_history(input);
-		size_t len = strlen(input);
+	/* 	size_t len = strlen(input);
 		if (len > 0 && input[len + 1] == '\n')
-			input[len + 1] = '\0';
+			input[len + 1] = '\0'; */
 		char *args[] = {input, NULL};
 		data.comm = args[0];
 		if (built_type(&data, args) == -1)
