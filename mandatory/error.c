@@ -6,7 +6,7 @@
 /*   By: jofilipe <jofilipe@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/04 19:02:29 by bbento-e          #+#    #+#             */
-/*   Updated: 2024/01/25 14:28:03 by jofilipe         ###   ########.fr       */
+/*   Updated: 2024/01/25 14:37:40 by jofilipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,5 +44,5 @@ int	pars_error(char c, int ex_stat)
 	if (c == 'q')
 		printf("minishell: unclosed quotes");
 	mini_shell()->exit_status = ex_stat;
-	return (0);
+	return (-1);
 }
