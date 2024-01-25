@@ -47,9 +47,6 @@ SRCS =	mandatory/main.c\
 		mandatory/builtins/pwd.c\
 		mandatory/builtins/unset.c\
 
-
-
-
 OBJS = $(SRCS:%.c=%.o)
 
 all: $(LIBFT) $(NAME)

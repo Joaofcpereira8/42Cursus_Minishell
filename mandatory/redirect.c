@@ -6,7 +6,7 @@
 /*   By: bbento-e <bbento-e@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 12:05:45 by jofilipe          #+#    #+#             */
-/*   Updated: 2024/01/25 14:29:12 by bbento-e         ###   ########.fr       */
+/*   Updated: 2024/01/25 14:48:26 by bbento-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,14 +81,14 @@ int redirects(t_data *data, char **comm)
 
 	while (comm[i])
 	{
-		if (comm[i][0] == '>')
+		if (comm[i][0] == '>' && comm[i][1] == '>')
+			return (handle_appnd(data, comm));
+		else if (comm[i][0] == '<' && comm[i][1] == '<')
+			return (handle_hdoc(data, comm));
+		else if (comm[i][0] == '>')
 			return (handle_input(data, comm));
 		else if (comm[i][0] == '<')
 			return (handle_output(data, comm));
-		else if (comm[i][0] == '>>')
-			return (handle_appnd(data, comm));
-		else if (comm[i][0] == '<<')
-			return (handle_hdoc(data, comm));
 		i++;
 	}
 	return (-1);
