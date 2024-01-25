@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   redirect.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jofilipe <jofilipe@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: bbento-e <bbento-e@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 12:05:45 by jofilipe          #+#    #+#             */
-/*   Updated: 2024/01/24 12:02:17 by bbento-e         ###   ########.fr       */
+/*   Updated: 2024/01/25 14:29:12 by bbento-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,9 +85,13 @@ int redirects(t_data *data, char **comm)
 			return (handle_input(data, comm));
 		else if (comm[i][0] == '<')
 			return (handle_output(data, comm));
+		else if (comm[i][0] == '>>')
+			return (handle_appnd(data, comm));
+		else if (comm[i][0] == '<<')
+			return (handle_hdoc(data, comm));
 		i++;
 	}
-	return (0);
+	return (-1);
 }
 
 int handle_input(t_data *data, char **comm)
@@ -97,15 +101,15 @@ int handle_input(t_data *data, char **comm)
 
 int handle_output(t_data *data, char **comm)
 {
-
+	return (err_handler('r', "<"));
 }
 
 int handle_hdoc(t_data *data, char **comm)
 {
-
+	return (err_handler('r', "<<"));
 }
 
 int handle_appnd(t_data *data, char **comm)
 {
-
+	return (err_handler('r', ">>"));
 }
