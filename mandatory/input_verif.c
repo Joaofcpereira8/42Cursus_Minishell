@@ -34,6 +34,6 @@ bool	metacharacters_verif(void)
 		}
 	}
 	if (is_meta)
-		return (pars_error("u_c", 2));
+		return (pars_error('q', 2));
 	return (true);
 }

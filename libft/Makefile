@@ -6,7 +6,7 @@
 #    By: jofilipe <jofilipe@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/08 12:16:23 by jofilipe          #+#    #+#              #
-#    Updated: 2023/11/14 15:05:57 by jofilipe         ###   ########.fr        #
+#    Updated: 2024/01/25 14:30:50 by jofilipe         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,6 +14,7 @@ SRC = ft_atoi.c \
 		ft_atol.c \
 		ft_bzero.c \
 		ft_calloc.c \
+		ft_realloc.c \
 		ft_isalnum.c \
 		ft_isalpha.c \
 		ft_isascii.c \

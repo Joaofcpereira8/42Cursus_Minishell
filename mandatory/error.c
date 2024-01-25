@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jofilipe <jofilipe@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jofilipe <jofilipe@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/04 19:02:29 by bbento-e          #+#    #+#             */
-/*   Updated: 2024/01/24 12:11:12 by bbento-e         ###   ########.fr       */
+/*   Updated: 2024/01/25 14:28:03 by jofilipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	err_handler(char c, char *cmd)
 		printf("minishell: Error: Unclosed quotes or special characters\n");
 	else if (c == 'c')
 		printf("minishell: Error: Wrong arguments for command!"
-				"\nTry 'man %s' for more information\n", cmd);
+			"\nTry 'man %s' for more information\n", cmd);
 	else if (c == 'C')
 		printf("minishell: Error: Command '%s' not found", cmd);
 	else if (c == 'd')
@@ -39,9 +39,10 @@ int	check_args(char **str)
 	return (0);
 }
 
-int	pars_error(char *c, int ex_stat)
+int	pars_error(char c, int ex_stat)
 {
-	if (c == "u_c")
+	if (c == 'q')
 		printf("minishell: unclosed quotes");
 	mini_shell()->exit_status = ex_stat;
+	return (0);
 }
