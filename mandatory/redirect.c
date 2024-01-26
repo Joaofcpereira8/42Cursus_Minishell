@@ -6,7 +6,7 @@
 /*   By: bbento-e <bbento-e@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 12:05:45 by jofilipe          #+#    #+#             */
-/*   Updated: 2024/01/25 14:48:26 by bbento-e         ###   ########.fr       */
+/*   Updated: 2024/01/26 12:27:17 by bbento-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,6 +96,8 @@ int redirects(t_data *data, char **comm)
 
 int handle_input(t_data *data, char **comm)
 {
+	data->fd = open("file.txt", O_WRONLY | O_CREAT | O_TRUNC | 0666);
+
 	return (err_handler('r', ">"));
 }
 

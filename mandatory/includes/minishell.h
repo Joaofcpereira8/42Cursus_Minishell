@@ -6,7 +6,7 @@
 /*   By: jofilipe <jofilipe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 18:26:52 by jofilipe          #+#    #+#             */
-/*   Updated: 2024/01/24 11:56:24 by bbento-e         ###   ########.fr       */
+/*   Updated: 2024/01/26 12:23:54 by bbento-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include "../../libft/libft.h"
 # include "env.h"
 
-
+#include <fcntl.h>
 # include <stdio.h>
 # include <stdlib.h>
 # include <string.h>
@@ -49,6 +49,7 @@ typedef struct s_token
 
 typedef struct s_data
 {
+	int			fd;
 	char		*oldpwd;
 	char		*pwd;
 	int			pid;
