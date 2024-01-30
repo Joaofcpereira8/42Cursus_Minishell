@@ -74,11 +74,11 @@ static void clean_up(FILE * file)
 	}
 }*/
 
-int redirects(t_data *data, char **comm)
+int	redirects(t_data *data, char **comm)
 {
-	int i;
-	i = 0;
+	int	i;
 
+	i = 0;
 	while (comm[i])
 	{
 		if (comm[i][0] == '>' && comm[i][1] == '>')
@@ -94,24 +94,24 @@ int redirects(t_data *data, char **comm)
 	return (-1);
 }
 
-int handle_input(t_data *data, char **comm)
+int	handle_input(t_data *data, char **comm)
 {
 	data->fd = open("file.txt", O_WRONLY | O_CREAT | O_TRUNC | 0666);
 
 	return (err_handler('r', ">"));
 }
 
-int handle_output(t_data *data, char **comm)
+int	handle_output(t_data *data, char **comm)
 {
 	return (err_handler('r', "<"));
 }
 
-int handle_hdoc(t_data *data, char **comm)
+int	handle_hdoc(t_data *data, char **comm)
 {
 	return (err_handler('r', "<<"));
 }
 
-int handle_appnd(t_data *data, char **comm)
+int	handle_appnd(t_data *data, char **comm)
 {
 	return (err_handler('r', ">>"));
 }

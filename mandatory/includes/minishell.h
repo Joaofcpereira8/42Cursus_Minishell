@@ -15,6 +15,7 @@
 
 # include "../../libft/libft.h"
 # include "env.h"
+# include "tokens.h"
 
 #include <fcntl.h>
 # include <stdio.h>
@@ -52,6 +53,7 @@ typedef struct s_data
 	int			fd;
 	char		*oldpwd;
 	char		*pwd;
+	int			path_change;
 	int			pid;
 	char		*comm;
 	char		**paths;
@@ -117,7 +119,7 @@ int			sz_env_list(char **env);
 void		list_delete(void *list);
 char		**add_to_mat(char **mat1, char *str);
 int			is_every_space(char *str);
-int pars_error(char c, int ex_stat);
+int			pars_error(char c, int ex_stat);
 
 // ---- VARIABLE_GLOBAL ---- //
 t_mini_env	*mini_shell(void);
@@ -134,9 +136,23 @@ t_env		*new_env_list(char *type, char *info);
 t_env		*env_verif(t_list *env, char *type);
 
 // ---- INPUT_VERIF ---- //
+int			figure_out(void);
+
+/**
+ * @brief Checks for the balanced use of quotes in a given input string.
+ *
+ * This function ensures that quotes (single or double) in
+ * the input string are properly balanced, i.e., every opening
+ * quote has a corresponding closing quote. It also handles the case of unclosed quotes.
+ *
+ * @return Returns true if quotes are balanced; otherwise,
+ * returns false and sets the exit status for an unclosed quote.
+ */
 bool		metacharacters_verif(void);
+void		read_metachar(void);
 
 // ---- TOKENS ----
-char		**tokenize(const char* str, const char* delimiters);
+
+
 
 #endif

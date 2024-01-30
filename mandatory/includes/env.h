@@ -36,4 +36,5 @@ typedef struct s_env
 t_env	*new_env(char *type, char *info);
 
 t_env	*add_env();
+
 #endif

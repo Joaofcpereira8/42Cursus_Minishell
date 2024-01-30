@@ -12,6 +12,13 @@
 
 #include "includes/minishell.h"
 
+int	figure_out(void)
+{
+	if (!metacharacters_verif())
+		return (-1);
+	read_metachar();
+}
+
 bool	metacharacters_verif(void)
 {
 	int		i;
@@ -36,4 +43,19 @@ bool	metacharacters_verif(void)
 	if (is_meta)
 		return (pars_error('q', 2));
 	return (true);
+}
+
+void	read_metachar(void)
+{
+	int	i;
+
+	i = 0;
+	while (mini_shell()->input[i])
+	{
+		if (mini_shell()->input[i] == ' ')
+			i++;
+		else if (mini_shell()->input[i] == '>')
+
+
+	}
 }

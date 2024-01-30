@@ -12,15 +12,6 @@
 
 #include "includes/minishell.h"
 
-/**
- * Main program.
- *
- * @param argc Necessita de apenas 1 arg;
- * @param argv Vai ser o minishell;
- * @param envp Variaveis de ambiente.
- *
- */
-
 void	mini_init(char	**env)
 {
 	ft_bzero(mini_shell(), sizeof(t_mini_env));
@@ -33,12 +24,21 @@ void	mini_init(char	**env)
 	return ;
 }
 
-int	main(int argc, char **argv, char **env) {
+/**
+ * Main program.
+ *
+ * @param argc Necessita de apenas 1 arg;
+ * @param argv Vai ser o minishell;
+ * @param envp Variaveis de ambiente.
+ *
+ */
+int	main(int argc, char **argv, char **env)
+{
 	(void) argc;
 	(void) argv;
 	mini_init(env);
 
-	if	(argc > 1)
+	if (argc > 1)
 		return (err_handler('a', NULL));
 	else
 		parser();

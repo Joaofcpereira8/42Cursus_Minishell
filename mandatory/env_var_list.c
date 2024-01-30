@@ -19,9 +19,9 @@ t_list	*envlist(char **env)
 
 	i = sz_env_list(env);
 	envlist = NULL;
-	while(--i >= 0)
+	while (--i >= 0)
 		add_env_vars(&envlist, env[i]);
-	return(envlist);
+	return (envlist);
 }
 
 void	add_env_vars(t_list **envlist, char *container)
@@ -35,7 +35,7 @@ void	add_env_vars(t_list **envlist, char *container)
 	type = ft_substr(container, 0, i);
 	info = ft_strdup(container + i + 1);
 	env = env_verif(*envlist, type);
-	if(env)
+	if (env)
 	{
 		free(type);
 		free(env->info);
@@ -47,14 +47,14 @@ void	add_env_vars(t_list **envlist, char *container)
 
 t_env	*new_env_list(char *type, char *info)
 {
-	t_env *env;
+	t_env	*env;
 
 	env = ft_calloc(1, sizeof(t_env));
 	if (!env)
 		return (NULL);
 	env->type = type;
 	env->info = info;
-	return(env);
+	return (env);
 }
 
 t_env	*env_verif(t_list *env, char *type)
@@ -62,15 +62,15 @@ t_env	*env_verif(t_list *env, char *type)
 	t_list	*now;
 	t_env	*envs;
 
-	if(!env)
-		return(NULL);
+	if (!env)
+		return (NULL);
 	now = env;
-	while(now)
+	while (now)
 	{
 		envs = (t_env *)now->content;
-		if(!ft_strcmp(type, envs->type))
-			return(envs);
+		if (!ft_strcmp(type, envs->type))
+			return (envs);
 		now = now->next;
 	}
-	return(NULL);
+	return (NULL);
 }

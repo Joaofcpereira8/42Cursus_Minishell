@@ -1,25 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   tokens.c                                           :+:      :+:    :+:   */
+/*   tokens.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jofilipe <jofilipe@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/17 17:38:01 by jofilipe          #+#    #+#             */
-/*   Updated: 2024/01/25 14:24:20 by jofilipe         ###   ########.fr       */
+/*   Created: 2024/01/30 16:49:39 by jofilipe          #+#    #+#             */
+/*   Updated: 2024/01/30 16:49:39 by jofilipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/minishell.h"
+#ifndef TOKENS_H
+# define TOKENS_H
 
-t_list	*ft_lstnew(void *content)
+# include "minishell.h"
+
+typedef enum e_meta_tok
 {
-	t_list	*ptr;
+	red_in,
+	red2_in,
+	red_out,
+	red2_out,
+	pipe,
+	sin_
+}			t_meta_tok;
 
-	ptr = malloc(sizeof(*ptr));
-	if (!ptr)
-		return (NULL);
-	ptr->content = content;
-	ptr->next = NULL;
-	return (ptr);
-}
+#endif

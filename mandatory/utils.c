@@ -75,8 +75,8 @@ int	is_every_space(char *str)
 		if (str[i] != '\b' && str[i] != '\t' && str[i] != '\n'
 			&& str[i] != '\v' && str[i] != '\f' && str[i] != '\r'
 			&& str[i] != ' ')
-			return (-1);
+			return (0);
 		i++;
 	}
-	return (0);
+	return (-1);
 }

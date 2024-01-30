@@ -14,7 +14,7 @@
 
 int	iseven(int s_trig)
 {
-	if(s_trig % 2 != 0)
+	if (s_trig % 2 != 0)
 		return (-1);
 	return (0);
 }
@@ -33,7 +33,7 @@ int	check_spec(char **str)
 		i = 0;
 		while (str[j][i] != '\0')
 		{
-			if(str[j][i] == '\"' || str[j][i] == '\'' || str[j][i] == '\\')
+			if (str[j][i] == '\"' || str[j][i] == '\'' || str[j][i] == '\\')
 			{
 				if (s_trig == 0)
 					s_char = str[j][i];
