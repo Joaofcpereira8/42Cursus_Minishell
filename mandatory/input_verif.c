@@ -65,5 +65,6 @@ void	read_metachar(void)
 			i += conv_to_token(ft_strdup(">>"), red2_in);
 		else if (!ft_strncmp(&mini_shell()->input[i], "<<", 2))
 			i += conv_to_token(ft_strdup("<<"), red2_out);
+		else if ()
 	}
 }

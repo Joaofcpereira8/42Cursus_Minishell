@@ -27,7 +27,9 @@
 # include <readline/history.h>
 # include <stdbool.h>
 
-# define MAX_INPUT_SIZE 1024
+# define SYM	"<>\'\"| "
+# define QUO	"'\"\ "
+# define SPE	"<>| "
 
 typedef enum e_type
 {
