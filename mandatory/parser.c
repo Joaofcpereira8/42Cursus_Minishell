@@ -34,9 +34,6 @@ void	parser(void)
 			//clear history e dar free a tudo
 		}
 		add_history(mini_shell()->input);
-	/* 	size_t len = strlen(input);
-		if (len > 0 && input[len + 1] == '\n')
-			input[len + 1] = '\0'; */
 		figure_out();
 		char *args[] = {mini_shell()->input, NULL};
 		data.comm = args[0];

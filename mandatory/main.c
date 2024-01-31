@@ -37,7 +37,6 @@ int	main(int argc, char **argv, char **env)
 	(void) argc;
 	(void) argv;
 	mini_init(env);
-
 	if (argc > 1)
 		return (err_handler('a', NULL));
 	else

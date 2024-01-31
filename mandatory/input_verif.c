@@ -17,6 +17,7 @@ int	figure_out(void)
 	if (!metacharacters_verif())
 		return (-1);
 	read_metachar();
+	return (0);
 }
 
 bool	metacharacters_verif(void)
@@ -54,8 +55,15 @@ void	read_metachar(void)
 	{
 		if (mini_shell()->input[i] == ' ')
 			i++;
+		else if (mini_shell()->input[i] == '|')
+			i += conv_to_token(ft_strdup("|"), piped);
 		else if (mini_shell()->input[i] == '>')
-
-
+			i += conv_to_token(ft_strdup(">"), red_in);
+		else if (mini_shell()->input[i] == '<')
+			i += conv_to_token(ft_strdup("<"), red_out);
+		else if (!ft_strncmp(&mini_shell()->input[i], ">>", 2))
+			i += conv_to_token(ft_strdup(">>"), red2_in);
+		else if (!ft_strncmp(&mini_shell()->input[i], "<<", 2))
+			i += conv_to_token(ft_strdup("<<"), red2_out);
 	}
 }

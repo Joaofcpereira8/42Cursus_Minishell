@@ -17,7 +17,7 @@
 # include "env.h"
 # include "tokens.h"
 
-#include <fcntl.h>
+# include <fcntl.h>
 # include <stdio.h>
 # include <stdlib.h>
 # include <string.h>
@@ -41,12 +41,6 @@ typedef enum e_type
 	WHITESPACE,
 	EOF_TOKE,
 }				t_type;
-
-typedef struct s_token
-{
-	char	*str;
-	t_type	type;
-}				t_token;
 
 typedef struct s_data
 {
@@ -75,6 +69,7 @@ typedef struct s_mini_env
 	char	**env;
 	char	**path;
 	t_list	*env_amb_list;
+	t_list	*env_token;
 }			t_mini_env;
 
 // ------ EXECVE ------ //

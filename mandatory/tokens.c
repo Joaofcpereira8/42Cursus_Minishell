@@ -10,16 +10,27 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/minishell.h"
+#include "includes/tokens.h"
 
-t_list	*ft_lstnew(void *content)
+t_token	*new_token(char *str, t_meta_tok type)
 {
-	t_list	*ptr;
+	t_token	*token;
 
-	ptr = malloc(sizeof(*ptr));
-	if (!ptr)
+	token = ft_calloc(1, sizeof(*token));
+	if (!token)
 		return (NULL);
-	ptr->content = content;
-	ptr->next = NULL;
-	return (ptr);
+	token->str = str;
+	token->type = type;
+	return (token);
+}
+
+int	conv_to_token(char *str, t_meta_tok type)
+{
+	t_token	*token;
+
+	token = new_token(str, type);
+	if (!str || !type)
+		return (0);
+	ft_lstadd_back(&mini_shell()->env_token, ft_lstnew(token));
+	return (ft_strlen(str));
 }
