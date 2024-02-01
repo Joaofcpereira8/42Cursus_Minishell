@@ -6,7 +6,7 @@
 /*   By: jofilipe <jofilipe@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 16:49:39 by jofilipe          #+#    #+#             */
-/*   Updated: 2024/01/30 16:49:39 by jofilipe         ###   ########.fr       */
+/*   Updated: 2024/02/01 12:04:43 by bbento-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@
 typedef enum e_meta_tok
 {
 	red_in,
-	red2_in,
+	red_apnd,
 	red_out,
-	red2_out,
+	red_hdoc,
 	piped,
 	sng_quote,
 	dbl_quote,

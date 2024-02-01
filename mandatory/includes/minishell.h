@@ -6,7 +6,7 @@
 /*   By: jofilipe <jofilipe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 18:26:52 by jofilipe          #+#    #+#             */
-/*   Updated: 2024/01/26 12:23:54 by bbento-e         ###   ########.fr       */
+/*   Updated: 2024/02/01 12:09:58 by bbento-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,11 +100,11 @@ int			check_spec(char **str);
 void		parser(void);
 
 // ----- REDIRECTS ---- //
-int			redirects(t_data *data, char **comm);
 int			handle_hdoc(t_data *data, char **comm);
 int			handle_appnd(t_data *data, char **comm);
 int			handle_input(t_data *data, char **comm);
 int			handle_output(t_data *data, char **comm);
+int			redirects(t_data *data, char **comm, t_meta_tok token);
 
 // ------ ERRORS ----- //
 int			err_handler(char c, char *cmd);

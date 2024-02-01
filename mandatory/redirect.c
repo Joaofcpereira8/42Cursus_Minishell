@@ -6,7 +6,7 @@
 /*   By: bbento-e <bbento-e@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 12:05:45 by jofilipe          #+#    #+#             */
-/*   Updated: 2024/01/26 12:42:04 by bbento-e         ###   ########.fr       */
+/*   Updated: 2024/02/01 12:15:12 by bbento-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,20 +74,29 @@ static void clean_up(FILE * file)
 	}
 }*/
 
-int	redirects(t_data *data, char **comm)
+int	redirects(t_data *data, char **comm, t_meta_tok token)
 {
 	int	i;
 
 	i = 0;
 	while (comm[i])
 	{
-		if (comm[i][0] == '>' && comm[i][1] == '>')
+/*		if (comm[i][0] == '>' && comm[i][1] == '>')
 			return (handle_appnd(data, comm));
 		else if (comm[i][0] == '<' && comm[i][1] == '<')
 			return (handle_hdoc(data, comm));
 		else if (comm[i][0] == '>')
 			return (handle_input(data, comm));
 		else if (comm[i][0] == '<')
+			return (handle_output(data, comm));
+*/
+		if (token == red_apnd)
+			return (handle_appnd(data, comm));
+		else if (token == red_hdoc)
+			return (handle_hdoc(data, comm));
+		else if (token == red_in)
+			return (handle_input(data, comm));
+		else if (token == red_out)
 			return (handle_output(data, comm));
 		i++;
 	}
@@ -96,22 +105,32 @@ int	redirects(t_data *data, char **comm)
 
 int	handle_input(t_data *data, char **comm)
 {
-	data->fd = open("file.txt", O_WRONLY | O_CREAT | O_TRUNC);// | 0666);
-
+	mini_shell()->fd_in = open(comm[1], O_RDONLY);
+	if(mini_shell()->fd_in)
+		return (0);
 	return (err_handler('r', ">"));
 }
 
 int	handle_output(t_data *data, char **comm)
 {
+	mini_shell()->fd_in = open(comm[1], O_WRONLY | O_CREAT | O_TRUNC, 0666);
+	if(mini_shell()->fd_in)
+		return (0);
 	return (err_handler('r', "<"));
 }
 
 int	handle_hdoc(t_data *data, char **comm)
 {
+	mini_shell()->fd_in = heredoc(comm[1]);
+	if(mini_shell()->fd_in)
+		return (0);
 	return (err_handler('r', "<<"));
 }
 
 int	handle_appnd(t_data *data, char **comm)
 {
+	mini_shell()->fd_in = open(comm[1], O_WRONLY | O_CREAT | O_APPEND, 0666);
+	if(mini_shell()->fd_in)
+		return (0);
 	return (err_handler('r', ">>"));
 }
