@@ -6,7 +6,7 @@
 /*   By: jofilipe <jofilipe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 18:26:52 by jofilipe          #+#    #+#             */
-/*   Updated: 2024/02/01 12:09:58 by bbento-e         ###   ########.fr       */
+/*   Updated: 2024/02/01 13:03:44 by bbento-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,6 +100,7 @@ int			check_spec(char **str);
 void		parser(void);
 
 // ----- REDIRECTS ---- //
+int			heredoc(char *file);
 int			handle_hdoc(t_data *data, char **comm);
 int			handle_appnd(t_data *data, char **comm);
 int			handle_input(t_data *data, char **comm);
