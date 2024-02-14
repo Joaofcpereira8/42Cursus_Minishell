@@ -30,6 +30,7 @@ void	parser(void)
 		mini_shell()->input = readline(mini_shell()->prompt);
 		if (!mini_shell()->input)
 		{
+            printf("exit\n");
 			//se nao houver prompt(ctrl + d, etc)
 			//clear history e dar free a tudo
 		}
@@ -39,6 +40,6 @@ void	parser(void)
 		data.comm = args[0];
 		if (built_type(&data, args) == -1)
 			exec_command(&data, args, mini_shell());
-		free(mini_shell()->input);
+		//free(mini_shell()->input);
 	}
 }

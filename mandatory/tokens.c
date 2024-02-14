@@ -10,9 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/tokens.h"
+#include "includes/minishell.h"
 
-t_token	*new_token(char *str, t_meta_tok type)
+t_token *new_token(char *str, t_meta_tok type, bool join)
 {
 	t_token	*token;
 
@@ -21,14 +21,15 @@ t_token	*new_token(char *str, t_meta_tok type)
 		return (NULL);
 	token->str = str;
 	token->type = type;
+    token->can_join = join;
 	return (token);
 }
 
-int	conv_to_token(char *str, t_meta_tok type)
+int conv_to_token(char *str, t_meta_tok type, bool joinable)
 {
 	t_token	*token;
 
-	token = new_token(str, type);
+	token = new_token(str, type, joinable);
 	if (!str || !type)
 		return (0);
 	ft_lstadd_back(&mini_shell()->env_token, ft_lstnew(token));

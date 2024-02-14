@@ -80,3 +80,13 @@ int	is_every_space(char *str)
 	}
 	return (-1);
 }
+
+int ft_strlen_skp(char *str, char *c)
+{
+    int i;
+
+    i = 0;
+    while (str[i] && !ft_strchr(c, str[i]))
+        i++;
+    return (i);
+}

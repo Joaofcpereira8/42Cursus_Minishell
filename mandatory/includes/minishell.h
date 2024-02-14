@@ -15,7 +15,6 @@
 
 # include "../../libft/libft.h"
 # include "env.h"
-# include "tokens.h"
 
 # include <fcntl.h>
 # include <stdio.h>
@@ -28,21 +27,8 @@
 # include <stdbool.h>
 
 # define SYM	"<>\'\"| "
-# define QUO	"'\"\ "
+# define QUO	"\'\""
 # define SPE	"<>| "
-
-typedef enum e_type
-{
-	KEYWORD,
-	IDENTIFIERS,
-	OPERATORS,
-	LITERALS,
-	PUNCTUATION,
-	COMMENTS,
-	SPECIAL_SYMBOLS,
-	WHITESPACE,
-	EOF_TOKE,
-}				t_type;
 
 typedef struct s_data
 {
@@ -73,6 +59,27 @@ typedef struct s_mini_env
 	t_list	*env_amb_list;
 	t_list	*env_token;
 }			t_mini_env;
+
+typedef enum e_meta_tok
+{
+    red_in,
+    red_apnd,
+    red_out,
+    red_hdoc,
+    piped,
+    sng_quote,
+    dbl_quote,
+    something,
+}			t_meta_tok;
+
+typedef struct s_token
+{
+    char		*str;
+    t_meta_tok	type;
+    bool        can_join;
+}				t_token;
+
+//typedef enum e_meta_tok t_meta_tok;
 
 // ------ EXECVE ------ //
 void		get_paths(t_data *data);
@@ -118,6 +125,7 @@ void		list_delete(void *list);
 char		**add_to_mat(char **mat1, char *str);
 int			is_every_space(char *str);
 int			pars_error(char c, int ex_stat);
+int         ft_strlen_skp(char *str, char *c);
 
 // ---- VARIABLE_GLOBAL ---- //
 t_mini_env	*mini_shell(void);
@@ -150,7 +158,10 @@ bool		metacharacters_verif(void);
 void		read_metachar(void);
 
 // ---- TOKENS ----
-
+t_token *new_token(char *str, t_meta_tok type, bool join);
+int     conv_to_token(char *str, t_meta_tok type, bool joinable);
+int     find_sym(char *quote, char *str);
+bool    is_joinable(char *str, char *match, int skip);
 
 
 #endif

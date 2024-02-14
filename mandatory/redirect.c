@@ -74,63 +74,64 @@ static void clean_up(FILE * file)
 	}
 }*/
 
-int	redirects(t_data *data, char **comm, t_meta_tok token)
-{
-	int	i;
 
-	i = 0;
-	while (comm[i])
-	{
-/*		if (comm[i][0] == '>' && comm[i][1] == '>')
-			return (handle_appnd(data, comm));
-		else if (comm[i][0] == '<' && comm[i][1] == '<')
-			return (handle_hdoc(data, comm));
-		else if (comm[i][0] == '>')
-			return (handle_input(data, comm));
-		else if (comm[i][0] == '<')
-			return (handle_output(data, comm));
-*/
-		if (token == red_apnd)
-			return (handle_appnd(data, comm));
-		else if (token == red_hdoc)
-			return (handle_hdoc(data, comm));
-		else if (token == red_in)
-			return (handle_input(data, comm));
-		else if (token == red_out)
-			return (handle_output(data, comm));
-		i++;
-	}
-	return (-1);
-}
-
-int	handle_input(t_data *data, char **comm)
-{
-	mini_shell()->fd_in = open(comm[1], O_RDONLY);
-	if(mini_shell()->fd_in)
-		return (0);
-	return (err_handler('r', ">"));
-}
-
-int	handle_output(t_data *data, char **comm)
-{
-	mini_shell()->fd_in = open(comm[1], O_WRONLY | O_CREAT | O_TRUNC, 0666);
-	if(mini_shell()->fd_in)
-		return (0);
-	return (err_handler('r', "<"));
-}
-
-int	handle_hdoc(t_data *data, char **comm)
-{
-	mini_shell()->fd_in = heredoc(comm[1]);
-	if(mini_shell()->fd_in)
-		return (0);
-	return (err_handler('r', "<<"));
-}
-
-int	handle_appnd(t_data *data, char **comm)
-{
-	mini_shell()->fd_in = open(comm[1], O_WRONLY | O_CREAT | O_APPEND, 0666);
-	if(mini_shell()->fd_in)
-		return (0);
-	return (err_handler('r', ">>"));
-}
+//int	redirects(t_data *data, char **comm, t_meta_tok token)
+//{
+//	int	i;
+//
+//	i = 0;
+//	while (comm[i])
+//	{
+///*		if (comm[i][0] == '>' && comm[i][1] == '>')
+//			return (handle_appnd(data, comm));
+//		else if (comm[i][0] == '<' && comm[i][1] == '<')
+//			return (handle_hdoc(data, comm));
+//		else if (comm[i][0] == '>')
+//			return (handle_input(data, comm));
+//		else if (comm[i][0] == '<')
+//			return (handle_output(data, comm));*/
+//
+//		if (token == red_apnd)
+//			return (handle_appnd(data, comm));
+//		else if (token == red_hdoc)
+//			return (handle_hdoc(data, comm));
+//		else if (token == red_in)
+//			return (handle_input(data, comm));
+//		else if (token == red_out)
+//			return (handle_output(data, comm));
+//		i++;
+//	}
+//	return (-1);
+//}
+//
+//int	handle_input(t_data *data, char **comm)
+//{
+//	mini_shell()->fd_in = open(comm[1], O_RDONLY);
+//	if(mini_shell()->fd_in)
+//		return (0);
+//	return (err_handler('r', ">"));
+//}
+//
+//int	handle_output(t_data *data, char **comm)
+//{
+//	mini_shell()->fd_in = open(comm[1], O_WRONLY | O_CREAT | O_TRUNC, 0666);
+//	if(mini_shell()->fd_in)
+//		return (0);
+//	return (err_handler('r', "<"));
+//}
+//
+//int	handle_hdoc(t_data *data, char **comm)
+//{
+//	mini_shell()->fd_in = heredoc(comm[1]);
+//	if(mini_shell()->fd_in)
+//		return (0);
+//	return (err_handler('r', "<<"));
+//}
+//
+//int	handle_appnd(t_data *data, char **comm)
+//{
+//	mini_shell()->fd_in = open(comm[1], O_WRONLY | O_CREAT | O_APPEND, 0666);
+//	if(mini_shell()->fd_in)
+//		return (0);
+//	return (err_handler('r', ">>"));
+//}

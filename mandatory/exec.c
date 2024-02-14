@@ -16,9 +16,9 @@ char	*path_join(char *path, char *cm)
 {
 	char	*slashed;
 
+    //free(slashed);
 	slashed = ft_strjoin(path, "/");
 	slashed = ft_strjoin(slashed, cm);
-	//free(slashed);
 	return (slashed);
 }
 
@@ -49,7 +49,7 @@ void	exec_command(t_data *data, char **args, t_mini_env *envp)
 			}
 			else if (!data->paths[i + 1])
 				perror("execve");
-			i++;
 		}
+        i++;
 	}
 }
