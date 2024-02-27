@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jofilipe <jofilipe@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: bbento-e <bbento-e@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/04 19:02:29 by bbento-e          #+#    #+#             */
-/*   Updated: 2024/01/25 14:37:40 by jofilipe         ###   ########.fr       */
+/*   Updated: 2024/02/26 18:41:07 by bbento-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ int	err_handler(char c, char *cmd)
 		printf("minishell: Error: No such file or directory\n");
 	else if (c == 'r')
 		printf("minishell: Error: Redirection error\n");
+	else if (c == 'h')
+		printf("minishell: Error: Heredoc error\n");
 	return (-1);
 }
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jofilipe <jofilipe@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bbento-e <bbento-e@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 18:26:52 by jofilipe          #+#    #+#             */
-/*   Updated: 2024/02/01 13:03:44 by bbento-e         ###   ########.fr       */
+/*   Updated: 2024/02/26 18:37:37 by bbento-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,8 +92,8 @@ void		get_prompt(t_mini_env *envp);
 
 // ----- BUILT-INs ----- //
 int			minipdw(t_data *data);
-int			minicd(t_data *data, char **args);
 void		minienv(t_list *env_amb_list);
+int			minicd(t_data *data, char **args);
 int			miniecho(t_data *data, char **args);
 void		miniexit(t_data *data, char **args);
 int			miniunset(t_data *data, char **args);
@@ -102,9 +102,9 @@ int			built_type(t_data *data, char **args);
 int			built_type_next(t_data *data, char **args);
 
 // ----- PARSER ----- //
+void		parser(void);
 int			iseven(int s_trig);
 int			check_spec(char **str);
-void		parser(void);
 
 // ----- REDIRECTS ---- //
 int			heredoc(char *file);
@@ -119,27 +119,27 @@ int			err_handler(char c, char *cmd);
 int			check_args(char **str);
 
 // ----- UTILS ----- //
-int			ft_strlen_flag(char const *str, char flag);
 int			sz_env_list(char **env);
 void		list_delete(void *list);
-char		**add_to_mat(char **mat1, char *str);
 int			is_every_space(char *str);
 int			pars_error(char c, int ex_stat);
 int         ft_strlen_skp(char *str, char *c);
+char		**add_to_mat(char **mat1, char *str);
+int			ft_strlen_flag(char const *str, char flag);
 
 // ---- VARIABLE_GLOBAL ---- //
 t_mini_env	*mini_shell(void);
 
 // ---- ENV ---- //
 void		env_update(void);
-char		**env_to_mat(t_list *env_list);
 char		*ft_get_env(char *type);
+char		**env_to_mat(t_list *env_list);
 
 // ---- ENV_VAR_LIST ---- //
 t_list		*envlist(char **env);
-void		add_env_vars(t_list **envlist, char *container);
-t_env		*new_env_list(char *type, char *info);
 t_env		*env_verif(t_list *env, char *type);
+t_env		*new_env_list(char *type, char *info);
+void		add_env_vars(t_list **envlist, char *container);
 
 // ---- INPUT_VERIF ---- //
 int			figure_out(void);
@@ -154,14 +154,14 @@ int			figure_out(void);
  * @return Returns true if quotes are balanced; otherwise,
  * returns false and sets the exit status for an unclosed quote.
  */
-bool		metacharacters_verif(void);
 void		read_metachar(void);
+bool		metacharacters_verif(void);
 
 // ---- TOKENS ----
-t_token *new_token(char *str, t_meta_tok type, bool join);
-int     conv_to_token(char *str, t_meta_tok type, bool joinable);
 int     find_sym(char *quote, char *str);
 bool    is_joinable(char *str, char *match, int skip);
+t_token *new_token(char *str, t_meta_tok type, bool join);
+int     conv_to_token(char *str, t_meta_tok type, bool joinable);
 
 
 #endif

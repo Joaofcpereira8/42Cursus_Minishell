@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jofilipe <jofilipe@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: bbento-e <bbento-e@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 14:33:40 by jofilipe          #+#    #+#             */
-/*   Updated: 2024/01/25 15:38:05 by jofilipe         ###   ########.fr       */
+/*   Updated: 2024/02/27 18:18:49 by bbento-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,12 @@ void	parser(void)
 		add_history(mini_shell()->input);
 		figure_out();
 		char *args[] = {mini_shell()->input, NULL};
+		// testing redirects:
+		/* if (redirects(&data, args, red_out) == -1)
+		{
+			printf("Error in redirects\n");
+			continue;
+		} */
 		data.comm = args[0];
 		if (built_type(&data, args) == -1)
 			exec_command(&data, args, mini_shell());
