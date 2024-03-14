@@ -17,6 +17,7 @@ int	figure_out(void)
 	if (!metacharacters_verif())
 		return (-1);
 	read_metachar();
+    
 	return (0);
 }
 
@@ -60,7 +61,7 @@ int find_sym(char *quote, char *str)
     else if (quote[0] == '\'')
         conv_to_token(token, sng_quote, can_join);
     else
-        conv_to_token(token, something, can_join);
+        conv_to_token(token, rest, can_join);
     return (skip);
 }
 

@@ -29,7 +29,7 @@ void	mini_init(char	**env)
  *
  * @param argc Necessita de apenas 1 arg;
  * @param argv Vai ser o minishell;
- * @param envp Variaveis de ambiente.
+ * @param env Variaveis de ambiente.
  *
  */
 int	main(int argc, char **argv, char **env)
