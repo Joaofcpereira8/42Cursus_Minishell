@@ -69,7 +69,7 @@ typedef enum e_meta_tok
     piped,
     sng_quote,
     dbl_quote,
-    something,
+    rest,
 }			t_meta_tok;
 
 typedef struct s_token
