@@ -6,7 +6,7 @@
 /*   By: jofilipe <jofilipe@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 17:38:01 by jofilipe          #+#    #+#             */
-/*   Updated: 2024/01/25 14:24:20 by jofilipe         ###   ########.fr       */
+/*   Updated: 2024/03/19 11:08:55 by jofilipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ t_token *new_token(char *str, t_meta_tok type, bool join)
 		return (NULL);
 	token->str = str;
 	token->type = type;
-    token->can_join = join;
+	token->can_join = join;
 	return (token);
 }
 
