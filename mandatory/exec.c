@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jofilipe <jofilipe@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: bbento-e <bbento-e@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 17:39:49 by jofilipe          #+#    #+#             */
-/*   Updated: 2024/03/18 14:52:39 by jofilipe         ###   ########.fr       */
+/*   Updated: 2024/03/19 23:16:58 by bbento-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,14 +42,12 @@ void	exec_command(t_data *data, char **args, t_mini_env *envp)
 		{
 			pid = fork();
 			if (pid == 0)
-			{
 				execve(path, args, envp->env);
-				wait(NULL);
-				break ;
-			}
-			else if (!data->paths[i + 1])
-				perror("execve");
+			wait(NULL);
+			break ;
 		}
+		else if (!data->paths[i + 1])
+			perror("execve");
 		i++;
 	}
 }
