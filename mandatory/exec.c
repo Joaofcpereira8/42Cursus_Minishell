@@ -6,7 +6,7 @@
 /*   By: jofilipe <jofilipe@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 17:39:49 by jofilipe          #+#    #+#             */
-/*   Updated: 2023/11/29 11:27:10 by bbento-e         ###   ########.fr       */
+/*   Updated: 2024/03/18 14:52:39 by jofilipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,6 @@ void	exec_command(t_data *data, char **args, t_mini_env *envp)
 			else if (!data->paths[i + 1])
 				perror("execve");
 		}
-        i++;
+		i++;
 	}
 }

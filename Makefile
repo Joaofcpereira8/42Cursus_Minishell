@@ -6,7 +6,7 @@
 #    By: jofilipe <jofilipe@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/02 17:32:15 by jofilipe          #+#    #+#              #
-#    Updated: 2023/11/20 18:42:19 by jofilipe         ###   ########.fr        #
+#    Updated: 2024/03/19 11:53:16 by jofilipe         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,6 +40,7 @@ SRCS =	mandatory/main.c\
 		mandatory/env_var_list.c\
 		mandatory/tokens.c \
 		mandatory/input_verif.c \
+		mandatory/input_verif2.c \
 		mandatory/builtins/builtin.c\
 		mandatory/builtins/cd.c\
 		mandatory/builtins/echo.c\

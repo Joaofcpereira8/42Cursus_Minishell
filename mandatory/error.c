@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bbento-e <bbento-e@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: jofilipe <jofilipe@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/04 19:02:29 by bbento-e          #+#    #+#             */
-/*   Updated: 2024/02/26 18:41:07 by bbento-e         ###   ########.fr       */
+/*   Updated: 2024/01/25 14:37:40 by jofilipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,12 @@ int	pars_error(char c, int ex_stat)
 {
 	if (c == 'q')
 		printf("minishell: unclosed quotes");
+	else if (c == 's')
+		printf("minishell: syntax error near unexpected token ");
+	else if (c == 'r')
+		printf("minishell: unclosed redirection");
+	else if (c == 'p')
+		printf("minishell: unclosed pipes");
 	mini_shell()->exit_status = ex_stat;
 	return (-1);
 }

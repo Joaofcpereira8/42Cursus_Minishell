@@ -45,6 +45,25 @@ typedef struct s_data
 //experimentar input como char **
 //e quando encontra um | ou >>
 //incrementa para o proximo array
+
+/**
+ *@brief "Global" variable that's used in the majority
+ *of the project
+ *
+ *@param fd_in Standard input fd
+ *@param fd_out Standard output fd
+ *@param exit_status Last command's exit status
+ *@param cmd_num Number of commands
+ *@param cwd Current working directory
+ *@param input Input in the command line
+ *@param prompt Prompt in the command line
+ *@param env Environment ambient's matrix
+ *@param path Environment ambient's PATH
+ *@param env_amb_list Linked list of the environment variables
+ *@param env_token Linked list of metacharacters
+ *
+ *
+*/
 typedef struct s_mini_env
 {
 	int		fd_in;
@@ -62,22 +81,30 @@ typedef struct s_mini_env
 
 typedef enum e_meta_tok
 {
-    red_in,
-    red_apnd,
-    red_out,
-    red_hdoc,
-    piped,
-    sng_quote,
-    dbl_quote,
-    rest,
+	red_in,
+	red_apnd,
+	red_out,
+	red_hdoc,
+	piped,
+	sng_quote,
+	dbl_quote,
+	rest,
 }			t_meta_tok;
 
 typedef struct s_token
 {
-    char		*str;
-    t_meta_tok	type;
-    bool        can_join;
+	char		*str;
+	t_meta_tok	type;
+	bool		can_join;
 }				t_token;
+
+typedef enum e_operations
+{
+	READ,
+	NEXT,
+	AFTER,
+	RESET
+}			t_operations;
 
 //typedef enum e_meta_tok t_meta_tok;
 
@@ -143,6 +170,17 @@ void		add_env_vars(t_list **envlist, char *container);
 
 // ---- INPUT_VERIF ---- //
 int			figure_out(void);
+bool		metacharacters_verif(void);
+int			find_sym(char *quote, char *str);
+bool		is_joinable(char *str, char *match, int skip);
+void		read_metachar(void);
+
+// ---- INPUT_VERIF2 ---- //
+bool		input_analysis(void);
+t_token		*scanner(t_operations operations);
+bool		pipe_or_redir(t_token *token);
+bool		redirection(t_token *token);
+
 
 /**
  * @brief Checks for the balanced use of quotes in a given input string.
@@ -154,8 +192,18 @@ int			figure_out(void);
  * @return Returns true if quotes are balanced; otherwise,
  * returns false and sets the exit status for an unclosed quote.
  */
-void		read_metachar(void);
 bool		metacharacters_verif(void);
+
+/** @brief Reads metacharacters from the shell's input string and converts them into tokens.
+ *
+ * This function iterates through the shell's input string and identifies metacharacters,
+ * including pipes (|), redirection symbols (<, >, >>, <<), and quotes (single and double).
+ * It converts these metacharacters into tokens, which represent commands, arguments,
+ * and special constructs in the shell's language.
+ *
+ * @return None
+ */
+void		read_metachar(void);
 
 // ---- TOKENS ----
 int     find_sym(char *quote, char *str);
