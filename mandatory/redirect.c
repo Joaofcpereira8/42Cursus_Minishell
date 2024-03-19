@@ -6,7 +6,7 @@
 /*   By: bbento-e <bbento-e@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 12:05:45 by jofilipe          #+#    #+#             */
-/*   Updated: 2024/02/26 19:03:07 by bbento-e         ###   ########.fr       */
+/*   Updated: 2024/03/19 00:31:51 by bbento-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	test_char(const unsigned char c)
 static void	init_redirect(int *file_desc, int *copy_out)
 {
 	//nao podemos usar fileno
-	*file_desc = open("temp", O_RDWR|O_CREAT|O_TRUNC, 0666);
+	*file_desc = open("temp", O_RDWR|O_CREAT|O_TRUNC, 0777);
 	*copy_out = dup(fileno(stdout));
 	dup2(*file_desc, fileno(stdout));
 }
@@ -104,16 +104,55 @@ int	handle_input(t_data *data, char **comm)
 	return (err_handler('r', "<"));
 }
 
+/* int handle_output(t_data *data, char **comm) {
+    (void)data;
+
+    // Find the '>' operator
+    int i = 0;
+    while (comm[i] && strcmp(comm[i], ">") != 0) {
+        i++;
+    }
+
+    // Check if '>' was found and if there's a word after it
+    if (comm[i] && comm[i + 1]) {
+        // Open the file
+        int fd_out = open(comm[i + 1], O_WRONLY | O_CREAT | O_TRUNC, 0777);
+        if (fd_out == -1) {
+            return err_handler('r', ">");
+        }
+
+        // Save the current standard output
+        int stdout_copy = dup(STDOUT_FILENO);
+
+        // Replace standard output with the file
+        dup2(fd_out, STDOUT_FILENO);
+
+        // Execute your command here
+
+        // Restore the standard output
+        dup2(stdout_copy, STDOUT_FILENO);
+
+        // Close the file descriptors
+        close(fd_out);
+        close(stdout_copy);
+
+        return 0;
+    } else {
+        // Handle error: no filename provided
+        return -1;
+    }
+} */
+
 int	handle_output(t_data *data, char **comm)
 {
-	printf("entered output\n");
+	printf("entered output with command %s\n", comm[6]);
 	(void)data;
-	mini_shell()->fd_in = open(comm[1], O_WRONLY | O_CREAT | O_TRUNC, 0666);
-	dup2(mini_shell()->fd_in, 1);
-	execve(comm[0], comm, NULL);
-	if(mini_shell()->fd_in)
-		return (0);
-	return (err_handler('r', ">"));
+	mini_shell()->fd_out = open(comm[6], O_WRONLY | O_CREAT | O_TRUNC, 0777);
+	if(mini_shell()->fd_out == -1)
+		return (err_handler('r', ">"));
+	dup2(mini_shell()->fd_out, 1);
+	close(mini_shell()->fd_out);
+	return (0);
 }
 
 int	handle_hdoc(t_data *data, char **comm)
@@ -128,7 +167,7 @@ int	handle_hdoc(t_data *data, char **comm)
 int	handle_appnd(t_data *data, char **comm)
 {
 	(void)data;
-	mini_shell()->fd_in = open(comm[1], O_WRONLY | O_CREAT | O_APPEND, 0666);
+	mini_shell()->fd_in = open(comm[1], O_WRONLY | O_CREAT | O_APPEND, 0777);
 	if(mini_shell()->fd_in)
 		return (0);
 	return (err_handler('r', ">>"));

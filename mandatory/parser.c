@@ -6,7 +6,7 @@
 /*   By: bbento-e <bbento-e@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 14:33:40 by jofilipe          #+#    #+#             */
-/*   Updated: 2024/02/27 18:18:49 by bbento-e         ###   ########.fr       */
+/*   Updated: 2024/03/19 00:34:59 by bbento-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,22 +30,22 @@ void	parser(void)
 		mini_shell()->input = readline(mini_shell()->prompt);
 		if (!mini_shell()->input)
 		{
-            printf("exit\n");
+			printf("exit\n");
 			//se nao houver prompt(ctrl + d, etc)
 			//clear history e dar free a tudo
 		}
 		add_history(mini_shell()->input);
 		figure_out();
 		char *args[] = {mini_shell()->input, NULL};
-		// testing redirects:
-		/* if (redirects(&data, args, red_out) == -1)
-		{
-			printf("Error in redirects\n");
-			continue;
-		} */
 		data.comm = args[0];
 		if (built_type(&data, args) == -1)
 			exec_command(&data, args, mini_shell());
-		//free(mini_shell()->input);
+		// testing redirects:
+		if (redirects(&data, args, red_out) == -1)
+		{
+			printf("Parser: Error in redirects\n");
+			continue;
+		}
+		free(mini_shell()->input);
 	}
 }
