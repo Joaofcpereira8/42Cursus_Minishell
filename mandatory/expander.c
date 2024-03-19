@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   expander.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jofilipe <jofilipe@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: bbento-e <bbento-e@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/19 15:00:52 by jofilipe          #+#    #+#             */
-/*   Updated: 2024/03/19 16:53:52 by jofilipe         ###   ########.fr       */
+/*   Updated: 2024/03/19 23:28:27 by bbento-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,16 +86,16 @@ char	*ft_streplace(char *str, char *old, char *new)
 	ft_strlcat(ret, tmp, len + 1);
 	ft_strlcat(ret, new, len + 1);
 	ft_strlcat(ret, ptr + ft_strlen(old), len + 1);
-	ft_free(tmp);
+	free(tmp);
 	return (ret);
 }
 
 void	merge_env_tokens(t_list *env_tokens)
 {
-	t_list	*aux;
-	t_token	*next_token;
+	//t_list	*aux;
+	//t_token	*next_token;
 	t_token	*curr_token;
-	char	*tmp;
+	//char	*tmp;
 
 	while (env_tokens)
 	{

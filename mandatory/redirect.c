@@ -6,7 +6,7 @@
 /*   By: bbento-e <bbento-e@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 12:05:45 by jofilipe          #+#    #+#             */
-/*   Updated: 2024/03/19 00:31:51 by bbento-e         ###   ########.fr       */
+/*   Updated: 2024/03/19 23:37:09 by bbento-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -148,9 +148,12 @@ int	handle_output(t_data *data, char **comm)
 	printf("entered output with command %s\n", comm[6]);
 	(void)data;
 	mini_shell()->fd_out = open(comm[6], O_WRONLY | O_CREAT | O_TRUNC, 0777);
+	printf("opened file with fd %i\n", mini_shell()->fd_out);
 	if(mini_shell()->fd_out == -1)
 		return (err_handler('r', ">"));
+	printf("attempting dup2\n");
 	dup2(mini_shell()->fd_out, 1);
+	printf("closing fd %i\n", mini_shell()->fd_out);
 	close(mini_shell()->fd_out);
 	return (0);
 }
