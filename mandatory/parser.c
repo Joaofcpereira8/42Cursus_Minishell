@@ -6,7 +6,7 @@
 /*   By: bbento-e <bbento-e@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 14:33:40 by jofilipe          #+#    #+#             */
-/*   Updated: 2024/03/19 14:01:30 by bbento-e         ###   ########.fr       */
+/*   Updated: 2024/03/19 14:03:00 by bbento-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	parser(void)
 		data.comm = args[0];
 		if (built_type(&data, args) == -1)
 			exec_command(&data, args, mini_shell());
-		// testing redirects:
+		// testing redirects
 		if (redirects(&data, args, red_out) == -1)
 		{
 			printf("Parser: Error in redirects\n");
