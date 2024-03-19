@@ -6,7 +6,7 @@
 /*   By: bbento-e <bbento-e@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 14:33:40 by jofilipe          #+#    #+#             */
-/*   Updated: 2024/03/19 14:05:34 by bbento-e         ###   ########.fr       */
+/*   Updated: 2024/03/19 14:06:37 by bbento-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,8 @@ void	parser(void)
 		if (!mini_shell()->input)
 		{
             printf("exit\n");
-			//se nao houver prompt(ctrl + d, etc)
-			//clear history e dar free a tudo
+			// se nao houver prompt(ctrl + d, etc)
+			// clear history e dar free a tudo
 		}
 		add_history(mini_shell()->input);
 		figure_out();
