@@ -6,7 +6,7 @@
 /*   By: bbento-e <bbento-e@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 14:33:40 by jofilipe          #+#    #+#             */
-/*   Updated: 2024/03/19 00:34:59 by bbento-e         ###   ########.fr       */
+/*   Updated: 2024/03/19 13:59:40 by bbento-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,6 @@ void	parser(void)
 			printf("Parser: Error in redirects\n");
 			continue;
 		}
-		free(mini_shell()->input);
+		// free(mini_shell()->input);
 	}
 }
