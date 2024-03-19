@@ -6,7 +6,7 @@
 /*   By: jofilipe <jofilipe@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 18:19:52 by jofilipe          #+#    #+#             */
-/*   Updated: 2024/03/19 11:20:17 by jofilipe         ###   ########.fr       */
+/*   Updated: 2024/03/19 14:17:20 by jofilipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,8 @@ int	figure_out(void)
 	if (!metacharacters_verif())
 		return (-1);
 	read_metachar();
-	
+	if (!input_analysis())
+		return (-1);
 	return (0);
 }
 

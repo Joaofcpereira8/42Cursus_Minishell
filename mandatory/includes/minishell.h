@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bbento-e <bbento-e@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: jofilipe <jofilipe@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 18:26:52 by jofilipe          #+#    #+#             */
-/*   Updated: 2024/02/26 18:37:37 by bbento-e         ###   ########.fr       */
+/*   Updated: 2024/03/19 16:38:54 by jofilipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ typedef struct s_data
  *@param env Environment ambient's matrix
  *@param path Environment ambient's PATH
  *@param env_amb_list Linked list of the environment variables
- *@param env_token Linked list of metacharacters
+ *@param env_token Linked list of metacharacters tokens
  *
  *
 */
@@ -150,7 +150,7 @@ int			sz_env_list(char **env);
 void		list_delete(void *list);
 int			is_every_space(char *str);
 int			pars_error(char c, int ex_stat);
-int         ft_strlen_skp(char *str, char *c);
+int			ft_strlen_skp(char *str, char *c);
 char		**add_to_mat(char **mat1, char *str);
 int			ft_strlen_flag(char const *str, char flag);
 
@@ -180,6 +180,15 @@ bool		input_analysis(void);
 t_token		*scanner(t_operations operations);
 bool		pipe_or_redir(t_token *token);
 bool		redirection(t_token *token);
+
+// ---- EXPANDER ---- //
+void		expander(void);
+void		expand_variable(t_token *token);
+char		*find_key(char *str);
+char		*ft_streplace(char *str, char *old, char *new);
+
+// ---- FREE ---- //
+void		ft_clean(void *pointer);
 
 
 /**
