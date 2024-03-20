@@ -6,7 +6,7 @@
 /*   By: jofilipe <jofilipe@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/19 11:23:10 by jofilipe          #+#    #+#             */
-/*   Updated: 2024/03/19 12:28:54 by jofilipe         ###   ########.fr       */
+/*   Updated: 2024/03/20 21:37:09 by jofilipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,4 +63,29 @@ bool	pipe_or_redir(t_token *token)
 bool	redirection(t_token *token)
 {
 	return(token->type >= red_in && token->type <= red_hdoc);
+}
+
+
+bool	is_command(t_token *token)
+{
+	int	i;
+
+	i = -1;
+	if (token->str[0])
+	{
+		if (token->str[0] == '=' || token->str[ft_strlen(token->str)] == '=')
+		{
+			pars_error('b', 1);
+			return (false);
+		}
+	}
+	while (token->str[++i])
+	{
+		if (token->str[i] == '=')
+		{
+			add_env_vars(&mini_shell()->temp_env, token->str);
+			return (true);
+		}
+	}
+	return (false);
 }

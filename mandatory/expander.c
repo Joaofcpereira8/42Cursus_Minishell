@@ -3,32 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   expander.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bbento-e <bbento-e@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: jofilipe <jofilipe@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/19 15:00:52 by jofilipe          #+#    #+#             */
-/*   Updated: 2024/03/19 23:28:27 by bbento-e         ###   ########.fr       */
+/*   Updated: 2024/03/20 16:25:15 by jofilipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/minishell.h"
-
-void	expander(void)
-{
-	t_list	*current;
-	t_token	*token;
-
-	current = mini_shell()->env_token;
-	while (current)
-	{
-		token = ((t_token *)current->content);
-		if (token->type == red_apnd)
-			current = current->next;
-		else if (token->type == dbl_quote || token->type == rest)
-			expand_variable(token);
-		current = current->next;
-	}
-
-}
 
 void	expand_variable(t_token *token)
 {
@@ -92,10 +74,10 @@ char	*ft_streplace(char *str, char *old, char *new)
 
 void	merge_env_tokens(t_list *env_tokens)
 {
-	//t_list	*aux;
-	//t_token	*next_token;
+	t_list	*aux;
+	t_token	*next_token;
 	t_token	*curr_token;
-	//char	*tmp;
+	char	*tmp;
 
 	while (env_tokens)
 	{
@@ -107,5 +89,31 @@ void	merge_env_tokens(t_list *env_tokens)
 			env_tokens = env_tokens->next;
 			continue ;
 		}
+		next_token = env_tokens->next->content;
+		tmp = curr_token->str;
+		curr_token->str = ft_strjoin(curr_token->str, next_token->str);
+		free(tmp);
+		curr_token->can_join = curr_token->can_join & next_token->can_join;//
+		aux = env_tokens->next;
+		env_tokens->next = env_tokens->next->next;
+		ft_lstdelone(aux, (void *)destroy_token);
 	}
+}
+
+void	expander(void)
+{
+	t_list	*current;
+	t_token	*token;
+
+	current = mini_shell()->env_token;
+	while (current)
+	{
+		token = ((t_token *)current->content);
+		if (token->type == red_apnd)
+			current = current->next;
+		else if (token->type == dbl_quote || token->type == rest)
+			expand_variable(token);
+		current = current->next;
+	}
+	merge_env_tokens(mini_shell()->env_token);
 }

@@ -6,7 +6,7 @@
 /*   By: jofilipe <jofilipe@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 17:38:01 by jofilipe          #+#    #+#             */
-/*   Updated: 2024/03/19 11:08:55 by jofilipe         ###   ########.fr       */
+/*   Updated: 2024/03/20 15:41:30 by jofilipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,16 @@ t_token *new_token(char *str, t_meta_tok type, bool join)
 	return (token);
 }
 
+t_token	*copy_token(t_token *token)
+{
+	t_token	*duplicate;
+
+	duplicate = new_token(ft_strdup(token->str), token->type, token->can_join);
+	if (!duplicate)
+		return (NULL);
+	return (duplicate);
+}
+
 int conv_to_token(char *str, t_meta_tok type, bool joinable)
 {
 	t_token	*token;
@@ -34,4 +44,12 @@ int conv_to_token(char *str, t_meta_tok type, bool joinable)
 		return (0);
 	ft_lstadd_back(&mini_shell()->env_token, ft_lstnew(token));
 	return (ft_strlen(str));
+}
+
+void	destroy_token(t_token *token)
+{
+	if (!token)
+		return ;
+	ft_clean(token->str);
+	ft_clean(token);
 }

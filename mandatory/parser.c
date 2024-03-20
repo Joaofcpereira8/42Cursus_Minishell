@@ -3,49 +3,80 @@
 /*                                                        :::      ::::::::   */
 /*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bbento-e <bbento-e@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: jofilipe <jofilipe@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/06 14:33:40 by jofilipe          #+#    #+#             */
-/*   Updated: 2024/03/19 23:41:40 by bbento-e         ###   ########.fr       */
+/*   Created: 2024/03/20 11:11:13 by jofilipe          #+#    #+#             */
+/*   Updated: 2024/03/20 15:37:24 by jofilipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/minishell.h"
 
-void	init(t_data *data)
-{
-	data->oldpwd = getenv("OLDPWD");
-	data->pwd = getcwd(0, 0);
-	//data->path_change = 0;
-}
-
 void	parser(void)
 {
-	t_data	data;
+	scanner(RESET);
+	mini_shell()->ast = parser_pipes();
+}
 
-	init(&data);
-	while (1)
+t_a_s_tree	*parser_pipes(void)
+{
+	t_a_s_tree	*ast;
+	t_a_s_tree	*command;
+
+	command = NULL;
+	ast = parser_commands();
+	if (!ast)
+		return (NULL);
+	while (scanner(READ) && scanner(READ)->type == piped)
 	{
-		get_prompt(mini_shell());
-		mini_shell()->input = readline(mini_shell()->prompt);
-		if (!mini_shell()->input)
-		{
-			printf("exit\n");
-			//se nao houver prompt(ctrl + d, etc)
-			//clear history e dar free a tudo
-		}
-		add_history(mini_shell()->input);
-		figure_out();
-		char *args[] = {mini_shell()->input, NULL};
-		data.comm = args[0];
-		if (built_type(&data, args) == -1)
-			exec_command(&data, args, mini_shell());
-		// testing redirects:
-		/* if (redirects(&data, args, red_out) == -1)
-		{
-			printf("Parser: Error in redirects\n");
-			continue;
-		} */
-		free(mini_shell()->input);
+		scanner(NEXT);
+		command = parser_commands();
+		ast = extend_pipes(ast, command);
 	}
+	return (ast);
+}
+
+t_a_s_tree	*parser_commands(void)
+{
+	t_a_s_tree	*cmd;
+
+	cmd = ast_new_token(copy_token(scanner(RESET)));
+	if (!cmd)
+		return (NULL);
+	cmd->index = mini_shell()->cmd_num++;
+	while (scanner(READ) && scanner(READ)->type != piped)
+	{
+		if (scanner(READ)->type >= red_in && scanner(READ)->type <= red_hdoc)
+			cmd = extend_command(cmd);
+		else
+			cmd->args = add_to_mat(cmd->args, ft_strdup(scanner(READ)->str));
+		scanner(NEXT);
+	}
+	return (cmd);
+}
+
+t_a_s_tree	*extend_command(t_a_s_tree *command)
+{
+	t_a_s_tree	*redir;
+
+	redir = ast_new_token(copy_token(scanner(READ)));
+	if (!redir)
+		return (NULL);
+	scanner(NEXT);
+	redir->args = add_to_mat(redir->args, ft_strdup(scanner(READ)->str));
+	redir->left = command->left;
+	command->left = redir;
+	return (command);
+}
+
+t_a_s_tree	*extend_pipes(t_a_s_tree *ast, t_a_s_tree *command)
+{
+	t_a_s_tree	*root;
+
+	root = ast_new_token(new_token(ft_strdup("|"), piped, false));
+	if (!root)
+		return (NULL);
+	ast_insert(&root, ast, true);
+	ast_insert(&root, command, false);
+	return (root);
 }

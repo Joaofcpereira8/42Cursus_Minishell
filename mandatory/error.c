@@ -6,7 +6,7 @@
 /*   By: jofilipe <jofilipe@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/04 19:02:29 by bbento-e          #+#    #+#             */
-/*   Updated: 2024/01/25 14:37:40 by jofilipe         ###   ########.fr       */
+/*   Updated: 2024/03/20 21:29:38 by jofilipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,8 @@ int	pars_error(char c, int ex_stat)
 		printf("minishell: unclosed redirection");
 	else if (c == 'p')
 		printf("minishell: unclosed pipes");
+	else if (c == 'b')
+		printf("minishell: bad assignment ");
 	mini_shell()->exit_status = ex_stat;
 	return (-1);
 }

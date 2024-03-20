@@ -6,7 +6,7 @@
 #    By: jofilipe <jofilipe@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/02 17:32:15 by jofilipe          #+#    #+#              #
-#    Updated: 2024/03/19 16:37:18 by jofilipe         ###   ########.fr        #
+#    Updated: 2024/03/20 21:13:21 by jofilipe         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,6 +29,7 @@ RM = rm -rf
 LIBFT = libft/libft.a
 
 SRCS =	mandatory/main.c\
+		mandatory/input_analysis.c \
 		mandatory/exec.c\
 		mandatory/special.c\
 		mandatory/parser.c\
@@ -43,6 +44,9 @@ SRCS =	mandatory/main.c\
 		mandatory/input_verif2.c \
 		mandatory/expander.c \
 		mandatory/free.c \
+		mandatory/ast_tokens.c \
+		mandatory/signals.c \
+		mandatory/handle_signals.c \
 		mandatory/builtins/builtin.c\
 		mandatory/builtins/cd.c\
 		mandatory/builtins/echo.c\
