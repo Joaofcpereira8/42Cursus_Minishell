@@ -6,7 +6,7 @@
 /*   By: jofilipe <jofilipe@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 12:11:57 by bbento-e          #+#    #+#             */
-/*   Updated: 2024/01/16 15:00:13 by jofilipe         ###   ########.fr       */
+/*   Updated: 2024/03/20 23:56:05 by jofilipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ void	env_update(void)
 
 char	**env_to_mat(t_list *env_list)
 {
-	t_env   *env;
+	t_env	*env;
 	char	*tmp1;
 	char	*tmp2;
 	char	**matrix;

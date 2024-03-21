@@ -6,7 +6,7 @@
 /*   By: jofilipe <jofilipe@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 18:19:52 by jofilipe          #+#    #+#             */
-/*   Updated: 2024/03/20 21:56:53 by jofilipe         ###   ########.fr       */
+/*   Updated: 2024/03/21 00:04:16 by jofilipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	figure_out(void)
 		return (-1);
 	expander();
 	parser();
-	/* if (!is_command(mini_shell()->env_token->content)) */
+	//if (!is_command(mini_shell()->env_token->content))
 	env_update();
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: jofilipe <jofilipe@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 18:26:42 by jofilipe          #+#    #+#             */
-/*   Updated: 2024/03/20 21:22:31 by jofilipe         ###   ########.fr       */
+/*   Updated: 2024/03/20 23:46:18 by jofilipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,20 +18,12 @@ void	mini_init(char	**env)
 	(mini_shell()->env_amb_list) = envlist(env);
 	env_update();
 	(mini_shell()->exit_status) = 0;
-	(mini_shell()->cwd) = getcwd(0, 0);
+	(mini_shell()->cwd) = getcwd(0, 4096);
 	(mini_shell()->fd_in) = STDIN_FILENO;
 	(mini_shell()->fd_out) = STDOUT_FILENO;
 	return ;
 }
 
-/**
- * Main program.
- *
- * @param argc Necessita de apenas 1 arg;
- * @param argv Vai ser o minishell;
- * @param env Variaveis de ambiente.
- *
- */
 int	main(int argc, char **argv, char **env)
 {
 	(void) argc;

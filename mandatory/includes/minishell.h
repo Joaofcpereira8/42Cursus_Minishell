@@ -6,7 +6,7 @@
 /*   By: jofilipe <jofilipe@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 18:26:52 by jofilipe          #+#    #+#             */
-/*   Updated: 2024/03/20 22:38:13 by jofilipe         ###   ########.fr       */
+/*   Updated: 2024/03/21 00:02:31 by jofilipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,10 +132,19 @@ typedef struct s_mini_env
 // ------ MAIN ------ //
 /**
  *@brief Uma vez chamada, inicializa a estrutura mini_shell.
- *@param env Variavel de ambiente
  *
-  */
+ *@param env Variavel de ambiente
+ */
 void		mini_init(char	**env);
+
+/**
+ * @brief Main program.
+ *
+ * @param argc Necessita de apenas 1 arg;
+ * @param argv Vai ser o minishell;
+ * @param env Variaveis de ambiente.
+ */
+int			main(int argc, char **argv, char **envp);
 
 // ------ EXECVE ------ //
 void		get_paths(t_data *data);
@@ -180,6 +189,12 @@ int			check_args(char **str);
 
 // ----- UTILS ----- //
 int			sz_env_list(char **env);
+/**
+ * @brief Faz free à memória alocada da matriz e o último
+ * elemento da matriz tem que ficar NULL.
+ *
+ * @param list A matriz a fazer free.
+  */
 void		list_delete(void *list);
 int			is_every_space(char *str);
 int			pars_error(char c, int ex_stat);
@@ -191,8 +206,30 @@ int			ft_strlen_flag(char const *str, char flag);
 t_mini_env	*mini_shell(void);
 
 // ---- ENV ---- //
+/**
+ * @brief Atualiza as variáveis de ambiente e é chamado cada vez
+ * que um comando é executado.
+  */
 void		env_update(void);
+
+/**
+ * @brief Vai à envlisr para encontrar a variável de ambiente que
+ * coincide com o TYPE e retorna o valor.
+ *
+ * @param type Nome da variável.
+ * @return char* Ou o valor da variável ou uma string
+ * vazia para o novo pointer
+ */
 char		*ft_get_env(char *type);
+
+/**
+ * @brief Converte a lista das variáveis de ambiente para uma matriz para depois
+ * puder ser usada quando o execve for chamado.
+ *
+ * @param env_list A lista das variáveis de ambiente.
+ * @return char** Um novo pointer para a matriz de variáveis de ambiente.
+ * @return NULL se o malloc falhar.
+ */
 char		**env_to_mat(t_list *env_list);
 
 // ---- ENV_VAR_LIST ---- //
@@ -200,7 +237,9 @@ char		**env_to_mat(t_list *env_list);
  * @brief Usada no início do programa para criar a nossa própria
  * lista de variáveis de ambiente, usando as mesmas do sistema.
  *
- * 
+ * @param envp Matriz das variáveis de ambiente original.
+ * @return t_list* Um novo pointer para a lista de variáveis de ambiente.
+ * @return NULL se o malloc não funcionar.
   */
 t_list		*envlist(char **env);
 t_env		*env_verif(t_list *env, char *type);
