@@ -6,7 +6,7 @@
 /*   By: jofilipe <jofilipe@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 18:26:52 by jofilipe          #+#    #+#             */
-/*   Updated: 2024/03/21 00:02:31 by jofilipe         ###   ########.fr       */
+/*   Updated: 2024/03/22 18:25:45 by jofilipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@
 # include <readline/history.h>
 # include <stdbool.h>
 # include <signal.h>
+# include <errno.h>
+# include <sys/types.h>
 
 # define SYM	"<>\'\"| "
 # define QUO	"\'\""
@@ -110,7 +112,7 @@ typedef struct s_a_s_tree
  *@param env_amb_list Linked list of the environment variables
  *@param env_token Linked list of metacharacters tokens
  *@param ast Abstract Syntax Tree
- *@param Linked Linked list of temporary environment variables
+ *@param temp_env Linked list of temporary environment variables
 */
 typedef struct s_mini_env
 {
@@ -123,6 +125,7 @@ typedef struct s_mini_env
 	char		*prompt;
 	char		**env;
 	char		**path;
+	int			**pipes;
 	t_list		*env_amb_list;
 	t_list		*env_token;
 	t_a_s_tree	*ast;
@@ -285,6 +288,8 @@ t_a_s_tree	*extend_pipes(t_a_s_tree *ast, t_a_s_tree *command);
 /**
  * @brief Vão ser preparados as rotinas de sinais (signal handler)
  * para SIGINT E SIGQUIT antes de o shell iniciar.
+ * SIGINT para ctrl + C
+ * SIGQUIT para crtl +
   */
 void		signals(void);
 
@@ -316,10 +321,14 @@ bool		metacharacters_verif(void);
  */
 void		read_metachar(void);
 
-// ---- TOKENS ----
-t_token	*new_token(char *str, t_meta_tok type, bool join);
-t_token	*copy_token(t_token *token);
-int		conv_to_token(char *str, t_meta_tok type, bool joinable);
-void	destroy_token(t_token *token);
+// ---- TOKENS ---- //
+t_token		*new_token(char *str, t_meta_tok type, bool join);
+t_token		*copy_token(t_token *token);
+int			conv_to_token(char *str, t_meta_tok type, bool joinable);
+void		destroy_token(t_token *token);
+
+// ---- EXECUTE ---- //
+void		pipes_generate(void);
+pid_t		execute_pipes(t_a_s_tree *node);
 
 #endif

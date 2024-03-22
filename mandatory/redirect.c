@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   redirect.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bbento-e <bbento-e@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: jofilipe <jofilipe@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 12:05:45 by jofilipe          #+#    #+#             */
-/*   Updated: 2024/03/19 23:37:09 by bbento-e         ###   ########.fr       */
+/*   Updated: 2024/03/22 16:50:14 by jofilipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,14 +82,14 @@ int	redirects(t_data *data, char **comm, t_meta_tok token)
 	i = 0;
 	while (comm[i])
 	{
-		if (token == red_apnd)
-			return (handle_appnd(data, comm));
-		else if (token == red_hdoc)
-			return (handle_hdoc(data, comm));
-		else if (token == red_in)
-			return (handle_input(data, comm));
-		else if (token == red_out)
+		if (token == red_out)//>
 			return (handle_output(data, comm));
+		else if (token == red_apnd)//>>
+			return (handle_appnd(data, comm));
+		else if (token == red_in)//<
+			return (handle_input(data, comm));
+		else if (token == red_hdoc)//<<
+			return (handle_hdoc(data, comm));
 		i++;
 	}
 	return (-1);
@@ -99,9 +99,10 @@ int	handle_input(t_data *data, char **comm)
 {
 	(void)data;
 	mini_shell()->fd_in = open(comm[1], O_RDONLY);
-	if(mini_shell()->fd_in)
+	return (0);
+	/* if(mini_shell()->fd_in)
 		return (0);
-	return (err_handler('r', "<"));
+	return (err_handler('r', "<")); */
 }
 
 /* int handle_output(t_data *data, char **comm) {
@@ -145,7 +146,10 @@ int	handle_input(t_data *data, char **comm)
 
 int	handle_output(t_data *data, char **comm)
 {
-	printf("entered output with command %s\n", comm[6]);
+	(void)data;
+	(mini_shell()->fd_in) = open(comm[1], O_CREAT | O_WRONLY | O_TRUNC, 0666);
+	return (0);
+/* 	printf("entered output with command %s\n", comm[6]);
 	(void)data;
 	mini_shell()->fd_out = open(comm[6], O_WRONLY | O_CREAT | O_TRUNC, 0777);
 	printf("opened file with fd %i\n", mini_shell()->fd_out);
@@ -155,7 +159,7 @@ int	handle_output(t_data *data, char **comm)
 	dup2(mini_shell()->fd_out, 1);
 	printf("closing fd %i\n", mini_shell()->fd_out);
 	close(mini_shell()->fd_out);
-	return (0);
+	return (0); */
 }
 
 int	handle_hdoc(t_data *data, char **comm)
@@ -170,8 +174,9 @@ int	handle_hdoc(t_data *data, char **comm)
 int	handle_appnd(t_data *data, char **comm)
 {
 	(void)data;
-	mini_shell()->fd_in = open(comm[1], O_WRONLY | O_CREAT | O_APPEND, 0777);
-	if(mini_shell()->fd_in)
+	mini_shell()->fd_in = open(comm[1], O_WRONLY | O_CREAT | O_APPEND, 0666);
+	return (0);
+	/* if(mini_shell()->fd_in)
 		return (0);
-	return (err_handler('r', ">>"));
+	return (err_handler('r', ">>")); */
 }

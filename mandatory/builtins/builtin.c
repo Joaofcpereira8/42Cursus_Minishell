@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   builtin.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bbento-e <bbento-e@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: jofilipe <jofilipe@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 18:59:11 by bbento-e          #+#    #+#             */
-/*   Updated: 2023/11/29 12:12:31 by bbento-e         ###   ########.fr       */
+/*   Updated: 2024/03/22 17:52:19 by jofilipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
 
-int	built_type(t_data *data, char **args)
+int built_type(t_data *data, char **args)
 {
 	if(ft_strncmp(data->comm, "echo", 4) == 0)
 	{

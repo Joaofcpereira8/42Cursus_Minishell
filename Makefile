@@ -6,7 +6,7 @@
 #    By: jofilipe <jofilipe@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/02 17:32:15 by jofilipe          #+#    #+#              #
-#    Updated: 2024/03/20 21:13:21 by jofilipe         ###   ########.fr        #
+#    Updated: 2024/03/22 17:55:43 by jofilipe         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,6 +47,8 @@ SRCS =	mandatory/main.c\
 		mandatory/ast_tokens.c \
 		mandatory/signals.c \
 		mandatory/handle_signals.c \
+		mandatory/pipes.c \
+		mandatory/executes.c \
 		mandatory/builtins/builtin.c\
 		mandatory/builtins/cd.c\
 		mandatory/builtins/echo.c\

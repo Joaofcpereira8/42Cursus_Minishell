@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   input_verif.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bbento-e <bbento-e@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: jofilipe <jofilipe@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 18:19:52 by jofilipe          #+#    #+#             */
-/*   Updated: 2024/03/21 11:34:43 by bbento-e         ###   ########.fr       */
+/*   Updated: 2024/03/21 00:04:16 by jofilipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	figure_out(void)
 	if (!input_analysis())
 		return (-1);
 	expander();
-	// parser();
+	parser();
 	//if (!is_command(mini_shell()->env_token->content))
 	env_update();
 	return (0);
