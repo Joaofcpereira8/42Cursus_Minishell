@@ -6,7 +6,7 @@
 /*   By: jofilipe <jofilipe@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/21 18:50:32 by jofilipe          #+#    #+#             */
-/*   Updated: 2024/03/22 18:24:31 by jofilipe         ###   ########.fr       */
+/*   Updated: 2024/03/25 15:22:20 by jofilipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,17 +30,20 @@ void	pipes_generate(void)
 pid_t	execute_pipes(t_a_s_tree *node)
 {
 	pid_t	last;
+    t_data  *data;
 
 	last = 0;
 	if (!node)
-		return (node);
+		return (last);
+    data = init;
 	last = execute_pipes(node->left);
 	last = execute_pipes(node->right);
 	if (!pipe_or_redir(node->token))
 	{
-
+		if(is_built_in(node->args[0], node->args[1]))
+			built_type(data, node->args);
 	}
-
+	return (last);
 }
 
 /* void	pipes(void)

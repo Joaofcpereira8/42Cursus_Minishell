@@ -48,7 +48,7 @@ SRCS =	mandatory/main.c\
 		mandatory/signals.c \
 		mandatory/handle_signals.c \
 		mandatory/pipes.c \
-		mandatory/executes.c \
+		mandatory/execute.c \
 		mandatory/builtins/builtin.c\
 		mandatory/builtins/cd.c\
 		mandatory/builtins/echo.c\

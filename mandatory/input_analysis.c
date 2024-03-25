@@ -6,7 +6,7 @@
 /*   By: jofilipe <jofilipe@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 14:33:40 by jofilipe          #+#    #+#             */
-/*   Updated: 2024/03/22 17:10:00 by jofilipe         ###   ########.fr       */
+/*   Updated: 2024/03/25 12:14:53 by jofilipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ void	input(void)
 			printf("Parser: Error in redirects\n");
 			continue;
 		} */
+		env_update();
 		free(mini_shell()->input);
 	}
 }

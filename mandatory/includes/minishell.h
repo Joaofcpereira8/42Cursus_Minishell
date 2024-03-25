@@ -6,7 +6,7 @@
 /*   By: jofilipe <jofilipe@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 18:26:52 by jofilipe          #+#    #+#             */
-/*   Updated: 2024/03/22 18:25:45 by jofilipe         ###   ########.fr       */
+/*   Updated: 2024/03/25 14:56:58 by jofilipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -205,6 +205,9 @@ int			ft_strlen_skp(char *str, char *c);
 char		**add_to_mat(char **mat1, char *str);
 int			ft_strlen_flag(char const *str, char flag);
 
+// ----- UTILS2 ----- //
+bool		is_built_in(char *command, char *arg);
+
 // ---- VARIABLE_GLOBAL ---- //
 t_mini_env	*mini_shell(void);
 
@@ -328,6 +331,9 @@ int			conv_to_token(char *str, t_meta_tok type, bool joinable);
 void		destroy_token(t_token *token);
 
 // ---- EXECUTE ---- //
+void		execute(t_a_s_tree *ast);
+
+// ---- PIPES ---- //
 void		pipes_generate(void);
 pid_t		execute_pipes(t_a_s_tree *node);
 

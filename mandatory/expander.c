@@ -47,7 +47,6 @@ char	*find_key(char *str)
 	return (ft_substr(tmp, 0, len + 1));
 }
 
-
 char	*ft_streplace(char *str, char *old, char *new)
 {
 	char	*ret;
