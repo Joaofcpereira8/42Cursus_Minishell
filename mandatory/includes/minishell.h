@@ -175,6 +175,7 @@ int			built_type_next(t_data *data, char **args);
  * guardada na estrutura mini_shell.
   */
 void		input(void);
+void	    init(t_data *data);
 int			iseven(int s_trig);
 int			check_spec(char **str);
 
