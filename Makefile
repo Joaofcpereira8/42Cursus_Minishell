@@ -6,7 +6,7 @@
 #    By: jofilipe <jofilipe@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/02 17:32:15 by jofilipe          #+#    #+#              #
-#    Updated: 2024/03/22 17:55:43 by jofilipe         ###   ########.fr        #
+#    Updated: 2024/03/26 11:59:25 by jofilipe         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,17 +28,18 @@ RM = rm -rf
 
 LIBFT = libft/libft.a
 
-SRCS =	mandatory/main.c\
+SRCS =	mandatory/main.c \
 		mandatory/input_analysis.c \
-		mandatory/exec.c\
-		mandatory/special.c\
-		mandatory/parser.c\
-		mandatory/error.c\
-		mandatory/utils.c\
-		mandatory/redirect.c\
-		mandatory/heredoc.c\
-		mandatory/variable_global.c\
-		mandatory/env_var_list.c\
+		mandatory/exec.c \
+		mandatory/special.c \
+		mandatory/parser.c \
+		mandatory/error.c \
+		mandatory/utils.c \
+		mandatory/utils2.c \
+		mandatory/redirect.c \
+		mandatory/heredoc.c \
+		mandatory/variable_global.c \
+		mandatory/env_var_list.c \
 		mandatory/tokens.c \
 		mandatory/input_verif.c \
 		mandatory/input_verif2.c \
@@ -49,14 +50,14 @@ SRCS =	mandatory/main.c\
 		mandatory/handle_signals.c \
 		mandatory/pipes.c \
 		mandatory/execute.c \
-		mandatory/builtins/builtin.c\
-		mandatory/builtins/cd.c\
-		mandatory/builtins/echo.c\
-		mandatory/builtins/env.c\
-		mandatory/builtins/exit.c\
-		mandatory/builtins/exprt.c\
-		mandatory/builtins/pwd.c\
-		mandatory/builtins/unset.c\
+		mandatory/builtins/builtin.c \
+		mandatory/builtins/cd.c \
+		mandatory/builtins/echo.c \
+		mandatory/builtins/env.c \
+		mandatory/builtins/exit.c \
+		mandatory/builtins/exprt.c \
+		mandatory/builtins/pwd.c \
+		mandatory/builtins/unset.c \
 
 OBJS = $(SRCS:%.c=%.o)
 

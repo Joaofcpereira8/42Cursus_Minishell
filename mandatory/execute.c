@@ -19,8 +19,10 @@ void	execute(t_a_s_tree *ast)
 
 	status = 0x7F;
 	pipes_generate();
-	last = execute_pipes(last);
+	last = execute_pipes(ast);
 	last = waitpid(last, &status, 0);
-	
-
+//	while (waitpid(last, NULL, 0) > 0)
+//    {
+//
+//    }
 }

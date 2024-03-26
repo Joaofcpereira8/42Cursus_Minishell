@@ -12,12 +12,6 @@
 
 #include "includes/minishell.h"
 
-void	parser(void)
-{
-	scanner(RESET);
-	mini_shell()->ast = parser_pipes();
-}
-
 t_a_s_tree	*parser_pipes(void)
 {
 	t_a_s_tree	*ast;
@@ -79,4 +73,10 @@ t_a_s_tree	*extend_pipes(t_a_s_tree *ast, t_a_s_tree *command)
 	ast_insert(&root, ast, true);
 	ast_insert(&root, command, false);
 	return (root);
+}
+
+void	parser(void)
+{
+    scanner(RESET);
+    mini_shell()->ast = parser_pipes();
 }
