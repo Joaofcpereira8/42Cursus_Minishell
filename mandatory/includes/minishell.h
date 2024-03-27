@@ -150,9 +150,9 @@ void		mini_init(char	**env);
 int			main(int argc, char **argv, char **envp);
 
 // ------ EXECVE ------ //
-void		get_paths(t_data *data);
+void		get_paths(char **path);
 char		*path_join(char *path, char *cm);
-void		exec_command(t_data *data, char **args, t_mini_env *envp);
+void exec_command(char **args);
 
 // ------ USER ------ //
 char		pwd_finder(t_data *data);
@@ -161,13 +161,13 @@ void		get_prompt(t_mini_env *envp);
 // ----- BUILT-INs ----- //
 int			minipdw(t_data *data);
 void		minienv(t_list *env_amb_list);
-int			minicd(t_data *data, char **args);
-int			miniecho(t_data *data, char **args);
-void		miniexit(t_data *data, char **args);
-int			miniunset(t_data *data, char **args);
-int			miniexport(t_data *data, char **args);
-int			built_type(t_data *data, char **args);
-int			built_type_next(t_data *data, char **args);
+int minicd(char **args);
+int miniecho(char **args);
+void miniexit(char **args);
+int miniunset(char **args);
+int miniexport(char **args);
+int built_type(char **args);
+int built_type_next(char **args);
 
 // ----- INPUT_ANALYSIS ----- //
 /**
@@ -343,5 +343,8 @@ void		execute(t_a_s_tree *ast);
 void		pipes_generate(void);
 pid_t		execute_pipes(t_a_s_tree *node);
 void        atribute_fd_pipes(int index_command);
+
+// ---- VERIFS ---- //
+bool        builtin_verif(char *command);
 
 #endif

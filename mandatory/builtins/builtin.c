@@ -12,42 +12,45 @@
 
 #include "../includes/minishell.h"
 
-int built_type(t_data *data, char **args)
+int built_type(char **args)
 {
-	if(ft_strncmp(data->comm, "echo", 4) == 0)
+    if(!builtin_verif(args[0]))
+        exec_command(args);
+	else if(ft_strncmp(mini_shell()->input, "echo", 4) == 0)
 	{
-		miniecho(data, args);
+        miniecho(args);
 	}
-	else if (ft_strncmp(data->comm, "cd", 2) == 0)
+	else if (ft_strncmp(mini_shell()->input, "cd", 2) == 0)
 	{
-		minicd(data, args);
+        minicd(args);
 	}
-	else if (ft_strncmp(data->comm, "pwd", 3) == 0)
+	else if (ft_strncmp(mini_shell()->input, "pwd", 3) == 0)
 	{
-		minipdw(data);
+		//minipdw(data);
+        printf("%s\n", mini_shell()->cwd);
 	}
-	else if (ft_strncmp(data->comm, "export", 6) == 0)
+	else if (ft_strncmp(mini_shell()->input, "export", 6) == 0)
 	{
-		miniexport(data, args);
+        miniexport(args);
 	}
 	else
-		return (built_type_next(data, args));
+		return (built_type_next(args));
 	return (0);
 }
 
-int	built_type_next(t_data *data, char **args)
+int built_type_next(char **args)
 {
-	if(ft_strncmp(data->comm, "unset", 5) == 0)
+	if(ft_strncmp(mini_shell()->input, "unset", 5) == 0)
 	{
-		miniunset(data, args);
+        miniunset(args);
 	}
-	else if (ft_strncmp(data->comm, "env", 3) == 0)
+	else if (ft_strncmp(mini_shell()->input, "env", 3) == 0)
 	{
 		minienv(mini_shell()->env_amb_list);
 	}
-	else if (ft_strncmp(data->comm, "exit", 4) == 0)
+	else if (ft_strncmp(mini_shell()->input, "exit", 4) == 0)
 	{
-		miniexit(data, args);
+        miniexit(args);
 	}
 	else
 		return (-1);

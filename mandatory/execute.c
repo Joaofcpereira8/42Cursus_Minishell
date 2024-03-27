@@ -18,7 +18,7 @@ pid_t   exec_is_fork(t_a_s_tree *command)
 
     child_signals();
     pid = fork();
-    if (pid = 0)
+    if (pid == 0)
     {
         if (mini_shell()->fd_in == -1 || mini_shell()->fd_out == 1)
         {
@@ -26,8 +26,9 @@ pid_t   exec_is_fork(t_a_s_tree *command)
         }
         atribute_fd_pipes(command->index);
         fd_duplicate();
-        built_type();
+        built_type(NULL);
     }
+    return (pid);
 }
 
 void	execute(t_a_s_tree *ast)

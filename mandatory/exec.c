@@ -22,31 +22,31 @@ char	*path_join(char *path, char *cm)
 	return (slashed);
 }
 
-void	get_paths(t_data *data)
+void	get_paths(char **path)
 {
-	data->paths = ft_split(ft_get_env("PATH"), ':');
+    path = ft_split(ft_get_env("PATH"), ':');
 }
 
-void	exec_command(t_data *data, char **args, t_mini_env *envp)
+void exec_command(char **args)
 {
 	char	*path;
 	pid_t	pid;
 	int		i;
 
 	i = 0;
-	get_paths(data);
-	while (data->paths[i])
+	get_paths(mini_shell()->path);
+	while (mini_shell()->path[i])
 	{
-		path = path_join(data->paths[i], args[0]);
+		path = path_join(mini_shell()->path[i], args[0]);
 		if (access(path, X_OK) == 0)
 		{
 			pid = fork();
 			if (pid == 0)
-				execve(path, args, envp->env);
+				execve(path, args, mini_shell()->env);
 			wait(NULL);
 			break ;
 		}
-		else if (!data->paths[i + 1])
+		else if (!mini_shell()->path[i + 1])
 			perror("execve");
 		i++;
 	}

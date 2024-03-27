@@ -12,12 +12,12 @@
 
 #include "../includes/minishell.h"
 
-int	miniecho(t_data *data, char **args)
+int miniecho(char **args)
 {
 	int	i;
 	int nl;
 
-	if (!data->comm[5] && !data->comm[6])
+	if (!mini_shell()->input[5] && !mini_shell()->input[6])
 	{
 		printf("\n");
 		return (-1);
@@ -26,7 +26,7 @@ int	miniecho(t_data *data, char **args)
 	args = ft_split(args[0], ' ');
 	nl = 1;
 	i = 1;
-	(void)data;
+
 	if(args[1][0] && args[1][0] == '-' && args[1][1] == 'n')
 	{
 		nl = 0;

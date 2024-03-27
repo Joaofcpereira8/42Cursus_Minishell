@@ -26,10 +26,13 @@ int	handle_minus(t_data *data)
 		return (err_handler('d', NULL));
 }
 
-int	minicd(t_data *data, char **args)
+int minicd(char **args)
 {
 	int	i;
+    t_data *data;
 
+    data = NULL;
+    init(data);
 	i = 1;
 	args = ft_split(args[0], ' ');
 	if (args[2])

@@ -12,9 +12,8 @@
 
 #include "../includes/minishell.h"
 
-void	miniexit(t_data *data, char **args)
+void miniexit(char **args)
 {
-	(void)data;
 	(void)args;
 	printf("exit");
 	exit(0);

@@ -30,10 +30,7 @@ void	pipes_generate(void)
 pid_t	execute_pipes(t_a_s_tree *node)
 {
 	pid_t	last;
-	t_data	*data;
 
-    data = ft_calloc(1 ,sizeof(t_data));
-    init(data);
 	last = 0;
 	if (!node)
 		return (last);
@@ -42,9 +39,9 @@ pid_t	execute_pipes(t_a_s_tree *node)
 	if (!pipe_or_redir(node->token))
 	{
 		if(is_built_in(node->args[0], node->args[1]))
-			built_type(data, node->args);
-        else
-            last =
+            built_type(node->args);
+//        else
+//            last =
 	}
 	return (last);
 }

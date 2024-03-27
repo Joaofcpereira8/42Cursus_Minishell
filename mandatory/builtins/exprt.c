@@ -12,9 +12,8 @@
 
 #include "../includes/minishell.h"
 
-int	miniexport(t_data *data, char **args)
+int miniexport(char **args)
 {
-	(void)data;
 	(void)args;
 	return (0);
 }

@@ -38,8 +38,8 @@ void	input(void)
 		figure_out();
 		char *args[] = {mini_shell()->input, NULL};
 		data.comm = args[0];
-		if (built_type(&data, args) == -1)
-			exec_command(&data, args, mini_shell());
+		if (built_type(args) == -1)
+            exec_command(args);
 		// testing redirects:
 		/* if (redirects(&data, args, red_out) == -1)
 		{
