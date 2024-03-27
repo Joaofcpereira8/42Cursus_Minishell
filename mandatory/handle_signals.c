@@ -22,3 +22,12 @@ void	handle_sigint(int signum)
 	rl_redisplay();
 	(mini_shell()->exit_status) = 130;
 }
+
+void    handle_child(int signum)
+{
+    if (signum == SIGINT)
+        ft_putstr_fd("\n", STDERR_FILENO);
+    else if (signum == SIGQUIT)
+        ft_putstr_fd("Quit: 3\n", STDERR_FILENO);
+    mini_shell()->exit_status = 128 + signum;
+}

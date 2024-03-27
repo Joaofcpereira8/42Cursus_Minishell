@@ -16,7 +16,7 @@ t_token *new_token(char *str, t_meta_tok type, bool join)
 {
 	t_token	*token;
 
-	token = ft_calloc(1, sizeof(*token));
+	token = ft_calloc(1, sizeof(t_token));
 	if (!token)
 		return (NULL);
 	token->str = str;

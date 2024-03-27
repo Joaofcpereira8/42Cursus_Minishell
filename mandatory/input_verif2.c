@@ -73,7 +73,7 @@ bool	is_command(t_token *token)
 	i = -1;
 	if (token->str[0])
 	{
-		if (token->str[0] == '=' || token->str[ft_strlen(token->str)] == '=')
+		if (token->str[0] == '=' || token->str[ft_strlen(token->str) - 1] == '=')
 		{
 			pars_error('b', 1);
 			return (false);

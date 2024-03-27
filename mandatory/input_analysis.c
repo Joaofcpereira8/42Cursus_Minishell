@@ -49,4 +49,5 @@ void	input(void)
 		env_update();
 		free(mini_shell()->input);
 	}
+    rl_clear_history();
 }

@@ -17,3 +17,9 @@ void	signals(void)
 	signal(SIGINT, handle_sigint);
 	signal(SIGQUIT, SIG_IGN);
 }
+
+void    child_signals(void)
+{
+    signal(SIGINT, handle_child);
+    signal(SIGQUIT, handle_child);
+}

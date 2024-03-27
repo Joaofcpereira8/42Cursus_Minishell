@@ -34,7 +34,7 @@ t_a_s_tree	*parser_commands(void)
 {
 	t_a_s_tree	*cmd;
 
-	cmd = ast_new_token(copy_token(scanner(RESET)));
+	cmd = ast_new_token(copy_token(scanner(READ)));
 	if (!cmd)
 		return (NULL);
 	cmd->index = mini_shell()->cmd_num++;

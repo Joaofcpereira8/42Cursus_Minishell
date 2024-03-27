@@ -208,6 +208,8 @@ int			ft_strlen_flag(char const *str, char flag);
 
 // ----- UTILS2 ----- //
 bool		is_built_in(char *command, char *arg);
+bool        is_last_command(int command_numbers);
+void        fd_duplicate(void);
 
 // ---- VARIABLE_GLOBAL ---- //
 t_mini_env	*mini_shell(void);
@@ -296,10 +298,12 @@ t_a_s_tree	*extend_pipes(t_a_s_tree *ast, t_a_s_tree *command);
  * SIGQUIT para crtl +
   */
 void		signals(void);
+void        child_signals(void);
 
 
 // ---- HANDLE_SIGNALS ---- //
 void		handle_sigint(int signum);
+void        handle_child(int signum);
 
 
 /**
@@ -332,10 +336,12 @@ int			conv_to_token(char *str, t_meta_tok type, bool joinable);
 void		destroy_token(t_token *token);
 
 // ---- EXECUTE ---- //
+pid_t       exec_is_fork(t_a_s_tree *command);
 void		execute(t_a_s_tree *ast);
 
 // ---- PIPES ---- //
 void		pipes_generate(void);
 pid_t		execute_pipes(t_a_s_tree *node);
+void        atribute_fd_pipes(int index_command);
 
 #endif

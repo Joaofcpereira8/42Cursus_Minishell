@@ -62,7 +62,7 @@ int find_sym(char *quote, char *str)
 	skip = ft_strlen_skp(str, quote);
 	can_join = is_joinable(str, quote, skip);
 	token = ft_substr(str, 0, skip);
-	if (quote[0] == '=')
+	if (quote[0] == '"')
 		conv_to_token(token, dbl_quote, can_join);
 	else if (quote[0] == '\'')
 		conv_to_token(token, sng_quote, can_join);
