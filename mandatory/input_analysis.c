@@ -6,7 +6,7 @@
 /*   By: jofilipe <jofilipe@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 14:33:40 by jofilipe          #+#    #+#             */
-/*   Updated: 2024/03/25 12:14:53 by jofilipe         ###   ########.fr       */
+/*   Updated: 2024/03/28 17:53:35 by jofilipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,6 @@ void	init(t_data *data)
 
 void	input(void)
 {
-	t_data	data;
-
-	init(&data);
 	while (1)
 	{
 		get_prompt(mini_shell());
@@ -36,10 +33,6 @@ void	input(void)
 		}
 		add_history(mini_shell()->input);
 		figure_out();
-		char *args[] = {mini_shell()->input, NULL};
-		data.comm = args[0];
-		if (built_type(args) == -1)
-            exec_command(args);
 		// testing redirects:
 		/* if (redirects(&data, args, red_out) == -1)
 		{
@@ -49,5 +42,5 @@ void	input(void)
 		env_update();
 		free(mini_shell()->input);
 	}
-    rl_clear_history();
+	rl_clear_history();
 }

@@ -19,8 +19,8 @@ void	pipes_generate(void)
 	mini_shell()->pipes = ft_calloc(mini_shell()->cmd_num, sizeof(int *));
 	if (!mini_shell()->pipes)
 		return ;
-	i = 0;
-	while (i++ < mini_shell()->cmd_num - 1)
+	i = -1;
+	while (++i < mini_shell()->cmd_num - 1)
 	{
 		(mini_shell()->pipes[i] = ft_calloc(2, sizeof(int)));
 		pipe(mini_shell()->pipes[i]);
@@ -40,9 +40,11 @@ pid_t	execute_pipes(t_a_s_tree *node)
 	{
 		if(is_built_in(node->args[0], node->args[1]))
             built_type(node->args);
-//        else
-//            last =
+        else
+            last = exec_is_fork(node);
 	}
+    /*else if
+        redirection*/
 	return (last);
 }
 

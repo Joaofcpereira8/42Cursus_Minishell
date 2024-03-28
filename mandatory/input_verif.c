@@ -77,7 +77,7 @@ bool	is_joinable(char *str, char *match, int skip)
 		return (false);
 	if (!ft_strcmp(SYM, match) && ft_strchr(QUO, str[skip]))
 		return (true);
-	if (ft_strchr(SYM, match[0]) && !ft_strchr(QUO, str[skip + 1]))
+	if (ft_strchr(QUO, match[0]) && !ft_strchr(QUO, str[skip + 1]))
 		return (true);
 	return (false);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bbento-e <bbento-e@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: jofilipe <jofilipe@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 17:39:49 by jofilipe          #+#    #+#             */
-/*   Updated: 2024/03/19 23:16:58 by bbento-e         ###   ########.fr       */
+/*   Updated: 2024/03/28 18:26:10 by jofilipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,35 +16,51 @@ char	*path_join(char *path, char *cm)
 {
 	char	*slashed;
 
-    //free(slashed);
+	//free(slashed);
 	slashed = ft_strjoin(path, "/");
 	slashed = ft_strjoin(slashed, cm);
 	return (slashed);
 }
 
-void	get_paths(char **path)
+char	**get_paths(void)
 {
-    path = ft_split(ft_get_env("PATH"), ':');
+	char	*split_path;
+	char	**paths;
+
+	if (!split_path)
+		return (NULL);//Handle case where PATH environment variable doesn't exist
+	// Split the PATH using ft_split (assuming it returns an array of char*)
+	split_path = ft_get_env("PATH");
+	paths = ft_split(split_path, ':');
+	// Handle potential allocation failure from ft_split
+	if (!paths)
+		return (NULL);
+	return paths;
 }
 
-void exec_command(char **args)
+void	exec_command(char **args)
 {
-	char	*path;
+	char	**path;
+	char	*joined_path;
 	pid_t	pid;
 	int		i;
 
 	i = 0;
-	get_paths(mini_shell()->path);
-	while (mini_shell()->path[i])
+	path = get_paths();
+	while (path[i])
 	{
-		path = path_join(mini_shell()->path[i], args[0]);
-		if (access(path, X_OK) == 0)
+		joined_path = path_join(path[i], args[0]);
+		if (joined_path)
 		{
-			pid = fork();
-			if (pid == 0)
-				execve(path, args, mini_shell()->env);
-			wait(NULL);
-			break ;
+			if (access(joined_path, X_OK) == 0)
+			{
+				pid = fork();
+				if (pid == 0)
+					execve(joined_path, args, mini_shell()->env);
+				wait(NULL);
+				break ;
+			}
+			free(joined_path);
 		}
 		else if (!mini_shell()->path[i + 1])
 			perror("execve");

@@ -32,3 +32,17 @@ void    fd_duplicate(void)
     if (mini_shell()->fd_out == STDOUT_FILENO)
         dup2(mini_shell()->fd_out, STDOUT_FILENO);
 }
+
+void    fd_close(int command_index)
+{
+    if (mini_shell()->fd_in == STDIN_FILENO)
+        close(mini_shell()->fd_in);
+    if (mini_shell()->fd_out == STDOUT_FILENO)
+        close(mini_shell()->fd_out);
+    if (command_index > 0)
+        close(mini_shell()->pipes[command_index - 1][0]);
+    if (!is_last_command(command_index))
+        close(mini_shell()->pipes[command_index][1]);
+    mini_shell()->fd_out = STDOUT_FILENO;
+    mini_shell()->fd_in = STDIN_FILENO;
+}

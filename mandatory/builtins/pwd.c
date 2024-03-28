@@ -12,8 +12,8 @@
 
 #include "../includes/minishell.h"
 
-int	minipdw(t_data *data)
+int minipdw(void)
 {
-	data->pwd = getcwd(0, 0);
-	return (printf("%s\n", data->pwd));
+	mini_shell()->cwd = getcwd(0, 0);
+	return (printf("%s\n", mini_shell()->cwd));
 }

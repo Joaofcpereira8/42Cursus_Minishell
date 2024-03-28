@@ -6,7 +6,7 @@
 /*   By: jofilipe <jofilipe@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 18:26:52 by jofilipe          #+#    #+#             */
-/*   Updated: 2024/03/25 14:56:58 by jofilipe         ###   ########.fr       */
+/*   Updated: 2024/03/28 17:57:53 by jofilipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,7 +132,7 @@ typedef struct s_mini_env
 	t_list		*temp_env;
 }			t_mini_env;
 
-// ------ MAIN ------ //
+// ------------ MAIN ------------ //
 /**
  *@brief Uma vez chamada, inicializa a estrutura mini_shell.
  *
@@ -149,37 +149,37 @@ void		mini_init(char	**env);
  */
 int			main(int argc, char **argv, char **envp);
 
-// ------ EXECVE ------ //
-void		get_paths(char **path);
+// ------------ EXECVE ------------ //
+char		**get_paths(void);
 char		*path_join(char *path, char *cm);
-void exec_command(char **args);
+void		exec_command(char **args);
 
-// ------ USER ------ //
+// ------------ USER ------------ //
 char		pwd_finder(t_data *data);
 void		get_prompt(t_mini_env *envp);
 
-// ----- BUILT-INs ----- //
-int			minipdw(t_data *data);
+// ----------- BUILT-INs ----------- //
+int			minipdw(void);
 void		minienv(t_list *env_amb_list);
-int minicd(char **args);
-int miniecho(char **args);
-void miniexit(char **args);
-int miniunset(char **args);
-int miniexport(char **args);
-int built_type(char **args);
-int built_type_next(char **args);
+int			minicd(char **args);
+int			miniecho(char **args);
+void		miniexit(char **args);
+int			miniunset(char **args);
+int			miniexport(char **args);
+int			built_type(char **args);
+int			built_type_next(char **args);
 
-// ----- INPUT_ANALYSIS ----- //
+// ----------- INPUT_ANALYSIS ----------- //
 /**
  * @brief Lê a linha introduzida após o promp e esta é
  * guardada na estrutura mini_shell.
   */
 void		input(void);
-void	    init(t_data *data);
+void		init(t_data *data);
 int			iseven(int s_trig);
 int			check_spec(char **str);
 
-// ----- REDIRECTS ---- //
+// ----------- REDIRECTS ---------- //
 int			heredoc(char *file);
 int			handle_hdoc(t_data *data, char **comm);
 int			handle_appnd(t_data *data, char **comm);
@@ -187,11 +187,11 @@ int			handle_input(t_data *data, char **comm);
 int			handle_output(t_data *data, char **comm);
 int			redirects(t_data *data, char **comm, t_meta_tok token);
 
-// ------ ERRORS ----- //
+// ------------ ERRORS ----------- //
 int			err_handler(char c, char *cmd);
 int			check_args(char **str);
 
-// ----- UTILS ----- //
+// ----------- UTILS ----------- //
 int			sz_env_list(char **env);
 /**
  * @brief Faz free à memória alocada da matriz e o último
@@ -206,15 +206,16 @@ int			ft_strlen_skp(char *str, char *c);
 char		**add_to_mat(char **mat1, char *str);
 int			ft_strlen_flag(char const *str, char flag);
 
-// ----- UTILS2 ----- //
+// ----------- UTILS2 ----------- //
 bool		is_built_in(char *command, char *arg);
-bool        is_last_command(int command_numbers);
-void        fd_duplicate(void);
+bool		is_last_command(int command_numbers);
+void		fd_duplicate(void);
+void		fd_close(int command_index);
 
-// ---- VARIABLE_GLOBAL ---- //
+// ---------- VARIABLE_GLOBAL ---------- //
 t_mini_env	*mini_shell(void);
 
-// ---- ENV ---- //
+// ---------- ENV ---------- //
 /**
  * @brief Atualiza as variáveis de ambiente e é chamado cada vez
  * que um comando é executado.
@@ -241,7 +242,7 @@ char		*ft_get_env(char *type);
  */
 char		**env_to_mat(t_list *env_list);
 
-// ---- ENV_VAR_LIST ---- //
+// ---------- ENV_VAR_LIST ---------- //
 /**
  * @brief Usada no início do programa para criar a nossa própria
  * lista de variáveis de ambiente, usando as mesmas do sistema.
@@ -255,42 +256,41 @@ t_env		*env_verif(t_list *env, char *type);
 t_env		*new_env_list(char *type, char *info);
 void		add_env_vars(t_list **envlist, char *container);
 
-// ---- INPUT_VERIF ---- //
+// ---------- INPUT_VERIF ---------- //
 int			figure_out(void);
 bool		metacharacters_verif(void);
 int			find_sym(char *quote, char *str);
 bool		is_joinable(char *str, char *match, int skip);
 void		read_metachar(void);
 
-// ---- INPUT_VERIF2 ---- //
+// ---------- INPUT_VERIF2 ---------- //
 bool		input_analysis(void);
 t_token		*scanner(t_operations operations);
 bool		pipe_or_redir(t_token *token);
 bool		redirection(t_token *token);
 bool		is_command(t_token *token);
 
-// ---- EXPANDER ---- //
+// ---------- EXPANDER ---------- //
 void		expander(void);
 void		expand_variable(t_token *token);
 char		*find_key(char *str);
 char		*ft_streplace(char *str, char *old, char *new);
 
-// ---- FREE ---- //
+// ---------- FREE ---------- //
 void		ft_clean(void *pointer);
 
-// ---- AST_TOKENS ---- //
+// ---------- AST_TOKENS ---------- //
 t_a_s_tree	*ast_new_token(t_token *token);
 void		ast_insert(t_a_s_tree **ast, t_a_s_tree *node, bool left);
 
-
-// ---- PARSER ---- //
+// ---------- PARSER ---------- //
 void		parser(void);
 t_a_s_tree	*parser_pipes(void);
 t_a_s_tree	*parser_commands(void);
 t_a_s_tree	*extend_command(t_a_s_tree *command);
 t_a_s_tree	*extend_pipes(t_a_s_tree *ast, t_a_s_tree *command);
 
-// ---- SIGNALS ---- //
+// ---------- SIGNALS ---------- //
 /**
  * @brief Vão ser preparados as rotinas de sinais (signal handler)
  * para SIGINT E SIGQUIT antes de o shell iniciar.
@@ -298,53 +298,53 @@ t_a_s_tree	*extend_pipes(t_a_s_tree *ast, t_a_s_tree *command);
  * SIGQUIT para crtl +
   */
 void		signals(void);
-void        child_signals(void);
+void		child_signals(void);
 
-
-// ---- HANDLE_SIGNALS ---- //
+// ---------- HANDLE_SIGNALS ---------- //
 void		handle_sigint(int signum);
-void        handle_child(int signum);
-
+void		handle_child(int signum);
 
 /**
  * @brief Checks for the balanced use of quotes in a given input string.
  *
  * This function ensures that quotes (single or double) in
- * the input string are properly balanced, i.e., every opening
- * quote has a corresponding closing quote. It also handles the case of unclosed quotes.
+ * the input string are properly balanced, i.e., every opening quote has
+ * a corresponding closing quote. It also handles the case of unclosed quotes.
  *
  * @return Returns true if quotes are balanced; otherwise,
  * returns false and sets the exit status for an unclosed quote.
  */
 bool		metacharacters_verif(void);
 
-/** @brief Reads metacharacters from the shell's input string and converts them into tokens.
+/** @brief Reads metacharacters from the shell's input string and converts
+ * them into tokens.
  *
- * This function iterates through the shell's input string and identifies metacharacters,
- * including pipes (|), redirection symbols (<, >, >>, <<), and quotes (single and double).
- * It converts these metacharacters into tokens, which represent commands, arguments,
- * and special constructs in the shell's language.
+ * This function iterates through the shell's input string and identifies
+ * metacharacters, including pipes (|), redirection symbols (<, >, >>, <<),
+ * and quotes (single and double).
+ * It converts these metacharacters into tokens, which represent commands,
+ * arguments, * and special constructs in the shell's language.
  *
  * @return None
  */
 void		read_metachar(void);
 
-// ---- TOKENS ---- //
+// ---------- TOKENS ---------- //
 t_token		*new_token(char *str, t_meta_tok type, bool join);
 t_token		*copy_token(t_token *token);
 int			conv_to_token(char *str, t_meta_tok type, bool joinable);
 void		destroy_token(t_token *token);
 
-// ---- EXECUTE ---- //
-pid_t       exec_is_fork(t_a_s_tree *command);
+// ---------- EXECUTE ---------- //
+pid_t		exec_is_fork(t_a_s_tree *command);
 void		execute(t_a_s_tree *ast);
 
-// ---- PIPES ---- //
+// ---------- PIPES ---------- //
 void		pipes_generate(void);
 pid_t		execute_pipes(t_a_s_tree *node);
-void        atribute_fd_pipes(int index_command);
+void		atribute_fd_pipes(int index_command);
 
-// ---- VERIFS ---- //
-bool        builtin_verif(char *command);
+// ---------- VERIFS ---------- //
+bool		builtin_verif(char *command);
 
 #endif

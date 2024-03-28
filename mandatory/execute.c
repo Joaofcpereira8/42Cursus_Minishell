@@ -6,7 +6,7 @@
 /*   By: jofilipe <jofilipe@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/22 17:55:05 by jofilipe          #+#    #+#             */
-/*   Updated: 2024/03/25 12:40:37 by jofilipe         ###   ########.fr       */
+/*   Updated: 2024/03/28 18:35:08 by jofilipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,10 @@ pid_t   exec_is_fork(t_a_s_tree *command)
         }
         atribute_fd_pipes(command->index);
         fd_duplicate();
+        exec_command(command->args);
         built_type(NULL);
     }
+    fd_close(command->index);
     return (pid);
 }
 

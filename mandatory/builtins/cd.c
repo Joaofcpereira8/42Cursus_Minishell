@@ -31,10 +31,10 @@ int minicd(char **args)
 	int	i;
     t_data *data;
 
-    data = NULL;
+    data = ft_calloc(2, sizeof(t_data *));
     init(data);
 	i = 1;
-	args = ft_split(args[0], ' ');
+	//args = ft_split(args[0], ' ');
 	if (args[2])
 		return (err_handler('c', args[0]));
 	if (args[1][0] == '-' && !args[1][1])
@@ -43,10 +43,11 @@ int minicd(char **args)
 	{
 		data->oldpwd = data->pwd;
 		//free(data->pwd);
-		data->pwd = getcwd(0, 0);
+		mini_shell()->cwd = getcwd(0, 0);
 		data->path_change = 1;
 	}
 	else
 		return (err_handler('d', NULL));
+    free(args);
 	return (0);
 }
