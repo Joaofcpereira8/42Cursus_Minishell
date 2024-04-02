@@ -14,24 +14,24 @@
 
 int built_type(char **args)
 {
-    if(!builtin_verif(args[0]))
-        exec_command(args);
+	if(!builtin_verif(args[0]))
+		exec_command(args);
 	else if(ft_strncmp(mini_shell()->input, "echo", 4) == 0)
 	{
-        miniecho(args);
+		miniecho(args);
 	}
 	else if (ft_strncmp(mini_shell()->input, "cd", 2) == 0)
 	{
-        minicd(args);
+		minicd(args);
 	}
 	else if (ft_strncmp(mini_shell()->input, "pwd", 3) == 0)
 	{
 		//minipdw(data);
-        printf("%s\n", mini_shell()->cwd);
+		// printf("%s\n", mini_shell()->cwd);
 	}
 	else if (ft_strncmp(mini_shell()->input, "export", 6) == 0)
 	{
-        miniexport(args);
+		miniexport(args);
 	}
 	else
 		return (built_type_next(args));
@@ -42,7 +42,7 @@ int built_type_next(char **args)
 {
 	if(ft_strncmp(mini_shell()->input, "unset", 5) == 0)
 	{
-        miniunset(args);
+		miniunset(args);
 	}
 	else if (ft_strncmp(mini_shell()->input, "env", 3) == 0)
 	{
@@ -50,7 +50,7 @@ int built_type_next(char **args)
 	}
 	else if (ft_strncmp(mini_shell()->input, "exit", 4) == 0)
 	{
-        miniexit(args);
+		miniexit(args);
 	}
 	else
 		return (-1);

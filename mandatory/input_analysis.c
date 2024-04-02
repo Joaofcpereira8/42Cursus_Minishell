@@ -12,13 +12,6 @@
 
 #include "includes/minishell.h"
 
-void	init(t_data *data)
-{
-	data->oldpwd = getenv("OLDPWD");
-	data->pwd = getcwd(0, 0);
-	//data->path_change = 0;
-}
-
 void	input(void)
 {
 	while (1)
@@ -28,8 +21,7 @@ void	input(void)
 		if (!mini_shell()->input)
 		{
 			printf("exit\n");
-			//se nao houver prompt(ctrl + d, etc)
-			//clear history e dar free a tudo
+			ft_free_all(true);
 		}
 		add_history(mini_shell()->input);
 		figure_out();

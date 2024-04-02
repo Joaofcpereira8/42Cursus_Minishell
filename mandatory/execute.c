@@ -6,31 +6,32 @@
 /*   By: jofilipe <jofilipe@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/22 17:55:05 by jofilipe          #+#    #+#             */
-/*   Updated: 2024/03/28 18:35:08 by jofilipe         ###   ########.fr       */
+/*   Updated: 2024/04/02 11:56:10 by jofilipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/minishell.h"
 
-pid_t   exec_is_fork(t_a_s_tree *command)
+pid_t	exec_is_fork(t_a_s_tree *command)
 {
-    pid_t   pid;
+	pid_t	pid;
 
-    child_signals();
-    pid = fork();
-    if (pid == 0)
-    {
-        if (mini_shell()->fd_in == -1 || mini_shell()->fd_out == 1)
-        {
-            //dar free
-        }
-        atribute_fd_pipes(command->index);
-        fd_duplicate();
-        exec_command(command->args);
-        built_type(NULL);
-    }
-    fd_close(command->index);
-    return (pid);
+	child_signals();
+	pid = fork();
+	if (pid == 0)
+	{
+		if (mini_shell()->fd_in == -1 || mini_shell()->fd_out == -1)
+		{
+			ft_free_all(true);
+		}
+		atribute_pipes_fd(command->index);
+		fd_duplicate();
+		exec_command(command->args);
+		built_type(NULL);
+		ft_free_all(true);
+	}
+	fd_close(command->index);
+	return (pid);
 }
 
 void	execute(t_a_s_tree *ast)
@@ -43,10 +44,10 @@ void	execute(t_a_s_tree *ast)
 	last = execute_pipes(ast);
 	last = waitpid(last, &status, 0);
 	while (waitpid(last, NULL, 0) > 0)
-        continue ;
-    if (WIFEXITED(status))
-        mini_shell()->exit_status = WEXITSTATUS(status);
-    signals();
+		continue ;
+	if (WIFEXITED(status))
+		mini_shell()->exit_status = WEXITSTATUS(status);
+	signals();
 }
 
 /*

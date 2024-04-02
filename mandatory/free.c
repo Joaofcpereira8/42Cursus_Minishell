@@ -18,3 +18,17 @@ void	ft_clean(void *pointer)
 		free(pointer);
 	pointer = NULL;
 }
+
+void	ft_free_all(bool del)
+{
+	ft_clean(mini_shell()->input);
+	ft_clean(mini_shell()->prompt);
+	ft_lstclear(&mini_shell()->env_token, (void (*)(void *))destroy_token);
+	mini_shell()->env_token = NULL;
+	mini_shell()->pipes = NULL;
+	mini_shell()->cmd_num = 0;
+	if (del)
+	{
+		(void)del;
+	}
+}

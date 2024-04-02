@@ -6,7 +6,7 @@
 /*   By: jofilipe <jofilipe@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/21 18:50:32 by jofilipe          #+#    #+#             */
-/*   Updated: 2024/03/25 17:22:49 by jofilipe         ###   ########.fr       */
+/*   Updated: 2024/04/02 11:58:44 by jofilipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	pipes_generate(void)
 {
 	int	i;
 
-	mini_shell()->pipes = ft_calloc(mini_shell()->cmd_num, sizeof(int *));
+	mini_shell()->pipes = ft_calloc(mini_shell()->cmd_num - 1, sizeof(int *));
 	if (!mini_shell()->pipes)
 		return ;
 	i = -1;
@@ -39,25 +39,25 @@ pid_t	execute_pipes(t_a_s_tree *node)
 	if (!pipe_or_redir(node->token))
 	{
 		if(is_built_in(node->args[0], node->args[1]))
-            built_type(node->args);
-        else
-            last = exec_is_fork(node);
+			built_type(node->args);
+		else
+			last = exec_is_fork(node);
 	}
-    /*else if
-        redirection*/
+	/*else if
+		redirection*/
 	return (last);
 }
 
-void    atribute_fd_pipes(int index_command)
+void	atribute_pipes_fd(int index_command)
 {
-    if (mini_shell()->cmd_num < 2)
-        return ;
-    if (mini_shell()->fd_in == STDIN_FILENO)
-        if (index_command != 0)//ler no fim -> 0
-            mini_shell()->fd_in = mini_shell()->pipes[index_command - 1][0];
-    if (mini_shell()->fd_out == STDOUT_FILENO)//escrever no fim -> 1
-        if (!is_last_command(index_command))
-            mini_shell()->fd_out = mini_shell()->pipes[index_command][1];
+	if (mini_shell()->cmd_num < 2)
+		return ;
+	if (mini_shell()->fd_in == STDIN_FILENO)
+		if (index_command != 0)//ler no fim -> 0
+			mini_shell()->fd_in = mini_shell()->pipes[index_command - 1][READ_PI];
+	if (mini_shell()->fd_out == STDOUT_FILENO)//escrever no fim -> 1
+		if (!is_last_command(index_command))
+			mini_shell()->fd_out = mini_shell()->pipes[index_command][WRITE_PI];
 }
 
 /* void	pipes(void)

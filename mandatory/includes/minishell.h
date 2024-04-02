@@ -29,25 +29,11 @@
 # include <errno.h>
 # include <sys/types.h>
 
-# define SYM	"<>\'\"| "
-# define QUO	"\'\""
-# define SPE	"<>| "
-
-typedef struct s_data
-{
-	int			fd;
-	char		*oldpwd;
-	char		*pwd;
-	int			path_change;
-	int			pid;
-	char		*comm;
-	char		**paths;
-}				t_data;
-
-//working on the real deal.
-//experimentar input como char **
-//e quando encontra um | ou >>
-//incrementa para o proximo array
+# define SYM		"<>\'\"| "
+# define QUO		"\'\""
+# define SPE		"<>| "
+# define READ_PI	'0'
+# define WRITE_PI	'1'
 
 typedef enum e_meta_tok
 {
@@ -109,6 +95,10 @@ typedef struct s_a_s_tree
  *@param prompt Prompt in the command line
  *@param env Environment ambient's matrix
  *@param path Environment ambient's PATH
+ *@param pipes Pipes and it's respective fd
+ *@param oldpwd Char to remember the previous pwd
+ *@param pwd
+ *@param path_change A trigger for cd
  *@param env_amb_list Linked list of the environment variables
  *@param env_token Linked list of metacharacters tokens
  *@param ast Abstract Syntax Tree
@@ -126,6 +116,9 @@ typedef struct s_mini_env
 	char		**env;
 	char		**path;
 	int			**pipes;
+	char		*oldpwd;
+	char		*pwd;
+	int			path_change;
 	t_list		*env_amb_list;
 	t_list		*env_token;
 	t_a_s_tree	*ast;
@@ -278,6 +271,7 @@ char		*ft_streplace(char *str, char *old, char *new);
 
 // ---------- FREE ---------- //
 void		ft_clean(void *pointer);
+void		ft_free_all(bool del);
 
 // ---------- AST_TOKENS ---------- //
 t_a_s_tree	*ast_new_token(t_token *token);
@@ -342,7 +336,7 @@ void		execute(t_a_s_tree *ast);
 // ---------- PIPES ---------- //
 void		pipes_generate(void);
 pid_t		execute_pipes(t_a_s_tree *node);
-void		atribute_fd_pipes(int index_command);
+void		atribute_pipes_fd(int index_command);
 
 // ---------- VERIFS ---------- //
 bool		builtin_verif(char *command);

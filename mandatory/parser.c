@@ -6,7 +6,7 @@
 /*   By: jofilipe <jofilipe@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 11:11:13 by jofilipe          #+#    #+#             */
-/*   Updated: 2024/03/20 15:37:24 by jofilipe         ###   ########.fr       */
+/*   Updated: 2024/04/02 11:57:54 by jofilipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,6 @@ t_a_s_tree	*extend_pipes(t_a_s_tree *ast, t_a_s_tree *command)
 
 void	parser(void)
 {
-    scanner(RESET);
-    mini_shell()->ast = parser_pipes();
+	scanner(RESET);
+	mini_shell()->ast = parser_pipes();
 }

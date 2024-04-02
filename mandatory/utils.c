@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jofilipe <jofilipe@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jofilipe <jofilipe@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 12:29:02 by jofilipe          #+#    #+#             */
-/*   Updated: 2024/01/10 10:10:27 by jofilipe         ###   ########.fr       */
+/*   Updated: 2024/04/02 11:59:18 by jofilipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,12 +81,12 @@ int	is_every_space(char *str)
 	return (-1);
 }
 
-int ft_strlen_skp(char *str, char *c)
+int	ft_strlen_skp(char *str, char *c)
 {
-    int i;
+	int i;
 
-    i = 0;
-    while (str[i] && !ft_strchr(c, str[i]))
-        i++;
-    return (i);
+	i = 0;
+	while (str[i] && !ft_strchr(c, str[i]))
+		i++;
+	return (i);
 }

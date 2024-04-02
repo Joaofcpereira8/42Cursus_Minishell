@@ -12,15 +12,15 @@
 
 #include "../includes/minishell.h"
 
-int	handle_minus(t_data *data)
+int handle_minus(char *old_pwd)
 {
-	if (chdir(data->oldpwd) == 0)
+	if (chdir(mini_shell()->oldpwd) == 0)
 	{
 		//free(data->pwd);
-		data->oldpwd = data->pwd;
-		data->pwd = getcwd(0, 0);
-		data->path_change = 1;
-		return (printf("%s\n", data->pwd));
+		mini_shell()->oldpwd = mini_shell()->cwd;
+		mini_shell()->cwd = getcwd(0, 0);
+		mini_shell()->path_change = 1;
+		return (printf("%s\n", mini_shell()->cwd));
 	}
 	else
 		return (err_handler('d', NULL));
@@ -29,25 +29,20 @@ int	handle_minus(t_data *data)
 int minicd(char **args)
 {
 	int	i;
-    t_data *data;
 
-    data = ft_calloc(2, sizeof(t_data *));
-    init(data);
 	i = 1;
-	//args = ft_split(args[0], ' ');
 	if (args[2])
 		return (err_handler('c', args[0]));
 	if (args[1][0] == '-' && !args[1][1])
-		return (handle_minus(data));
+		return (handle_minus(mini_shell()->oldpwd));
 	else if (chdir(args[i]) == 0)
 	{
-		data->oldpwd = data->pwd;
-		//free(data->pwd);
+		mini_shell()->oldpwd = mini_shell()->cwd;
 		mini_shell()->cwd = getcwd(0, 0);
-		data->path_change = 1;
+		mini_shell()->path_change = 1;
 	}
 	else
 		return (err_handler('d', NULL));
-    free(args);
+	free(args);
 	return (0);
 }
