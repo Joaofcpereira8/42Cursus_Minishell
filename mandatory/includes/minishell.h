@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jofilipe <jofilipe@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: bbento-e <bbento-e@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 18:26:52 by jofilipe          #+#    #+#             */
-/*   Updated: 2024/03/28 17:57:53 by jofilipe         ###   ########.fr       */
+/*   Updated: 2024/04/02 23:53:49 by bbento-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,7 @@ typedef struct s_a_s_tree
  *@param path Environment ambient's PATH
  *@param pipes Pipes and it's respective fd
  *@param oldpwd Char to remember the previous pwd
- *@param pwd
+ *@param pwd Char to remember the current pwd
  *@param path_change A trigger for cd
  *@param env_amb_list Linked list of the environment variables
  *@param env_token Linked list of metacharacters tokens
