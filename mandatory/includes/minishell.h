@@ -6,7 +6,7 @@
 /*   By: bbento-e <bbento-e@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 18:26:52 by jofilipe          #+#    #+#             */
-/*   Updated: 2024/04/03 11:20:37 by bbento-e         ###   ########.fr       */
+/*   Updated: 2024/04/03 12:26:14 by bbento-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -148,7 +148,7 @@ char		*path_join(char *path, char *cm);
 void		exec_command(char **args);
 
 // ------------ USER ------------ //
-char		pwd_finder(t_data *data);
+char		pwd_finder();
 void		get_prompt(t_mini_env *envp);
 
 // ----------- BUILT-INs ----------- //
@@ -168,17 +168,16 @@ int			built_type_next(char **args);
  * guardada na estrutura mini_shell.
   */
 void		input(void);
-void		init(t_data *data);
 int			iseven(int s_trig);
 int			check_spec(char **str);
 
 // ----------- REDIRECTS ---------- //
 int			heredoc(char *file);
-int			handle_hdoc(t_data *data, char **comm);
-int			handle_appnd(t_data *data, char **comm);
-int			handle_input(t_data *data, char **comm);
-int			handle_output(t_data *data, char **comm);
-int			redirects(t_data *data, char **comm, t_meta_tok token);
+int			handle_hdoc(char **comm);
+int			handle_appnd(char **comm);
+int			handle_input(char **comm);
+int			handle_output(char **comm);
+int			redirects(char **comm, t_meta_tok token);
 
 // ------------ ERRORS ----------- //
 int			err_handler(char c, char *cmd);

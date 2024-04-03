@@ -6,7 +6,7 @@
 /*   By: jofilipe <jofilipe@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 12:05:45 by jofilipe          #+#    #+#             */
-/*   Updated: 2024/03/22 16:50:14 by jofilipe         ###   ########.fr       */
+/*   Updated: 2024/04/03 12:24:47 by bbento-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,30 +74,34 @@ static void clean_up(FILE * file)
 	}
 }*/
 
-
-int	redirects(t_data *data, char **comm, t_meta_tok token)
+/**
+ * @brief Redirections
+ *
+ * @param comm Comunismo
+ * @param token Tokens
+ */
+int	redirects(char **comm, t_meta_tok token)
 {
 	int	i;
 
 	i = 0;
 	while (comm[i])
 	{
-		if (token == red_out)//>
-			return (handle_output(data, comm));
-		else if (token == red_apnd)//>>
-			return (handle_appnd(data, comm));
-		else if (token == red_in)//<
-			return (handle_input(data, comm));
-		else if (token == red_hdoc)//<<
-			return (handle_hdoc(data, comm));
+		if (token == red_out)
+			return (handle_output(comm));
+		else if (token == red_apnd)
+			return (handle_appnd(comm));
+		else if (token == red_in)
+			return (handle_input(comm));
+		else if (token == red_hdoc)
+			return (handle_hdoc(comm));
 		i++;
 	}
 	return (-1);
 }
 
-int	handle_input(t_data *data, char **comm)
+int	handle_input(char **comm)
 {
-	(void)data;
 	mini_shell()->fd_in = open(comm[1], O_RDONLY);
 	return (0);
 	/* if(mini_shell()->fd_in)
@@ -105,75 +109,31 @@ int	handle_input(t_data *data, char **comm)
 	return (err_handler('r', "<")); */
 }
 
-/* int handle_output(t_data *data, char **comm) {
-    (void)data;
-
-    // Find the '>' operator
-    int i = 0;
-    while (comm[i] && strcmp(comm[i], ">") != 0) {
-        i++;
-    }
-
-    // Check if '>' was found and if there's a word after it
-    if (comm[i] && comm[i + 1]) {
-        // Open the file
-        int fd_out = open(comm[i + 1], O_WRONLY | O_CREAT | O_TRUNC, 0777);
-        if (fd_out == -1) {
-            return err_handler('r', ">");
-        }
-
-        // Save the current standard output
-        int stdout_copy = dup(STDOUT_FILENO);
-
-        // Replace standard output with the file
-        dup2(fd_out, STDOUT_FILENO);
-
-        // Execute your command here
-
-        // Restore the standard output
-        dup2(stdout_copy, STDOUT_FILENO);
-
-        // Close the file descriptors
-        close(fd_out);
-        close(stdout_copy);
-
-        return 0;
-    } else {
-        // Handle error: no filename provided
-        return -1;
-    }
-} */
-
-int	handle_output(t_data *data, char **comm)
+int	handle_output(char **comm)
 {
-	(void)data;
 	(mini_shell()->fd_in) = open(comm[1], O_CREAT | O_WRONLY | O_TRUNC, 0666);
-	return (0);
-/* 	printf("entered output with command %s\n", comm[6]);
-	(void)data;
-	mini_shell()->fd_out = open(comm[6], O_WRONLY | O_CREAT | O_TRUNC, 0777);
+ 	printf("entered output with command %s\n", comm[6]);
+    (mini_shell()->fd_out) = open(comm[6], O_WRONLY | O_CREAT | O_TRUNC, 0777);
 	printf("opened file with fd %i\n", mini_shell()->fd_out);
-	if(mini_shell()->fd_out == -1)
+	if((mini_shell()->fd_out) == -1)
 		return (err_handler('r', ">"));
 	printf("attempting dup2\n");
 	dup2(mini_shell()->fd_out, 1);
 	printf("closing fd %i\n", mini_shell()->fd_out);
 	close(mini_shell()->fd_out);
-	return (0); */
+	return (0);
 }
 
-int	handle_hdoc(t_data *data, char **comm)
+int	handle_hdoc(char **comm)
 {
-	(void)data;
 	mini_shell()->fd_in = heredoc(comm[1]);
 	if(mini_shell()->fd_in)
 		return (0);
 	return (err_handler('r', "<<"));
 }
 
-int	handle_appnd(t_data *data, char **comm)
+int	handle_appnd(char **comm)
 {
-	(void)data;
 	mini_shell()->fd_in = open(comm[1], O_WRONLY | O_CREAT | O_APPEND, 0666);
 	return (0);
 	/* if(mini_shell()->fd_in)

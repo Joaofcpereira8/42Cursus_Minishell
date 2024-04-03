@@ -6,13 +6,13 @@
 /*   By: jofilipe <jofilipe@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 12:11:46 by bbento-e          #+#    #+#             */
-/*   Updated: 2024/03/22 17:53:12 by jofilipe         ###   ########.fr       */
+/*   Updated: 2024/04/03 14:08:18 by bbento-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
 
-int handle_minus(char *old_pwd)
+int handle_minus()
 {
 	if (chdir(mini_shell()->oldpwd) == 0)
 	{
@@ -34,7 +34,7 @@ int minicd(char **args)
 	if (args[2])
 		return (err_handler('c', args[0]));
 	if (args[1][0] == '-' && !args[1][1])
-		return (handle_minus(mini_shell()->oldpwd));
+		return (handle_minus());
 	else if (chdir(args[i]) == 0)
 	{
 		mini_shell()->oldpwd = mini_shell()->cwd;

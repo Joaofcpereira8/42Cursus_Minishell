@@ -6,7 +6,7 @@
 /*   By: jofilipe <jofilipe@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/21 18:50:32 by jofilipe          #+#    #+#             */
-/*   Updated: 2024/04/02 11:58:44 by jofilipe         ###   ########.fr       */
+/*   Updated: 2024/04/03 14:18:02 by bbento-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,8 @@ pid_t	execute_pipes(t_a_s_tree *node)
 		else
 			last = exec_is_fork(node);
 	}
-	/*else if
-		redirection*/
+	else if (redirects(node->args, node->token->type) == -1)
+        return (err_handler('h', ""));
 	return (last);
 }
 
