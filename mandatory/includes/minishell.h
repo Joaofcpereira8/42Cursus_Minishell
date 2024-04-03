@@ -6,7 +6,7 @@
 /*   By: bbento-e <bbento-e@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 18:26:52 by jofilipe          #+#    #+#             */
-/*   Updated: 2024/04/02 23:53:49 by bbento-e         ###   ########.fr       */
+/*   Updated: 2024/04/03 11:20:37 by bbento-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -272,6 +272,8 @@ char		*ft_streplace(char *str, char *old, char *new);
 // ---------- FREE ---------- //
 void		ft_clean(void *pointer);
 void		ft_free_all(bool del);
+void        free_array(char **arr);
+void        free_struct(t_mini_env *mini);
 
 // ---------- AST_TOKENS ---------- //
 t_a_s_tree	*ast_new_token(t_token *token);

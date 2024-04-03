@@ -45,6 +45,7 @@ SRCS =	mandatory/main.c \
 		mandatory/input_verif2.c \
 		mandatory/expander.c \
 		mandatory/free.c \
+		mandatory/frees.c \
 		mandatory/ast_tokens.c \
 		mandatory/signals.c \
 		mandatory/handle_signals.c \
