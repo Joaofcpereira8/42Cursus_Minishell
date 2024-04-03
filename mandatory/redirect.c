@@ -6,7 +6,7 @@
 /*   By: jofilipe <jofilipe@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 12:05:45 by jofilipe          #+#    #+#             */
-/*   Updated: 2024/04/03 12:24:47 by bbento-e         ###   ########.fr       */
+/*   Updated: 2024/04/03 14:31:58 by bbento-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,7 +111,7 @@ int	handle_input(char **comm)
 
 int	handle_output(char **comm)
 {
-	(mini_shell()->fd_in) = open(comm[1], O_CREAT | O_WRONLY | O_TRUNC, 0666);
+	(mini_shell()->fd_in) = open(comm[1], O_CREAT | O_WRONLY | O_TRUNC, 0777);
  	printf("entered output with command %s\n", comm[6]);
     (mini_shell()->fd_out) = open(comm[6], O_WRONLY | O_CREAT | O_TRUNC, 0777);
 	printf("opened file with fd %i\n", mini_shell()->fd_out);
