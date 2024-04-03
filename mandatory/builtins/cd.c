@@ -12,11 +12,10 @@
 
 #include "../includes/minishell.h"
 
-int handle_minus()
+int	handle_minus(void)
 {
 	if (chdir(mini_shell()->oldpwd) == 0)
 	{
-		//free(data->pwd);
 		mini_shell()->oldpwd = mini_shell()->cwd;
 		mini_shell()->cwd = getcwd(0, 0);
 		mini_shell()->path_change = 1;
@@ -26,7 +25,7 @@ int handle_minus()
 		return (err_handler('d', NULL));
 }
 
-int minicd(char **args)
+int	mini_cd(char **args)
 {
 	int	i;
 
@@ -43,6 +42,5 @@ int minicd(char **args)
 	}
 	else
 		return (err_handler('d', NULL));
-	free(args);
 	return (0);
 }

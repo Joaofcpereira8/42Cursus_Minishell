@@ -149,12 +149,12 @@ void		exec_command(char **args);
 
 // ------------ USER ------------ //
 char		pwd_finder();
-void		get_prompt(t_mini_env *envp);
+void		get_prompt();
 
 // ----------- BUILT-INs ----------- //
 int			minipdw(void);
 void		minienv(t_list *env_amb_list);
-int			minicd(char **args);
+int			mini_cd(char **args);
 int			miniecho(char **args);
 void		miniexit(char **args);
 int			miniunset(char **args);
@@ -270,9 +270,8 @@ char		*ft_streplace(char *str, char *old, char *new);
 
 // ---------- FREE ---------- //
 void		ft_clean(void *pointer);
+void		clean_env(t_env *env);
 void		ft_free_all(bool del);
-void        free_array(char **arr);
-void        free_struct(t_mini_env *mini);
 
 // ---------- AST_TOKENS ---------- //
 t_a_s_tree	*ast_new_token(t_token *token);

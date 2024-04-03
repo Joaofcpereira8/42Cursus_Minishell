@@ -16,7 +16,7 @@ void	input(void)
 {
 	while (1)
 	{
-		get_prompt(mini_shell());
+		get_prompt();
 		mini_shell()->input = readline(mini_shell()->prompt);
 		if (!mini_shell()->input)
 		{
@@ -32,7 +32,7 @@ void	input(void)
 			continue;
 		} */
 		env_update();
-		free(mini_shell()->input);
+		ft_free_all(false);
 	}
 	rl_clear_history();
 }

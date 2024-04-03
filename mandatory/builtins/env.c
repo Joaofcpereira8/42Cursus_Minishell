@@ -23,7 +23,7 @@ void	minienv(t_list *env_amb_list)
 		printf("%s\n",mini_shell()->env[++i]);
 }
 
-void	get_prompt(t_mini_env *envp)
+void get_prompt(void)
 {
 	char	*env = NULL;
 	char	*user = NULL;
@@ -40,11 +40,9 @@ void	get_prompt(t_mini_env *envp)
 	env = ft_strjoin(env, sesh);
 	env = ft_strjoin(env, ":~");
 	env = ft_strjoin(env, ft_substr(ft_strnstr(getcwd(0, 0), user, i), a, i));
-	//mini_shell()->prompt = ft_strjoin(env, "/$ ");
-	envp->prompt = ft_strjoin(env, "/$ ");
+	mini_shell()->prompt = ft_strjoin(env, "/$ ");
 	free(env);
 	free(user);
-	//free(sesh);
 }
 
 void	env_update(void)

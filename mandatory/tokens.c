@@ -35,7 +35,7 @@ t_token	*copy_token(t_token *token)
 	return (duplicate);
 }
 
-int conv_to_token(char *str, t_meta_tok type, bool joinable)
+int	conv_to_token(char *str, t_meta_tok type, bool joinable)
 {
 	t_token	*token;
 

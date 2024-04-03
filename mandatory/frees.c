@@ -13,31 +13,31 @@
 
 #include "includes/minishell.h"
 
-void	free_struct(t_mini_env *mini)
-{
-	int	i;
+//void	free_struct(t_mini_env *mini)
+//{
+//	int	i;
+//
+//	i = 0;
+//	free(mini->cwd);
+//	free(mini->input);
+//	free(mini->prompt);
+//	free(mini->oldpwd);
+//	free(mini->pwd);
+//	free_array(mini->env);
+//	free_array(mini->path);
+//}
 
-	i = 0;
-	free(mini->cwd);
-	free(mini->input);
-	free(mini->prompt);
-	free(mini->oldpwd);
-	free(mini->pwd);
-	free_array(mini->env);
-	free_array(mini->path);
-}
-
-void	free_array(char **arr)
-{
-	int	i;
-
-	i = 0;
-	if(!arr)
-		return ;
-	while (arr[i])
-	{
-		free(arr[i]);
-		i++;
-	}
-	free(arr);
-}
+//void	free_array(char **arr)
+//{
+//	int	i;
+//
+//	i = 0;
+//	if(!arr)
+//		return ;
+//	while (arr[i])
+//	{
+//		free(arr[i]);
+//		i++;
+//	}
+//	free(arr);
+//}

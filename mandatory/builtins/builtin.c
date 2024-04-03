@@ -12,7 +12,7 @@
 
 #include "../includes/minishell.h"
 
-int built_type(char **args)
+int	built_type(char **args)
 {
 	if(!builtin_verif(args[0]))
 		exec_command(args);
@@ -22,12 +22,11 @@ int built_type(char **args)
 	}
 	else if (ft_strncmp(mini_shell()->input, "cd", 2) == 0)
 	{
-		minicd(args);
+		mini_cd(args);
 	}
 	else if (ft_strncmp(mini_shell()->input, "pwd", 3) == 0)
 	{
-		//minipdw(data);
-		// printf("%s\n", mini_shell()->cwd);
+		minipdw();
 	}
 	else if (ft_strncmp(mini_shell()->input, "export", 6) == 0)
 	{
@@ -38,7 +37,7 @@ int built_type(char **args)
 	return (0);
 }
 
-int built_type_next(char **args)
+int	built_type_next(char **args)
 {
 	if(ft_strncmp(mini_shell()->input, "unset", 5) == 0)
 	{

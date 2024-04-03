@@ -53,7 +53,7 @@ bool	metacharacters_verif(void)
 	return (true);
 }
 
-int find_sym(char *quote, char *str)
+int	find_sym(char *quote, char *str)
 {
 	int		skip;
 	char	*token;

@@ -16,7 +16,7 @@ void	pipes_generate(void)
 {
 	int	i;
 
-	mini_shell()->pipes = ft_calloc(mini_shell()->cmd_num - 1, sizeof(int *));
+	mini_shell()->pipes = ft_calloc(mini_shell()->cmd_num, sizeof(int *));
 	if (!mini_shell()->pipes)
 		return ;
 	i = -1;

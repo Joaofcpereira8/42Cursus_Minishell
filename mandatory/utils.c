@@ -44,8 +44,8 @@ void	list_delete(void *list)
 	i = 0;
 	prov_lst = (char **)list;
 	while (prov_lst[i])
-		free(prov_lst[i++]);
-	free(list);
+		ft_clean(prov_lst[i++]);
+	ft_clean(list);
 }
 
 char	**add_to_mat(char **mat1, char *str)
