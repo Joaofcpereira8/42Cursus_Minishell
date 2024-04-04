@@ -29,17 +29,18 @@ void get_prompt(void)
 	char	*user = NULL;
 	char	*sesh = NULL;
 	int		i;
-	int		a;
+	int		u;
 
-	i = ft_strlen(getcwd(0, 0));
+	i = ft_strlen(mini_shell()->cwd);
 	user = ft_get_env("USER");
-	a =  ft_strlen(user);
+	u = ft_strlen(user);
 	sesh = "minishell";
 	env = ft_strjoin(env, user);
 	env = ft_strjoin(env, "@");
 	env = ft_strjoin(env, sesh);
 	env = ft_strjoin(env, ":~");
-	env = ft_strjoin(env, ft_substr(ft_strnstr(getcwd(0, 0), user, i), a, i));
+	//env = ft_strjoin(env, ft_substr(ft_strnstr(getcwd(0, 0), user, i), u, i));
+	env = ft_strjoin(env, mini_shell()->cwd);
 	mini_shell()->prompt = ft_strjoin(env, "/$ ");
 	free(env);
 	free(user);

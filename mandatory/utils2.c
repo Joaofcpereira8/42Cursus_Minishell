@@ -22,7 +22,7 @@ bool	is_built_in(char *command, char *arg)
 
 bool	is_last_command(int command_numbers)
 {
-	return (command_numbers = mini_shell()->cmd_num - 1);
+	return (command_numbers == mini_shell()->cmd_num - 1);
 }
 
 void	fd_duplicate(void)
@@ -35,13 +35,13 @@ void	fd_duplicate(void)
 
 void	fd_close(int command_index)
 {
-	if (mini_shell()->fd_in >= STDIN_FILENO)
+	if (mini_shell()->fd_in > STDIN_FILENO)
 		close(mini_shell()->fd_in);
-	if (mini_shell()->fd_out >= STDOUT_FILENO)
+	if (mini_shell()->fd_out > STDOUT_FILENO)
 		close(mini_shell()->fd_out);
 	if (command_index > 0)
 		close(mini_shell()->pipes[command_index - 1][READ_PI]);
-	if (is_last_command(command_index))
+	if (!is_last_command(command_index))
 		close(mini_shell()->pipes[command_index][WRITE_PI]);
 	mini_shell()->fd_in = STDIN_FILENO;
 	mini_shell()->fd_out = STDOUT_FILENO;

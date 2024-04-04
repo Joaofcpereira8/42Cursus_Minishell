@@ -26,11 +26,27 @@ void	clean_env(t_env *env)
 	ft_clean(env);
 }
 
+void	clean_ast_tokens(t_a_s_tree *ast)
+{
+	destroy_token(ast->token);
+	list_delete(ast->args);
+}
+
+void	clean_a_s_tree(t_a_s_tree *ast, void (*del)(t_a_s_tree *))
+{
+	if (!ast)
+		return ;
+	clean_a_s_tree(ast->left, del);
+	clean_a_s_tree(ast->right, del);
+	del(ast);
+	ft_clean(ast);
+}
+
 void	ft_free_all(bool del)
 {
 	ft_clean(mini_shell()->input);
 	ft_clean(mini_shell()->prompt);
-	//free da arvore sintaxe
+	clean_a_s_tree(mini_shell()->ast, clean_ast_tokens);
 	list_delete(mini_shell()->pipes);
 	ft_lstclear(&mini_shell()->env_token, (void (*)(void *))destroy_token);
 	mini_shell()->env_token = NULL;
@@ -44,5 +60,6 @@ void	ft_free_all(bool del)
 		list_delete(mini_shell()->env);
 		ft_lstclear(&mini_shell()->env_amb_list, (void (*)(void *))clean_env);
 		ft_lstclear(&mini_shell()->temp_env, (void (*)(void *))clean_env);
+		exit(mini_shell()->exit_status);
 	}
 }

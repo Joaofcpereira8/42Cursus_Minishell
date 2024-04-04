@@ -271,6 +271,8 @@ char		*ft_streplace(char *str, char *old, char *new);
 // ---------- FREE ---------- //
 void		ft_clean(void *pointer);
 void		clean_env(t_env *env);
+void		clean_ast_tokens(t_a_s_tree *ast);
+void		clean_a_s_tree(t_a_s_tree *ast, void (*del)(t_a_s_tree *));
 void		ft_free_all(bool del);
 
 // ---------- AST_TOKENS ---------- //
