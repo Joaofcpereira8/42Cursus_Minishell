@@ -23,32 +23,33 @@ void	minienv(t_list *env_amb_list)
 		printf("%s\n",mini_shell()->env[++i]);
 }
 
-void get_prompt(void)
+void	get_prompt(void)
 {
 	char	*env = NULL;
 	char	*user = NULL;
 	char	*sesh = NULL;
-	int		i;
-	int		u;
+	char	*temp = NULL;
 
-	i = ft_strlen(mini_shell()->cwd);
 	user = ft_get_env("USER");
-	u = ft_strlen(user);
 	sesh = "minishell";
-	env = ft_strjoin(env, user);
-	env = ft_strjoin(env, "@");
-	env = ft_strjoin(env, sesh);
+	temp = ft_strjoin(user, "@");
+	env = ft_strjoin(temp, sesh);
+	free(temp);
+	temp = env;
 	env = ft_strjoin(env, ":~");
-	//env = ft_strjoin(env, ft_substr(ft_strnstr(getcwd(0, 0), user, i), u, i));
+	free(temp);
+	temp = env;
 	env = ft_strjoin(env, mini_shell()->cwd);
+	free(temp);
+	temp = env;
 	mini_shell()->prompt = ft_strjoin(env, "/$ ");
+	free(temp);
 	free(user);
-	free(env);
 }
 
 void	env_update(void)
 {
-	char *tmp;
+	char	*tmp;
 
 	list_delete(mini_shell()->path);
 	list_delete(mini_shell()->env);
