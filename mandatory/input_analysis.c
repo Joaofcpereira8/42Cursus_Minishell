@@ -21,7 +21,8 @@ void	input(void)
 		if (!mini_shell()->input)
 		{
 			printf("exit\n");
-			ft_free_all(true);
+			ft_free();
+			ft_free_all();
 		}
 		add_history(mini_shell()->input);
 		figure_out();
@@ -32,7 +33,7 @@ void	input(void)
 			continue;
 		} */
 		env_update();
-		ft_free_all(false);
+		ft_free();
 	}
 	rl_clear_history();
 }

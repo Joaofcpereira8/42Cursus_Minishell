@@ -43,8 +43,8 @@ pid_t	execute_pipes(t_a_s_tree *node)
 		else
 			last = exec_is_fork(node);
 	}
-	else if (redirects(node->args, node->token->type) == -1)
-        return (err_handler('h', ""));
+	else if (redirection(node->token))
+		redirects(node->token->type, node->args[0]);
 	return (last);
 }
 

@@ -177,7 +177,7 @@ int			handle_hdoc(char **comm);
 int			handle_appnd(char **comm);
 int			handle_input(char **comm);
 int			handle_output(char **comm);
-int			redirects(char **comm, t_meta_tok token);
+int redirects(t_meta_tok token, char *comm);
 
 // ------------ ERRORS ----------- //
 int			err_handler(char c, char *cmd);
@@ -273,7 +273,8 @@ void		ft_clean(void *pointer);
 void		clean_env(t_env *env);
 void		clean_ast_tokens(t_a_s_tree *ast);
 void		clean_a_s_tree(t_a_s_tree *ast, void (*del)(t_a_s_tree *));
-void		ft_free_all(bool del);
+void 		ft_free(void);
+void		ft_free_all(void);
 
 // ---------- AST_TOKENS ---------- //
 t_a_s_tree	*ast_new_token(t_token *token);

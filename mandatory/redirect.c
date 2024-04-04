@@ -80,7 +80,7 @@ static void clean_up(FILE * file)
  * @param comm Comunismo
  * @param token Tokens
  */
-int	redirects(char **comm, t_meta_tok token)
+int	redirects(t_meta_tok token, char *comm)
 {
 	int	i;
 
@@ -88,13 +88,13 @@ int	redirects(char **comm, t_meta_tok token)
 	while (comm[i])
 	{
 		if (token == red_out)
-			return (handle_output(comm));
+			return (handle_output(&comm));
 		else if (token == red_apnd)
-			return (handle_appnd(comm));
+			return (handle_appnd(&comm));
 		else if (token == red_in)
-			return (handle_input(comm));
+			return (handle_input(&comm));
 		else if (token == red_hdoc)
-			return (handle_hdoc(comm));
+			return (handle_hdoc(&comm));
 		i++;
 	}
 	return (-1);

@@ -42,8 +42,8 @@ void get_prompt(void)
 	//env = ft_strjoin(env, ft_substr(ft_strnstr(getcwd(0, 0), user, i), u, i));
 	env = ft_strjoin(env, mini_shell()->cwd);
 	mini_shell()->prompt = ft_strjoin(env, "/$ ");
-	free(env);
 	free(user);
+	free(env);
 }
 
 void	env_update(void)
