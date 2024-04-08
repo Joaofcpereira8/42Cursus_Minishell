@@ -6,7 +6,7 @@
 /*   By: bbento-e <bbento-e@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 18:26:52 by jofilipe          #+#    #+#             */
-/*   Updated: 2024/04/03 12:26:14 by bbento-e         ###   ########.fr       */
+/*   Updated: 2024/04/08 19:17:16 by bbento-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -158,7 +158,7 @@ int			mini_cd(char **args);
 int			miniecho(char **args);
 void		miniexit(char **args);
 int			miniunset(char **args);
-int			miniexport(char **args);
+int			miniexport(void);
 int			built_type(char **args);
 int			built_type_next(char **args);
 

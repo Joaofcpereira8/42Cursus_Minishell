@@ -6,7 +6,7 @@
 /*   By: jofilipe <jofilipe@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 12:46:06 by jofilipe          #+#    #+#             */
-/*   Updated: 2024/04/02 12:00:35 by jofilipe         ###   ########.fr       */
+/*   Updated: 2024/04/08 19:31:17 by bbento-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,4 +45,12 @@ void	fd_close(int command_index)
 		close(mini_shell()->pipes[command_index][WRITE_PI]);
 	mini_shell()->fd_in = STDIN_FILENO;
 	mini_shell()->fd_out = STDOUT_FILENO;
+}
+
+int	tlst_size(t_list *lst)
+{
+	while (lst)
+	{
+
+	}
 }
