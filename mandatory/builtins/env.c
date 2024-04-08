@@ -6,7 +6,7 @@
 /*   By: jofilipe <jofilipe@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 12:11:57 by bbento-e          #+#    #+#             */
-/*   Updated: 2024/03/20 23:56:05 by jofilipe         ###   ########.fr       */
+/*   Updated: 2024/04/08 17:49:16 by bbento-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,23 +23,26 @@ void	minienv(t_list *env_amb_list)
 		printf("%s\n",mini_shell()->env[++i]);
 }
 
-char *get_prompt(void)
+char	*get_prompt(void)
 {
-	char	*env = NULL;
-	char	*user = NULL;
-	char	*sesh;
+    char	*env;
+    char	*user;
+    int		i;
+    int		a;
 
-	env = NULL;
-	user = NULL;
-	user = ft_get_env("USER");
-	sesh = "minishell";
-	user = ft_strjoin(user, "@");
-	user = ft_strjoin(user, sesh);
-	user = ft_strjoin(user, ":~");
-	env = ft_strjoin(user, mini_shell()->cwd);
-	env = ft_strjoin(env, "/$ ");
-	free(user);
-	return (env);
+    env = NULL;
+    user = NULL;
+    i = ft_strlen(getcwd(0, 0));
+    user = ft_get_env("USER");
+    a =  ft_strlen(user);
+    env = ft_strjoin(env, user);
+    env = ft_strjoin(env, "@");
+    env = ft_strjoin(env, "minishell");
+    env = ft_strjoin(env, ":~");
+    env = ft_strjoin(env, ft_substr(ft_strnstr(getcwd(0, 0), user, i), a, i));
+    env = ft_strjoin(env, "/$ ");
+    free(user);
+    return (env);
 }
 
 void	env_update(void)
