@@ -22,7 +22,7 @@ void	pipes_generate(void)
 	i = -1;
 	while (++i < mini_shell()->cmd_num - 1)
 	{
-		(mini_shell()->pipes[i] = ft_calloc(2, sizeof(int)));
+		(mini_shell()->pipes[i]) = ft_calloc(2, sizeof(int));
 		pipe(mini_shell()->pipes[i]);
 	}
 }

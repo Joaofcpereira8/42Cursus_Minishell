@@ -41,7 +41,7 @@ void	execute(t_a_s_tree *ast)
 	pipes_generate();
 	last = execute_pipes(ast);
 	last = waitpid(last, &status, 0);
-	while (waitpid(last, NULL, 0) > 0)
+	while (waitpid(0, NULL, 0) > 0)
 		continue ;
 	if (WIFEXITED(status))
 		mini_shell()->exit_status = WEXITSTATUS(status);

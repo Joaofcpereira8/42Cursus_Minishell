@@ -6,7 +6,7 @@
 /*   By: jofilipe <jofilipe@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 14:33:40 by jofilipe          #+#    #+#             */
-/*   Updated: 2024/04/03 14:57:55 by bbento-e         ###   ########.fr       */
+/*   Updated: 2024/03/28 17:53:35 by jofilipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,9 @@ void	input(void)
 			ft_free();
 			ft_free_all();
 		}
-        if (mini_shell()->input[0])
-		    add_history(mini_shell()->input);
+		if (!*mini_shell()->input)
+			continue;
+		add_history(mini_shell()->input);
 		figure_out();
 		// testing redirects:
 		/* if (redirects(&data, args, red_out) == -1)
@@ -36,5 +37,5 @@ void	input(void)
 		env_update();
 		ft_free();
 	}
-    rl_clear_history();
+	rl_clear_history();
 }
