@@ -21,9 +21,7 @@ pid_t	exec_is_fork(t_a_s_tree *command)
 	if (pid == 0)
 	{
 		if (mini_shell()->fd_in == -1 || mini_shell()->fd_out == -1)
-		{
 			ft_free();
-		}
 		atribute_pipes_fd(command->index);
 		fd_duplicate();
 		exec_command(command->args);

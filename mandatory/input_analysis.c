@@ -16,7 +16,7 @@ void	input(void)
 {
 	while (1)
 	{
-		get_prompt();
+		mini_shell()->prompt = get_prompt();
 		mini_shell()->input = readline(mini_shell()->prompt);
 		if (!mini_shell()->input)
 		{

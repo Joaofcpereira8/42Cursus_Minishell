@@ -26,12 +26,11 @@ int miniecho(char **args)
 	//args = ft_split(args[0], ' ');
 	nl = 1;
 	i = 1;
-
-//	if(args[1][0] && args[1][0] == '-' && args[1][1] == 'n')
-//	{
-//		nl = 0;
-//		i++;
-//	}
+	if(args[1][0] && args[1][0] == '-' && args[1][1] == 'n')
+	{
+		nl = 0;
+		i++;
+	}
 	while (args[i])
 	{
 		printf("%s", args[i]);
@@ -39,9 +38,11 @@ int miniecho(char **args)
 			printf(" ");
 		i++;
 	}
-	if (nl == 0)
-		printf("%%");
-	else
+//	if (nl == 0)
+//		printf("%%");
+//	else
+//		printf("\n");
+	if (nl != 0)
 		printf("\n");
 	wait(NULL);
 	return (0);

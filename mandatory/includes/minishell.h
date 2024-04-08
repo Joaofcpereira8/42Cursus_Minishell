@@ -149,7 +149,7 @@ void		exec_command(char **args);
 
 // ------------ USER ------------ //
 char		pwd_finder();
-void		get_prompt();
+char	*get_prompt();
 
 // ----------- BUILT-INs ----------- //
 int			minipdw(void);
@@ -177,7 +177,7 @@ int			handle_hdoc(char **comm);
 int			handle_appnd(char **comm);
 int			handle_input(char **comm);
 int			handle_output(char **comm);
-int redirects(t_meta_tok token, char *comm);
+int			redirects(t_meta_tok token, char *comm);
 
 // ------------ ERRORS ----------- //
 int			err_handler(char c, char *cmd);
