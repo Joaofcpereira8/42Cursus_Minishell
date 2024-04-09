@@ -30,7 +30,7 @@ int	built_type(char **args)
 	}
 	else if (ft_strncmp(mini_shell()->input, "export", 6) == 0)
 	{
-		miniexport(args);
+		miniexport();
 	}
 	else
 		return (built_type_next(args));
