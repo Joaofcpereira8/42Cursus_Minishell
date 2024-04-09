@@ -45,6 +45,13 @@ void	exec_command(char **args)
 	char	*joined_path;
 	int		i;
 
+	if (strchr(args[0], '/'))
+	{
+		if (access(args[0], X_OK) == 0)
+			execve(args[0], args, mini_shell()->env);
+		else
+			perror("execve path directly");
+	}
 	i = 0;
 	path = get_paths();
 	while (path[i])

@@ -23,3 +23,9 @@ void	child_signals(void)
 	signal(SIGINT, handle_child);
 	signal(SIGQUIT, handle_child);
 }
+
+void	ignore_signals(void)
+{
+	signal(SIGINT, SIG_IGN);
+	signal(SIGQUIT, SIG_IGN);
+}

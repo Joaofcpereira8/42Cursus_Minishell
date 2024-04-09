@@ -19,6 +19,7 @@ void	mini_init(char	**env)
 	env_update();
 	(mini_shell()->exit_status) = 0;
 	(mini_shell()->cwd) = getcwd(0, 4096);
+	(mini_shell()->oldpwd) = ft_get_env("OLDPWD");
 	(mini_shell()->fd_in) = STDIN_FILENO;
 	(mini_shell()->fd_out) = STDOUT_FILENO;
 }
