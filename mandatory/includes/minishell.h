@@ -6,7 +6,7 @@
 /*   By: bbento-e <bbento-e@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 18:26:52 by jofilipe          #+#    #+#             */
-/*   Updated: 2024/04/08 19:17:16 by bbento-e         ###   ########.fr       */
+/*   Updated: 2024/04/09 17:09:39 by bbento-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,12 @@ typedef struct s_token
 	t_meta_tok	type;
 	bool		can_join;
 }				t_token;
+
+typedef struct s_clist
+{
+	char			*content;
+	struct s_list	*next;
+}					t_clist;
 
 /**
  * @brief A structure to represent a node of an Abstract Syntax Tree
@@ -144,23 +150,25 @@ int			main(int argc, char **argv, char **envp);
 
 // ------------ EXECVE ------------ //
 char		**get_paths(void);
-char		*path_join(char *path, char *cm);
 void		exec_command(char **args);
+char		*path_join(char *path, char *cm);
 
 // ------------ USER ------------ //
-char		pwd_finder();
 char	*get_prompt();
+char		pwd_finder();
 
 // ----------- BUILT-INs ----------- //
 int			minipdw(void);
-void		minienv(t_list *env_amb_list);
+void		printexp(void);
+//int			miniexport(void);
+t_list		*miniexport(void);
 int			mini_cd(char **args);
 int			miniecho(char **args);
 void		miniexit(char **args);
 int			miniunset(char **args);
-int			miniexport(void);
 int			built_type(char **args);
 int			built_type_next(char **args);
+void		minienv(t_list *env_amb_list);
 
 // ----------- INPUT_ANALYSIS ----------- //
 /**
@@ -180,8 +188,8 @@ int			handle_output(char **comm);
 int			redirects(t_meta_tok token, char *comm);
 
 // ------------ ERRORS ----------- //
-int			err_handler(char c, char *cmd);
 int			check_args(char **str);
+int			err_handler(char c, char *cmd);
 
 // ----------- UTILS ----------- //
 int			sz_env_list(char **env);
@@ -199,10 +207,11 @@ char		**add_to_mat(char **mat1, char *str);
 int			ft_strlen_flag(char const *str, char flag);
 
 // ----------- UTILS2 ----------- //
+void		fd_duplicate(void);
+int			lst_size(t_list *lst);
+void		fd_close(int command_index);
 bool		is_built_in(char *command, char *arg);
 bool		is_last_command(int command_numbers);
-void		fd_duplicate(void);
-void		fd_close(int command_index);
 
 // ---------- VARIABLE_GLOBAL ---------- //
 t_mini_env	*mini_shell(void);
@@ -250,31 +259,31 @@ void		add_env_vars(t_list **envlist, char *container);
 
 // ---------- INPUT_VERIF ---------- //
 int			figure_out(void);
+void		read_metachar(void);
 bool		metacharacters_verif(void);
 int			find_sym(char *quote, char *str);
 bool		is_joinable(char *str, char *match, int skip);
-void		read_metachar(void);
 
 // ---------- INPUT_VERIF2 ---------- //
 bool		input_analysis(void);
-t_token		*scanner(t_operations operations);
-bool		pipe_or_redir(t_token *token);
-bool		redirection(t_token *token);
 bool		is_command(t_token *token);
+bool		redirection(t_token *token);
+bool		pipe_or_redir(t_token *token);
+t_token		*scanner(t_operations operations);
 
 // ---------- EXPANDER ---------- //
 void		expander(void);
-void		expand_variable(t_token *token);
 char		*find_key(char *str);
+void		expand_variable(t_token *token);
 char		*ft_streplace(char *str, char *old, char *new);
 
 // ---------- FREE ---------- //
-void		ft_clean(void *pointer);
-void		clean_env(t_env *env);
-void		clean_ast_tokens(t_a_s_tree *ast);
-void		clean_a_s_tree(t_a_s_tree *ast, void (*del)(t_a_s_tree *));
 void 		ft_free(void);
 void		ft_free_all(void);
+void		clean_env(t_env *env);
+void		ft_clean(void *pointer);
+void		clean_ast_tokens(t_a_s_tree *ast);
+void		clean_a_s_tree(t_a_s_tree *ast, void (*del)(t_a_s_tree *));
 
 // ---------- AST_TOKENS ---------- //
 t_a_s_tree	*ast_new_token(t_token *token);
@@ -327,14 +336,14 @@ bool		metacharacters_verif(void);
 void		read_metachar(void);
 
 // ---------- TOKENS ---------- //
-t_token		*new_token(char *str, t_meta_tok type, bool join);
 t_token		*copy_token(t_token *token);
-int			conv_to_token(char *str, t_meta_tok type, bool joinable);
 void		destroy_token(t_token *token);
+t_token		*new_token(char *str, t_meta_tok type, bool join);
+int			conv_to_token(char *str, t_meta_tok type, bool joinable);
 
 // ---------- EXECUTE ---------- //
-pid_t		exec_is_fork(t_a_s_tree *command);
 void		execute(t_a_s_tree *ast);
+pid_t		exec_is_fork(t_a_s_tree *command);
 
 // ---------- PIPES ---------- //
 void		pipes_generate(void);

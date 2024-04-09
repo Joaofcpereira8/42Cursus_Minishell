@@ -6,7 +6,7 @@
 /*   By: jofilipe <jofilipe@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 12:46:06 by jofilipe          #+#    #+#             */
-/*   Updated: 2024/04/08 19:31:17 by bbento-e         ###   ########.fr       */
+/*   Updated: 2024/04/09 17:23:43 by bbento-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,9 @@
 
 bool	is_built_in(char *command, char *arg)
 {
+	(void)arg;
 	return((!ft_strcmp(command, "echo")) || (!ft_strcmp(command, "cd"))
-		|| (!ft_strcmp(command, "pwd")) || (!ft_strcmp(command, "export") && arg)
+		|| (!ft_strcmp(command, "pwd")) || (!ft_strcmp(command, "export"))
 		|| (!ft_strcmp(command, "unset")) || (!ft_strcmp(command, "env"))
 		|| (!ft_strcmp(command, "exit")));
 }
@@ -47,10 +48,18 @@ void	fd_close(int command_index)
 	mini_shell()->fd_out = STDOUT_FILENO;
 }
 
-int	tlst_size(t_list *lst)
+int	lst_size(t_list *lst)
 {
-	while (lst)
-	{
+	int		i;
+	t_list	*tmp;
 
+	i = 0;
+	tmp = lst;
+	while (tmp != NULL)
+	{
+		i++;
+		tmp = tmp->next;
 	}
+	free(tmp);
+	return (i);
 }
