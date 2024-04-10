@@ -32,8 +32,8 @@
 # define SYM		"<>\'\"| "
 # define QUO		"\'\""
 # define SPE		"<>| "
-# define READ_PI	0
-# define WRITE_PI	1
+# define READ_PI	'0'
+# define WRITE_PI	'1'
 
 typedef enum e_meta_tok
 {

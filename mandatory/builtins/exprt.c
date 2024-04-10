@@ -6,7 +6,7 @@
 /*   By: jofilipe <jofilipe@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 19:13:24 by bbento-e          #+#    #+#             */
-/*   Updated: 2024/04/09 17:26:19 by bbento-e         ###   ########.fr       */
+/*   Updated: 2024/04/10 15:51:39 by bbento-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ t_list *miniexport(void)
 	t_list 	*temp;
 	char	*swap;
 
+	printf("Entered miniexport\n");
+	printexp();
 	i = 0;
 	size = lst_size(mini_shell()->env_amb_list);
 	temp = mini_shell()->env_amb_list;
@@ -36,7 +38,6 @@ t_list *miniexport(void)
 			swap = temp->content;
 			temp->content = temp->next->content;
 			temp->next->content = swap;
-			free(swap);
 			temp = mini_shell()->env_amb_list;
 			i = 0;
 		}
@@ -50,11 +51,11 @@ void	printexp(void)
 {
 	t_list	*current;
 
-	ft_printf("Started printing export\n");
+	printf("Started printing export\n");
 	current = mini_shell()->env_amb_list;
 	while (current != NULL)
 	{
-		ft_printf("%s\n", (char*)current->content);
+		printf("%s\n", (char*)(current->content));
 		current = current->next;
 	}
 }
