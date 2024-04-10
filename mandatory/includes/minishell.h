@@ -6,7 +6,7 @@
 /*   By: bbento-e <bbento-e@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 18:26:52 by jofilipe          #+#    #+#             */
-/*   Updated: 2024/04/09 17:09:39 by bbento-e         ###   ########.fr       */
+/*   Updated: 2024/04/10 18:27:34 by bbento-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -159,9 +159,9 @@ char		pwd_finder();
 
 // ----------- BUILT-INs ----------- //
 int			minipdw(void);
-void		printexp(void);
-//int			miniexport(void);
-t_list		*miniexport(void);
+int			miniexport(void);
+int			miniexport(void);
+void		printexp(int size);
 int			mini_cd(char **args);
 int			miniecho(char **args);
 void		miniexit(char **args);
@@ -208,6 +208,7 @@ int			ft_strlen_flag(char const *str, char flag);
 
 // ----------- UTILS2 ----------- //
 void		fd_duplicate(void);
+int			arr_size(char **str);
 int			lst_size(t_list *lst);
 void		fd_close(int command_index);
 bool		is_built_in(char *command, char *arg);

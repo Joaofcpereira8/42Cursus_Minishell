@@ -6,56 +6,53 @@
 /*   By: jofilipe <jofilipe@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 19:13:24 by bbento-e          #+#    #+#             */
-/*   Updated: 2024/04/10 15:51:39 by bbento-e         ###   ########.fr       */
+/*   Updated: 2024/04/10 18:55:20 by bbento-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
 
-t_list *miniexport(void)
+int	miniexport(void)
 {
 	int		i;
 	int		size;
-	t_list 	*temp;
 	char	*swap;
 
 	printf("Entered miniexport\n");
-	printexp();
+	size = arr_size(mini_shell()->env);
 	i = 0;
-	size = lst_size(mini_shell()->env_amb_list);
-	temp = mini_shell()->env_amb_list;
 	while (i < (size - 1))
 	{
-		i = 0;
-		if (((char*)temp->content)[i] == ((char*)temp->next->content)[i])
+		if (mini_shell()->env[i][0] == mini_shell()->env[i + 1][0])
 		{
-			while ((((char*)temp->content)[i] || ((char*)temp->next->content)[i])
-				   && (((char*)temp->content)[i] == ((char*)temp->next->content)[i]))
+			while ((mini_shell()->env[i][0] || mini_shell()->env[i + 1][0])
+				   && (mini_shell()->env[i][0] == mini_shell()->env[i + 1][0]))
 				i++;
 		}
-		if (((char*)temp->content)[i] > ((char*)temp->next->content)[i])
+		if (mini_shell()->env[i][0] > mini_shell()->env[i + 1][0])
 		{
-			swap = temp->content;
-			temp->content = temp->next->content;
-			temp->next->content = swap;
-			temp = mini_shell()->env_amb_list;
+			swap = mini_shell()->env[i];
+			mini_shell()->env[i] = mini_shell()->env[i + 1];
+			mini_shell()->env[i + 1] = swap;
 			i = 0;
 		}
-		temp = temp->next;
 		i++;
 	}
-	return (temp);
+	printf("Sorted export\n");
+	printexp(size);
+	return (0);
 }
 
-void	printexp(void)
+void	printexp(int size)
 {
-	t_list	*current;
+	int	i;
 
+	i = 0;
 	printf("Started printing export\n");
-	current = mini_shell()->env_amb_list;
-	while (current != NULL)
+	while (i < size)
 	{
-		printf("%s\n", (char*)(current->content));
-		current = current->next;
+		printf("declare -x ");
+		printf("%s\n", mini_shell()->env[i]);
+		i++;
 	}
 }

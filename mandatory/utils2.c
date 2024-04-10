@@ -6,7 +6,7 @@
 /*   By: jofilipe <jofilipe@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 12:46:06 by jofilipe          #+#    #+#             */
-/*   Updated: 2024/04/09 17:23:43 by bbento-e         ###   ########.fr       */
+/*   Updated: 2024/04/10 18:20:16 by bbento-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,5 +61,15 @@ int	lst_size(t_list *lst)
 		tmp = tmp->next;
 	}
 	free(tmp);
+	return (i);
+}
+
+int	arr_size(char **str)
+{
+	int		i;
+
+	i = 0;
+	while (str[i])
+		i++;
 	return (i);
 }
