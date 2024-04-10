@@ -6,7 +6,7 @@
 /*   By: jofilipe <jofilipe@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 12:11:46 by bbento-e          #+#    #+#             */
-/*   Updated: 2024/04/10 15:15:13 by bbento-e         ###   ########.fr       */
+/*   Updated: 2024/04/10 15:20:32 by bbento-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,13 @@ int	handle_minus(void)
 
 int	mini_cd(char **args)
 {
-	if (!args[1])
-		return (chdir("/home/") == 0);
-	if (args[1][0] == '-' && !args[1][1])
+	if (!args[1] && chdir("/home/") == 0)
+	{
+		mini_shell()->oldpwd = mini_shell()->cwd;
+		mini_shell()->cwd = getcwd(0, 0);
+		mini_shell()->path_change = 1;
+	}
+	else if (args[1][0] == '-' && !args[1][1])
 		return (handle_minus());
 	else if (chdir(args[1]) == 0 || ((args[1][0] == ' '
 			|| (args[1][0] == '~' && !args[1][1]) || (args[1][0] == '-' && args[1][1] == '-' && !args[1][2]) || !args[1])
