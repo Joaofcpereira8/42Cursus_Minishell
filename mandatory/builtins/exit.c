@@ -6,7 +6,7 @@
 /*   By: bbento-e <bbento-e@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 12:12:02 by bbento-e          #+#    #+#             */
-/*   Updated: 2024/03/21 10:46:39 by bbento-e         ###   ########.fr       */
+/*   Updated: 2024/04/10 18:23:27 by bbento-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,5 +16,5 @@ void miniexit(char **args)
 {
 	(void)args;
 	printf("exit");
-	exit(0);
+	exit(127);
 }

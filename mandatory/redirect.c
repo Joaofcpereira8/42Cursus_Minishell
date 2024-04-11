@@ -6,7 +6,7 @@
 /*   By: jofilipe <jofilipe@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 12:05:45 by jofilipe          #+#    #+#             */
-/*   Updated: 2024/04/03 14:31:58 by bbento-e         ###   ########.fr       */
+/*   Updated: 2024/04/11 10:59:17 by bbento-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,27 +77,24 @@ static void clean_up(FILE * file)
 /**
  * @brief Redirections
  *
- * @param comm Comunismo
+ * @param comm Communism
  * @param token Tokens
  */
 int	redirects(t_meta_tok token, char *comm)
 {
-	int	i;
-
-	i = 0;
-	while (comm[i])
+	if (token == red_out)
 	{
-		if (token == red_out)
-			return (handle_output(&comm));
-		else if (token == red_apnd)
-			return (handle_appnd(&comm));
-		else if (token == red_in)
-			return (handle_input(&comm));
-		else if (token == red_hdoc)
-			return (handle_hdoc(&comm));
-		i++;
+		(mini_shell()->fd_out) = open(comm, O_CREAT | O_WRONLY | O_TRUNC, 0777);
+		if((mini_shell()->fd_out) != -1)
+			return (0);
 	}
-	return (-1);
+	else if (token == red_apnd)
+		return (handle_appnd(&comm));
+	else if (token == red_in)
+		return (handle_input(&comm));
+	else if (token == red_hdoc)
+		return (handle_hdoc(&comm));
+	return (err_handler('r', ">"));
 }
 
 int	handle_input(char **comm)
@@ -107,21 +104,6 @@ int	handle_input(char **comm)
 	/* if(mini_shell()->fd_in)
 		return (0);
 	return (err_handler('r', "<")); */
-}
-
-int	handle_output(char **comm)
-{
-	(mini_shell()->fd_in) = open(comm[1], O_CREAT | O_WRONLY | O_TRUNC, 0777);
- 	printf("entered output with command %s\n", comm[6]);
-    (mini_shell()->fd_out) = open(comm[6], O_WRONLY | O_CREAT | O_TRUNC, 0777);
-	printf("opened file with fd %i\n", mini_shell()->fd_out);
-	if((mini_shell()->fd_out) == -1)
-		return (err_handler('r', ">"));
-	printf("attempting dup2\n");
-	dup2(mini_shell()->fd_out, 1);
-	printf("closing fd %i\n", mini_shell()->fd_out);
-	close(mini_shell()->fd_out);
-	return (0);
 }
 
 int	handle_hdoc(char **comm)
