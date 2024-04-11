@@ -93,14 +93,14 @@ void	read_metachar(void)
 			i++;
 		else if (mini_shell()->input[i] == '|')
 			i += conv_to_token(ft_strdup("|"), piped, 0);
-		else if (mini_shell()->input[i] == '>')
-			i += conv_to_token(ft_strdup(">"), red_out, 0);
-		else if (mini_shell()->input[i] == '<')
-			i += conv_to_token(ft_strdup("<"), red_in, 0);
 		else if (!ft_strncmp(&mini_shell()->input[i], ">>", 2))
 			i += conv_to_token(ft_strdup(">>"), red_apnd, 0);
 		else if (!ft_strncmp(&mini_shell()->input[i], "<<", 2))
 			i += conv_to_token(ft_strdup("<<"), red_hdoc, 0);
+		else if (mini_shell()->input[i] == '>')
+			i += conv_to_token(ft_strdup(">"), red_out, 0);
+		else if (mini_shell()->input[i] == '<')
+			i += conv_to_token(ft_strdup("<"), red_in, 0);
 		else if (mini_shell()->input[i] == '"')
 			i += find_sym("\"", &mini_shell()->input[i + 1]) + 2;
 		else if (mini_shell()->input[i] == '\'')

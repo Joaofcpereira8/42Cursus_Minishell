@@ -6,7 +6,7 @@
 /*   By: jofilipe <jofilipe@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/04 19:02:29 by bbento-e          #+#    #+#             */
-/*   Updated: 2024/04/10 16:04:16 by bbento-e         ###   ########.fr       */
+/*   Updated: 2024/04/11 11:08:32 by bbento-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	err_handler(char c, char *cmd)
 		printf("%s: wrong arguments for command!"
 			"\nTry 'man %s' for more information\n", cmd, cmd);
 	else if (c == 'C')
-		printf("%s: command not found", cmd);
+		printf("%s: command not found\n", cmd);
 	else if (c == 'd')
 		printf("%s: no such file or directory\n", cmd);
 	else if (c == 'r')
@@ -44,15 +44,15 @@ int	check_args(char **str)
 int	pars_error(char c, int ex_stat)
 {
 	if (c == 'q')
-		printf("minishell: unclosed quotes");
+		printf("minishell: unclosed quotes\n");
 	else if (c == 's')
-		printf("minishell: syntax error near unexpected token ");
+		printf("minishell: syntax error near unexpected token\n");
 	else if (c == 'r')
-		printf("minishell: unclosed redirection");
+		printf("minishell: unclosed redirection\n");
 	else if (c == 'p')
-		printf("minishell: unclosed pipes");
+		printf("minishell: unclosed pipes\n");
 	else if (c == 'b')
-		printf("minishell: bad assignment ");
+		printf("minishell: bad assignment\n");
 	mini_shell()->exit_status = ex_stat;
 	return (-1);
 }
