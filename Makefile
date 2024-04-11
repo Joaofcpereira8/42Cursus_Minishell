@@ -80,6 +80,21 @@ $(NAME): $(OBJS) $(LIBFT)
 		echo "                                      ";
 		echo "$(GREEN)Minishell is ready to go!$(RESET)"
 
+leaks: readline.supp
+		valgrind --suppressions=readline.supp --leak-check=full --show-leak-kinds=all --track-origins=yes ./minishell
+readline.supp:
+	@ echo "{" > readline.supp
+	@ echo "    leak readline" >> readline.supp
+	@ echo "    Memcheck:Leak" >> readline.supp
+	@ echo "    ..." >> readline.supp
+	@ echo "    fun:readline" >> readline.supp
+	@ echo "}" >> readline.supp
+	@ echo "{" >> readline.supp
+	@ echo "    leak add_history" >> readline.supp
+	@ echo "    Memcheck:Leak" >> readline.supp
+	@ echo "    ..." >> readline.supp
+	@ echo "    fun:add_history" >> readline.supp
+	@ echo "}" >> readline.supp
 
 clean:
 	@$(MAKE) clean -C ./libft
