@@ -6,7 +6,7 @@
 /*   By: bbento-e <bbento-e@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 18:26:52 by jofilipe          #+#    #+#             */
-/*   Updated: 2024/04/11 11:50:04 by bbento-e         ###   ########.fr       */
+/*   Updated: 2024/04/11 12:00:00 by bbento-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,8 @@
 # define SYM		"<>\'\"| "
 # define QUO		"\'\""
 # define SPE		"<>| "
-# define READ_PI	'0'
-# define WRITE_PI	'1'
+# define READ_PI	0
+# define WRITE_PI	1
 
 typedef enum e_meta_tok
 {
