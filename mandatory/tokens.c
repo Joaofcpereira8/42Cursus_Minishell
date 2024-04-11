@@ -6,7 +6,7 @@
 /*   By: jofilipe <jofilipe@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 17:38:01 by jofilipe          #+#    #+#             */
-/*   Updated: 2024/03/26 18:01:53 by jofilipe         ###   ########.fr       */
+/*   Updated: 2024/04/11 10:29:20 by bbento-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int	conv_to_token(char *str, t_meta_tok type, bool joinable)
 	if (!str || !type)
 		return (0);
 	ft_lstadd_back(&mini_shell()->env_token, ft_lstnew(token));
-	return (ft_strlen(str));
+	return ((int)ft_strlen(str));
 }
 
 void	destroy_token(t_token *token)

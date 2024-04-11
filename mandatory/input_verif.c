@@ -6,7 +6,7 @@
 /*   By: jofilipe <jofilipe@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 18:19:52 by jofilipe          #+#    #+#             */
-/*   Updated: 2024/03/25 12:41:05 by jofilipe         ###   ########.fr       */
+/*   Updated: 2024/04/11 10:32:35 by bbento-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,9 +94,9 @@ void	read_metachar(void)
 		else if (mini_shell()->input[i] == '|')
 			i += conv_to_token(ft_strdup("|"), piped, 0);
 		else if (mini_shell()->input[i] == '>')
-			i += conv_to_token(ft_strdup(">"), red_in, 0);
+			i += conv_to_token(ft_strdup(">"), red_out, 0);
 		else if (mini_shell()->input[i] == '<')
-			i += conv_to_token(ft_strdup("<"), red_out, 0);
+			i += conv_to_token(ft_strdup("<"), red_in, 0);
 		else if (!ft_strncmp(&mini_shell()->input[i], ">>", 2))
 			i += conv_to_token(ft_strdup(">>"), red_apnd, 0);
 		else if (!ft_strncmp(&mini_shell()->input[i], "<<", 2))

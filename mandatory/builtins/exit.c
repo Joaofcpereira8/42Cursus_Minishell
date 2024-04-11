@@ -14,26 +14,7 @@
 
 void miniexit(char **args)
 {
-	int	i;
-
-	i = -1;
-	if (**args == 0)
-	{
-		printf("exit\n");
-		ft_free();
-		ft_free_all();
-	}
-	else
-	{
-		while (ft_isdigit(args[1][++i]))
-		{
-			mini_shell()->exit_status = **args % 256;
-			printf("exit\n");
-			printf("%i\n", mini_shell()->exit_status);
-			ft_free();
-			ft_free_all();
-		}
-	}
-
-	//exit(mini_shell()->exit_status);
+	(void)args;
+	printf("exit");
+	exit(0);
 }
