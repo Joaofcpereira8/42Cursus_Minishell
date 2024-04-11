@@ -27,7 +27,7 @@ pid_t	exec_is_fork(t_a_s_tree *command)
 		}
 		atribute_pipes_fd(command->index);
 		fd_duplicate();
-		exec_command(command->args);
+		built_type(command->args);
 		ft_free();
 	}
 	fd_close(command->index);

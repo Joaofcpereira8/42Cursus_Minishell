@@ -14,11 +14,8 @@
 
 bool	is_built_in(char *command, char *arg)
 {
-	(void)arg;
-	return((!ft_strcmp(command, "echo")) || (!ft_strcmp(command, "cd"))
-		|| (!ft_strcmp(command, "pwd")) || (!ft_strcmp(command, "export"))
-		|| (!ft_strcmp(command, "unset")) || (!ft_strcmp(command, "env"))
-		|| (!ft_strcmp(command, "exit")));
+	return((!ft_strcmp(command, "cd")) || (!ft_strcmp(command, "export") && arg)
+		|| (!ft_strcmp(command, "unset")) || (!ft_strcmp(command, "exit")));
 }
 
 bool	is_last_command(int command_numbers)
