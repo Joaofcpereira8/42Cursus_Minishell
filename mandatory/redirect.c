@@ -6,7 +6,7 @@
 /*   By: jofilipe <jofilipe@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 12:05:45 by jofilipe          #+#    #+#             */
-/*   Updated: 2024/04/11 11:20:39 by bbento-e         ###   ########.fr       */
+/*   Updated: 2024/04/11 11:47:14 by bbento-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,21 +77,21 @@ static void clean_up(FILE * file)
 /**
  * @brief Redirections
  *
- * @param comm Communism
+ * @param comm Command (File name)
  * @param token Tokens
  */
 int	redirects(t_meta_tok token, char *comm)
 {
-	if (mini_shell()->fd_out == -1)
-		return (err_handler('r', ">"));
 	if (token == red_out)
 		(mini_shell()->fd_out) = open(comm, O_CREAT | O_WRONLY | O_TRUNC, 0666);
 	else if (token == red_apnd)
 		(mini_shell()->fd_out) = open(comm, O_CREAT | O_WRONLY | O_APPEND, 0666);
 	else if (token == red_in)
-		(mini_shell()->fd_out) = open(comm, O_RDONLY);
+		(mini_shell()->fd_in) = open(comm, O_RDONLY);
 	else if (token == red_hdoc)
 		return (handle_hdoc(&comm));
+	if (mini_shell()->fd_out == -1)
+		return (err_handler('r', ">"));
 	return (0);
 }
 

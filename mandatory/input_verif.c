@@ -6,7 +6,7 @@
 /*   By: jofilipe <jofilipe@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 18:19:52 by jofilipe          #+#    #+#             */
-/*   Updated: 2024/04/11 10:32:35 by bbento-e         ###   ########.fr       */
+/*   Updated: 2024/04/11 11:52:26 by bbento-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ bool	is_joinable(char *str, char *match, int skip)
 		return (true);
 	return (false);
 }
-
+// test
 void	read_metachar(void)
 {
 	int	i;
