@@ -6,7 +6,7 @@
 /*   By: jofilipe <jofilipe@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/19 11:23:10 by jofilipe          #+#    #+#             */
-/*   Updated: 2024/03/20 21:37:09 by jofilipe         ###   ########.fr       */
+/*   Updated: 2024/04/11 12:03:59 by bbento-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ bool	pipe_or_redir(t_token *token)
 
 bool	redirection(t_token *token)
 {
-	return(token->type >= red_in && token->type <= red_hdoc);
+	return(token->type <= red_hdoc);
 }
 
 

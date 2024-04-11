@@ -6,7 +6,7 @@
 /*   By: jofilipe <jofilipe@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 17:38:01 by jofilipe          #+#    #+#             */
-/*   Updated: 2024/04/11 11:58:45 by bbento-e         ###   ########.fr       */
+/*   Updated: 2024/04/11 12:01:30 by bbento-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int	conv_to_token(char *str, t_meta_tok type, bool joinable)
 	t_token	*token;
 
 	token = new_token(str, type, joinable);
-	if (!str)
+	if (!str | !token)
 		return (0);
 	ft_lstadd_back(&mini_shell()->env_token, ft_lstnew(token));
 	return ((int)ft_strlen(str));
