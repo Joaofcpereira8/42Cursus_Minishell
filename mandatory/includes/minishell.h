@@ -189,7 +189,7 @@ int			redirects(t_meta_tok token, char *comm);
 
 // ------------ ERRORS ----------- //
 int			check_args(char **str);
-int			err_handler(char c, char *cmd);
+int err_handler(char c, char *cmd, int ext_sts);
 
 // ----------- UTILS ----------- //
 int			sz_env_list(char **env);

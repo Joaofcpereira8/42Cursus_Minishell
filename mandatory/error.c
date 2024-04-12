@@ -12,7 +12,7 @@
 
 #include "includes/minishell.h"
 
-int	err_handler(char c, char *cmd)
+int err_handler(char c, char *cmd, int ext_sts)
 {
 	if (c == 'a')
 		printf("Wrong number of arguments!\nUse ./minishell\n");
@@ -31,13 +31,14 @@ int	err_handler(char c, char *cmd)
 		printf("minishell: Error: Redirection error\n");
 	else if (c == 'h')
 		printf("minishell: Error: Heredoc error\n");
+	mini_shell()->exit_status = ext_sts;
 	return (-1);
 }
 
 int	check_args(char **str)
 {
 	if (check_spec(str) == -1)
-		return (err_handler('q', NULL));
+		return (err_handler('q', NULL, 0));
 	return (0);
 }
 

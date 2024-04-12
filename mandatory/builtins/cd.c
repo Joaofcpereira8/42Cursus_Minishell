@@ -22,7 +22,7 @@ int	handle_minus(void)
 		return (printf("%s\n", mini_shell()->cwd));
 	}
 	else
-		return (err_handler('d', NULL));
+		return (err_handler('d', NULL, 0));
 }
 
 int	mini_cd(char **args)
@@ -44,6 +44,6 @@ int	mini_cd(char **args)
 		mini_shell()->path_change = 1;
 	}
 	else
-		return (err_handler('d', NULL));
+		return (err_handler('d', args[1], 1));
 	return (0);
 }

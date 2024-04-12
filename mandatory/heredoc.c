@@ -15,5 +15,5 @@
 int	heredoc(char *file)
 {
 	(void)file;
-	return (err_handler('h', ""));
+	return (err_handler('h', "", 0));
 }

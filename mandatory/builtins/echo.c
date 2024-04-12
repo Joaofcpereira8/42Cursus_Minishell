@@ -40,7 +40,7 @@ int miniecho(char **args)
 	int	nl;
 
 	if (echo_valid(args) == -1)
-		return (err_handler('e', mini_shell()->input));
+		return (err_handler('e', mini_shell()->input, 0));
 	nl = 1;
 	i = 1;
 	if (args[1][0] && args[1][0] == '-' && args[1][1] == 'n' && !args[1][2])

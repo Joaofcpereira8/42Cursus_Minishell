@@ -91,7 +91,7 @@ int	redirects(t_meta_tok token, char *comm)
 	else if (token == red_hdoc)
 		return (handle_hdoc(&comm));
 	if (mini_shell()->fd_out == -1)
-		return (err_handler('r', ">"));
+		return (err_handler('r', ">", 0));
 	return (0);
 }
 
@@ -109,7 +109,7 @@ int	handle_hdoc(char **comm)
 	mini_shell()->fd_in = heredoc(comm[1]);
 	if(mini_shell()->fd_in)
 		return (0);
-	return (err_handler('r', "<<"));
+	return (err_handler('r', "<<", 0));
 }
 
 int	handle_appnd(char **comm)
