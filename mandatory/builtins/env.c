@@ -18,36 +18,13 @@ variaveis de ambiente*/
 void	minienv(t_list *env_amb_list)
 {
 	(void)env_amb_list;
-	int i = -1;
+	int i = 0;
 	while(mini_shell()->env[i])
 	{
-		printf("%s\n",mini_shell()->env[++i]);
-		if (i == 53)
-			i += 2;
+		printf("%s\n",mini_shell()->env[i]);
+		i++;
 		// para o export, se a variavel nao tiver =, salta essa variavel, fazendo um i++
 	}
-}
-
-char	*get_prompt(void)
-{
-	char	*env;
-	char	*user;
-	int		i;
-	int		a;
-
-	env = NULL;
-	user = NULL;
-	i = ft_strlen(getcwd(0, 0));
-	user = ft_get_env("USER");
-	a =  ft_strlen(user);
-	env = ft_strjoin(env, user);
-	env = ft_strjoin(env, "@");
-	env = ft_strjoin(env, "minishell");
-	env = ft_strjoin(env, ":~");
-	env = ft_strjoin(env, ft_substr(ft_strnstr(getcwd(0, 0), user, i), a, i));
-	env = ft_strjoin(env, "/$ ");
-	free(user);
-	return (env);
 }
 
 void	env_update(void)

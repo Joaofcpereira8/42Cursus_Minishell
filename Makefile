@@ -52,6 +52,7 @@ SRCS =	mandatory/main.c \
 		mandatory/pipes.c \
 		mandatory/execute.c \
 		mandatory/verifs.c \
+		mandatory/prompt.c \
 		mandatory/builtins/builtin.c \
 		mandatory/builtins/cd.c \
 		mandatory/builtins/echo.c \
