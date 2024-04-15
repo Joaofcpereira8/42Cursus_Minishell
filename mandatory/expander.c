@@ -21,6 +21,8 @@ void	expand_variable(t_token *token)
 	while (ft_strnstr(token->str, "$", ft_strlen(token->str)))
 	{
 		key = find_key(token->str);
+		if (ft_strcmp(key, "$") == 0)
+			break ;
 		if (!ft_strcmp(key, "$?"))
 			value = ft_itoa(mini_shell()->exit_status);
 		else

@@ -14,26 +14,30 @@
 
 void miniexit(char **args)
 {
-	int	i;
-
-	i = -1;
-	if (!args[1])
+	if (!args[0])
 	{
 		printf("exit\n");
 		ft_free();
 		ft_free_all();
 	}
-//	else
-//	{
-//		while (ft_isdigit(args[1][++i]))
-//		{
-//			mini_shell()->exit_status = **args % 256;
-//			printf("exit\n");
-//			printf("%i\n", mini_shell()->exit_status);
-//			ft_free();
-//			ft_free_all();
-//		}
-//	}
-	//exit(mini_shell()->exit_status);
-
+	if (args[2])
+	{
+		printf("minishell: exit: too many arguments\n");
+		return ;
+	}
+	if (ft_atoi(args[1]) != -1 || ft_strcmp(args[1], "-1") == 0)
+	{
+		mini_shell()->exit_status = ft_atoi(args[1]) % 256;
+		printf("exit\n");
+		printf("%i\n", mini_shell()->exit_status);
+		ft_free();
+		ft_free_all();
+	}
+	else
+	{
+		printf("exit: %s: numeric argument required\n", args[1]);
+		mini_shell()->exit_status = 2;
+		ft_free();
+		ft_free_all();
+	}
 }

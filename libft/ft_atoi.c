@@ -65,5 +65,5 @@ int	ft_atoi(const char *str)
 		result *= negative;
 		return (result);
 	}
-	return (0);
+	return (-1);
 }
