@@ -61,6 +61,7 @@ void	ft_free_all(void)
 	ft_clean(mini_shell()->cwd);
 	list_delete(mini_shell()->path);
 	list_delete(mini_shell()->env);
+	list_delete(mini_shell()->senv);
 	ft_lstclear(&mini_shell()->env_amb_list, (void (*)(void *))clean_env);
 	ft_lstclear(&mini_shell()->temp_env, (void (*)(void *))clean_env);
 	exit(mini_shell()->exit_status);

@@ -6,7 +6,7 @@
 /*   By: bbento-e <bbento-e@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 18:26:52 by jofilipe          #+#    #+#             */
-/*   Updated: 2024/04/11 12:14:14 by bbento-e         ###   ########.fr       */
+/*   Updated: 2024/04/15 14:57:56 by bbento-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,6 +120,7 @@ typedef struct s_mini_env
 	char		*input;
 	char		*prompt;
 	char		**env;
+	char		**senv;
 	char		**path;
 	int			**pipes;
 	char		*oldpwd;

@@ -6,7 +6,7 @@
 /*   By: jofilipe <jofilipe@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 19:13:24 by bbento-e          #+#    #+#             */
-/*   Updated: 2024/04/10 18:55:20 by bbento-e         ###   ########.fr       */
+/*   Updated: 2024/04/15 14:55:40 by bbento-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,28 +15,30 @@
 int	miniexport(void)
 {
 	int		i;
+	int		j;
 	int		size;
 	char	*swap;
 
-	printf("Entered miniexport\n");
-	size = arr_size(mini_shell()->env);
+	printf("Entered miniexport with\n");
+	mini_shell()->senv = mini_shell()->env;
+	size = arr_size(mini_shell()->senv);
 	i = 0;
-	while (i < (size - 1))
+	while (++i < (size - 1))
 	{
-		if (mini_shell()->env[i][0] == mini_shell()->env[i + 1][0])
+		j = 0;
+		if (mini_shell()->senv[i][j] == mini_shell()->senv[i + 1][j])
 		{
-			while ((mini_shell()->env[i][0] || mini_shell()->env[i + 1][0])
-				   && (mini_shell()->env[i][0] == mini_shell()->env[i + 1][0]))
-				i++;
+			while ((mini_shell()->senv[i][j] || mini_shell()->senv[i + 1][j])
+				   && (mini_shell()->senv[i][j] == mini_shell()->senv[i + 1][j]))
+				j++;
 		}
-		if (mini_shell()->env[i][0] > mini_shell()->env[i + 1][0])
+		if (mini_shell()->senv[i][j] > mini_shell()->senv[i + 1][j])
 		{
-			swap = mini_shell()->env[i];
-			mini_shell()->env[i] = mini_shell()->env[i + 1];
-			mini_shell()->env[i + 1] = swap;
+			swap = mini_shell()->senv[i];
+			mini_shell()->senv[i] = mini_shell()->senv[i + 1];
+			mini_shell()->senv[i + 1] = swap;
 			i = 0;
 		}
-		i++;
 	}
 	printf("Sorted export\n");
 	printexp(size);
@@ -52,7 +54,7 @@ void	printexp(int size)
 	while (i < size)
 	{
 		printf("declare -x ");
-		printf("%s\n", mini_shell()->env[i]);
+		printf("%s\n", mini_shell()->senv[i]);
 		i++;
 	}
 }
