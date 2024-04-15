@@ -27,8 +27,6 @@ int err_handler(char c, char *cmd, int ext_sts)
 		printf("%s: command not found\n", cmd);
 	else if (c == 'd')
 		printf("%s: no such file or directory\n", cmd);
-	else if (c == 'r')
-		printf("minishell: Error: Redirection error\n");
 	else if (c == 'h')
 		printf("minishell: Error: Heredoc error\n");
 	mini_shell()->exit_status = ext_sts;
@@ -54,6 +52,8 @@ int	pars_error(char c, int ex_stat)
 		printf("minishell: unclosed pipes\n");
 	else if (c == 'b')
 		printf("minishell: bad assignment\n");
+	else if (c == 'z')
+		printf("minishell: Error: No such file or directory\n");
 	mini_shell()->exit_status = ex_stat;
 	return (-1);
 }

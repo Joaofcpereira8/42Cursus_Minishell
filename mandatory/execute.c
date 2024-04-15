@@ -29,6 +29,7 @@ pid_t	exec_is_fork(t_a_s_tree *command)
 		fd_duplicate();
 		built_type(command->args);
 		ft_free();
+		ft_free_all();
 	}
 	fd_close(command->index);
 	return (pid);

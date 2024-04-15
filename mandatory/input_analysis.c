@@ -34,7 +34,6 @@ void	input(void)
 			printf("Parser: Error in redirects\n");
 			continue;
 		} */
-		env_update();
 		ft_free();
 	}
 	rl_clear_history();

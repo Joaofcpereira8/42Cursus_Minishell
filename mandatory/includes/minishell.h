@@ -154,7 +154,7 @@ void		exec_command(char **args);
 char		*path_join(char *path, char *cm);
 
 // ------------ USER ------------ //
-char	*get_prompt();
+char		*get_prompt();
 char		pwd_finder();
 
 // ----------- BUILT-INs ----------- //

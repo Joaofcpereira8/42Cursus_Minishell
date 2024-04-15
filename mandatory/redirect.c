@@ -90,8 +90,8 @@ int	redirects(t_meta_tok token, char *comm)
 		(mini_shell()->fd_in) = open(comm, O_RDONLY);
 	else if (token == red_hdoc)
 		return (handle_hdoc(&comm));
-	if (mini_shell()->fd_out == -1)
-		return (err_handler('r', ">", 0));
+	if (mini_shell()->fd_in == -1 || mini_shell()->fd_out == -1)
+		return (pars_error('z', 1));
 	return (0);
 }
 
