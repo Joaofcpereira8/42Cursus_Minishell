@@ -6,7 +6,7 @@
 /*   By: bbento-e <bbento-e@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 18:26:52 by jofilipe          #+#    #+#             */
-/*   Updated: 2024/04/15 14:57:56 by bbento-e         ###   ########.fr       */
+/*   Updated: 2024/04/15 18:27:18 by bbento-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,11 +100,10 @@ typedef struct s_a_s_tree
  *@param input Input in the command line
  *@param prompt Prompt in the command line
  *@param env Environment ambient's matrix
+ *@param senv Environment ambient's matrix for export
  *@param path Environment ambient's PATH
  *@param pipes Pipes and it's respective fd
  *@param oldpwd Char to remember the previous pwd
- *@param pwd Char to remember the current pwd
- *@param path_change A trigger for cd
  *@param env_amb_list Linked list of the environment variables
  *@param env_token Linked list of metacharacters tokens
  *@param ast Abstract Syntax Tree
@@ -121,11 +120,10 @@ typedef struct s_mini_env
 	char		*prompt;
 	char		**env;
 	char		**senv;
+
 	char		**path;
 	int			**pipes;
 	char		*oldpwd;
-	char		*pwd;
-	int			path_change;
 	t_list		*env_amb_list;
 	t_list		*env_token;
 	t_a_s_tree	*ast;
@@ -160,16 +158,17 @@ char		pwd_finder();
 
 // ----------- BUILT-INs ----------- //
 int			minipdw(void);
-int			miniexport(void);
-int			miniexport(void);
 void		printexp(int size);
 int			mini_cd(char **args);
 int			miniecho(char **args);
 void		miniexit(char **args);
 int			miniunset(char **args);
 int			built_type(char **args);
+void		miniexport(char **args);
+void		export_add(char **args);
 int			built_type_next(char **args);
 void		minienv(t_list *env_amb_list);
+void		sort_export(int i, int j, int size, char fnct);
 
 // ----------- INPUT_ANALYSIS ----------- //
 /**
@@ -202,6 +201,7 @@ int			sz_env_list(char **env);
   */
 void		list_delete(void *list);
 int			is_every_space(char *str);
+int			ft_swap_env (char *swap, int i);
 int			pars_error(char c, int ex_stat);
 int			ft_strlen_skp(char *str, char *c);
 char		**add_to_mat(char **mat1, char *str);

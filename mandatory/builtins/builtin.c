@@ -6,7 +6,7 @@
 /*   By: jofilipe <jofilipe@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 18:59:11 by bbento-e          #+#    #+#             */
-/*   Updated: 2024/04/09 17:48:16 by bbento-e         ###   ########.fr       */
+/*   Updated: 2024/04/15 18:03:35 by bbento-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	built_type(char **args)
 	}
 	else if (ft_strncmp(mini_shell()->input, "export", 6) == 0)
 	{
-		miniexport();
+		miniexport(args);
 	}
 	else
 		return (built_type_next(args));

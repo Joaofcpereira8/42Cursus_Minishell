@@ -6,7 +6,7 @@
 /*   By: jofilipe <jofilipe@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 12:11:46 by bbento-e          #+#    #+#             */
-/*   Updated: 2024/04/10 15:20:32 by bbento-e         ###   ########.fr       */
+/*   Updated: 2024/04/15 18:01:33 by bbento-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ int	handle_minus(void)
 	{
 		mini_shell()->oldpwd = mini_shell()->cwd;
 		mini_shell()->cwd = getcwd(0, 0);
-		mini_shell()->path_change = 1;
 		return (printf("%s\n", mini_shell()->cwd));
 	}
 	else
@@ -31,7 +30,6 @@ int	mini_cd(char **args)
 	{
 		mini_shell()->oldpwd = mini_shell()->cwd;
 		mini_shell()->cwd = getcwd(0, 0);
-		mini_shell()->path_change = 1;
 	}
 	else if (args[1][0] == '-' && !args[1][1])
 		return (handle_minus());
@@ -41,7 +39,6 @@ int	mini_cd(char **args)
 	{
 		mini_shell()->oldpwd = mini_shell()->cwd;
 		mini_shell()->cwd = getcwd(0, 0);
-		mini_shell()->path_change = 1;
 	}
 	else
 		return (err_handler('d', args[1], 1));

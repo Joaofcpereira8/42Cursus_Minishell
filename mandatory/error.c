@@ -6,7 +6,7 @@
 /*   By: jofilipe <jofilipe@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/04 19:02:29 by bbento-e          #+#    #+#             */
-/*   Updated: 2024/04/11 11:08:32 by bbento-e         ###   ########.fr       */
+/*   Updated: 2024/04/15 18:29:26 by bbento-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ int err_handler(char c, char *cmd, int ext_sts)
 		printf("%s: no such file or directory\n", cmd);
 	else if (c == 'h')
 		printf("minishell: Error: Heredoc error\n");
+	else if (c == 'e')
+		printf("export: %s: Not a valid identifier\n", cmd);
 	mini_shell()->exit_status = ext_sts;
 	return (-1);
 }

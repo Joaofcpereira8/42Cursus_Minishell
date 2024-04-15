@@ -6,7 +6,7 @@
 /*   By: jofilipe <jofilipe@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 12:29:02 by jofilipe          #+#    #+#             */
-/*   Updated: 2024/04/02 11:59:18 by jofilipe         ###   ########.fr       */
+/*   Updated: 2024/04/15 15:43:36 by bbento-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,4 +89,12 @@ int	ft_strlen_skp(char *str, char *c)
 	while (str[i] && !ft_strchr(c, str[i]))
 		i++;
 	return (i);
+}
+
+int ft_swap_env (char *swap, int i)
+{
+	swap = mini_shell()->senv[i];
+	mini_shell()->senv[i] = mini_shell()->senv[i + 1];
+	mini_shell()->senv[i + 1] = swap;
+	return (0);
 }

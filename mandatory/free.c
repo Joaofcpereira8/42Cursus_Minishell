@@ -6,7 +6,7 @@
 /*   By: jofilipe <jofilipe@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/19 16:35:10 by jofilipe          #+#    #+#             */
-/*   Updated: 2024/03/19 16:36:43 by jofilipe         ###   ########.fr       */
+/*   Updated: 2024/04/15 15:25:07 by bbento-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,6 @@ void	ft_free_all(void)
 	ft_clean(mini_shell()->cwd);
 	list_delete(mini_shell()->path);
 	list_delete(mini_shell()->env);
-	list_delete(mini_shell()->senv);
 	ft_lstclear(&mini_shell()->env_amb_list, (void (*)(void *))clean_env);
 	ft_lstclear(&mini_shell()->temp_env, (void (*)(void *))clean_env);
 	exit(mini_shell()->exit_status);
