@@ -6,7 +6,7 @@
 /*   By: jofilipe <jofilipe@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 14:57:23 by jofilipe          #+#    #+#             */
-/*   Updated: 2024/04/16 15:58:54 by bbento-e         ###   ########.fr       */
+/*   Updated: 2024/04/16 18:50:51 by bbento-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	env_join(char **arr1, char *str)
 	int		i;
 	char	**final;
 
-	printf("Entering env_join\n");
+	printf("Entering env_join with: %s\n", str);
 	i = 0;
 	size = arr_size(arr1) + 1;
 	final = malloc(sizeof(char *) * size);
@@ -56,7 +56,10 @@ void	env_join(char **arr1, char *str)
 		i++;
 	}
 	final[i] = str;
+	//free_array(mini_shell()->senv);
 	mini_shell()->senv = malloc(sizeof(char *) * size);
 	mini_shell()->senv = final;
 	printf("Joined env with str\n");
 }
+
+

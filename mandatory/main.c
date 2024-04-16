@@ -6,7 +6,7 @@
 /*   By: jofilipe <jofilipe@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 18:26:42 by jofilipe          #+#    #+#             */
-/*   Updated: 2024/04/15 15:18:54 by bbento-e         ###   ########.fr       */
+/*   Updated: 2024/04/16 18:30:16 by bbento-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,9 @@ void	mini_init(char	**env)
 
 int	main(int argc, char **argv, char **env)
 {
-	(void) argc;
-	(void) argv;
+	(void)argv;
+	if (argc > 1)
+		return (printf("minishell: %s: No such file or directory\n", argv[1]));
 	mini_init(env);
 	signals();
 	input();

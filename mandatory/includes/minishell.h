@@ -6,7 +6,7 @@
 /*   By: bbento-e <bbento-e@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 18:26:52 by jofilipe          #+#    #+#             */
-/*   Updated: 2024/04/16 14:12:07 by bbento-e         ###   ########.fr       */
+/*   Updated: 2024/04/16 18:45:13 by bbento-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,8 +56,9 @@ typedef enum e_operations
 
 typedef struct s_env
 {
-	char	*type;
-	char	*info;
+	char			*type;
+	char			*info;
+	struct s_list	*next;
 }				t_env;
 
 typedef struct s_token
@@ -209,7 +210,7 @@ int			is_every_space(char *str);
 int			ft_swap_env(char *swap, int i);
 int			pars_error(char c, int ex_stat);
 int			ft_strlen_skp(char *str, char *c);
-void		env_join(char **arr1, char *arr2);
+void		env_join(char** arr1, char *str);
 char		**add_to_mat(char **mat1, char *str);
 int			ft_strlen_flag(char const *str, char flag);
 
@@ -220,7 +221,6 @@ int			lst_size(t_list *lst);
 void		fd_close(int command_index);
 bool		is_built_in(char *command, char *arg);
 bool		is_last_command(int command_numbers);
-void		env_join(char **arr1, char *str);
 
 // ---------- VARIABLE_GLOBAL ---------- //
 t_mini_env	*mini_shell(void);

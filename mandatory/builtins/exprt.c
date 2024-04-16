@@ -6,7 +6,7 @@
 /*   By: jofilipe <jofilipe@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 19:13:24 by bbento-e          #+#    #+#             */
-/*   Updated: 2024/04/16 15:53:18 by bbento-e         ###   ########.fr       */
+/*   Updated: 2024/04/16 18:50:33 by bbento-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,33 +66,45 @@ void	printexp(int size)
 		printf("%s\n", mini_shell()->senv[i]);
 		i++;
 	}
+/*
+	(void)size;
+	while (mini_shell()->env_amb_list)
+	{
+		printf("%s = %s\n", ((t_env *)mini_shell()->env_amb_list->content)->type, ((t_env *)mini_shell()->env_amb_list->content)->info);
+		mini_shell()->env_amb_list = mini_shell()->env_amb_list->next;
+	}*/
 }
 
 void	export_add(char **args)
 {
 	int		i;
+	int		j;
 	int		flag;
 	char	*result;
 
 	i = 0;
+	j = 0;
 	flag = 0;
 	result = malloc(sizeof(char) * (ft_strlen(args[1]) + 3));
-	while (args[1][i] != '\0')
+	while (args[1][j] != '\0')
 	{
-		result[i] = args[1][i];
-		if (args[1][i] == '=' && flag == 0)
+		if (args[1][j] == '=' && flag == 0)
 		{
-			result[i + 1] = '"';
+			result[i] = '=';
+			result[++i] = '"';
 			flag = 1;
-			i += 2;
 		}
+		else
+			result[i] = args[1][j];
 		i++;
+		j++;
 	}
-	if (flag == 0)
+	if (flag == 1)
+	{
 		result[i] = '"';
-	i += flag;
-	result[i] = '"';
-	result[i + 1] = '\0';
-	env_join(mini_shell()->env, result);
+		result[i + 1] = '\0';
+	}
+	env_join(mini_shell()->senv, result);
+	//free(result);
 	printf("Reached end of export_add\n");
 }
