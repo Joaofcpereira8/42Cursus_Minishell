@@ -20,7 +20,7 @@ instance will persist between calls to mini_shell().*/
 
 t_mini_env	*mini_shell(void)
 {
-	static t_mini_env mini_shell;
+	static t_mini_env	mini_shell;
 
 	return (&mini_shell);
 }

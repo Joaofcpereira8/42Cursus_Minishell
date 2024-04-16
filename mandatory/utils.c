@@ -55,7 +55,6 @@ char	**add_to_mat(char **mat1, char *str)
 
 	i = -1;
 	mat2 = ft_calloc(sz_env_list(mat1) + 2, sizeof(char *));
-	// The +2 is for the new string and the NULL terminator at the end of the matrix.
 	if (!mat2)
 		return (NULL);
 	while (mat1[++i])
@@ -79,22 +78,4 @@ int	is_every_space(char *str)
 		i++;
 	}
 	return (-1);
-}
-
-int	ft_strlen_skp(char *str, char *c)
-{
-	int i;
-
-	i = 0;
-	while (str[i] && !ft_strchr(c, str[i]))
-		i++;
-	return (i);
-}
-
-int ft_swap_env (char *swap, int i)
-{
-	swap = mini_shell()->senv[i];
-	mini_shell()->senv[i] = mini_shell()->senv[i + 1];
-	mini_shell()->senv[i + 1] = swap;
-	return (0);
 }

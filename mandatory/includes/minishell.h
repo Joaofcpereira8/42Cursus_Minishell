@@ -14,7 +14,6 @@
 # define MINISHELL_H
 
 # include "../../libft/libft.h"
-# include "env.h"
 
 # include <fcntl.h>
 # include <stdio.h>
@@ -32,8 +31,8 @@
 # define SYM		"<>\'\"| "
 # define QUO		"\'\""
 # define SPE		"<>| "
-# define READ_PI	0
-# define WRITE_PI	1
+# define RE_PI	0
+# define WR_PI	1
 
 typedef enum e_meta_tok
 {
@@ -55,7 +54,11 @@ typedef enum e_operations
 	RESET
 }			t_operations;
 
-//typedef enum e_meta_tok t_meta_tok;
+typedef struct s_env
+{
+	char	*type;
+	char	*info;
+}				t_env;
 
 typedef struct s_token
 {
@@ -148,12 +151,13 @@ int			main(int argc, char **argv, char **envp);
 
 // ------------ EXECVE ------------ //
 char		**get_paths(void);
+void		absolute_input(char **args);
 void		exec_command(char **args);
 char		*path_join(char *path, char *cm);
 
 // ------------ USER ------------ //
-char		*get_prompt();
-char		pwd_finder();
+char		*get_prompt(void);
+char		pwd_finder(void);
 
 // ----------- BUILT-INs ----------- //
 int			minipdw(void);
@@ -161,6 +165,7 @@ void		printexp(int size);
 int			mini_cd(char **args);
 int			miniecho(char **args);
 void		miniexit(char **args);
+void		mini_exit2(char **args);
 int			miniunset(char **args);
 int			built_type(char **args);
 void		miniexport(char **args);
@@ -188,7 +193,7 @@ int			redirects(t_meta_tok token, char *comm);
 
 // ------------ ERRORS ----------- //
 int			check_args(char **str);
-int err_handler(char c, char *cmd, int ext_sts);
+int			err_handler(char c, char *cmd, int ext_sts);
 
 // ----------- UTILS ----------- //
 int			sz_env_list(char **env);
@@ -200,7 +205,7 @@ int			sz_env_list(char **env);
   */
 void		list_delete(void *list);
 int			is_every_space(char *str);
-int			ft_swap_env (char *swap, int i);
+int			ft_swap_env(char *swap, int i);
 int			pars_error(char c, int ex_stat);
 int			ft_strlen_skp(char *str, char *c);
 char		**add_to_mat(char **mat1, char *str);
@@ -213,6 +218,7 @@ int			lst_size(t_list *lst);
 void		fd_close(int command_index);
 bool		is_built_in(char *command, char *arg);
 bool		is_last_command(int command_numbers);
+void		env_join(char **arr1, char *str);
 
 // ---------- VARIABLE_GLOBAL ---------- //
 t_mini_env	*mini_shell(void);
@@ -279,12 +285,13 @@ void		expand_variable(t_token *token);
 char		*ft_streplace(char *str, char *old, char *new);
 
 // ---------- FREE ---------- //
-void 		ft_free(void);
+void		ft_free(void);
 void		ft_free_all(void);
 void		clean_env(t_env *env);
 void		ft_clean(void *pointer);
 void		clean_ast_tokens(t_a_s_tree *ast);
 void		clean_a_s_tree(t_a_s_tree *ast, void (*del)(t_a_s_tree *));
+void		free_array(char **arr);
 
 // ---------- AST_TOKENS ---------- //
 t_a_s_tree	*ast_new_token(t_token *token);

@@ -12,12 +12,13 @@
 
 #include "../includes/minishell.h"
 
-int echo_valid(char **args)
+int	echo_valid(char **args)
 {
-	int i;
+	int	i;
 
 	i = 2;
-	if ((!mini_shell()->input[5] && !mini_shell()->input[6]) || mini_shell()->input[5] == ' ')
+	if ((!mini_shell()->input[5] && !mini_shell()->input[6])
+		|| mini_shell()->input[5] == ' ')
 	{
 		printf("\n");
 		return (-1);
@@ -26,7 +27,8 @@ int echo_valid(char **args)
 	{
 		if (args[1][0] && args[1][0] == '-' && args[1][1] == 'n' && !args[1][2])
 		{
-			if(args[i][0] == '-' && (args[i][1] == 'n' || args[i][1] == 'e' || args[i][1] == 'E'))
+			if (args[i][0] == '-' && (args[i][1] == 'n' || args[i][1] == 'e'
+				|| args[i][1] == 'E'))
 				return (-1);
 		}
 		i++;
@@ -34,7 +36,7 @@ int echo_valid(char **args)
 	return (0);
 }
 
-int miniecho(char **args)
+int	miniecho(char **args)
 {
 	int	i;
 	int	nl;
@@ -51,7 +53,7 @@ int miniecho(char **args)
 	while (args[i])
 	{
 		printf("%s", args[i]);
-		if(args[i + 1])
+		if (args[i + 1])
 			printf(" ");
 		i++;
 	}

@@ -14,7 +14,7 @@
 
 bool	input_analysis(void)
 {
-	t_token *next;
+	t_token	*next;
 	int		num_of_pipes;
 	int		num_of_commands;
 
@@ -22,7 +22,7 @@ bool	input_analysis(void)
 	num_of_pipes = 0;
 	scanner(RESET);
 	if (pipe_or_redir(scanner(READ)))
-		return(pars_error('s', 2));
+		return (pars_error('s', 2));
 	while (scanner(READ))
 	{
 		next = scanner(AFTER);
@@ -34,22 +34,23 @@ bool	input_analysis(void)
 			if (next && !pipe_or_redir(next))
 				num_of_commands++;
 		}
-	scanner(NEXT);
+		scanner (NEXT);
 	}
 	if (num_of_pipes >= num_of_commands)
-		return(pars_error('p', 2));
+		return (pars_error('p', 2));
 	return (true);
 }
 
 t_token	*scanner(t_operations operations)
 {
 	static t_list	*current = NULL;
+
 	if (operations == READ && current)
 		return (current->content);
 	else if (operations == RESET)
 		current = mini_shell()->env_token;
 	else if (operations == NEXT)
-		current =current->next;
+		current = current->next;
 	else if (operations == AFTER && current->next)
 		return (current->next->content);
 	return (NULL);
@@ -62,9 +63,8 @@ bool	pipe_or_redir(t_token *token)
 
 bool	redirection(t_token *token)
 {
-	return(token->type >= red_in && token->type <= red_hdoc);
+	return (token->type >= red_in && token->type <= red_hdoc);
 }
-
 
 bool	is_command(t_token *token)
 {
@@ -73,7 +73,8 @@ bool	is_command(t_token *token)
 	i = -1;
 	if (token->str[0])
 	{
-		if (token->str[0] == '=' || token->str[ft_strlen(token->str) - 1] == '=')
+		if (token->str[0] == '='
+			|| token->str[ft_strlen(token->str) - 1] == '=')
 		{
 			pars_error('b', 1);
 			return (false);

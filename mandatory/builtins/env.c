@@ -12,18 +12,16 @@
 
 #include "../includes/minishell.h"
 
-/*vai buscar o user e o lugar onde se encontra nas
-variaveis de ambiente*/
-
 void	minienv(t_list *env_amb_list)
 {
+	int	i;
+
 	(void)env_amb_list;
-	int i = 0;
-	while(mini_shell()->env[i])
+	i = 0;
+	while (mini_shell()->env[i])
 	{
-		printf("%s\n",mini_shell()->env[i]);
+		printf("%s\n", mini_shell()->env[i]);
 		i++;
-		// para o export, se a variavel nao tiver =, salta essa variavel, fazendo um i++
 	}
 }
 
@@ -47,9 +45,9 @@ char	**env_to_mat(t_list *env_list)
 	char	**matrix;
 
 	matrix = ft_calloc(1, sizeof(char *));
-	if(!matrix)
-		return(NULL);
-	while(env_list)
+	if (!matrix)
+		return (NULL);
+	while (env_list)
 	{
 		env = (t_env *)env_list->content;
 		tmp1 = ft_strjoin(env->type, "=");
@@ -67,10 +65,7 @@ char	*ft_get_env(char *type)
 	t_env	*env_tmp;
 	t_list	*current;
 
-	//In many shell and scripting languages, environment variables are often referenced
-	//with a $ symbol before the variable name.
-	//For example, in a bash shell, you might access the PATH environment variable with $PATH.
-	if(type[0] == '$')
+	if (type[0] == '$')
 		type++;
 	current = mini_shell()->env_amb_list;
 	while (current)

@@ -14,8 +14,8 @@
 
 bool	builtin_verif(char *command)
 {
-	return((!ft_strcmp(command, "echo")) || (!ft_strcmp(command, "cd"))
-			|| (!ft_strcmp(command, "pwd")) || (!ft_strcmp(command, "export"))
-			|| (!ft_strcmp(command, "unset")) || (!ft_strcmp(command, "env"))
-			|| (!ft_strcmp(command, "exit")));
+	return ((!ft_strcmp(command, "echo")) || (!ft_strcmp(command, "cd"))
+		|| (!ft_strcmp(command, "pwd")) || (!ft_strcmp(command, "export"))
+		|| (!ft_strcmp(command, "unset")) || (!ft_strcmp(command, "env"))
+		|| (!ft_strcmp(command, "exit")));
 }

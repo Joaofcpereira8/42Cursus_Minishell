@@ -36,6 +36,7 @@ SRCS =	mandatory/main.c \
 		mandatory/error.c \
 		mandatory/utils.c \
 		mandatory/utils2.c \
+		mandatory/utils3.c \
 		mandatory/redirect.c \
 		mandatory/heredoc.c \
 		mandatory/variable_global.c \
@@ -45,6 +46,7 @@ SRCS =	mandatory/main.c \
 		mandatory/input_verif2.c \
 		mandatory/expander.c \
 		mandatory/free.c \
+		mandatory/free2.c \
 		mandatory/ast_tokens.c \
 		mandatory/signals.c \
 		mandatory/handle_signals.c \

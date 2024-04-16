@@ -25,15 +25,9 @@ void	input(void)
 			ft_free_all();
 		}
 		if (!*mini_shell()->input)
-			continue;
+			continue ;
 		add_history(mini_shell()->input);
 		figure_out();
-		// testing redirects:
-		/* if (redirects(&data, args, red_out) == -1)
-		{
-			printf("Parser: Error in redirects\n");
-			continue;
-		} */
 		ft_free();
 	}
 	rl_clear_history();

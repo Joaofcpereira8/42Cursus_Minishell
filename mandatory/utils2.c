@@ -14,7 +14,8 @@
 
 bool	is_built_in(char *command, char *arg)
 {
-	return((!ft_strcmp(command, "cd")) || (!ft_strcmp(command, "export") && arg)
+	return ((!ft_strcmp(command, "cd"))
+		|| (!ft_strcmp(command, "export") && arg)
 		|| (!ft_strcmp(command, "unset")) || (!ft_strcmp(command, "exit")));
 }
 
@@ -38,9 +39,9 @@ void	fd_close(int command_index)
 	if (mini_shell()->fd_out > STDOUT_FILENO)
 		close(mini_shell()->fd_out);
 	if (command_index > 0)
-		close(mini_shell()->pipes[command_index - 1][READ_PI]);
+		close(mini_shell()->pipes[command_index - 1][RE_PI]);
 	if (!is_last_command(command_index))
-		close(mini_shell()->pipes[command_index][WRITE_PI]);
+		close(mini_shell()->pipes[command_index][WR_PI]);
 	mini_shell()->fd_in = STDIN_FILENO;
 	mini_shell()->fd_out = STDOUT_FILENO;
 }
@@ -58,15 +59,5 @@ int	lst_size(t_list *lst)
 		tmp = tmp->next;
 	}
 	free(tmp);
-	return (i);
-}
-
-int	arr_size(char **str)
-{
-	int		i;
-
-	i = 0;
-	while (str[i])
-		i++;
 	return (i);
 }

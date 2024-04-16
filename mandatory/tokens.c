@@ -12,7 +12,7 @@
 
 #include "includes/minishell.h"
 
-t_token *new_token(char *str, t_meta_tok type, bool join)
+t_token	*new_token(char *str, t_meta_tok type, bool join)
 {
 	t_token	*token;
 

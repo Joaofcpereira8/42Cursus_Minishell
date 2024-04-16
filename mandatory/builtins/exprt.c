@@ -81,6 +81,6 @@ void export_add(char **args)
 	}
 	result[i] = '"';
 	result[i] = '\0';
-	mini_shell()->senv;
+	//mini_shell()->senv;
 	free(result);
 }

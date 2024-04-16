@@ -94,7 +94,7 @@ void	merge_env_tokens(t_list *env_tokens)
 		tmp = curr_token->str;
 		curr_token->str = ft_strjoin(curr_token->str, next_token->str);
 		free(tmp);
-		curr_token->can_join = curr_token->can_join & next_token->can_join;//
+		curr_token->can_join = curr_token->can_join & next_token->can_join;
 		aux = env_tokens->next;
 		env_tokens->next = env_tokens->next->next;
 		ft_lstdelone(aux, (void *)destroy_token);

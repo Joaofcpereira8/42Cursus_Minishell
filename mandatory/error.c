@@ -12,7 +12,7 @@
 
 #include "includes/minishell.h"
 
-int err_handler(char c, char *cmd, int ext_sts)
+int	err_handler(char c, char *cmd, int ext_sts)
 {
 	if (c == 'a')
 		printf("Wrong number of arguments!\nUse ./minishell\n");
@@ -57,5 +57,5 @@ int	pars_error(char c, int ex_stat)
 	else if (c == 'z')
 		printf("minishell: Error: No such file or directory\n");
 	mini_shell()->exit_status = ex_stat;
-	return (-1);
+	return (0);
 }

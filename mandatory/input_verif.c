@@ -81,7 +81,7 @@ bool	is_joinable(char *str, char *match, int skip)
 		return (true);
 	return (false);
 }
-// test
+
 void	read_metachar(void)
 {
 	int	i;

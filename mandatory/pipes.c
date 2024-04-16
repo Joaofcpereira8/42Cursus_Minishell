@@ -38,7 +38,7 @@ pid_t	execute_pipes(t_a_s_tree *node)
 	last = execute_pipes(node->right);
 	if (!pipe_or_redir(node->token))
 	{
-		if(is_built_in(node->args[0], node->args[1]))
+		if (is_built_in(node->args[0], node->args[1]))
 			built_type(node->args);
 		else
 			last = exec_is_fork(node);
@@ -53,26 +53,9 @@ void	atribute_pipes_fd(int index_command)
 	if (mini_shell()->cmd_num < 2)
 		return ;
 	if (mini_shell()->fd_in == STDIN_FILENO)
-		if (index_command != 0)//ler no fim -> 0
-			mini_shell()->fd_in = mini_shell()->pipes[index_command - 1][READ_PI];
-	if (mini_shell()->fd_out == STDOUT_FILENO)//escrever no fim -> 1
+		if (index_command != 0)
+			mini_shell()->fd_in = mini_shell()->pipes[index_command - 1][RE_PI];
+	if (mini_shell()->fd_out == STDOUT_FILENO)
 		if (!is_last_command(index_command))
-			mini_shell()->fd_out = mini_shell()->pipes[index_command][WRITE_PI];
+			mini_shell()->fd_out = mini_shell()->pipes[index_command][WR_PI];
 }
-
-/* void	pipes(void)
-{
-	(mini_shell()->fd_in) = open(mini_shell()->input, O_RDONLY, 0444);
-	if (errno)
-	{
-		printf("%s: %s\n", strerror(errno));
-		return (-1);
-	}
-	(mini_shell()->fd_out) = open(mini_shell()->input, O_CREAT | O_RDONLY | O_TRUNC, 0664);
-	if (errno)
-	{
-		printf("%s: %s\n", strerror(errno));
-		return (-1);
-	}
-
-} */

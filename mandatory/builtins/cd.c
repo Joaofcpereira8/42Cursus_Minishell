@@ -33,9 +33,9 @@ int	mini_cd(char **args)
 	}
 	else if (args[1][0] == '-' && !args[1][1])
 		return (handle_minus());
-	else if (chdir(args[1]) == 0 || ((args[1][0] == ' '
-			|| (args[1][0] == '~' && !args[1][1]) || (args[1][0] == '-' && args[1][1] == '-' && !args[1][2]) || !args[1])
-			&& chdir("/home/") == 0))
+	else if (chdir(args[1]) == 0 || ((args[1][0] == ' ' || (args[1][0] == '~'
+			&& !args[1][1]) || (args[1][0] == '-' && args[1][1] == '-'
+			&& !args[1][2]) || !args[1]) && chdir("/home/") == 0))
 	{
 		mini_shell()->oldpwd = mini_shell()->cwd;
 		mini_shell()->cwd = getcwd(0, 0);

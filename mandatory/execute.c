@@ -40,7 +40,7 @@ void	execute(t_a_s_tree *ast)
 	int		status;
 	pid_t	last;
 
-	status = 0x7F; //exit status 127
+	status = 0x7F;
 	pipes_generate();
 	last = execute_pipes(ast);
 	last = waitpid(last, &status, 0);
