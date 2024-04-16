@@ -6,7 +6,7 @@
 /*   By: bbento-e <bbento-e@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 18:26:52 by jofilipe          #+#    #+#             */
-/*   Updated: 2024/04/15 18:59:45 by bbento-e         ###   ########.fr       */
+/*   Updated: 2024/04/16 14:12:07 by bbento-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -189,7 +189,7 @@ int			handle_hdoc(char **comm);
 int			handle_appnd(char **comm);
 int			handle_input(char **comm);
 int			handle_output(char **comm);
-int			redirects(t_meta_tok token, char *comm);
+int			redirects(t_meta_tok token, char *com);
 
 // ------------ ERRORS ----------- //
 int			check_args(char **str);
@@ -203,11 +203,13 @@ int			sz_env_list(char **env);
  *
  * @param list A matriz a fazer free.
   */
+void		free_array(char **arr);
 void		list_delete(void *list);
 int			is_every_space(char *str);
 int			ft_swap_env(char *swap, int i);
 int			pars_error(char c, int ex_stat);
 int			ft_strlen_skp(char *str, char *c);
+void		env_join(char **arr1, char *arr2);
 char		**add_to_mat(char **mat1, char *str);
 int			ft_strlen_flag(char const *str, char flag);
 

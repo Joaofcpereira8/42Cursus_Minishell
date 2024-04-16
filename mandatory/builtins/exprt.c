@@ -6,34 +6,39 @@
 /*   By: jofilipe <jofilipe@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 19:13:24 by bbento-e          #+#    #+#             */
-/*   Updated: 2024/04/15 18:43:08 by bbento-e         ###   ########.fr       */
+/*   Updated: 2024/04/16 15:53:18 by bbento-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
 
-void miniexport(char **args)
+void	miniexport(char **args)
 {
 	if (!args[1])
-		sort_export(0, 0, arr_size(mini_shell()->senv), 's');
+	{
+		printf("Entering sort_export\n");
+		sort_export(0, 0, arr_size(mini_shell()->senv), 'p');
+	}
 	else if (args[1] && !args[2])
+	{
+		printf("Entering export_add\n");
 		export_add(args);
+	}
 	else
-		err_handler('e', args[2], 127);
+		err_handler('e', args[2], 0);
 }
 
-void sort_export(int i, int j, int size, char fnct)
+void	sort_export(int i, int j, int size, char fnct)
 {
-	int		flag;
+	int	flag;
 
-	// mini_shell()->senv = mini_shell()->env;
-	while (i < (size - 1))
+	while (i < (size - 1) && mini_shell()->senv[i][j])
 	{
 		j = 0;
 		if (mini_shell()->senv[i][j] == mini_shell()->senv[i + 1][j])
 		{
 			while ((mini_shell()->senv[i][j] || mini_shell()->senv[i + 1][j])
-					&& (mini_shell()->senv[i][j] == mini_shell()->senv[i + 1][j]))
+			&& (mini_shell()->senv[i][j] == mini_shell()->senv[i + 1][j]))
 				j++;
 		}
 		if ((mini_shell()->senv[i][j] > mini_shell()->senv[i + 1][j]) || i == 0)
@@ -45,7 +50,8 @@ void sort_export(int i, int j, int size, char fnct)
 			i = 0;
 		}
 	}
-	if(fnct && fnct == 'p')
+	printf("Testing print\n");
+	if (fnct && fnct == 'p')
 		printexp(size);
 }
 
@@ -62,25 +68,31 @@ void	printexp(int size)
 	}
 }
 
-void export_add(char **args)
+void	export_add(char **args)
 {
-	int	i;
-	char *result;
+	int		i;
+	int		flag;
+	char	*result;
 
 	i = 0;
+	flag = 0;
 	result = malloc(sizeof(char) * (ft_strlen(args[1]) + 3));
-	while (args[1][i])
+	while (args[1][i] != '\0')
 	{
 		result[i] = args[1][i];
-		if (args[1][i] == '=')
+		if (args[1][i] == '=' && flag == 0)
 		{
 			result[i + 1] = '"';
+			flag = 1;
 			i += 2;
 		}
 		i++;
 	}
+	if (flag == 0)
+		result[i] = '"';
+	i += flag;
 	result[i] = '"';
-	result[i] = '\0';
-	//mini_shell()->senv;
-	free(result);
+	result[i + 1] = '\0';
+	env_join(mini_shell()->env, result);
+	printf("Reached end of export_add\n");
 }

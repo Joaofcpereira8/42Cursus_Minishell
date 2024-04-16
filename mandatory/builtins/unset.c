@@ -6,13 +6,13 @@
 /*   By: jofilipe <jofilipe@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 12:34:37 by jofilipe          #+#    #+#             */
-/*   Updated: 2024/03/22 17:52:00 by jofilipe         ###   ########.fr       */
+/*   Updated: 2024/04/16 15:53:41 by bbento-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
 
-int miniunset(char **args)
+int	miniunset(char **args)
 {
 	(void)args;
 	return (0);

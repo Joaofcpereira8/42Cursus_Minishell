@@ -6,7 +6,7 @@
 /*   By: jofilipe <jofilipe@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 14:56:20 by jofilipe          #+#    #+#             */
-/*   Updated: 2024/04/16 14:56:26 by jofilipe         ###   ########.fr       */
+/*   Updated: 2024/04/16 15:54:20 by bbento-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,9 +36,9 @@ void	ft_free_all(void)
 	exit(mini_shell()->exit_status);
 }
 
-void free_array(char **arr)
+void	free_array(char **arr)
 {
-	int i;
+	int	i;
 
 	if (!arr)
 		return ;
