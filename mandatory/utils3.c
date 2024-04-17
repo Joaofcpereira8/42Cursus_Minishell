@@ -76,8 +76,8 @@ char	**lst_to_mat(t_list *list)
 	while (list)
 	{
 		env = (t_env *)list->content;
-		tmp1 = ft_strjoin(env->type, "=\"");
-		tmp2 = ft_strjoin(tmp1, ft_strjoin(env->info, "\""));
+		tmp1 = ft_strjoin(env->type, "=");
+		tmp2 = ft_strjoin(tmp1, env->info);
 		matrix = add_to_mat(matrix, ft_strdup(tmp2));
 		free(tmp1);
 		free(tmp2);

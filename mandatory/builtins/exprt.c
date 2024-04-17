@@ -16,14 +16,11 @@ void	miniexport(char **args)
 {
 	if (!args[1])
 	{
-		mini_shell()->env = lst_to_mat(mini_shell()->env_amb_list);
+		mini_shell()->senv = lst_to_mat(mini_shell()->env_amb_list);
 		sort_export(-1, 0, arr_size(mini_shell()->senv), 3);
 	}
 	else if (args[1] && !args[2])
-	{
-		printf("Entering export_add\n");
 		export_add(args, 0);
-	}
 	else
 		err_handler('e', args[2], 0);
 }
@@ -100,7 +97,27 @@ void	printexp(int size)
 	// free(result);
 }*/
 
+int slsh0(void *var, int i)
+{
+	if (!var)
+		return (0);
+	((char *)var)[i] = '\0';
+	return (1);
+}
 
+void exp_alloc(t_env **lst, char **args)
+{
+	int		i;
+	int		j;
+
+	j = 0;
+	i = ft_strlen_flag(args[1], '=');
+	(*lst) = malloc(sizeof(t_env));
+	while(args[1][++i] != '\0')
+		j++;
+	(*lst)->type = malloc(sizeof(char) * i);
+	(*lst)->info = malloc(sizeof(char) * j);
+}
 
 void export_add(char **args, int flag)
 {
@@ -109,36 +126,23 @@ void export_add(char **args, int flag)
 	t_env	*lst;
 
 	i = 0;
-	j = 0;
-	lst = malloc(sizeof(t_env));
-	i = ft_strlen_flag(args[1], '=');
-	while(args[1][++i] != '\0')
-		j++;
-	lst->type = malloc(sizeof(char) * i);
-	lst->info = malloc(sizeof(char) * j);
-	i = 0;
 	j = -1;
+	exp_alloc(&lst, args);
 	while (args[1][++j] != '\0')
 	{
-		printf("While cycle\n");
-		printf("joining %c with list\n", args[1][j]);
-		if (args[1][j] == '=' && flag == 0)
+		if (args[1][j] == '=' && flag == 0 && slsh0(lst->type, i))
 		{
-			flag = 1;
-			i = 1;
+			flag = i = 1;
 			if(args[1][++j] != '"')
 				lst->info[0] = '"';
 		}
 		if	(flag == 0)
-			lst->type[i] = args[1][j];
+			lst->type[i++] = args[1][j];
 		else if (flag == 1)
-			lst->info[i] = args[1][j];
-		i++;
+			lst->info[i++] = args[1][j];
 	}
-	printf("Finished while\n");
-	if (args[1][j - 1] != '"')
-		lst->info[i] = '"';
+	if (args[1][j - 1] != '"' && slsh0(lst->info, i + 1))
+		lst->info[i++] = '"';
 	printf("Result %s=%s\n", lst->type, lst->info);
-	ft_lstadd_back(&mini_shell()->env_amb_list, (void *)lst);
-	list_delete(lst);
+	ft_lstadd_back(&mini_shell()->env_amb_list, ft_lstnew(lst));
 }
