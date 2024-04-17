@@ -6,7 +6,7 @@
 /*   By: bbento-e <bbento-e@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 18:26:52 by jofilipe          #+#    #+#             */
-/*   Updated: 2024/04/16 18:45:13 by bbento-e         ###   ########.fr       */
+/*   Updated: 2024/04/17 17:42:28 by bbento-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,6 @@ typedef struct s_env
 {
 	char			*type;
 	char			*info;
-	struct s_list	*next;
 }				t_env;
 
 typedef struct s_token
@@ -67,12 +66,6 @@ typedef struct s_token
 	t_meta_tok	type;
 	bool		can_join;
 }				t_token;
-
-typedef struct s_clist
-{
-	char			*content;
-	struct s_list	*next;
-}					t_clist;
 
 /**
  * @brief A structure to represent a node of an Abstract Syntax Tree
@@ -127,6 +120,7 @@ typedef struct s_mini_env
 	char		**path;
 	int			**pipes;
 	char		*oldpwd;
+	t_list 		*tenv;
 	t_list		*env_amb_list;
 	t_list		*env_token;
 	t_a_s_tree	*ast;
@@ -170,7 +164,7 @@ void		mini_exit2(char **args);
 int			miniunset(char **args);
 int			built_type(char **args);
 void		miniexport(char **args);
-void		export_add(char **args);
+void		export_add(char **args, int flag);
 int			built_type_next(char **args);
 void		minienv(t_list *env_amb_list);
 void		sort_export(int i, int j, int size, char fnct);
@@ -251,7 +245,7 @@ char		*ft_get_env(char *type);
  * @return NULL se o malloc falhar.
  */
 char		**env_to_mat(t_list *env_list);
-
+char		**lst_to_mat(t_list *env_list);
 // ---------- ENV_VAR_LIST ---------- //
 /**
  * @brief Usada no início do programa para criar a nossa própria

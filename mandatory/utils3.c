@@ -6,7 +6,7 @@
 /*   By: jofilipe <jofilipe@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 14:57:23 by jofilipe          #+#    #+#             */
-/*   Updated: 2024/04/16 18:50:51 by bbento-e         ###   ########.fr       */
+/*   Updated: 2024/04/17 17:41:23 by bbento-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,29 @@ void	env_join(char **arr1, char *str)
 	mini_shell()->senv = malloc(sizeof(char *) * size);
 	mini_shell()->senv = final;
 	printf("Joined env with str\n");
+	// mini_shell()->tenv = envlist();
 }
 
+char	**lst_to_mat(t_list *list)
+{
+	t_env	*env;
+	char	*tmp1;
+	char	*tmp2;
+	char	**matrix;
+
+	matrix = ft_calloc(1, sizeof(char *));
+	if (!matrix)
+		return (NULL);
+	while (list)
+	{
+		env = (t_env *)list->content;
+		tmp1 = ft_strjoin(env->type, "=\"");
+		tmp2 = ft_strjoin(tmp1, ft_strjoin(env->info, "\""));
+		matrix = add_to_mat(matrix, ft_strdup(tmp2));
+		free(tmp1);
+		free(tmp2);
+		list = list->next;
+	}
+	return (matrix);
+}
 
