@@ -16,8 +16,8 @@ void	miniexport(char **args)
 {
 	if (!args[1])
 	{
-		printf("Entering sort_export\n");
-		sort_export(0, 0, arr_size(mini_shell()->senv), 'p');
+		mini_shell()->env = lst_to_mat(mini_shell()->env_amb_list);
+		sort_export(-1, 0, arr_size(mini_shell()->senv), 3);
 	}
 	else if (args[1] && !args[2])
 	{
@@ -28,31 +28,33 @@ void	miniexport(char **args)
 		err_handler('e', args[2], 0);
 }
 
-void	sort_export(int i, int j, int size, char fnct)
+void sort_export(int i, int j, int size, int reps)
 {
-	int	flag;
+	int			flag;
+	int			a;
 
-	mini_shell()->env = lst_to_mat(mini_shell()->env_amb_list);
-	while (i < (size - 1) && mini_shell()->senv[i][j])
+	a = 0;
+	while (a++ <= reps)
 	{
-		j = 0;
-		if (mini_shell()->senv[i][j] == mini_shell()->senv[i + 1][j])
+		while (++i < (size - 1) && mini_shell()->senv[i][j])
 		{
-			while ((mini_shell()->senv[i][j] || mini_shell()->senv[i + 1][j])
-			&& (mini_shell()->senv[i][j] == mini_shell()->senv[i + 1][j]))
-				j++;
-		}
-		if ((mini_shell()->senv[i][j] > mini_shell()->senv[i + 1][j]) || i == 0)
-			i = ft_swap_env(mini_shell()->senv[i], i);
-		i++;
-		if (i == (size - 2) && flag != 1)
-		{
-			flag = 1;
-			i = 0;
+			j = 0;
+			if (mini_shell()->senv[i][j] == mini_shell()->senv[i + 1][j])
+			{
+				while ((mini_shell()->senv[i][j] || mini_shell()->senv[i + 1][j])
+					   && (mini_shell()->senv[i][j] == mini_shell()->senv[i + 1][j]))
+					j++;
+			}
+			if ((mini_shell()->senv[i][j] > mini_shell()->senv[i + 1][j]) || i == 0)
+				i = ft_swap_env(mini_shell()->senv[i], i);
+			if (i == (size - 2) && flag != 1)
+			{
+				i = 0;
+				flag = 1;
+			}
 		}
 	}
-	if (fnct && fnct == 'p')
-		printexp(size);
+	printexp(size);
 	free_array(mini_shell()->senv);
 }
 

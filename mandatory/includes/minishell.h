@@ -167,7 +167,7 @@ void		miniexport(char **args);
 void		export_add(char **args, int flag);
 int			built_type_next(char **args);
 void		minienv(t_list *env_amb_list);
-void		sort_export(int i, int j, int size, char fnct);
+void sort_export(int i, int j, int size, int reps);
 
 // ----------- INPUT_ANALYSIS ----------- //
 /**
