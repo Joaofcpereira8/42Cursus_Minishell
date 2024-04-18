@@ -6,7 +6,7 @@
 /*   By: jofilipe <jofilipe@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 19:13:24 by bbento-e          #+#    #+#             */
-/*   Updated: 2024/04/18 17:52:50 by bbento-e         ###   ########.fr       */
+/*   Updated: 2024/04/18 18:24:23 by bbento-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ void	miniexport(char **args)
 	{
 		mini_shell()->senv = lst_to_mat(mini_shell()->env_amb_list);
 		sort_export(-1, 0, arr_size(mini_shell()->senv), 3);
+		free_array(mini_shell()->senv);
 	}
 	else if (args[1])
 		export_add(args, 0, 1);
@@ -28,12 +29,11 @@ void	miniexport(char **args)
 void sort_export(int i, int j, int size, int reps)
 {
 	int			flag;
-	(void)reps;
-/*	int			a;
+	int			a;
 
 	a = -1;
 	while (++a <= reps)
-	{*/
+	{
 		while (++i < (size - 1) && mini_shell()->senv[i][j])
 		{
 			j = 0;
@@ -47,13 +47,12 @@ void sort_export(int i, int j, int size, int reps)
 				i = ft_swap_env(mini_shell()->senv[i], i);
 			if (i == (size - 2) && flag != 1)
 			{
-				i = 0;
+				i = -1;
 				flag = 1;
 			}
 		}
-//	}
+	}
 	printexp(size);
-	free_array(mini_shell()->senv);
 }
 
 void	printexp(int size)
@@ -68,35 +67,6 @@ void	printexp(int size)
 		i++;
 	}
 }
-
-/*void export_add(char **args, int flag)
-{
-	int		i;
-	int		j;
-	char	*result;
-
-	i = 0;
-	j = -1;
-	result = malloc(sizeof(char) * (ft_strlen(args[1]) + 3));
-	while (args[1][++j] != '\0')
-	{
-		if (args[1][j] == '=' && flag == 0)
-		{
-			result[i] = '=';
-			result[++i] = '"';
-			flag = 1;
-		}
-		else
-			result[i] = args[1][j];
-		i++;
-	}
-	if (flag == 1)
-		result[i] = '"';
-	result[i + flag] = '\0';
-	env_join(mini_shell()->senv, result);
-	//ft_lstadd_back(mini_shell()->tenv);
-	// free(result);
-}*/
 
 int slsh0(char *str, int i)
 {
