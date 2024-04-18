@@ -6,7 +6,7 @@
 /*   By: jofilipe <jofilipe@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 19:13:24 by bbento-e          #+#    #+#             */
-/*   Updated: 2024/04/17 18:53:38 by bbento-e         ###   ########.fr       */
+/*   Updated: 2024/04/18 15:00:34 by bbento-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,12 @@ void	miniexport(char **args)
 void sort_export(int i, int j, int size, int reps)
 {
 	int			flag;
-	int			a;
+	(void)reps;
+/*	int			a;
 
-	a = 0;
-	while (a++ <= reps)
-	{
+	a = -1;
+	while (++a <= reps)
+	{*/
 		while (++i < (size - 1) && mini_shell()->senv[i][j])
 		{
 			j = 0;
@@ -50,7 +51,7 @@ void sort_export(int i, int j, int size, int reps)
 				flag = 1;
 			}
 		}
-	}
+//	}
 	printexp(size);
 	free_array(mini_shell()->senv);
 }
@@ -97,26 +98,25 @@ void	printexp(int size)
 	// free(result);
 }*/
 
-int slsh0(void *var, int i)
+int slsh0(char *str, int i)
 {
-	if (!var)
-		return (0);
-	((char *)var)[i] = '\0';
+	str[i] = '\0';
 	return (1);
 }
 
-void exp_alloc(t_env **lst, char **args)
+t_env *exp_alloc(t_env *lst, char **args)
 {
 	int		i;
 	int		j;
 
-	j = 0;
+	j = 1;
 	i = ft_strlen_flag(args[1], '=');
-	(*lst) = malloc(sizeof(t_env));
+	lst = malloc(sizeof(t_env));
 	while(args[1][++i] != '\0')
 		j++;
-	(*lst)->type = malloc(sizeof(char) * i);
-	(*lst)->info = malloc(sizeof(char) * j);
+	lst->type = malloc(sizeof(char) * i);
+	lst->info = malloc(sizeof(char) * j);
+	return lst;
 }
 
 void export_add(char **args, int flag)
@@ -125,9 +125,10 @@ void export_add(char **args, int flag)
 	int		j;
 	t_env	*lst;
 
+	lst = NULL;
+	lst = exp_alloc(lst, args);
 	i = 0;
 	j = -1;
-	exp_alloc(&lst, args);
 	while (args[1][++j] != '\0')
 	{
 		if (args[1][j] == '=' && flag == 0 && slsh0(lst->type, i))
@@ -141,7 +142,7 @@ void export_add(char **args, int flag)
 		else if (flag == 1)
 			lst->info[i++] = args[1][j];
 	}
-	if (args[1][j - 1] != '"' && slsh0(lst->info, i + 1))
+	if ((args[1][j - 1] != '"' && slsh0(lst->info, i + 1)) || !lst->info[1])
 		lst->info[i++] = '"';
 	printf("Result %s=%s\n", lst->type, lst->info);
 	ft_lstadd_back(&mini_shell()->env_amb_list, ft_lstnew(lst));

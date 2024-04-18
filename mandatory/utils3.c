@@ -6,7 +6,7 @@
 /*   By: jofilipe <jofilipe@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 14:57:23 by jofilipe          #+#    #+#             */
-/*   Updated: 2024/04/17 17:41:23 by bbento-e         ###   ########.fr       */
+/*   Updated: 2024/04/18 11:33:05 by bbento-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,10 @@ char	**lst_to_mat(t_list *list)
 	while (list)
 	{
 		env = (t_env *)list->content;
-		tmp1 = ft_strjoin(env->type, "=");
+		if (env->info[0] == '"')
+			tmp1 = ft_strjoin(env->type, "=");
+		else
+			tmp1 = ft_strdup(env->type);
 		tmp2 = ft_strjoin(tmp1, env->info);
 		matrix = add_to_mat(matrix, ft_strdup(tmp2));
 		free(tmp1);
