@@ -6,7 +6,7 @@
 /*   By: jofilipe <jofilipe@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 19:13:24 by bbento-e          #+#    #+#             */
-/*   Updated: 2024/04/18 19:04:16 by bbento-e         ###   ########.fr       */
+/*   Updated: 2024/04/18 19:55:32 by bbento-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,23 @@
 
 void	miniexport(char **args)
 {
+	int	i;
+	int	j;
+
+	i = -1;
+	while (args[++i])
+	{
+		j = -1;
+		while (args[i][++j])
+		{
+			if (args[i][j] == '=')
+				break ;
+			if (ft_isalpha(args[i][j]) != 1 && args[i][j] != '_')
+			{
+				return ((void)(err_handler('e', &args[i][j], 1)));
+			}
+		}
+	}
 	if (!args[1])
 	{
 		mini_shell()->senv = lst_to_mat(mini_shell()->env_amb_list);
@@ -22,8 +39,6 @@ void	miniexport(char **args)
 	}
 	else if (args[1])
 		export_add(args, 0, 1);
-	else
-		err_handler('e', args[2], 0);
 }
 
 void sort_export(int i, int j, int size, int reps)
