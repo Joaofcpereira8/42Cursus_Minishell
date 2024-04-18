@@ -6,7 +6,7 @@
 /*   By: jofilipe <jofilipe@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 19:13:24 by bbento-e          #+#    #+#             */
-/*   Updated: 2024/04/18 15:00:34 by bbento-e         ###   ########.fr       */
+/*   Updated: 2024/04/18 17:52:50 by bbento-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ void	miniexport(char **args)
 		mini_shell()->senv = lst_to_mat(mini_shell()->env_amb_list);
 		sort_export(-1, 0, arr_size(mini_shell()->senv), 3);
 	}
-	else if (args[1] && !args[2])
-		export_add(args, 0);
+	else if (args[1])
+		export_add(args, 0, 1);
 	else
 		err_handler('e', args[2], 0);
 }
@@ -104,46 +104,57 @@ int slsh0(char *str, int i)
 	return (1);
 }
 
-t_env *exp_alloc(t_env *lst, char **args)
-{
-	int		i;
-	int		j;
-
-	j = 1;
-	i = ft_strlen_flag(args[1], '=');
-	lst = malloc(sizeof(t_env));
-	while(args[1][++i] != '\0')
-		j++;
-	lst->type = malloc(sizeof(char) * i);
-	lst->info = malloc(sizeof(char) * j);
-	return lst;
-}
-
-void export_add(char **args, int flag)
+t_env *exp_alloc(char *args)
 {
 	int		i;
 	int		j;
 	t_env	*lst;
 
-	lst = NULL;
-	lst = exp_alloc(lst, args);
-	i = 0;
-	j = -1;
-	while (args[1][++j] != '\0')
+	j = 0;
+	i = ft_strlen_flag(args, '=');
+	lst = malloc(sizeof(t_env));
+	while(args[++i] != '\0')
+		j++;
+	lst->type = malloc(sizeof(char) * (i + 1));
+	lst->info = malloc(sizeof(char) * (j + 3));
+	return (lst);
+}
+
+void export_add(char **args, int flag, int a)
+{
+	int		i;
+	int		j;
+	t_env	*lst;
+
+	while (args[a])
 	{
-		if (args[1][j] == '=' && flag == 0 && slsh0(lst->type, i))
+		lst = exp_alloc(args[a]);
+		i = 0;
+		j = -1;
+		flag = 0;
+		while (args[a][++j] != '\0')
 		{
-			flag = i = 1;
-			if(args[1][++j] != '"')
+			if (args[a][j] == '=' && flag == 0 && slsh0(lst->type, i))
+			{
+				flag = 1;
+				i = 1;
+				//if(args[1][++j] != '"')
 				lst->info[0] = '"';
+				if(args[a][++j] == '\0')
+				{
+					lst->info[1] = '"';
+					break;
+				}
+			}
+			if	(flag == 0)
+				lst->type[i++] = args[a][j];
+			else if (flag == 1)
+				lst->info[i++] = args[a][j];
 		}
-		if	(flag == 0)
-			lst->type[i++] = args[1][j];
-		else if (flag == 1)
-			lst->info[i++] = args[1][j];
+		if (slsh0(lst->info, i + 1) && args[a][j - 1] != '"')
+			lst->info[i] = '"';
+		printf("Result %s=%s\n", lst->type, lst->info);
+		ft_lstadd_back(&mini_shell()->env_amb_list, ft_lstnew(lst));
+		a++;
 	}
-	if ((args[1][j - 1] != '"' && slsh0(lst->info, i + 1)) || !lst->info[1])
-		lst->info[i++] = '"';
-	printf("Result %s=%s\n", lst->type, lst->info);
-	ft_lstadd_back(&mini_shell()->env_amb_list, ft_lstnew(lst));
 }
