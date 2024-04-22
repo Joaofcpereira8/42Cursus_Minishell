@@ -3,37 +3,37 @@
 /*                                                        :::      ::::::::   */
 /*   exprt.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jofilipe <jofilipe@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: bbento-e <bbento-e@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/21 19:13:24 by bbento-e          #+#    #+#             */
-/*   Updated: 2024/04/18 19:55:32 by bbento-e         ###   ########.fr       */
+/*   Created: 2024/04/22 18:54:00 by bbento-e          #+#    #+#             */
+/*   Updated: 2024/04/22 19:09:28 by bbento-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
 
-void	miniexport(char **args)
+void    miniexport(char **args)
 {
-	int	i;
-	int	j;
+	int    i;
+	int    j;
 
-	i = -1;
-	while (args[++i])
+	i = 0;
+	while (args[i])
 	{
 		j = -1;
 		while (args[i][++j])
 		{
-			if (args[i][j] == '=')
+			if (args[i][j] == '=' && args[i][j + 1])
 				break ;
 			if (ft_isalpha(args[i][j]) != 1 && args[i][j] != '_')
-			{
 				return ((void)(err_handler('e', &args[i][j], 1)));
-			}
 		}
+		i++;
 	}
 	if (!args[1])
 	{
 		mini_shell()->senv = lst_to_mat(mini_shell()->env_amb_list);
+		printf("entered print export with %s", mini_shell()->senv[0]);
 		sort_export(-1, 0, arr_size(mini_shell()->senv), 3);
 		free_array(mini_shell()->senv);
 	}
@@ -43,8 +43,8 @@ void	miniexport(char **args)
 
 void sort_export(int i, int j, int size, int reps)
 {
-	int			flag;
-	int			a;
+	int          flag;
+	int          a;
 
 	a = -1;
 	while (++a <= reps)
@@ -70,9 +70,9 @@ void sort_export(int i, int j, int size, int reps)
 	printexp(size);
 }
 
-void	printexp(int size)
+void    printexp(int size)
 {
-	int	i;
+	int    i;
 
 	i = 0;
 	while (i < size)
@@ -85,31 +85,34 @@ void	printexp(int size)
 
 int slsh0(char *str, int i)
 {
-	str[i] = '\0';
+	str[i] = '0';
 	return (1);
 }
 
 t_env *exp_alloc(char *args)
 {
-	int		i;
-	int		j;
-	t_env	*lst;
+	int       i;
+	int       j;
+	t_env  *lst;
 
-	j = 0;
 	i = ft_strlen_flag(args, '=');
+	j = i;
 	lst = malloc(sizeof(t_env));
-	while(args[++i] != '\0')
+	while(args[j] != '\0')
 		j++;
 	lst->type = malloc(sizeof(char) * (i + 1));
-	lst->info = malloc(sizeof(char) * (j + 3));
+	if (j > i)
+		lst->info = malloc(sizeof(char) * (j + 3));
+	else
+		lst->info = 0;
 	return (lst);
 }
 
 void export_add(char **args, int flag, int a)
 {
-	int		i;
-	int		j;
-	t_env	*lst;
+	int       i;
+	int       j;
+	t_env  *lst;
 
 	while (args[a])
 	{
@@ -119,25 +122,33 @@ void export_add(char **args, int flag, int a)
 		flag = 0;
 		while (args[a][++j] != '\0')
 		{
-			if (args[a][j] == '=' && flag == 0 && slsh0(lst->type, i))
+			if (args[a][j] != ' ')
 			{
-				flag = 1;
-				i = 1;
-				//if(args[1][++j] != '"')
-				lst->info[0] = '"';
-				if(args[a][++j] == '\0')
+				if (args[a][j] == '=' && flag == 0 )//&& slsh0(lst->type, i))
 				{
-					lst->info[1] = '"';
-					break;
+					lst->type[i] = '\0';
+					flag = 1;
+					i = 1;
+					lst->info[0] = '"';
+					if(args[a][++j] == '\0')
+					{
+						lst->info[1] = '"';
+						break;
+					}
 				}
+				if (flag == 0)
+					lst->type[i++] = args[a][j];
+				else if (flag == 1)
+					lst->info[i++] = args[a][j];
 			}
-			if	(flag == 0)
-				lst->type[i++] = args[a][j];
-			else if (flag == 1)
-				lst->info[i++] = args[a][j];
 		}
-		if (slsh0(lst->info, i + 1) && args[a][j - 1] != '"')
+		if (flag == 0)
+			lst->type[i] = '\0';
+		if (args[a][j - 1] != '"' && flag == 1 && slsh0(lst->info, i))
+		{
 			lst->info[i] = '"';
+			lst->info[i + 1] = '\0';
+		}
 		printf("Result %s=%s\n", lst->type, lst->info);
 		ft_lstadd_back(&mini_shell()->env_amb_list, ft_lstnew(lst));
 		a++;

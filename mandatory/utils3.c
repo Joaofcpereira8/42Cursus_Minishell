@@ -6,7 +6,7 @@
 /*   By: jofilipe <jofilipe@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 14:57:23 by jofilipe          #+#    #+#             */
-/*   Updated: 2024/04/18 19:09:57 by bbento-e         ###   ########.fr       */
+/*   Updated: 2024/04/22 18:47:08 by bbento-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,13 +69,12 @@ int	flag_setter(int	*flag)
 	return (1);
 }
 
-/*char	**lst_to_mat(t_list *list)
+char    **lst_to_mat(t_list *list)
 {
-	t_env	*env;
-	char	*tmp1;
-	char	*tmp2;
-	char	**matrix;
-	int 	flag;
+	t_env  *env;
+	char   *tmp1;
+	char   *tmp2;
+	char   **matrix;
 
 	matrix = ft_calloc(1, sizeof(char *));
 	if (!matrix)
@@ -83,39 +82,7 @@ int	flag_setter(int	*flag)
 	while (list)
 	{
 		env = (t_env *)list->content;
-		if (env->info[0] == '"')
-		{
-			if (env->info[0] == '"')
-				tmp1 = ft_strjoin(env->type, "=");
-			else if (flag_setter(&flag))
-				tmp1 = ft_strjoin(env->type, "=\"");
-			if (flag == 1)
-				tmp2 = ft_strjoin(tmp1, ft_strjoin(env->info, "\""));
-			else
-				tmp2 = ft_strjoin(tmp1, env->info);
-			matrix = add_to_mat(matrix, ft_strdup(tmp2));
-			free(tmp1);
-			free(tmp2);
-		}
-		list = list->next;
-	}
-	return (matrix);
-}*/
-
-char	**lst_to_mat(t_list *list)
-{
-	t_env	*env;
-	char	*tmp1;
-	char	*tmp2;
-	char	**matrix;
-
-	matrix = ft_calloc(1, sizeof(char *));
-	if (!matrix)
-		return (NULL);
-	while (list)
-	{
-		env = (t_env *)list->content;
-		if (env->info[0]) //== '"')
+		if (env->info) //== '"')
 		{
 			if (env->info[0] != '"')
 			{
@@ -127,15 +94,15 @@ char	**lst_to_mat(t_list *list)
 				tmp1 = ft_strjoin(env->type, "=");
 				tmp2 = ft_strjoin(tmp1, env->info);
 			}
+			matrix = add_to_mat(matrix, ft_strdup(tmp2));
+			free(tmp1);
+			free(tmp2);
 		}
 		else
 		{
 			tmp1 = ft_strdup(env->type);
-			tmp2 = ft_strjoin(tmp1, env->info);
+			matrix = add_to_mat(matrix, ft_strdup(tmp1));
 		}
-		matrix = add_to_mat(matrix, ft_strdup(tmp2));
-		free(tmp1);
-		free(tmp2);
 		list = list->next;
 	}
 	return (matrix);
