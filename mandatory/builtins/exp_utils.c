@@ -6,7 +6,7 @@
 /*   By: bbento-e <bbento-e@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 11:57:55 by bbento-e          #+#    #+#             */
-/*   Updated: 2024/04/23 12:12:10 by bbento-e         ###   ########.fr       */
+/*   Updated: 2024/04/23 15:23:57 by bbento-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,20 +51,76 @@ t_env	*exp_alloc(char *args)
 	return (lst);
 }
 
-int exp_exists(char **args)
+/*bool	exp_exists(char **args)
 {
-	int i;
-	int j;
-	found
+	int		i;
+	int		j;
 	char *curr;
+	bool	found;
+	t_env 	*env;
 
 	i = 0;
 	j = 0;
 	while (args[i])
 	{
+		env = (t_env *)ms_env->content;
 		curr = malloc(sizeof(char) * ft_strlen_flag(args[i], '='));
-		while ()
+		ft_strlcpy(curr, args[i], ft_strlen_flag(args[i], '='));
+		while (ms_env)
+		{
+			if (ft_strcmp(curr, env->type) == 0)
+			{
+
+			}
+			ms_env = ms_env->next;
+		}
 		free(curr);
 	}
-	return (0);
+	return (found);
+}*/
+
+bool	exp_exists(char **args)
+{
+	int		i;
+	int		j;
+	char	*str;
+	bool	found;
+
+	i = 0;
+	found = false;
+	while (args[++i])
+	{
+		j = -1;
+		str = malloc(sizeof(char) * ft_strlen_flag(args[i], '='));
+		while (args[i][++j] && args[i][j] != '=')
+			str[j] = args[i][j];
+		str[j] = '\0';
+		ft_list_remove_if(&ms_env, str, &found);
+		free(str);
+	}
+	if (found == true)
+		export_add(args, 0, 1);
+	return (found);
+}
+
+void ft_list_remove_if(t_list **list, char *args, bool *found)
+{
+	t_list	*cur;
+	t_env	*env;
+
+	if (list == NULL || *list == NULL)
+		return;
+	cur = *list;
+	env = cur->content;
+	if (ft_strcmp(env->type, args) == 0) {
+		*list = cur->next;
+		free(cur);
+		ft_list_remove_if(list, args, found);
+		*found = true;
+	}
+	else
+	{
+		cur = *list;
+		ft_list_remove_if(&cur->next, args, found);
+	}
 }

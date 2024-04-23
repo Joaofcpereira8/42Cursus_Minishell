@@ -6,7 +6,7 @@
 /*   By: bbento-e <bbento-e@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 18:54:00 by bbento-e          #+#    #+#             */
-/*   Updated: 2024/04/23 12:09:17 by bbento-e         ###   ########.fr       */
+/*   Updated: 2024/04/23 15:07:53 by bbento-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	miniexport(char **args)
 		free_array(mini_shell()->senv);
 	}
 	else if (args[1])
-		if (exp_exists(args) == 0)
+		if (exp_exists(args) == false)
 			export_add(args, 0, 1);
 }
 
