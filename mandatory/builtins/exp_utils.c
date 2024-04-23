@@ -6,7 +6,7 @@
 /*   By: bbento-e <bbento-e@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 11:57:55 by bbento-e          #+#    #+#             */
-/*   Updated: 2024/04/23 15:31:09 by bbento-e         ###   ########.fr       */
+/*   Updated: 2024/04/23 15:36:36 by bbento-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,34 +51,6 @@ t_env	*exp_alloc(char *args)
 	return (lst);
 }
 
-/*bool	exp_exists(char **args)
-{
-	int		i;
-	int		j;
-	char *curr;
-	bool	found;
-	t_env 	*env;
-
-	i = 0;
-	j = 0;
-	while (args[i])
-	{
-		env = (t_env *)ms_env->content;
-		curr = malloc(sizeof(char) * ft_strlen_flag(args[i], '='));
-		ft_strlcpy(curr, args[i], ft_strlen_flag(args[i], '='));
-		while (ms_env)
-		{
-			if (ft_strcmp(curr, env->type) == 0)
-			{
-
-			}
-			ms_env = ms_env->next;
-		}
-		free(curr);
-	}
-	return (found);
-}*/
-
 bool	exp_exists(char **args)
 {
 	int		i;
@@ -99,7 +71,7 @@ bool	exp_exists(char **args)
 		free(str);
 	}
 	if (found == true)
-		export_add(args, 0, 1);
+		export_add(args, 0, 0);
 	return (found);
 }
 

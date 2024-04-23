@@ -6,7 +6,7 @@
 /*   By: bbento-e <bbento-e@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 18:54:00 by bbento-e          #+#    #+#             */
-/*   Updated: 2024/04/23 15:07:53 by bbento-e         ###   ########.fr       */
+/*   Updated: 2024/04/23 15:41:59 by bbento-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,17 +18,16 @@ void	miniexport(char **args)
 	int		j;
 
 	i = 0;
-	while (args[i])
+	while (args[++i])
 	{
 		j = -1;
 		while (args[i][++j])
 		{
-			if (args[i][j] == '=' && args[i][j + 1])
+			if (args[i][j] == '=')
 				break ;
 			if (ft_isalpha(args[i][j]) != 1 && args[i][j] != '_')
 				return ((void)(err_handler('e', &args[i][j], 1)));
 		}
-		i++;
 	}
 	if (!args[1])
 	{
@@ -38,7 +37,7 @@ void	miniexport(char **args)
 	}
 	else if (args[1])
 		if (exp_exists(args) == false)
-			export_add(args, 0, 1);
+			export_add(args, 0, 0);
 }
 
 void	sort_export(int i, int j, int size, int reps)
@@ -76,7 +75,7 @@ void	export_add(char **args, int flag, int a)
 	int		j;
 	t_env	*lst;
 
-	while (args[a])
+	while (args[++a])
 	{
 		lst = exp_alloc(args[a]);
 		i = 0;
@@ -113,6 +112,5 @@ void	export_add(char **args, int flag, int a)
 		}
 		printf("Result %s=%s\n", lst->type, lst->info);
 		ft_lstadd_back(&mini_shell()->env_amb_list, ft_lstnew(lst));
-		a++;
 	}
 }
