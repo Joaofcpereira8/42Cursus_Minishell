@@ -6,7 +6,7 @@
 /*   By: bbento-e <bbento-e@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 11:57:55 by bbento-e          #+#    #+#             */
-/*   Updated: 2024/04/23 15:23:57 by bbento-e         ###   ########.fr       */
+/*   Updated: 2024/04/23 15:31:09 by bbento-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,7 +116,8 @@ void ft_list_remove_if(t_list **list, char *args, bool *found)
 		*list = cur->next;
 		free(cur);
 		ft_list_remove_if(list, args, found);
-		*found = true;
+		if (found != NULL)
+			*found = true;
 	}
 	else
 	{
