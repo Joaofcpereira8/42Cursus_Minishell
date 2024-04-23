@@ -6,16 +6,16 @@
 /*   By: bbento-e <bbento-e@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 18:54:00 by bbento-e          #+#    #+#             */
-/*   Updated: 2024/04/22 19:09:28 by bbento-e         ###   ########.fr       */
+/*   Updated: 2024/04/23 12:09:17 by bbento-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
 
-void    miniexport(char **args)
+void	miniexport(char **args)
 {
-	int    i;
-	int    j;
+	int		i;
+	int		j;
 
 	i = 0;
 	while (args[i])
@@ -33,18 +33,18 @@ void    miniexport(char **args)
 	if (!args[1])
 	{
 		mini_shell()->senv = lst_to_mat(mini_shell()->env_amb_list);
-		printf("entered print export with %s", mini_shell()->senv[0]);
 		sort_export(-1, 0, arr_size(mini_shell()->senv), 3);
 		free_array(mini_shell()->senv);
 	}
 	else if (args[1])
-		export_add(args, 0, 1);
+		if (exp_exists(args) == 0)
+			export_add(args, 0, 1);
 }
 
-void sort_export(int i, int j, int size, int reps)
+void	sort_export(int i, int j, int size, int reps)
 {
-	int          flag;
-	int          a;
+	int		flag;
+	int		a;
 
 	a = -1;
 	while (++a <= reps)
@@ -70,49 +70,11 @@ void sort_export(int i, int j, int size, int reps)
 	printexp(size);
 }
 
-void    printexp(int size)
+void	export_add(char **args, int flag, int a)
 {
-	int    i;
-
-	i = 0;
-	while (i < size)
-	{
-		printf("declare -x ");
-		printf("%s\n", mini_shell()->senv[i]);
-		i++;
-	}
-}
-
-int slsh0(char *str, int i)
-{
-	str[i] = '0';
-	return (1);
-}
-
-t_env *exp_alloc(char *args)
-{
-	int       i;
-	int       j;
-	t_env  *lst;
-
-	i = ft_strlen_flag(args, '=');
-	j = i;
-	lst = malloc(sizeof(t_env));
-	while(args[j] != '\0')
-		j++;
-	lst->type = malloc(sizeof(char) * (i + 1));
-	if (j > i)
-		lst->info = malloc(sizeof(char) * (j + 3));
-	else
-		lst->info = 0;
-	return (lst);
-}
-
-void export_add(char **args, int flag, int a)
-{
-	int       i;
-	int       j;
-	t_env  *lst;
+	int		i;
+	int		j;
+	t_env	*lst;
 
 	while (args[a])
 	{

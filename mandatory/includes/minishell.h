@@ -6,7 +6,7 @@
 /*   By: bbento-e <bbento-e@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 18:26:52 by jofilipe          #+#    #+#             */
-/*   Updated: 2024/04/17 17:42:28 by bbento-e         ###   ########.fr       */
+/*   Updated: 2024/04/23 12:05:10 by bbento-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -169,6 +169,11 @@ int			built_type_next(char **args);
 void		minienv(t_list *env_amb_list);
 void sort_export(int i, int j, int size, int reps);
 
+// EXPORT UTILS
+void	printexp(int size);
+t_env	*exp_alloc(char *args);
+int		exp_exists(char **args);
+int		slsh0(char *str, int i);
 // ----------- INPUT_ANALYSIS ----------- //
 /**
  * @brief Lê a linha introduzida após o promp e esta é

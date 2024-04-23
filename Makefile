@@ -60,6 +60,7 @@ SRCS =	mandatory/main.c \
 		mandatory/builtins/env.c \
 		mandatory/builtins/exit.c \
 		mandatory/builtins/exprt.c \
+		mandatory/builtins/exp_utils.c \
 		mandatory/builtins/pwd.c \
 		mandatory/builtins/unset.c \
 
