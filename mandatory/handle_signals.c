@@ -6,7 +6,7 @@
 /*   By: jofilipe <jofilipe@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 21:08:28 by jofilipe          #+#    #+#             */
-/*   Updated: 2024/04/02 11:57:37 by jofilipe         ###   ########.fr       */
+/*   Updated: 2024/04/24 15:12:17 by bbento-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,4 +30,11 @@ void	handle_child(int signum)
 	else if (signum == SIGQUIT)
 		ft_putstr_fd("Quit: 3\n", STDERR_FILENO);
 	mini_shell()->exit_status = 128 + signum;
+}
+
+void	handle_heredoc(int signum)
+{
+	if (signum != SIGINT)
+		return ;
+	printf("\n");
 }

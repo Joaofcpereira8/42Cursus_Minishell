@@ -6,7 +6,7 @@
 /*   By: bbento-e <bbento-e@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 18:26:52 by jofilipe          #+#    #+#             */
-/*   Updated: 2024/04/23 15:02:31 by bbento-e         ###   ########.fr       */
+/*   Updated: 2024/04/24 15:15:08 by bbento-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -186,7 +186,7 @@ int			iseven(int s_trig);
 int			check_spec(char **str);
 
 // ----------- REDIRECTS ---------- //
-int			heredoc(char *file);
+int			heredoc(char *args);
 int			handle_hdoc(char **comm);
 int			handle_appnd(char **comm);
 int			handle_input(char **comm);
@@ -316,10 +316,13 @@ t_a_s_tree	*extend_pipes(t_a_s_tree *ast, t_a_s_tree *command);
   */
 void		signals(void);
 void		child_signals(void);
+void		ignore_signals(void);
+void		heredoc_signals(void);
 
 // ---------- HANDLE_SIGNALS ---------- //
-void		handle_sigint(int signum);
 void		handle_child(int signum);
+void		handle_sigint(int signum);
+void		handle_heredoc(int signum);
 
 /**
  * @brief Checks for the balanced use of quotes in a given input string.
