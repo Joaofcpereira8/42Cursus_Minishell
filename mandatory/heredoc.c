@@ -12,16 +12,16 @@
 
 #include "includes/minishell.h"
 
-char *dollar_finder(char *args)
+char	*dollar_finder(char *args)
 {
 	int		i;
-	int 	start;
+	int		start;
 	char	*var;
 
 	i = 0;
-	while(args[i])
+	while (args[i])
 	{
-		if(args[i] == '$')
+		if (args[i] == '$')
 		{
 			start = i;
 			if (args[i + 1] == '?')
@@ -33,7 +33,7 @@ char *dollar_finder(char *args)
 		}
 		i++;
 	}
-	return args;
+	return (args);
 }
 
 char	*hexpand(char *args)
@@ -79,8 +79,8 @@ void	hreader(char *args)
 		free(input);
 	}
 	close(fd);
+	ft_free();
 	ft_free_all();
-	// sanitize(true);
 }
 
 int	heredoc(char *args)
