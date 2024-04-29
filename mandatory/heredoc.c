@@ -6,51 +6,107 @@
 /*   By: bbento-e <bbento-e@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 12:15:25 by bbento-e          #+#    #+#             */
-/*   Updated: 2024/04/24 17:13:59 by bbento-e         ###   ########.fr       */
+/*   Updated: 2024/04/29 18:45:07 by bbento-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/minishell.h"
 
-char	*dollar_finder(char *args)
+/*int *where_dollar(char *args)
 {
-	int		i;
-	int		start;
-	char	*var;
+	int i;
+	int n;
+	int	*pos;
 
-	i = 0;
-	while (args[i])
+	i = -1;
+	while (args[++i])
+		if(args[i] == '$')
+			n++;
+	pos = malloc(sizeof(int) * n);
+	i = -1;
+	n = -1;
+	while (args[++i])
 	{
 		if (args[i] == '$')
 		{
-			start = i;
-			if (args[i + 1] == '?')
-				var = ft_strdup(ft_itoa(mini_shell()->exit_status));
+			pos[++n] = i;
 			while (args[i] && ft_isalnum((int)args[i]))
 				i++;
-			var = ft_substr(args, start, i);
-			free(var);
+			pos[++n] = i;
 		}
+	}
+	return (pos);
+}
+
+
+char	*dollar_finder(char *args)
+{
+	int 	i;
+	int 	last;
+	int		size;
+	int		*pos;
+	char 	*str;
+	char	*tmp;
+	char	*value;
+
+	size = (int)ft_strlen(args);
+	pos = where_dollar(args);
+	last = 0;
+	while (pos[i])
+	{
+		tmp = (ft_substr(args, last, pos[i]), );
+		tmp = ft_get_env();
+		str = ft_strjoin(str, tmp);
+		free(tmp);
+		last = pos[i + 1];
+		i += 2;
+	}
+	free(pos);
+}*/
+
+char	*dollar_finder(char *args)
+{
+	int		i;
+	int		size;
+	int		last;
+	char	*str;
+	char	*tmp1;
+	char	*tmp2;
+
+	size = (int)ft_strlen(args);
+	i = 0;
+	last = 0;
+	while (i < size)
+	{
+		if (args[i] == '$')
+		{
+			// tmp2 = ft_strdup(ft_substr(args, last, i - 1));
+			if (args[i + 1] == '?')
+				tmp1 = ft_strdup(ft_itoa(mini_shell()->exit_status));
+			else
+			{
+				last = i;
+				while (args[i] && ft_isalnum((int)args[i]))
+					i++;
+				tmp1 = ft_get_env(ft_substr(args, last, i));
+			}
+			str = ft_strjoin(tmp2, tmp1);
+			free(tmp1);
+			last = i;
+		}
+		else
+			str = ft_strjoin(str, tmp2);
+		free(tmp2);
 		i++;
 	}
-	return (args);
+	return (str);
 }
 
 char	*hexpand(char *args)
 {
 	char	*str;
-	char	*value;
-	char	*key;
 
-	str = ft_strdup(args);
-	while (ft_strnstr(str, "$", ft_strlen(str)))
-	{
-/*		key = _find_key(str);
-		str = ft_strreplace(str, key, value);*/
-		str = dollar_finder(args);
-		free(key);
-		free(value);
-	}
+	str = ft_strdup(dollar_finder(args));
 	free(args);
 	return (str);
 }
@@ -66,10 +122,9 @@ void	hreader(char *args)
 		input = readline("> ");
 		if (!input)
 		{
-			printf("\n");
 			break ;
 		}
-		else if (input && !ft_strcmp(input, args))
+		else if (ft_strcmp(input, args) == 0)
 		{
 			free(input);
 			break ;

@@ -6,7 +6,7 @@
 /*   By: jofilipe <jofilipe@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 12:05:45 by jofilipe          #+#    #+#             */
-/*   Updated: 2024/04/24 14:51:54 by bbento-e         ###   ########.fr       */
+/*   Updated: 2024/04/29 15:03:38 by bbento-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,16 +21,17 @@ int	redirects(t_meta_tok token, char *com)
 	else if (token == red_in)
 		(mini_shell()->fd_in) = open(com, O_RDONLY);
 	else if (token == red_hdoc)
-		return (handle_hdoc(&com));
+		(mini_shell()->fd_in) = heredoc(com);
 	if (mini_shell()->fd_in == -1 || mini_shell()->fd_out == -1)
 		return (pars_error('z', 1));
 	return (0);
 }
 
-int	handle_hdoc(char **comm)
+/*int	handle_hdoc(char **comm)
 {
+	printf("entering hdoc with string: %s\n", comm[1]);
 	mini_shell()->fd_in = heredoc(comm[1]);
 	if (mini_shell()->fd_in)
-		return (0);
+		return (mini_shell()->fd_in);
 	return (err_handler('r', "<<", 0));
-}
+}*/

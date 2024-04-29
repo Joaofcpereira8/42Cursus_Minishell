@@ -6,7 +6,7 @@
 /*   By: bbento-e <bbento-e@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 18:26:52 by jofilipe          #+#    #+#             */
-/*   Updated: 2024/04/24 15:15:08 by bbento-e         ###   ########.fr       */
+/*   Updated: 2024/04/29 18:40:09 by bbento-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,10 +37,10 @@
 
 typedef enum e_meta_tok
 {
+	red_hdoc,
 	red_in,
 	red_out,
 	red_apnd,
-	red_hdoc,
 	piped,
 	sng_quote,
 	dbl_quote,
@@ -279,6 +279,7 @@ bool		input_analysis(void);
 bool		is_command(t_token *token);
 bool		redirection(t_token *token);
 bool		pipe_or_redir(t_token *token);
+bool		pipe_or_not_hd(t_token *token);
 t_token		*scanner(t_operations operations);
 
 // ---------- EXPANDER ---------- //
@@ -291,10 +292,10 @@ char		*ft_streplace(char *str, char *old, char *new);
 void		ft_free(void);
 void		ft_free_all(void);
 void		clean_env(t_env *env);
+void		free_array(char **arr);
 void		ft_clean(void *pointer);
 void		clean_ast_tokens(t_a_s_tree *ast);
 void		clean_a_s_tree(t_a_s_tree *ast, void (*del)(t_a_s_tree *));
-void		free_array(char **arr);
 
 // ---------- AST_TOKENS ---------- //
 t_a_s_tree	*ast_new_token(t_token *token);

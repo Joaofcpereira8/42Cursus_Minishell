@@ -21,7 +21,7 @@ bool	input_analysis(void)
 	num_of_commands = 1;
 	num_of_pipes = 0;
 	scanner(RESET);
-	if (pipe_or_redir(scanner(READ)))
+	if (pipe_or_not_hd(scanner(READ)))
 		return (pars_error('s', 2));
 	while (scanner(READ))
 	{
@@ -58,12 +58,17 @@ t_token	*scanner(t_operations operations)
 
 bool	pipe_or_redir(t_token *token)
 {
+	return (token->type >= red_hdoc && token->type <= piped);
+}
+
+bool	pipe_or_not_hd(t_token *token)
+{
 	return (token->type >= red_in && token->type <= piped);
 }
 
 bool	redirection(t_token *token)
 {
-	return (token->type >= red_in && token->type <= red_hdoc);
+	return (token->type >= red_hdoc && token->type <= red_apnd);
 }
 
 bool	is_command(t_token *token)

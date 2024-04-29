@@ -6,7 +6,7 @@
 /*   By: jofilipe <jofilipe@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 18:19:52 by jofilipe          #+#    #+#             */
-/*   Updated: 2024/04/11 11:52:26 by bbento-e         ###   ########.fr       */
+/*   Updated: 2024/04/29 15:11:40 by bbento-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ int	figure_out(void)
 	if (!is_command(mini_shell()->env_token->content))
 		execute(mini_shell()->ast);
 	env_update();
+	unlink("heredoc");
 	return (0);
 }
 
