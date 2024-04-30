@@ -6,7 +6,7 @@
 /*   By: bbento-e <bbento-e@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 11:57:55 by bbento-e          #+#    #+#             */
-/*   Updated: 2024/04/23 15:36:36 by bbento-e         ###   ########.fr       */
+/*   Updated: 2024/04/30 15:03:30 by bbento-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,27 +51,22 @@ t_env	*exp_alloc(char *args)
 	return (lst);
 }
 
-bool	exp_exists(char **args)
+bool exp_exists(char *args)
 {
-	int		i;
 	int		j;
 	char	*str;
 	bool	found;
 
-	i = 0;
 	found = false;
-	while (args[++i])
-	{
-		j = -1;
-		str = malloc(sizeof(char) * ft_strlen_flag(args[i], '='));
-		while (args[i][++j] && args[i][j] != '=')
-			str[j] = args[i][j];
-		str[j] = '\0';
-		ft_list_remove_if(&ms_env, str, &found);
-		free(str);
-	}
+	j = -1;
+	str = malloc(sizeof(char) * ft_strlen_flag(args, '='));
+	while (args[++j] && args[j] != '=')
+		str[j] = args[j];
+	str[j] = '\0';
+	ft_list_remove_if(&ms_env, str, &found);
+	free(str);
 	if (found == true)
-		export_add(args, 0, 0);
+		export_add(args, 0);
 	return (found);
 }
 

@@ -6,7 +6,7 @@
 /*   By: jofilipe <jofilipe@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 12:11:57 by bbento-e          #+#    #+#             */
-/*   Updated: 2024/04/29 12:11:36 by bbento-e         ###   ########.fr       */
+/*   Updated: 2024/04/30 12:44:46 by bbento-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ char	**env_to_mat(t_list *env_list)
 	while (env_list)
 	{
 		env = (t_env *)env_list->content;
-		if (env->info && env->info[1] && env->info[1] != '"')
+		if (env->info)
 		{
 			tmp1 = ft_strjoin(env->type, "=");
 			if (env->info[0] == '"')

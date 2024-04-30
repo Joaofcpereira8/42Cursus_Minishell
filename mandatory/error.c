@@ -6,7 +6,7 @@
 /*   By: jofilipe <jofilipe@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/04 19:02:29 by bbento-e          #+#    #+#             */
-/*   Updated: 2024/04/15 18:29:26 by bbento-e         ###   ########.fr       */
+/*   Updated: 2024/04/30 14:17:01 by bbento-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,10 @@ int	pars_error(char c, int ex_stat)
 		printf("minishell: syntax error near unexpected token\n");
 	else if (c == 'r')
 		printf("minishell: unclosed redirection\n");
+	else if (c == 'n')
+		printf("minishell: syntax error near unexpected token `>'\n");
+	else if (c == 'd')
+		printf("minishell: syntax error near unexpected token `|'\n");
 	else if (c == 'p')
 		printf("minishell: unclosed pipes\n");
 	else if (c == 'b')

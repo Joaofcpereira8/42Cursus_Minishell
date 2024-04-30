@@ -6,7 +6,7 @@
 /*   By: bbento-e <bbento-e@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 18:26:52 by jofilipe          #+#    #+#             */
-/*   Updated: 2024/04/29 18:40:09 by bbento-e         ###   ########.fr       */
+/*   Updated: 2024/04/30 12:27:01 by bbento-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,10 +37,10 @@
 
 typedef enum e_meta_tok
 {
-	red_hdoc,
 	red_in,
 	red_out,
 	red_apnd,
+	red_hdoc,
 	piped,
 	sng_quote,
 	dbl_quote,
@@ -164,16 +164,17 @@ void		miniexit(char **args);
 void		mini_exit2(char **args);
 int			miniunset(char **args);
 int			built_type(char **args);
-void		miniexport(char **args);
+void miniexport(char **args, int flag);
 int			built_type_next(char **args);
 void		minienv(t_list *env_amb_list);
-void		export_add(char **args, int flag, int a);
+void export_add(char *args, int flag);
 void		sort_export(int i, int j, int size, int reps);
 
 // EXPORT UTILS
 void	printexp(int size);
 t_env	*exp_alloc(char *args);
-bool	exp_exists(char **args);
+
+bool exp_exists(char *args);
 int		slsh0(char *str, int i);
 void ft_list_remove_if(t_list **list, char *args, bool *found);
 // ----------- INPUT_ANALYSIS ----------- //

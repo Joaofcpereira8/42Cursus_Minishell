@@ -6,7 +6,7 @@
 /*   By: jofilipe <jofilipe@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 12:11:46 by bbento-e          #+#    #+#             */
-/*   Updated: 2024/04/15 18:01:33 by bbento-e         ###   ########.fr       */
+/*   Updated: 2024/04/30 14:17:41 by bbento-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ int	handle_minus(void)
 
 int	mini_cd(char **args)
 {
+	(mini_shell()->oldpwd) = ft_get_env("OLDPWD");
 	if (!args[1] && chdir("/home/") == 0)
 	{
 		mini_shell()->oldpwd = mini_shell()->cwd;

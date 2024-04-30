@@ -6,7 +6,7 @@
 /*   By: jofilipe <jofilipe@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/19 11:23:10 by jofilipe          #+#    #+#             */
-/*   Updated: 2024/04/11 12:14:29 by bbento-e         ###   ########.fr       */
+/*   Updated: 2024/04/30 14:16:05 by bbento-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,15 @@ bool	input_analysis(void)
 	while (scanner(READ))
 	{
 		next = scanner(AFTER);
+		if (redirection(scanner(READ)) && redirection(next))
+			return (pars_error('n', 2));
 		if (redirection(scanner(READ)) && (!next || pipe_or_redir(next)))
 			return (pars_error('r', 2));
 		if (scanner(READ)->type == piped)
 		{
 			num_of_pipes++;
+			if (pipe_or_redir(scanner(READ)) && pipe_or_redir(next))
+				return (pars_error('d', 2));
 			if (next && !pipe_or_redir(next))
 				num_of_commands++;
 		}
@@ -58,17 +62,17 @@ t_token	*scanner(t_operations operations)
 
 bool	pipe_or_redir(t_token *token)
 {
-	return (token->type >= red_hdoc && token->type <= piped);
+	return (token->type >= red_in && token->type <= piped);
 }
 
 bool	pipe_or_not_hd(t_token *token)
 {
-	return (token->type >= red_in && token->type <= piped);
+	return (token->type >= red_in && token->type <= piped && token->type != red_hdoc);
 }
 
 bool	redirection(t_token *token)
 {
-	return (token->type >= red_hdoc && token->type <= red_apnd);
+	return (token->type >= red_in && token->type <= red_hdoc);
 }
 
 bool	is_command(t_token *token)

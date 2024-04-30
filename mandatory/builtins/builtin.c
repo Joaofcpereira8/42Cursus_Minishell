@@ -23,7 +23,7 @@ int	built_type(char **args)
 	else if (ft_strncmp(mini_shell()->input, "pwd", 3) == 0)
 		minipdw();
 	else if (ft_strncmp(mini_shell()->input, "export", 6) == 0)
-		miniexport(args);
+		miniexport(args, 0);
 	else
 		return (built_type_next(args));
 	return (0);
