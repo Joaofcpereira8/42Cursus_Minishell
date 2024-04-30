@@ -116,6 +116,5 @@ void export_add(char *args, int flag)
 		lst->info[i] = '"';
 		lst->info[i + 1] = '\0';
 	}
-	printf("Result %s=%s\n", lst->type, lst->info);
 	ft_lstadd_back(&mini_shell()->env_amb_list, ft_lstnew(lst));
 }
