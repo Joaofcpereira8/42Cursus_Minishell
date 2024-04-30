@@ -6,63 +6,11 @@
 /*   By: bbento-e <bbento-e@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 12:15:25 by bbento-e          #+#    #+#             */
-/*   Updated: 2024/04/30 14:26:37 by bbento-e         ###   ########.fr       */
+/*   Updated: 2024/04/30 15:07:51 by bbento-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/minishell.h"
-
-/*int *where_dollar(char *args)
-{
-	int i;
-	int n;
-	int	*pos;
-
-	i = -1;
-	while (args[++i])
-		if(args[i] == '$')
-			n++;
-	pos = malloc(sizeof(int) * n);
-	i = -1;
-	n = -1;
-	while (args[++i])
-	{
-		if (args[i] == '$')
-		{
-			pos[++n] = i;
-			while (args[i] && ft_isalnum((int)args[i]))
-				i++;
-			pos[++n] = i;
-		}
-	}
-	return (pos);
-}
-
-
-char	*dollar_finder(char *args)
-{
-	int 	i;
-	int 	last;
-	int		size;
-	int		*pos;
-	char 	*str;
-	char	*tmp;
-	char	*value;
-
-	size = (int)ft_strlen(args);
-	pos = where_dollar(args);
-	last = 0;
-	while (pos[i])
-	{
-		tmp = (ft_substr(args, last, pos[i]), );
-		tmp = ft_get_env();
-		str = ft_strjoin(str, tmp);
-		free(tmp);
-		last = pos[i + 1];
-		i += 2;
-	}
-	free(pos);
-}*/
 
 char	*dollar_finder(char *args)
 {
@@ -150,5 +98,4 @@ int	heredoc(char *args)
 	waitpid(0, NULL, 0);
 	signals();
 	return (open("heredoc", O_RDONLY));
-	// return (err_handler('h', "", 0));
 }
