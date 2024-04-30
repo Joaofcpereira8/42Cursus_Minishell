@@ -6,7 +6,7 @@
 /*   By: bbento-e <bbento-e@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 12:11:51 by bbento-e          #+#    #+#             */
-/*   Updated: 2024/04/30 15:37:54 by bbento-e         ###   ########.fr       */
+/*   Updated: 2024/04/30 19:09:53 by bbento-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ int	echo_valid(char **args)
 		|| mini_shell()->input[5] == ' ')
 	{
 		printf("\n");
-		return (-1);
 	}
 	while (args[i])
 	{
@@ -42,10 +41,10 @@ int	miniecho(char **args)
 	int	nl;
 
 	if (echo_valid(args) == -1)
-		return (err_handler('e', mini_shell()->input, 0));
+		return (err_handler('c', mini_shell()->input, 0));
 	nl = 1;
 	i = 1;
-	if (args[1][0] && args[1][0] == '-' && args[1][1] == 'n' && !args[1][2])
+	if (args[1][0] && args[1][1] && !args[1][2] && args[1][0] == '-' && args[1][1] == 'n')
 	{
 		nl = 0;
 		i++;

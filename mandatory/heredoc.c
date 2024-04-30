@@ -6,7 +6,7 @@
 /*   By: bbento-e <bbento-e@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 12:15:25 by bbento-e          #+#    #+#             */
-/*   Updated: 2024/04/30 15:18:07 by bbento-e         ###   ########.fr       */
+/*   Updated: 2024/04/30 19:01:28 by bbento-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,14 @@ char	*dollar_finder(char *args)
 	char	*tmp1;
 	char	*tmp2;
 
+	tmp1 = NULL;
 	tmp2 = NULL;
 	size = (int)ft_strlen(args);
+	str = malloc(sizeof(char) * size);
 	i = 0;
 	last = 0;
 	while (i < size)
 	{
-		tmp2 = ft_strdup(ft_substr(args, last, i - 1));
 		if (args[i] == '$')
 		{
 			if (args[i + 1] == '?')
@@ -35,17 +36,20 @@ char	*dollar_finder(char *args)
 			else
 			{
 				last = i;
-				while (args[i] && ft_isalpha((int)args[i]))
-					i++;
+				while (args[++i] && ft_isalpha(args[i]) == 1);
 				tmp1 = ft_get_env(ft_substr(args, last, i));
 			}
-			str = ft_strjoin(tmp2, tmp1);
-			free(tmp1);
+			str = ft_strjoin(str, tmp1);
 			last = i;
+			free(tmp1);
 		}
 		else
+		{
+			tmp2 = ft_substr(args, last, i - 1);
 			str = ft_strjoin(str, tmp2);
-		free(tmp2);
+			free(tmp2);
+		}
+			//ft_strlcat(str, tmp2, ft_strlen(tmp2));
 		i++;
 	}
 	return (str);
@@ -56,7 +60,6 @@ char	*hexpand(char *args)
 	char	*str;
 
 	str = ft_strdup(dollar_finder(args));
-	free(args);
 	return (str);
 }
 
