@@ -6,7 +6,7 @@
 /*   By: bbento-e <bbento-e@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 12:15:25 by bbento-e          #+#    #+#             */
-/*   Updated: 2024/04/30 15:07:51 by bbento-e         ###   ########.fr       */
+/*   Updated: 2024/04/30 15:18:07 by bbento-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,7 @@ void	hreader(char *args)
 		input = readline("> ");
 		if (!input)
 		{
+			printf("\n");
 			break ;
 		}
 		else if (ft_strcmp(input, args) == 0)

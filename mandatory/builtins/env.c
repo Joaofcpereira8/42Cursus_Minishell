@@ -6,7 +6,7 @@
 /*   By: jofilipe <jofilipe@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 12:11:57 by bbento-e          #+#    #+#             */
-/*   Updated: 2024/04/30 12:44:46 by bbento-e         ###   ########.fr       */
+/*   Updated: 2024/04/30 15:49:22 by bbento-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,7 @@ char	*ft_get_env(char *type)
 	while (current)
 	{
 		env_tmp = (t_env *)current->content;
+		env_tmp->info = ft_strtrim(env_tmp->info, "\"");
 		if (!ft_strcmp(env_tmp->type, type))
 			return (ft_strdup(env_tmp->info));
 		current = current->next;
