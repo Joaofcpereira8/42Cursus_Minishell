@@ -164,10 +164,10 @@ void		miniexit(char **args);
 void		mini_exit2(char **args);
 int			miniunset(char **args);
 int			built_type(char **args);
-void miniexport(char **args, int flag, int i, int j);
+void    miniexport(char **args, int flag, int i, int j);
 int			built_type_next(char **args);
 void		minienv(t_list *env_amb_list);
-void export_add(char *args, int flag);
+void		export_add(char *args, int flag);
 void		sort_export(int i, int j, int size, int reps);
 
 // EXPORT UTILS

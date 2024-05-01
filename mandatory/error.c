@@ -51,7 +51,7 @@ int	pars_error(char c, int ex_stat)
 	else if (c == 'r')
 		printf("minishell: unclosed redirection\n");
 	else if (c == 'n')
-		printf("minishell: syntax error near unexpected token `>'\n");
+		printf("minishell: syntax error near unexpected token `>' or `<'\n");
 	else if (c == 'd')
 		printf("minishell: syntax error near unexpected token `|'\n");
 	else if (c == 'p')

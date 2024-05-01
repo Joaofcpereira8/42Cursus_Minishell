@@ -23,24 +23,24 @@
  */
 char	*ft_strjoin(char const *str1, char const *str2)
 {
-	char			*join;
-	unsigned int	i;
-	unsigned int	j;
-	unsigned int	size;
+	char		*memall;
+	int			len;
+	int			i;
+	int			j;
 
 	i = 0;
 	j = 0;
-	if (!str1 || !str2)
-		return (0);
-	size = ft_strlen(str1) + ft_strlen(str2);
-	join = (char *)malloc(sizeof(char) * (size + 1));
-	if (!join)
-		return (0);
-	while (str1[j])
-		join[i++] = str1[j++];
-	j = 0;
-	while (str2[j])
-		join[i++] = str2[j++];
-	join[i] = '\0';
-	return (join);
+	len = ft_strlen(str1) + ft_strlen(str2);
+	memall = malloc((len + 1) * sizeof(char));
+	if (!memall)
+		return (NULL);
+	while (str1 && *(str1 + i))
+	{
+		*(memall + i) = *(str1 + i);
+		i++;
+	}
+	while (str2 && *(str2 + j))
+		*(memall + i++) = *(str2 + j++);
+	*(memall + i) = '\0';
+	return (memall);
 }

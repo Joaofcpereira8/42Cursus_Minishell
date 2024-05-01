@@ -58,5 +58,6 @@ int	miniecho(char **args)
 	}
 	if (nl != 0)
 		printf("\n");
+	mini_shell()->exit_status = 0;
 	return (0);
 }
