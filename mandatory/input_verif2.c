@@ -26,14 +26,14 @@ bool	input_analysis(void)
 	while (scanner(READ))
 	{
 		next = scanner(AFTER);
-		if (redirection(scanner(READ)) && redirection(next))
+		if (redirection(scanner(READ)) && (!next || redirection(next)))
 			return (pars_error('n', 2));
 		if (redirection(scanner(READ)) && (!next || pipe_or_redir(next)))
 			return (pars_error('r', 2));
 		if (scanner(READ)->type == piped)
 		{
 			num_of_pipes++;
-			if (pipe_or_redir(scanner(READ)) && pipe_or_redir(next))
+			if (pipe_or_redir(scanner(READ)) && (!next || pipe_or_redir(next)))
 				return (pars_error('d', 2));
 			if (next && !pipe_or_redir(next))
 				num_of_commands++;

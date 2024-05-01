@@ -27,7 +27,7 @@ void	child_signals(void)
 void	heredoc_signals(void)
 {
 	signal(SIGINT, handle_heredoc);
-	signal(SIGQUIT, handle_heredoc);
+	signal(SIGQUIT, SIG_IGN);
 }
 
 void	ignore_signals(void)

@@ -16,18 +16,15 @@ char	*get_prompt(void)
 {
 	char	*env;
 	char	*user;
-	char	*path;
-	int		i;
-	int		a;
 
-	i = ft_strlen(mini_shell()->cwd);
 	user = ft_get_env("USER");
-	a = ft_strlen(user);
-	path = ft_substr(ft_strnstr(mini_shell()->cwd, user, i), a, i);
-	env = ft_get_env("USER");
-	env = ft_strjoin(env, "@minishell:~");
-	env = ft_strjoin(env, path);
-	env = ft_strjoin(env, "/$ ");
-	free (user);
-	return (env);
+	env = ft_strjoin(user, "@minishell:~");
+	free(user);
+	user = ft_strdup(env);
+	free(env);
+	env = ft_strjoin(user, mini_shell()->cwd);
+	free(user);
+	user = ft_strjoin(env, "/$ ");
+	free(env);
+	return (user);
 }

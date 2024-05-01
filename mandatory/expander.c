@@ -28,7 +28,7 @@ void	expand_variable(t_token *token)
 		else
 			value = ft_get_env(key);
 		tmp = token->str;
-		token->str = ft_streplace(token->str, key, value);
+		token->str = ft_strtrim(ft_streplace(token->str, key, value), "\"");
 		ft_clean(tmp);
 		ft_clean(key);
 		ft_clean(value);

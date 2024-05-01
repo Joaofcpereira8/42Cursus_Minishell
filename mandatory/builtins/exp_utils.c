@@ -67,6 +67,7 @@ bool exp_exists(char *args)
 	free(str);
 	if (found == true)
 		export_add(args, 0);
+	mini_shell()->exit_status = 0;
 	return (found);
 }
 
