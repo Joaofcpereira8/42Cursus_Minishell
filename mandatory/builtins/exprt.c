@@ -6,23 +6,18 @@
 /*   By: bbento-e <bbento-e@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 18:54:00 by bbento-e          #+#    #+#             */
-/*   Updated: 2024/04/30 15:03:03 by bbento-e         ###   ########.fr       */
+/*   Updated: 2024/04/30 15:56:44 by bbento-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
 
-void	miniexport(char **args, int flag)
+void miniexport(char **args, int flag, int i, int j)
 {
-	int		i;
-	int		j;
-
-	i = 0;
 	if (!args[1])
 	{
 		mini_shell()->senv = lst_to_mat(mini_shell()->env_amb_list);
 		sort_export(-1, 0, arr_size(mini_shell()->senv), 3);
-		free_array(mini_shell()->senv);
 	}
 	else
 	{
@@ -45,7 +40,6 @@ void	miniexport(char **args, int flag)
 					export_add(args[i], 0);
 		}
 	}
-
 }
 
 void	sort_export(int i, int j, int size, int reps)
@@ -75,6 +69,7 @@ void	sort_export(int i, int j, int size, int reps)
 		}
 	}
 	printexp(size);
+	free_array(mini_shell()->senv);
 }
 
 void export_add(char *args, int flag)

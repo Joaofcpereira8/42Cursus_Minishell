@@ -6,7 +6,7 @@
 /*   By: jofilipe <jofilipe@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 21:08:28 by jofilipe          #+#    #+#             */
-/*   Updated: 2024/04/24 15:12:17 by bbento-e         ###   ########.fr       */
+/*   Updated: 2024/04/30 17:13:34 by bbento-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,4 +37,6 @@ void	handle_heredoc(int signum)
 	if (signum != SIGINT)
 		return ;
 	printf("\n");
+	ft_free();
+	mini_shell()->exit_status = 130;
 }
