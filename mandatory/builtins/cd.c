@@ -26,7 +26,8 @@ int	handle_minus(void)
 
 int	mini_cd(char **args)
 {
-	(mini_shell()->oldpwd) = ft_get_env("OLDPWD");
+	if (!mini_shell()->oldpwd)
+		(mini_shell()->oldpwd) = ft_get_env("OLDPWD");
 	if (!args[1] && chdir(getenv("HOME")) == 0)
 	{
 		mini_shell()->oldpwd = mini_shell()->cwd;

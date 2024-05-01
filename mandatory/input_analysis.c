@@ -16,8 +16,8 @@ void	input(void)
 {
 	while (1)
 	{
-		mini_shell()->prompt = get_prompt();
-		mini_shell()->input = readline(mini_shell()->prompt);
+		(mini_shell()->prompt) = get_prompt();
+		(mini_shell()->input) = readline(mini_shell()->prompt);
 		if (!mini_shell()->input)
 		{
 			printf("exit\n");

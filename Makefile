@@ -23,7 +23,7 @@ WHITE   = \033[1;37m
 NAME = minishell
 
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -g -fsanitize=address
+CFLAGS = -Wall -Wextra -Werror -g #-fsanitize=address
 RM = rm -rf
 
 LIBFT = libft/libft.a
