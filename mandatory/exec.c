@@ -26,13 +26,15 @@ char	*path_join(char *path, char *cmd)
 char	**get_paths(void)
 {
 	char	*split_path;
-	char	**paths;
-
+	//char	**paths;
+	list_delete(mini_shell()->path);
 	split_path = ft_get_env("PATH");
-	paths = ft_split(split_path, ':');
-	if (!paths)
+	mini_shell()->path = ft_split(split_path, ':');
+	if (split_path)
+		free (split_path);
+	if (!mini_shell()->path)
 		return (NULL);
-	return (paths);
+	return (mini_shell()->path);
 }
 
 void	absolute_input(char **args)
@@ -45,17 +47,17 @@ void	absolute_input(char **args)
 
 void	exec_command(char **args)
 {
-	char	**path;
+	//char	**path;
 	char	*joined_path;
 	int		i;
 
 	if (strchr(args[0], '/'))
 		return (absolute_input(args));
 	i = 0;
-	path = get_paths();
-	while (path[i])
+	mini_shell()->path = get_paths();
+	while (mini_shell()->path[i])
 	{
-		joined_path = path_join(path[i], args[0]);
+		joined_path = path_join(mini_shell()->path[i], args[0]);
 		if (joined_path)
 		{
 			if (access(joined_path, X_OK) == 0)

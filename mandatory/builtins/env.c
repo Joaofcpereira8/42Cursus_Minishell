@@ -80,9 +80,9 @@ char	*ft_get_env(char *type)
 		env_tmp = (t_env *)current->content;
 		trimmed_info = ft_strtrim(env_tmp->info, "\"");
 		if (!trimmed_info)
-			return NULL; // Handle memory allocation failure
-		free(env_tmp->info); // Free previous allocation
-		env_tmp->info = trimmed_info; // Assign new value
+			return (NULL);
+		free(env_tmp->info);
+		env_tmp->info = trimmed_info;
 		if (!ft_strcmp(env_tmp->type, type))
 			return ft_strdup(env_tmp->info);
 		current = current->next;
