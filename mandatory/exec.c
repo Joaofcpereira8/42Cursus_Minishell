@@ -26,7 +26,7 @@ char	*path_join(char *path, char *cmd)
 char	**get_paths(void)
 {
 	char	*split_path;
-	//char	**paths;
+
 	list_delete(mini_shell()->path);
 	split_path = ft_get_env("PATH");
 	mini_shell()->path = ft_split(split_path, ':');
@@ -47,7 +47,6 @@ void	absolute_input(char **args)
 
 void	exec_command(char **args)
 {
-	//char	**path;
 	char	*joined_path;
 	int		i;
 

@@ -78,12 +78,14 @@ void	hreader(char *args)
 		if (!input)
 		{
 			printf("\n");
-			break ;
+			ft_free();
+			ft_free_all();
 		}
 		else if (ft_strcmp(input, args) == 0)
 		{
 			free(input);
-			break ;
+			ft_free();
+			ft_free_all();
 		}
 		input = hexpand(input);
 		ft_putendl_fd(input, fd);
