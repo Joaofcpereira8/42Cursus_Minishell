@@ -6,7 +6,7 @@
 /*   By: bbento-e <bbento-e@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 12:15:25 by bbento-e          #+#    #+#             */
-/*   Updated: 2024/05/02 16:42:42 by bbento-e         ###   ########.fr       */
+/*   Updated: 2024/05/02 18:08:11 by bbento-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ char	*dollar_finder(char *args)
 	int		last;
 	char	*str;
 	char	*tmp1;
+	char	*tmp2;
 
 	str = NULL;
 	size = (int)ft_strlen(args);
@@ -27,6 +28,7 @@ char	*dollar_finder(char *args)
 	while (i < size)
 	{
 		tmp1 = NULL;
+		tmp2 = NULL;
 		if (args[i] == '$')
 		{
 			if (args[i + 1] == '?')
@@ -35,7 +37,9 @@ char	*dollar_finder(char *args)
 			{
 				last = i;
 				while (args[++i] && ft_isalpha(args[i]) == 1);
-				tmp1 = ft_get_env(ft_substr(args, last, i));
+				tmp2 = ft_substr(args, last, i);
+				tmp1 = ft_get_env(tmp2);
+				free(tmp2);
 			}
 			str = ft_strjoin(str, tmp1);
 		}
@@ -57,7 +61,7 @@ char	*hexpand(char *args)
 {
 	char	*str;
 
-	str = ft_strdup(dollar_finder(args));
+	str = dollar_finder(args);
 	free(args);
 	return (str);
 }
