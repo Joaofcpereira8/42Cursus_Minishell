@@ -70,6 +70,7 @@ char	*ft_get_env(char *type)
 {
 	t_env	*env_tmp;
 	t_list	*current;
+	char	*trimmed_info;
 
 	if (type[0] == '$')
 		type++;
@@ -77,10 +78,15 @@ char	*ft_get_env(char *type)
 	while (current)
 	{
 		env_tmp = (t_env *)current->content;
-		env_tmp->info = ft_strtrim(env_tmp->info, "\"");
+		trimmed_info = ft_strtrim(env_tmp->info, "\"");
+		if (!trimmed_info)
+			return NULL; // Handle memory allocation failure
+		free(env_tmp->info); // Free previous allocation
+		env_tmp->info = trimmed_info; // Assign new value
 		if (!ft_strcmp(env_tmp->type, type))
-			return (ft_strdup(env_tmp->info));
+			return ft_strdup(env_tmp->info);
 		current = current->next;
 	}
-	return (ft_strdup(""));
+	return ft_strdup("");
+
 }
