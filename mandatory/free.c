@@ -12,11 +12,11 @@
 
 #include "includes/minishell.h"
 
-void	ft_clean(void *pointer)
+void	ft_clean(void *value)
 {
-	if (pointer)
-		free(pointer);
-	pointer = NULL;
+	if (value)
+		free((char*)value);
+	value = NULL;
 }
 
 void	clean_env(t_env *env)

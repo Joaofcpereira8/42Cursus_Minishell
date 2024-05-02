@@ -28,6 +28,7 @@ void	ft_free(void)
 
 void	ft_free_all(void)
 {
+	ft_clean(mini_shell()->oldpwd);
 	ft_clean(mini_shell()->cwd);
 	list_delete(mini_shell()->path);
 	list_delete(mini_shell()->env);

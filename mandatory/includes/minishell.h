@@ -6,7 +6,7 @@
 /*   By: bbento-e <bbento-e@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 18:26:52 by jofilipe          #+#    #+#             */
-/*   Updated: 2024/04/30 12:27:01 by bbento-e         ###   ########.fr       */
+/*   Updated: 2024/05/02 15:06:41 by bbento-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,7 +121,6 @@ typedef struct s_mini_env
 	char		**path;
 	int			**pipes;
 	char		*oldpwd;
-	t_list 		*tenv;
 	t_list		*env_amb_list;
 	t_list		*env_token;
 	t_a_s_tree	*ast;
@@ -164,7 +163,7 @@ void		miniexit(char **args);
 void		mini_exit2(char **args);
 int			miniunset(char **args);
 int			built_type(char **args);
-void    miniexport(char **args, int flag, int i, int j);
+void		miniexport(char **args, int flag, int i, int j);
 int			built_type_next(char **args);
 void		minienv(t_list *env_amb_list);
 void		export_add(char *args, int flag);
@@ -188,14 +187,9 @@ int			check_spec(char **str);
 
 // ----------- REDIRECTS ---------- //
 int			heredoc(char *args);
-int			handle_hdoc(char **comm);
-int			handle_appnd(char **comm);
-int			handle_input(char **comm);
-int			handle_output(char **comm);
 int			redirects(t_meta_tok token, char *com);
 
 // ------------ ERRORS ----------- //
-int			check_args(char **str);
 int			err_handler(char c, char *cmd, int ext_sts);
 
 // ----------- UTILS ----------- //
@@ -212,18 +206,15 @@ int			is_every_space(char *str);
 int			ft_swap_env(char *swap, int i);
 int			pars_error(char c, int ex_stat);
 int			ft_strlen_skp(char *str, char *c);
-void		env_join(char** arr1, char *str);
 char		**add_to_mat(char **mat1, char *str);
 int			ft_strlen_flag(char const *str, char flag);
 
 // ----------- UTILS2 ----------- //
 void		fd_duplicate(void);
 int			arr_size(char **str);
-int			lst_size(t_list *lst);
 void		fd_close(int command_index);
 bool		is_built_in(char *command, char *arg);
 bool		is_last_command(int command_numbers);
-
 // ---------- VARIABLE_GLOBAL ---------- //
 t_mini_env	*mini_shell(void);
 
@@ -294,7 +285,7 @@ void		ft_free(void);
 void		ft_free_all(void);
 void		clean_env(t_env *env);
 void		free_array(char **arr);
-void		ft_clean(void *pointer);
+void		ft_clean(void *value);
 void		clean_ast_tokens(t_a_s_tree *ast);
 void		clean_a_s_tree(t_a_s_tree *ast, void (*del)(t_a_s_tree *));
 

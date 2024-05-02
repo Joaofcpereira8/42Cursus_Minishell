@@ -6,7 +6,7 @@
 /*   By: jofilipe <jofilipe@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 16:33:47 by jofilipe          #+#    #+#             */
-/*   Updated: 2024/04/30 14:16:22 by bbento-e         ###   ########.fr       */
+/*   Updated: 2024/05/02 16:18:48 by bbento-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,26 +21,26 @@
  * @return Returns a new string containing the concatenated content of str1
  *         and str2, or NULL if memory allocation fails.
  */
-char	*ft_strjoin(char const *str1, char const *str2)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-	char		*memall;
-	int			len;
-	int			i;
-	int			j;
+	int		i;
+	int		j;
+	char	*str;
+	size_t	total_len;
 
-	i = 0;
-	j = 0;
-	len = ft_strlen(str1) + ft_strlen(str2);
-	memall = malloc((len + 1) * sizeof(char));
-	if (!memall)
+	total_len = (ft_strlen(s1) + ft_strlen(s2));
+	str = (char *)malloc(sizeof(char) * (total_len + 1));
+	if (!str)
 		return (NULL);
-	while (str1 && *(str1 + i))
+	i = 0;
+	while (s1 && s1[i])
 	{
-		*(memall + i) = *(str1 + i);
+		str[i] = s1[i];
 		i++;
 	}
-	while (str2 && *(str2 + j))
-		*(memall + i++) = *(str2 + j++);
-	*(memall + i) = '\0';
-	return (memall);
+	j = 0;
+	while (s2 && s2[j])
+		str[i++] = s2[j++];
+	str[i] = '\0';
+	return (str);
 }

@@ -6,7 +6,7 @@
 /*   By: bbento-e <bbento-e@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 12:15:25 by bbento-e          #+#    #+#             */
-/*   Updated: 2024/05/01 14:33:07 by bbento-e         ###   ########.fr       */
+/*   Updated: 2024/05/02 16:42:42 by bbento-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ char	*dollar_finder(char *args)
 	int		last;
 	char	*str;
 	char	*tmp1;
-	char	*tmp2;
 
 	str = NULL;
 	size = (int)ft_strlen(args);
@@ -28,11 +27,10 @@ char	*dollar_finder(char *args)
 	while (i < size)
 	{
 		tmp1 = NULL;
-		tmp2 = NULL;
 		if (args[i] == '$')
 		{
 			if (args[i + 1] == '?')
-				tmp1 = ft_strdup(ft_itoa(mini_shell()->exit_status));
+				tmp1 = ft_itoa(mini_shell()->exit_status);
 			else
 			{
 				last = i;
@@ -40,19 +38,16 @@ char	*dollar_finder(char *args)
 				tmp1 = ft_get_env(ft_substr(args, last, i));
 			}
 			str = ft_strjoin(str, tmp1);
-			last = i;
-			free(tmp1);
 		}
 		else
 		{
-			tmp2 = ft_substr(args, last, i - 1);
+			tmp1 = ft_strjoin(tmp1, &args[i]);
 			if (i == 0)
-				str = ft_strdup(tmp2);
+				str = ft_strdup(tmp1);
 			else
-				ft_strlcat(str, tmp2, ft_strlen(tmp2));
-			free(tmp2);
+				ft_strlcat(str, tmp1, ft_strlen(tmp1));
 		}
-			//ft_strlcat(str, tmp2, ft_strlen(tmp2));
+		free(tmp1);
 		i++;
 	}
 	return (str);
@@ -62,7 +57,7 @@ char	*hexpand(char *args)
 {
 	char	*str;
 
-	str = dollar_finder(args);
+	str = ft_strdup(dollar_finder(args));
 	free(args);
 	return (str);
 }
@@ -91,8 +86,6 @@ void	hreader(char *args)
 		free(input);
 	}
 	close(fd);
-	ft_free();
-	ft_free_all();
 }
 
 int	heredoc(char *args)
