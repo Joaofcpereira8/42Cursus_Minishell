@@ -14,7 +14,7 @@
 
 void	mini_exit2(char **args)
 {
-	mini_shell()->exit_status = ft_atoi(args[1]) % 256;
+	mini_shell()->exit_status = ft_atoll(args[1]) % 256;
 	printf("exit\n");
 	printf("%i\n", mini_shell()->exit_status);
 	ft_free();
@@ -31,14 +31,28 @@ void	miniexit(char **args)
 	}
 	if (args[2])
 	{
-		printf("minishell: exit: too many arguments\n");
-		return ;
+		if (ft_islonglong(args[1]))
+		{
+			printf("exit\n");
+			printf("minishell: exit: too many arguments\n");
+			mini_shell()->exit_status = 1;
+			return ;
+		}
+		else if (ft_atoll(args[1]) != -1 || ft_strcmp(args[1], "-1") == 0)
+		{
+			printf("exit\n");
+			printf("minishell: %s: numeric argument required\n", args[1]);
+			mini_shell()->exit_status = 2;
+			ft_free();
+			ft_free_all();
+		}
 	}
-	if (ft_atoi(args[1]) != -1 || ft_strcmp(args[1], "-1") == 0)
+	if (ft_atoll(args[1]) != -1 || ft_strcmp(args[1], "-1") == 0)
 		mini_exit2(args);
 	else
 	{
-		printf("exit: %s: numeric argument required\n", args[1]);
+		printf("exit\n");
+		printf("minishell: exit: %s: numeric argument required\n", args[1]);
 		mini_shell()->exit_status = 2;
 		ft_free();
 		ft_free_all();

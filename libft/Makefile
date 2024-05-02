@@ -19,7 +19,9 @@ SRC = ft_atoi.c \
 		ft_realloc.c \
 		ft_isascii.c \
 		ft_isdigit.c \
+		ft_islonglong.c \
 		ft_isprint.c \
+		ft_atoll.c \
 		ft_itoa.c \
 		ft_memchr.c \
 		ft_memcmp.c \

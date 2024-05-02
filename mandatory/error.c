@@ -35,13 +35,6 @@ int	err_handler(char c, char *cmd, int ext_sts)
 	return (-1);
 }
 
-int	check_args(char **str)
-{
-	if (check_spec(str) == -1)
-		return (err_handler('q', NULL, 0));
-	return (0);
-}
-
 int	pars_error(char c, int ex_stat)
 {
 	if (c == 'q')
