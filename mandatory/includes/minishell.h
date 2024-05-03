@@ -6,7 +6,7 @@
 /*   By: bbento-e <bbento-e@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 18:26:52 by jofilipe          #+#    #+#             */
-/*   Updated: 2024/05/02 15:06:41 by bbento-e         ###   ########.fr       */
+/*   Updated: 2024/05/03 12:26:26 by bbento-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,11 +71,11 @@ typedef struct s_token
 /**
  * @brief A structure to represent a node of an Abstract Syntax Tree
  *
- * @param token The token associated with the node
- * @param args The arguments of the token
- * @param index Used if the token represents a command
- * @param left The left child of the node
- * @param right The right child of the node
+ *@param token The token associated with the node
+ *@param args The arguments of the token
+ *@param index Used if the token represents a command
+ *@param left The left child of the node
+ *@param right The right child of the node
  */
 typedef struct s_a_s_tree
 {
@@ -166,7 +166,7 @@ void		miniexport(char **args, int flag, int i, int j);
 int			built_type_next(char **args);
 void		minienv(t_list *env_amb_list);
 void		export_add(char *args, int flag);
-void		sort_export(int i, int j, int size, int reps);
+void sort_export(int i, int j, int size);
 
 // EXPORT UTILS
 void	printexp(int size);

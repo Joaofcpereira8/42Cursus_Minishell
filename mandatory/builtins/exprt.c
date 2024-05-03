@@ -6,7 +6,7 @@
 /*   By: bbento-e <bbento-e@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 18:54:00 by bbento-e          #+#    #+#             */
-/*   Updated: 2024/05/02 16:47:14 by bbento-e         ###   ########.fr       */
+/*   Updated: 2024/05/03 16:56:50 by bbento-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void miniexport(char **args, int flag, int i, int j)
 	if (!args[1])
 	{
 		mini_shell()->senv = lst_to_mat(mini_shell()->env_amb_list);
-		sort_export(-1, 0, arr_size(mini_shell()->senv), 3);
+		sort_export(-1, 0, arr_size(mini_shell()->senv));
 	}
 	else
 	{
@@ -42,34 +42,30 @@ void miniexport(char **args, int flag, int i, int j)
 	}
 }
 
-void	sort_export(int i, int j, int size, int reps)
+void sort_export(int i, int j, int size)
 {
-	int		flag;
-	int		a;
+	int	flag;
 
-	a = -1;
-	while (++a <= reps)
+	flag = 0;
+	while (++i < (size - 1) && mini_shell()->senv[i][j])
 	{
-		while (++i < (size - 1) && mini_shell()->senv[i][j])
+		j = 0;
+		if (mini_shell()->senv[i][j] == mini_shell()->senv[i + 1][j])
 		{
-			j = 0;
-			if (mini_shell()->senv[i][j] == mini_shell()->senv[i + 1][j])
-			{
-				while ((mini_shell()->senv[i][j] || mini_shell()->senv[i + 1][j])
-					   && (mini_shell()->senv[i][j] == mini_shell()->senv[i + 1][j]))
-					j++;
-			}
-			if ((mini_shell()->senv[i][j] > mini_shell()->senv[i + 1][j]) || i == 0)
-				i = ft_swap_env(mini_shell()->senv[i], i);
-			if (i == (size - 2) && flag != 1)
-			{
-				i = -1;
-				flag = 1;
-			}
+			while ((mini_shell()->senv[i][j] || mini_shell()->senv[i + 1][j])
+				   && (mini_shell()->senv[i][j] == mini_shell()->senv[i + 1][j]))
+				j++;
+		}
+		if ((mini_shell()->senv[i][j] > mini_shell()->senv[i + 1][j]) || i == 0)
+			i = ft_swap_env(mini_shell()->senv[i], i);
+		if (i == (size - 2) && flag != 1)
+		{
+			i = -1;
+			flag = 1;
 		}
 	}
 	printexp(size);
-	free_array(mini_shell()->senv);
+	list_delete(mini_shell()->senv);
 }
 
 void export_add(char *args, int flag)

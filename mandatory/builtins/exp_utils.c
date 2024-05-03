@@ -6,7 +6,7 @@
 /*   By: bbento-e <bbento-e@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 11:57:55 by bbento-e          #+#    #+#             */
-/*   Updated: 2024/04/30 15:53:31 by bbento-e         ###   ########.fr       */
+/*   Updated: 2024/05/03 16:22:53 by bbento-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,9 @@ int	slsh0(char *str, int i)
 
 t_env	*exp_alloc(char *args)
 {
-	int       i;
-	int       j;
-	t_env  *lst;
+	int		i;
+	int		j;
+	t_env	*lst;
 
 	i = ft_strlen_flag(args, '=');
 	j = i;
@@ -45,9 +45,9 @@ t_env	*exp_alloc(char *args)
 		j++;
 	lst->type = malloc(sizeof(char) * (i + 1));
 	if (j > i)
-		lst->info = malloc(sizeof(char) * (j + 3));
+		lst->info = malloc(sizeof(char) * (j + 2));
 	else
-		lst->info = 0;
+		lst->info = NULL;
 	return (lst);
 }
 
@@ -59,7 +59,7 @@ bool exp_exists(char *args)
 
 	found = false;
 	j = -1;
-	str = malloc(sizeof(char) * ft_strlen_flag(args, '='));
+	str = malloc(sizeof(char) * ft_strlen_flag(args, '=') + 1);
 	while (args[++j] && args[j] != '=')
 		str[j] = args[j];
 	str[j] = '\0';
@@ -77,7 +77,7 @@ void ft_list_remove_if(t_list **list, char *args, bool *found)
 	t_env	*env;
 
 	if (list == NULL || *list == NULL)
-		return;
+		return ;
 	cur = *list;
 	env = cur->content;
 	if (ft_strcmp(env->type, args) == 0) {

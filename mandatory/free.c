@@ -6,7 +6,7 @@
 /*   By: jofilipe <jofilipe@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/19 16:35:10 by jofilipe          #+#    #+#             */
-/*   Updated: 2024/04/15 15:25:07 by bbento-e         ###   ########.fr       */
+/*   Updated: 2024/05/03 12:32:42 by bbento-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	ft_clean(void *value)
 {
 	if (value)
-		free((char*)value);
+		free((char *)value);
 	value = NULL;
 }
 

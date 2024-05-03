@@ -6,7 +6,7 @@
 /*   By: jofilipe <jofilipe@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 10:07:23 by jofilipe          #+#    #+#             */
-/*   Updated: 2024/04/09 12:22:55 by bbento-e         ###   ########.fr       */
+/*   Updated: 2024/05/03 12:27:47 by bbento-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,25 +67,25 @@ typedef struct s_list
 	struct s_list	*next;
 }					t_list;
 
-t_list	*ft_lstnew(void *content);
-void	ft_lstadd_front(t_list **lst, t_list *new);
-int		ft_lstsize(t_list *lst);
-t_list	*ft_lstlast(t_list *lst);
-void	ft_lstadd_back(t_list **lst, t_list *new);
-void	ft_lstdelone(t_list *lst, void (*del)(void *));
-void	ft_lstclear(t_list **lst, void (*del)(void *));
-void	ft_lstiter(t_list *lst, void (*f)(void *));
-t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
+t_list		*ft_lstnew(void *content);
+void		ft_lstadd_front(t_list **lst, t_list *new);
+int			ft_lstsize(t_list *lst);
+t_list		*ft_lstlast(t_list *lst);
+void		ft_lstadd_back(t_list **lst, t_list *new);
+void		ft_lstdelone(t_list *lst, void (*del)(void *));
+void		ft_lstclear(t_list **lst, void (*del)(void *));
+void		ft_lstiter(t_list *lst, void (*f)(void *));
+t_list		*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 
 /*----ft_printf.c----*/
-int		ft_printf(const char *str, ...);
-int		ft_printf_unsigned(unsigned int num);
-int		ft_printf_string(char *str);
-int		ft_printf_digit(long num);
-int		ft_printf_char(char c);
-char	ft_checkconversion(char var);
-int		ft_printf_hexa(unsigned long hexa, char c);
-int		ft_printf_pointer(unsigned long num);
+int			ft_printf(const char *str, ...);
+int			ft_printf_unsigned(unsigned int num);
+int			ft_printf_string(char *str);
+int			ft_printf_digit(long num);
+int			ft_printf_char(char c);
+char		ft_checkconversion(char var);
+int			ft_printf_hexa(unsigned long hexa, char c);
+int			ft_printf_pointer(unsigned long num);
 
 /*----get_next_line.c----*/
 # ifndef BUFFER_SIZE
@@ -96,6 +96,6 @@ int		ft_printf_pointer(unsigned long num);
 #  define MAX_FILES 500
 # endif
 
-char	*get_next_line(int fd);
+char		*get_next_line(int fd);
 
 #endif

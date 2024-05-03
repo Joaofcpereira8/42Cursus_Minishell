@@ -6,7 +6,7 @@
 /*   By: jofilipe <jofilipe@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 11:28:23 by jofilipe          #+#    #+#             */
-/*   Updated: 2024/05/02 12:24:25 by jofilipe         ###   ########.fr       */
+/*   Updated: 2024/05/03 12:21:35 by bbento-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 long long	ft_atoll(const char *str)
 {
-	int				i;
-	long long			result;
-	long long			negative;
+	int			i;
+	long long	result;
+	long long	negative;
 
 	i = 0;
 	result = 0;

@@ -6,7 +6,7 @@
 /*   By: jofilipe <jofilipe@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 14:56:20 by jofilipe          #+#    #+#             */
-/*   Updated: 2024/04/22 18:36:00 by bbento-e         ###   ########.fr       */
+/*   Updated: 2024/05/03 17:34:23 by bbento-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 void	ft_free(void)
 {
 	ft_clean(mini_shell()->input);
-	ft_clean(mini_shell()->prompt);
 	clean_a_s_tree(mini_shell()->ast, clean_ast_tokens);
 	list_delete(mini_shell()->pipes);
 	ft_lstclear(&mini_shell()->env_token, (void (*)(void *))destroy_token);
@@ -28,6 +27,7 @@ void	ft_free(void)
 
 void	ft_free_all(void)
 {
+	rl_clear_history();
 	ft_clean(mini_shell()->oldpwd);
 	ft_clean(mini_shell()->cwd);
 	list_delete(mini_shell()->path);
