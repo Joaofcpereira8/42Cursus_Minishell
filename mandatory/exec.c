@@ -6,7 +6,7 @@
 /*   By: jofilipe <jofilipe@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 17:39:49 by jofilipe          #+#    #+#             */
-/*   Updated: 2024/03/28 18:26:10 by jofilipe         ###   ########.fr       */
+/*   Updated: 2024/05/03 11:36:28 by bbento-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void	exec_command(char **args)
 	char	*joined_path;
 	int		i;
 
-	if (strchr(args[0], '/'))
+	if (ft_strchr(args[0], '/'))
 		return (absolute_input(args));
 	i = 0;
 	mini_shell()->path = get_paths();

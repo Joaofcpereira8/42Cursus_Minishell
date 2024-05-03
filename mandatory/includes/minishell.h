@@ -152,7 +152,6 @@ char		*path_join(char *path, char *cm);
 
 // ------------ USER ------------ //
 char		*get_prompt(void);
-char		pwd_finder(void);
 
 // ----------- BUILT-INs ----------- //
 int			minipdw(void);
