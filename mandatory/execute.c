@@ -27,6 +27,7 @@ pid_t	exec_is_fork(t_a_s_tree *command)
 		}
 		atribute_pipes_fd(command->index);
 		fd_duplicate();
+		close_all_pipes();
 		built_type(command->args);
 		ft_free();
 		ft_free_all();
@@ -50,9 +51,3 @@ void	execute(t_a_s_tree *ast)
 		mini_shell()->exit_status = WEXITSTATUS(status);
 	signals();
 }
-
-/*
- * 127 error code indicates “command not found”. This occurs when any
- * given command within your Bash script or on Bash command line is not
- * found in any of the paths defined by PATH system environment variable.
- */

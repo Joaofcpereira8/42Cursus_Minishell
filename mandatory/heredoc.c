@@ -36,8 +36,8 @@ char	*dollar_finder(char *args)
 			else
 			{
 				last = i;
-				while (args[++i] && ft_isalpha(args[i]) == 1);
-				tmp2 = ft_substr(args, last, i);
+				while (args[++i] && ft_isalpha(args[i]) == 1)
+					tmp2 = ft_substr(args, last, i);
 				tmp1 = ft_get_env(tmp2);
 				free(tmp2);
 			}

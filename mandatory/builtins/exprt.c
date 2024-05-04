@@ -12,7 +12,7 @@
 
 #include "../includes/minishell.h"
 
-void miniexport(char **args, int flag, int i, int j)
+void	miniexport(char **args, int flag, int i, int j)
 {
 	if (!args[1])
 	{
@@ -42,7 +42,7 @@ void miniexport(char **args, int flag, int i, int j)
 	}
 }
 
-void sort_export(int i, int j, int size)
+void	sort_export(int i, int j, int size)
 {
 	int	flag;
 
@@ -53,7 +53,7 @@ void sort_export(int i, int j, int size)
 		if (mini_shell()->senv[i][j] == mini_shell()->senv[i + 1][j])
 		{
 			while ((mini_shell()->senv[i][j] || mini_shell()->senv[i + 1][j])
-				   && (mini_shell()->senv[i][j] == mini_shell()->senv[i + 1][j]))
+				&& (mini_shell()->senv[i][j] == mini_shell()->senv[i + 1][j]))
 				j++;
 		}
 		if ((mini_shell()->senv[i][j] > mini_shell()->senv[i + 1][j]) || i == 0)
@@ -68,7 +68,7 @@ void sort_export(int i, int j, int size)
 	list_delete(mini_shell()->senv);
 }
 
-void export_add(char *args, int flag)
+void	export_add(char *args, int flag)
 {
 	int		i;
 	int		j;
@@ -82,16 +82,16 @@ void export_add(char *args, int flag)
 	{
 		if (args[j] != ' ')
 		{
-			if (args[j] == '=' && flag == 0 )
+			if (args[j] == '=' && flag == 0)
 			{
 				lst->type[i] = '\0';
 				flag = 1;
 				i = 1;
 				lst->info[0] = '"';
-				if(args[++j] == '\0')
+				if (args[++j] == '\0')
 				{
 					lst->info[1] = '"';
-					break;
+					break ;
 				}
 			}
 			if (flag == 0)

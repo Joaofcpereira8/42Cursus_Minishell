@@ -52,10 +52,20 @@ void	atribute_pipes_fd(int index_command)
 {
 	if (mini_shell()->cmd_num < 2)
 		return ;
-	if (mini_shell()->fd_in == STDIN_FILENO)
-		if (index_command != 0)
-			mini_shell()->fd_in = mini_shell()->pipes[index_command - 1][RE_PI];
-	if (mini_shell()->fd_out == STDOUT_FILENO)
-		if (!is_last_command(index_command))
-			mini_shell()->fd_out = mini_shell()->pipes[index_command][WR_PI];
+	if (index_command != 0)
+		mini_shell()->fd_in = mini_shell()->pipes[index_command - 1][RE_PI];
+	if (!is_last_command(index_command))
+		mini_shell()->fd_out = mini_shell()->pipes[index_command][WR_PI];
+}
+
+void	close_all_pipes(void)
+{
+	int	i;
+
+	i = -1;
+	while (++i < mini_shell()->cmd_num - 1)
+	{
+		close(mini_shell()->pipes[i][RE_PI]);
+		close(mini_shell()->pipes[i][WR_PI]);
+	}
 }

@@ -21,7 +21,7 @@ int	miniunset(char **args)
 	while (args[++i])
 	{
 		str = ft_strdup(args[i]);
-		ft_list_remove_if(&ms_env, str, NULL);
+		ft_list_remove_if(&MS_ENV, str, NULL);
 		free(str);
 	}
 	return (0);

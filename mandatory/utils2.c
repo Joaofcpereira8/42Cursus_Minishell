@@ -34,30 +34,17 @@ void	fd_duplicate(void)
 
 void	fd_close(int command_index)
 {
-	if (mini_shell()->fd_in > STDIN_FILENO)
+	//Close input and output if not standard input/output
+	if (mini_shell()->fd_in != STDIN_FILENO)
 		close(mini_shell()->fd_in);
-	if (mini_shell()->fd_out > STDOUT_FILENO)
+	if (mini_shell()->fd_out != STDOUT_FILENO)
 		close(mini_shell()->fd_out);
+	//Close pipes not used by the current command
 	if (command_index > 0)
 		close(mini_shell()->pipes[command_index - 1][RE_PI]);
 	if (!is_last_command(command_index))
 		close(mini_shell()->pipes[command_index][WR_PI]);
+	//Reset file descriptors to default
 	mini_shell()->fd_in = STDIN_FILENO;
 	mini_shell()->fd_out = STDOUT_FILENO;
-}
-
-int	lst_size(t_list *lst)
-{
-	int		i;
-	t_list	*tmp;
-
-	i = 0;
-	tmp = lst;
-	while (tmp != NULL)
-	{
-		i++;
-		tmp = tmp->next;
-	}
-	free(tmp);
-	return (i);
 }

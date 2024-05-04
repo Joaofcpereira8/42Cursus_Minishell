@@ -41,7 +41,7 @@ t_env	*exp_alloc(char *args)
 	i = ft_strlen_flag(args, '=');
 	j = i;
 	lst = malloc(sizeof(t_env));
-	while(args[j] != '\0')
+	while (args[j] != '\0')
 		j++;
 	lst->type = malloc(sizeof(char) * (i + 1));
 	if (j > i)
@@ -51,7 +51,7 @@ t_env	*exp_alloc(char *args)
 	return (lst);
 }
 
-bool exp_exists(char *args)
+bool	exp_exists(char *args)
 {
 	int		j;
 	char	*str;
@@ -63,7 +63,7 @@ bool exp_exists(char *args)
 	while (args[++j] && args[j] != '=')
 		str[j] = args[j];
 	str[j] = '\0';
-	ft_list_remove_if(&ms_env, str, &found);
+	ft_list_remove_if(&MS_ENV, str, &found);
 	free(str);
 	if (found == true)
 		export_add(args, 0);
@@ -71,7 +71,7 @@ bool exp_exists(char *args)
 	return (found);
 }
 
-void ft_list_remove_if(t_list **list, char *args, bool *found)
+void	ft_list_remove_if(t_list **list, char *args, bool *found)
 {
 	t_list	*cur;
 	t_env	*env;
@@ -80,7 +80,8 @@ void ft_list_remove_if(t_list **list, char *args, bool *found)
 		return ;
 	cur = *list;
 	env = cur->content;
-	if (ft_strcmp(env->type, args) == 0) {
+	if (ft_strcmp(env->type, args) == 0)
+	{
 		*list = cur->next;
 		free(cur);
 		ft_list_remove_if(list, args, found);

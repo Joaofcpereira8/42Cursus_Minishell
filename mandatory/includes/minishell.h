@@ -33,7 +33,7 @@
 # define SPE		"<>| "
 # define RE_PI	0
 # define WR_PI	1
-# define ms_env mini_shell()->env_amb_list
+# define MS_ENV	mini_shell()->env_amb_list
 
 typedef enum e_meta_tok
 {
@@ -166,15 +166,16 @@ void		miniexport(char **args, int flag, int i, int j);
 int			built_type_next(char **args);
 void		minienv(t_list *env_amb_list);
 void		export_add(char *args, int flag);
-void sort_export(int i, int j, int size);
+void		sort_export(int i, int j, int size);
+void		close_all_pipes(void);
 
 // EXPORT UTILS
-void	printexp(int size);
-t_env	*exp_alloc(char *args);
+void		printexp(int size);
+t_env		*exp_alloc(char *args);
 
-bool exp_exists(char *args);
-int		slsh0(char *str, int i);
-void ft_list_remove_if(t_list **list, char *args, bool *found);
+bool		exp_exists(char *args);
+int			slsh0(char *str, int i);
+void		ft_list_remove_if(t_list **list, char *args, bool *found);
 // ----------- INPUT_ANALYSIS ----------- //
 /**
  * @brief Lê a linha introduzida após o promp e esta é
@@ -283,7 +284,6 @@ char		*ft_streplace(char *str, char *old, char *new);
 void		ft_free(void);
 void		ft_free_all(void);
 void		clean_env(t_env *env);
-void		free_array(char **arr);
 void		ft_clean(void *value);
 void		clean_ast_tokens(t_a_s_tree *ast);
 void		clean_a_s_tree(t_a_s_tree *ast, void (*del)(t_a_s_tree *));
