@@ -14,17 +14,19 @@
 
 int	miniunset(char **args)
 {
-	t_list **head;
-	t_list *temp;
-	t_list *prev;
+	t_list	**head;
+	t_list	*temp;
+	t_list	*prev;
+	t_env	*env;
 
 	head = &mini_shell()->env_amb_list;
 	temp = *head;
 	prev = NULL;
 	while (temp != NULL)
 	{
-		t_env *env = (t_env *)temp->content;
-		if (ft_strcmp(env->type, args[1]) == 0) {
+		env = (t_env *)temp->content;
+		if (ft_strcmp(env->type, args[1]) == 0)
+		{
 			if (prev == NULL)
 				*head = temp->next;
 			else
