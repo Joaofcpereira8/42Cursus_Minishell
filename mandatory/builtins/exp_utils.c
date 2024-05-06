@@ -50,7 +50,6 @@ bool	exp_exists(char *args)
 		str[j] = args[j];
 	str[j] = '\0';
 	found = env_unset(str);
-	// ft_list_remove_if(&mini_shell()->env_amb_list, str, &found);
 	free(str);
 	if (found == true)
 		export_add(args, 0, 0, -1);
