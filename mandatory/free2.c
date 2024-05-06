@@ -36,18 +36,3 @@ void	ft_free_all(void)
 	ft_lstclear(&mini_shell()->temp_env, (void (*)(void *))clean_env);
 	exit(mini_shell()->exit_status);
 }
-
-void	free_array(char **arr)
-{
-	int	i;
-
-	if (!arr)
-		return ;
-	i = 0;
-	while (arr[i] != NULL)
-	{
-		free(arr[i]);
-		i++;
-	}
-	free(arr);
-}

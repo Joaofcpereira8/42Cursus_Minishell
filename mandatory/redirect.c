@@ -26,12 +26,3 @@ int	redirects(t_meta_tok token, char *com)
 		return (pars_error('z', 1));
 	return (0);
 }
-
-/*int	handle_hdoc(char **comm)
-{
-	printf("entering hdoc with string: %s\n", comm[1]);
-	mini_shell()->fd_in = heredoc(comm[1]);
-	if (mini_shell()->fd_in)
-		return (mini_shell()->fd_in);
-	return (err_handler('r', "<<", 0));
-}*/

@@ -14,15 +14,23 @@
 
 int	built_type(char **args)
 {
+	int	i;
+
+	i = 0;
+	while (args[i] != NULL)
+	{
+		args[i] = rm_quotes(args[i]);
+		i++;
+	}
 	if (!builtin_verif(args[0]))
 		exec_command(args);
-	else if (ft_strncmp(mini_shell()->input, "echo", 4) == 0)
+	else if (ft_strncmp(args[0], "echo", 4) == 0)
 		miniecho(args);
-	else if (ft_strncmp(mini_shell()->input, "cd", 2) == 0)
+	else if (ft_strncmp(args[0], "cd", 2) == 0)
 		mini_cd(args);
-	else if (ft_strncmp(mini_shell()->input, "pwd", 3) == 0)
+	else if (ft_strncmp(args[0], "pwd", 3) == 0)
 		minipdw();
-	else if (ft_strncmp(mini_shell()->input, "export", 6) == 0)
+	else if (ft_strncmp(args[0], "export", 6) == 0)
 		miniexport(args, 0, 0, 0);
 	else
 		return (built_type_next(args));
@@ -31,11 +39,11 @@ int	built_type(char **args)
 
 int	built_type_next(char **args)
 {
-	if (ft_strncmp(mini_shell()->input, "unset", 5) == 0)
+	if (ft_strncmp(args[0], "unset", 5) == 0)
 		miniunset(args);
-	else if (ft_strncmp(mini_shell()->input, "env", 3) == 0)
+	else if (ft_strncmp(args[0], "env", 3) == 0)
 		minienv(mini_shell()->env_amb_list);
-	else if (ft_strncmp(mini_shell()->input, "exit", 4) == 0)
+	else if (ft_strncmp(args[0], "exit", 4) == 0)
 		miniexit(args);
 	else
 		return (-1);

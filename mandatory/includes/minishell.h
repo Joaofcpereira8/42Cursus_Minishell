@@ -127,20 +127,8 @@ typedef struct s_mini_env
 }			t_mini_env;
 
 // ------------ MAIN ------------ //
-/**
- *@brief Uma vez chamada, inicializa a estrutura mini_shell.
- *
- *@param env Variavel de ambiente
- */
-void		mini_init(char	**env);
 
-/**
- * @brief Main program.
- *
- * @param argc Necessita de apenas 1 arg;
- * @param argv Vai ser o minishell;
- * @param env Variaveis de ambiente.
- */
+void		mini_init(char	**env);
 int			main(int argc, char **argv, char **envp);
 
 // ------------ EXECVE ------------ //
@@ -169,18 +157,15 @@ void		sort_export(int i, int j, int size);
 void		export_add(char *args, int flag, int i, int j);
 void		miniexport(char **args, int flag, int i, int j);
 
-// EXPORT UTILS
+// ----------- EXPORT_UTILS ----------- //
 void		printexp(int size);
 int			add_quo(t_env **lst);
 t_env		*exp_alloc(char *args);
 bool		exp_exists(char *args);
 int			slsh0(char *str, int i);
 void		ft_list_remove_if(t_list **list, char *args, bool *found);
+
 // ----------- INPUT_ANALYSIS ----------- //
-/**
- * @brief Lê a linha introduzida após o promp e esta é
- * guardada na estrutura mini_shell.
-  */
 void		input(void);
 int			iseven(int s_trig);
 int			check_spec(char **str);
@@ -194,12 +179,6 @@ int			err_handler(char c, char *cmd, int ext_sts);
 
 // ----------- UTILS ----------- //
 int			sz_env_list(char **env);
-/**
- * @brief Faz free à memória alocada da matriz e o último
- * elemento da matriz tem que ficar NULL.
- *
- * @param list A matriz a fazer free.
-  */
 void		free_array(char **arr);
 void		list_delete(void *list);
 int			is_every_space(char *str);
@@ -216,46 +195,20 @@ void		free_env(t_env **lst);
 void		fd_close(int command_index);
 bool		is_last_command(int command_numbers);
 bool		is_built_in(char *command, char *arg);
+char		*rm_quotes(char *arg);
+
 // ---------- VARIABLE_GLOBAL ---------- //
 t_mini_env	*mini_shell(void);
 
 // ---------- ENV ---------- //
-/**
- * @brief Atualiza as variáveis de ambiente e é chamado cada vez
- * que um comando é executado.
-  */
 void		env_update(void);
-
-/**
- * @brief Vai à envlisr para encontrar a variável de ambiente que
- * coincide com o TYPE e retorna o valor.
- *
- * @param type Nome da variável.
- * @return char* Ou o valor da variável ou uma string
- * vazia para o novo pointer
- */
 char		*ft_get_env(char *type);
 
-/**
- * @brief Converte a lista das variáveis de ambiente para uma matriz para depois
- * puder ser usada quando o execve for chamado.
- *
- * @param env_list A lista das variáveis de ambiente.
- * @return char** Um novo pointer para a matriz de variáveis de ambiente.
- * @return NULL se o malloc falhar.
- */
 char		**env_to_mat(t_list *env_list);
 char		**lst_to_mat(t_list *env_list);
 char		*create_env_string(t_env *env);
+
 // ---------- ENV_VAR_LIST ---------- //
-/**
- * @brief Usada no início do programa para criar a nossa própria
- * lista de variáveis de ambiente, usando as mesmas do sistema.
- *
- * @param envp Matriz das variáveis de ambiente original.
- * @return t_list* Um novo pointer para a lista de variáveis de ambiente.
- * @return NULL se o malloc não funcionar.
-  */
 t_list		*envlist(char **env);
 t_env		*env_verif(t_list *env, char *type);
 t_env		*new_env_list(char *type, char *info);
@@ -302,12 +255,6 @@ t_a_s_tree	*extend_command(t_a_s_tree *command);
 t_a_s_tree	*extend_pipes(t_a_s_tree *ast, t_a_s_tree *command);
 
 // ---------- SIGNALS ---------- //
-/**
- * @brief Vão ser preparados as rotinas de sinais (signal handler)
- * para SIGINT E SIGQUIT antes de o shell iniciar.
- * SIGINT para ctrl + C
- * SIGQUIT para crtl +
-  */
 void		signals(void);
 void		child_signals(void);
 void		ignore_signals(void);
@@ -317,30 +264,7 @@ void		heredoc_signals(void);
 void		handle_child(int signum);
 void		handle_sigint(int signum);
 void		handle_heredoc(int signum);
-
-/**
- * @brief Checks for the balanced use of quotes in a given input string.
- *
- * This function ensures that quotes (single or double) in
- * the input string are properly balanced, i.e., every opening quote has
- * a corresponding closing quote. It also handles the case of unclosed quotes.
- *
- * @return Returns true if quotes are balanced; otherwise,
- * returns false and sets the exit status for an unclosed quote.
- */
 bool		metacharacters_verif(void);
-
-/** @brief Reads metacharacters from the shell's input string and converts
- * them into tokens.
- *
- * This function iterates through the shell's input string and identifies
- * metacharacters, including pipes (|), redirection symbols (<, >, >>, <<),
- * and quotes (single and double).
- * It converts these metacharacters into tokens, which represent commands,
- * arguments, * and special constructs in the shell's language.
- *
- * @return None
- */
 void		read_metachar(void);
 
 // ---------- TOKENS ---------- //

@@ -12,7 +12,7 @@
 
 #include "includes/minishell.h"
 
-void expand_variable(t_token *token)
+void	expand_variable(t_token *token)
 {
 	char	*value;
 	char	*key;
@@ -39,9 +39,6 @@ void expand_variable(t_token *token)
 		free(key);  // Free the key after use
 	}
 }
-
-
-
 
 char	*find_key(char *str)
 {
