@@ -6,7 +6,7 @@
 /*   By: bbento-e <bbento-e@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 18:54:00 by bbento-e          #+#    #+#             */
-/*   Updated: 2024/05/06 12:22:00 by bbento-e         ###   ########.fr       */
+/*   Updated: 2024/05/06 12:40:59 by bbento-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ void	miniexport(char **args, int flag, int i, int j)
 	{
 		mini_shell()->senv = lst_to_mat(mini_shell()->env_amb_list);
 		sort_export(-1, 0, arr_size(mini_shell()->senv));
-		return ;
 	}
 	while (args[++i])
 	{
@@ -45,7 +44,6 @@ void	sort_export(int i, int j, int size)
 	int	flag;
 
 	flag = 0;
-	mini_shell()->senv = lst_to_mat(mini_shell()->env_amb_list);
 	while (++i < (size - 1) && mini_shell()->senv[i][j])
 	{
 		j = 0;
@@ -76,7 +74,6 @@ void	export_aux(t_env **lst, int flag, int i)
 		(*lst)->info[i] = '"';
 		(*lst)->info[i + 1] = '\0';
 	}
-	ft_lstadd_back(&mini_shell()->env_amb_list, ft_lstnew((*lst)));
 }
 
 int	add_quo(t_env **lst)
@@ -110,4 +107,5 @@ void	export_add(char *args, int flag, int i, int j)
 		}
 	}
 	export_aux(&lst, flag, i);
+	ft_lstadd_back(&mini_shell()->env_amb_list, ft_lstnew(lst));
 }
