@@ -6,7 +6,7 @@
 /*   By: bbento-e <bbento-e@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 12:11:51 by bbento-e          #+#    #+#             */
-/*   Updated: 2024/04/30 19:09:53 by bbento-e         ###   ########.fr       */
+/*   Updated: 2024/05/06 12:16:01 by bbento-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,8 @@ int	miniecho(char **args)
 		return (err_handler('c', mini_shell()->input, 0));
 	nl = 1;
 	i = 1;
-	if (args[1][0] && args[1][1] && !args[1][2] && args[1][0] == '-' && args[1][1] == 'n')
+	if (args[1][0] && args[1][1] && !args[1][2]
+		&& args[1][0] == '-' && args[1][1] == 'n')
 	{
 		nl = 0;
 		i++;

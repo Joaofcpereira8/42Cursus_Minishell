@@ -6,7 +6,7 @@
 /*   By: bbento-e <bbento-e@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 18:26:52 by jofilipe          #+#    #+#             */
-/*   Updated: 2024/05/03 12:26:26 by bbento-e         ###   ########.fr       */
+/*   Updated: 2024/05/06 12:23:51 by bbento-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@
 # define SPE		"<>| "
 # define RE_PI	0
 # define WR_PI	1
-# define MS_ENV	mini_shell()->env_amb_list
 
 typedef enum e_meta_tok
 {
@@ -159,15 +158,15 @@ void		printexp(int size);
 int			mini_cd(char **args);
 int			miniecho(char **args);
 void		miniexit(char **args);
-void		mini_exit2(char **args);
+void		close_all_pipes(void);
 int			miniunset(char **args);
+void		mini_exit2(char **args);
 int			built_type(char **args);
-void		miniexport(char **args, int flag, int i, int j);
 int			built_type_next(char **args);
 void		minienv(t_list *env_amb_list);
-void		export_add(char *args, int flag);
 void		sort_export(int i, int j, int size);
-void		close_all_pipes(void);
+void		export_add(char *args, int flag, int i, int j);
+void		miniexport(char **args, int flag, int i, int j);
 
 // EXPORT UTILS
 void		printexp(int size);
@@ -267,12 +266,12 @@ int			find_sym(char *quote, char *str);
 bool		is_joinable(char *str, char *match, int skip);
 
 // ---------- INPUT_VERIF2 ---------- //
-bool		input_analysis(void);
 bool		is_command(t_token *token);
 bool		redirection(t_token *token);
 bool		pipe_or_redir(t_token *token);
 bool		pipe_or_not_hd(t_token *token);
 t_token		*scanner(t_operations operations);
+bool		input_analysis(int num_of_pipes, int num_of_commands);
 
 // ---------- EXPANDER ---------- //
 void		expander(void);

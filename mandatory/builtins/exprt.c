@@ -6,7 +6,7 @@
 /*   By: bbento-e <bbento-e@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 18:54:00 by bbento-e          #+#    #+#             */
-/*   Updated: 2024/05/03 16:56:50 by bbento-e         ###   ########.fr       */
+/*   Updated: 2024/05/06 12:22:00 by bbento-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,27 +18,25 @@ void	miniexport(char **args, int flag, int i, int j)
 	{
 		mini_shell()->senv = lst_to_mat(mini_shell()->env_amb_list);
 		sort_export(-1, 0, arr_size(mini_shell()->senv));
+		return ;
 	}
-	else
+	while (args[++i])
 	{
-		while (args[++i])
+		j = -1;
+		flag = 0;
+		while (args[i][++j])
 		{
-			j = -1;
-			flag = 0;
-			while (args[i][++j])
+			if (args[i][j] == '=' && j > 0)
+				break ;
+			if (ft_isalpha(args[i][j]) != 1 && args[i][j] != '_')
 			{
-				if (args[i][j] == '=' && j > 0)
-					break ;
-				if (ft_isalpha(args[i][j]) != 1 && args[i][j] != '_')
-				{
-					flag = err_handler('e', &args[i][j], 1);
-					break ;
-				}
+				flag = err_handler('e', &args[i][j], 1);
+				break ;
 			}
-			if (args[1] && flag != -1)
-				if (exp_exists(args[i]) == false)
-					export_add(args[i], 0);
 		}
+		if (args[1] && flag != -1)
+			if (exp_exists(args[i]) == false)
+				export_add(args[i], 0, 0, -1);
 	}
 }
 
@@ -47,6 +45,7 @@ void	sort_export(int i, int j, int size)
 	int	flag;
 
 	flag = 0;
+	mini_shell()->senv = lst_to_mat(mini_shell()->env_amb_list);
 	while (++i < (size - 1) && mini_shell()->senv[i][j])
 	{
 		j = 0;
@@ -68,16 +67,29 @@ void	sort_export(int i, int j, int size)
 	list_delete(mini_shell()->senv);
 }
 
-void	export_add(char *args, int flag)
+void	export_aux(t_env **lst, int flag, int i)
 {
-	int		i;
-	int		j;
+	if (flag == 0)
+		(*lst)->type[i] = '\0';
+	if (flag == 1)
+	{
+		(*lst)->info[i] = '"';
+		(*lst)->info[i + 1] = '\0';
+	}
+	ft_lstadd_back(&mini_shell()->env_amb_list, ft_lstnew((*lst)));
+}
+
+int	add_quo(t_env **lst)
+{
+	(*lst)->info[1] = '"';
+	return (1);
+}
+
+void	export_add(char *args, int flag, int i, int j)
+{
 	t_env	*lst;
 
 	lst = exp_alloc(args);
-	i = 0;
-	j = -1;
-	flag = 0;
 	while (args[++j] != '\0')
 	{
 		if (args[j] != ' ')
@@ -88,11 +100,8 @@ void	export_add(char *args, int flag)
 				flag = 1;
 				i = 1;
 				lst->info[0] = '"';
-				if (args[++j] == '\0')
-				{
-					lst->info[1] = '"';
+				if (args[++j] == '\0' && add_quo(&lst))
 					break ;
-				}
 			}
 			if (flag == 0)
 				lst->type[i++] = args[j];
@@ -100,12 +109,5 @@ void	export_add(char *args, int flag)
 				lst->info[i++] = args[j];
 		}
 	}
-	if (flag == 0)
-		lst->type[i] = '\0';
-	if (args[j - 1] != '"' && flag == 1 && slsh0(lst->info, i))
-	{
-		lst->info[i] = '"';
-		lst->info[i + 1] = '\0';
-	}
-	ft_lstadd_back(&mini_shell()->env_amb_list, ft_lstnew(lst));
+	export_aux(&lst, flag, i);
 }

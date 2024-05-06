@@ -6,7 +6,7 @@
 /*   By: jofilipe <jofilipe@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 12:11:57 by bbento-e          #+#    #+#             */
-/*   Updated: 2024/05/03 17:27:55 by bbento-e         ###   ########.fr       */
+/*   Updated: 2024/05/06 12:19:04 by bbento-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,8 +84,8 @@ char	*ft_get_env(char *type)
 		free(env_tmp->info);
 		env_tmp->info = trimmed_info;
 		if (!ft_strcmp(env_tmp->type, type))
-			return ft_strdup(env_tmp->info);
+			return (ft_strdup(env_tmp->info));
 		current = current->next;
 	}
-	return ft_strdup("");
+	return (ft_strdup(""));
 }

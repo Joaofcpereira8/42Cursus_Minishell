@@ -6,7 +6,7 @@
 /*   By: jofilipe <jofilipe@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 12:46:06 by jofilipe          #+#    #+#             */
-/*   Updated: 2024/04/16 15:58:38 by bbento-e         ###   ########.fr       */
+/*   Updated: 2024/05/06 12:15:13 by bbento-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,17 +34,14 @@ void	fd_duplicate(void)
 
 void	fd_close(int command_index)
 {
-	//Close input and output if not standard input/output
 	if (mini_shell()->fd_in != STDIN_FILENO)
 		close(mini_shell()->fd_in);
 	if (mini_shell()->fd_out != STDOUT_FILENO)
 		close(mini_shell()->fd_out);
-	//Close pipes not used by the current command
 	if (command_index > 0)
 		close(mini_shell()->pipes[command_index - 1][RE_PI]);
 	if (!is_last_command(command_index))
 		close(mini_shell()->pipes[command_index][WR_PI]);
-	//Reset file descriptors to default
 	mini_shell()->fd_in = STDIN_FILENO;
 	mini_shell()->fd_out = STDOUT_FILENO;
 }

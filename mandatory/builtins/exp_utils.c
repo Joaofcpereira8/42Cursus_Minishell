@@ -6,7 +6,7 @@
 /*   By: bbento-e <bbento-e@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 11:57:55 by bbento-e          #+#    #+#             */
-/*   Updated: 2024/05/03 16:22:53 by bbento-e         ###   ########.fr       */
+/*   Updated: 2024/05/06 12:24:55 by bbento-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	printexp(int size)
 {
-	int    i;
+	int	i;
 
 	i = 0;
 	while (i < size)
@@ -27,10 +27,9 @@ void	printexp(int size)
 
 int	slsh0(char *str, int i)
 {
-	str[i] = '0';
+	str[i] = '\0';
 	return (1);
 }
-
 
 t_env	*exp_alloc(char *args)
 {
@@ -63,10 +62,10 @@ bool	exp_exists(char *args)
 	while (args[++j] && args[j] != '=')
 		str[j] = args[j];
 	str[j] = '\0';
-	ft_list_remove_if(&MS_ENV, str, &found);
+	ft_list_remove_if(&mini_shell()->env_amb_list, str, &found);
 	free(str);
 	if (found == true)
-		export_add(args, 0);
+		export_add(args, 0, 0, -1);
 	mini_shell()->exit_status = 0;
 	return (found);
 }

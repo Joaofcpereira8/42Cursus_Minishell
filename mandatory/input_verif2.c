@@ -6,20 +6,16 @@
 /*   By: jofilipe <jofilipe@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/19 11:23:10 by jofilipe          #+#    #+#             */
-/*   Updated: 2024/04/30 14:16:05 by bbento-e         ###   ########.fr       */
+/*   Updated: 2024/05/06 12:14:48 by bbento-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/minishell.h"
 
-bool	input_analysis(void)
+bool	input_analysis(int num_of_pipes, int num_of_commands)
 {
 	t_token	*next;
-	int		num_of_pipes;
-	int		num_of_commands;
 
-	num_of_commands = 1;
-	num_of_pipes = 0;
 	scanner(RESET);
 	if (pipe_or_not_hd(scanner(READ)))
 		return (pars_error('s', 2));
@@ -58,21 +54,6 @@ t_token	*scanner(t_operations operations)
 	else if (operations == AFTER && current->next)
 		return (current->next->content);
 	return (NULL);
-}
-
-bool	pipe_or_redir(t_token *token)
-{
-	return (token->type >= red_in && token->type <= piped);
-}
-
-bool	pipe_or_not_hd(t_token *token)
-{
-	return (token->type >= red_in && token->type <= piped && token->type != red_hdoc);
-}
-
-bool	redirection(t_token *token)
-{
-	return (token->type >= red_in && token->type <= red_hdoc);
 }
 
 bool	is_command(t_token *token)
