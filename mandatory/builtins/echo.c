@@ -16,45 +16,51 @@ int	echo_valid(char **args)
 {
 	int	i;
 	int	size;
+	int	j;
 
-	i = 2;
+	i = 1;
 	size = arr_size(args);
 	while (i < size)
 	{
-		if (args[1] && args[1][0] == '-' && args[1][1] == 'n' && !args[1][2])
+		if (args[i][0] == '-' && args[i][1] == 'n')
 		{
-			if (args[i][0] == '-' && (args[i][1] == 'n' || args[i][1] == 'e'
-				|| args[i][1] == 'E'))
-				return (-1);
+			j = 2;
+			while (args[i][j] != '\0')
+			{
+				if (args[i][j] != 'n')
+					return (i);  // Return the index of the first non-valid -n flag
+				j++;
+			}
 		}
+		else
+			return (i);  // Return the index of the first non-flag argument
 		i++;
 	}
-	return (0);
+	return (size);  // If all are valid -n flags, start printing from here (effectively nothing to print)
 }
 
 int	miniecho(char **args)
 {
 	int	i;
 	int	nl;
+	int	start_index;
 
-	if (echo_valid(args) == -1)
-		return (err_handler('c', mini_shell()->input, 0));
-	nl = 1;
-	i = 1;
-	if (args[1] && args[1][0] == '-' && args[1][1] == 'n' && !args[1][2])
-	{
+	nl = 1;  // Assume we need a newline by default
+	start_index = echo_valid(args);
+	// If the first valid flag is a no-newline flag, suppress the newline
+	if (start_index > 1 && args[1][0] == '-' && args[1][1] == 'n')
 		nl = 0;
-		i++;
-	}
+	i = start_index;
 	while (args[i])
 	{
 		printf("%s", args[i]);
 		if (args[i + 1])
-			printf(" ");
+			printf(" ");  // Add space between words
 		i++;
 	}
-	if (nl == 1)
+	if (nl)
 		printf("\n");
 	mini_shell()->exit_status = 0;
 	return (0);
 }
+
