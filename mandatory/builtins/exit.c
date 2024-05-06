@@ -21,6 +21,15 @@ void	mini_exit2(char **args)
 	ft_free_all();
 }
 
+void	mini_exit3(char **args)
+{
+	printf("exit\n");
+	printf("minishell: %s: numeric argument required\n", args[1]);
+	mini_shell()->exit_status = 2;
+	ft_free();
+	ft_free_all();
+}
+
 void	miniexit(char **args)
 {
 	if (!args[1])
@@ -39,22 +48,10 @@ void	miniexit(char **args)
 			return ;
 		}
 		else if (ft_atoll(args[1]) != -1 || ft_strcmp(args[1], "-1") == 0)
-		{
-			printf("exit\n");
-			printf("minishell: %s: numeric argument required\n", args[1]);
-			mini_shell()->exit_status = 2;
-			ft_free();
-			ft_free_all();
-		}
+			mini_exit3(args);
 	}
 	if (ft_atoll(args[1]) != -1 || ft_strcmp(args[1], "-1") == 0)
 		mini_exit2(args);
 	else
-	{
-		printf("exit\n");
-		printf("minishell: exit: %s: numeric argument required\n", args[1]);
-		mini_shell()->exit_status = 2;
-		ft_free();
-		ft_free_all();
-	}
+		mini_exit3(args);
 }
