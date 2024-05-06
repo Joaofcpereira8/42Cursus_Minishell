@@ -43,6 +43,7 @@ char	**env_to_mat(t_list *env_list)
 	char	*tmp1;
 	char	*tmp2;
 	char	**matrix;
+	char	*test;
 
 	matrix = ft_calloc(1, sizeof(char *));
 	if (!matrix)
@@ -53,13 +54,15 @@ char	**env_to_mat(t_list *env_list)
 		if (env->info)
 		{
 			tmp1 = ft_strjoin(env->type, "=");
+			test = ft_strtrim(env->info, "\"");
 			if (env->info[0] == '"')
-				tmp2 = ft_strjoin(tmp1, ft_strtrim(env->info, "\""));
+				tmp2 = ft_strjoin(tmp1, test);
 			else
 				tmp2 = ft_strjoin(tmp1, env->info);
 			matrix = add_to_mat(matrix, ft_strdup(tmp2));
 			free(tmp1);
 			free(tmp2);
+			free(test);
 		}
 		env_list = env_list->next;
 	}
