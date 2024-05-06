@@ -6,7 +6,7 @@
 /*   By: bbento-e <bbento-e@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 12:11:51 by bbento-e          #+#    #+#             */
-/*   Updated: 2024/05/06 14:53:46 by bbento-e         ###   ########.fr       */
+/*   Updated: 2024/05/06 15:19:34 by bbento-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	echo_valid(char **args)
 	}
 	while (args[i])
 	{
-		if (args[1][0] && args[1][0] == '-' && args[1][1] == 'n' && !args[1][2])
+		if (args[1] && args[1][0] == '-' && args[1][1] == 'n' && !args[1][2])
 		{
 			if (args[i][0] == '-' && (args[i][1] == 'n' || args[i][1] == 'e'
 				|| args[i][1] == 'E'))
@@ -44,7 +44,7 @@ int	miniecho(char **args)
 		return (err_handler('c', mini_shell()->input, 0));
 	nl = 1;
 	i = 1;
-	if (args[1][0] == '-' && args[1][1] == 'n' && !args[1][2])
+	if (args[1] && args[1][0] == '-' && args[1][1] == 'n' && !args[1][2])
 	{
 		nl = 0;
 		i++;
@@ -56,7 +56,7 @@ int	miniecho(char **args)
 			printf(" ");
 		i++;
 	}
-	if (nl != 0)
+	if (nl == 1)
 		printf("\n");
 	mini_shell()->exit_status = 0;
 	return (0);
