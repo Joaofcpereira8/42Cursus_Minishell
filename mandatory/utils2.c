@@ -6,7 +6,7 @@
 /*   By: jofilipe <jofilipe@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 12:46:06 by jofilipe          #+#    #+#             */
-/*   Updated: 2024/05/06 12:15:13 by bbento-e         ###   ########.fr       */
+/*   Updated: 2024/05/06 14:47:00 by bbento-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,4 +44,13 @@ void	fd_close(int command_index)
 		close(mini_shell()->pipes[command_index][WR_PI]);
 	mini_shell()->fd_in = STDIN_FILENO;
 	mini_shell()->fd_out = STDOUT_FILENO;
+}
+
+void	free_env(t_env **lst)
+{
+	if ((*lst)->type != NULL)
+		free((*lst)->type);
+	if ((*lst)->info != NULL)
+		free((*lst)->info);
+	free((*lst));
 }

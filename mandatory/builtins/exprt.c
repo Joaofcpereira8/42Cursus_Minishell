@@ -6,7 +6,7 @@
 /*   By: bbento-e <bbento-e@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 18:54:00 by bbento-e          #+#    #+#             */
-/*   Updated: 2024/05/06 12:40:59 by bbento-e         ###   ########.fr       */
+/*   Updated: 2024/05/06 14:24:48 by bbento-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,10 +76,23 @@ void	export_aux(t_env **lst, int flag, int i)
 	}
 }
 
-int	add_quo(t_env **lst)
+t_env	*exp_alloc(char *args)
 {
-	(*lst)->info[1] = '"';
-	return (1);
+	int		i;
+	int		j;
+	t_env	*lst;
+
+	i = ft_strlen_flag(args, '=');
+	j = i;
+	lst = malloc(sizeof(t_env));
+	while (args[j] != '\0')
+		j++;
+	lst->type = malloc(sizeof(char) * (i + 1));
+	if (j > i)
+		lst->info = malloc(sizeof(char) * (j + 2));
+	else
+		lst->info = NULL;
+	return (lst);
 }
 
 void	export_add(char *args, int flag, int i, int j)

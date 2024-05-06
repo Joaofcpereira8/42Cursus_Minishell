@@ -6,7 +6,7 @@
 /*   By: bbento-e <bbento-e@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 11:57:55 by bbento-e          #+#    #+#             */
-/*   Updated: 2024/05/06 12:24:55 by bbento-e         ###   ########.fr       */
+/*   Updated: 2024/05/06 14:47:46 by bbento-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,23 +31,10 @@ int	slsh0(char *str, int i)
 	return (1);
 }
 
-t_env	*exp_alloc(char *args)
+int	add_quo(t_env **lst)
 {
-	int		i;
-	int		j;
-	t_env	*lst;
-
-	i = ft_strlen_flag(args, '=');
-	j = i;
-	lst = malloc(sizeof(t_env));
-	while (args[j] != '\0')
-		j++;
-	lst->type = malloc(sizeof(char) * (i + 1));
-	if (j > i)
-		lst->info = malloc(sizeof(char) * (j + 2));
-	else
-		lst->info = NULL;
-	return (lst);
+	(*lst)->info[1] = '"';
+	return (1);
 }
 
 bool	exp_exists(char *args)
@@ -62,7 +49,8 @@ bool	exp_exists(char *args)
 	while (args[++j] && args[j] != '=')
 		str[j] = args[j];
 	str[j] = '\0';
-	ft_list_remove_if(&mini_shell()->env_amb_list, str, &found);
+	found = env_unset(str);
+	// ft_list_remove_if(&mini_shell()->env_amb_list, str, &found);
 	free(str);
 	if (found == true)
 		export_add(args, 0, 0, -1);

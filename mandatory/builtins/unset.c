@@ -6,13 +6,23 @@
 /*   By: jofilipe <jofilipe@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 12:34:37 by jofilipe          #+#    #+#             */
-/*   Updated: 2024/05/06 12:25:24 by bbento-e         ###   ########.fr       */
+/*   Updated: 2024/05/06 14:46:34 by bbento-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
 
 int	miniunset(char **args)
+{
+	int		i;
+
+	i = 0;
+	while (args[++i])
+		env_unset(args[i]);
+	return (0);
+}
+
+int	env_unset(char *args)
 {
 	t_list	**head;
 	t_list	*temp;
@@ -25,20 +35,18 @@ int	miniunset(char **args)
 	while (temp != NULL)
 	{
 		env = (t_env *)temp->content;
-		if (ft_strcmp(env->type, args[1]) == 0)
+		if (ft_strcmp(env->type, args) == 0)
 		{
 			if (prev == NULL)
 				*head = temp->next;
 			else
 				prev->next = temp->next;
-			free(env->type);
-			free(env->info);
-			free(env);
+			free_env(&env);
 			free(temp);
 			return (0);
 		}
 		prev = temp;
 		temp = temp->next;
 	}
-	return (0);
+	return (-1);
 }

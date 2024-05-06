@@ -6,7 +6,7 @@
 /*   By: bbento-e <bbento-e@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 18:26:52 by jofilipe          #+#    #+#             */
-/*   Updated: 2024/05/06 12:23:51 by bbento-e         ###   ########.fr       */
+/*   Updated: 2024/05/06 14:46:11 by bbento-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -156,6 +156,7 @@ char		*get_prompt(void);
 int			minipdw(void);
 void		printexp(int size);
 int			mini_cd(char **args);
+int			env_unset(char *args);
 int			miniecho(char **args);
 void		miniexit(char **args);
 void		close_all_pipes(void);
@@ -170,8 +171,8 @@ void		miniexport(char **args, int flag, int i, int j);
 
 // EXPORT UTILS
 void		printexp(int size);
+int			add_quo(t_env **lst);
 t_env		*exp_alloc(char *args);
-
 bool		exp_exists(char *args);
 int			slsh0(char *str, int i);
 void		ft_list_remove_if(t_list **list, char *args, bool *found);
@@ -211,9 +212,10 @@ int			ft_strlen_flag(char const *str, char flag);
 // ----------- UTILS2 ----------- //
 void		fd_duplicate(void);
 int			arr_size(char **str);
+void		free_env(t_env **lst);
 void		fd_close(int command_index);
-bool		is_built_in(char *command, char *arg);
 bool		is_last_command(int command_numbers);
+bool		is_built_in(char *command, char *arg);
 // ---------- VARIABLE_GLOBAL ---------- //
 t_mini_env	*mini_shell(void);
 
