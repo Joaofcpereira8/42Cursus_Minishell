@@ -12,49 +12,53 @@
 
 #include "includes/minishell.h"
 
+char	*extract_env_value(char *args, int *index)
+{
+	char	*value;
+	int		last;
+	char	*var_name;
+
+	value = NULL;
+	last = *index;
+	if (args[*index + 1] == '?')
+	{
+		value = ft_itoa(mini_shell()->exit_status);
+		*index += 2; // Skip $? sequence
+	}
+	else
+	{
+		while (args[++(*index)] && ft_isalpha(args[*index]))
+			continue ;  // Move index to end of variable name
+		var_name = ft_substr(args, last + 1, *index - (last + 1)); // +1 skips the '$'
+		value = ft_get_env(var_name);
+		free(var_name);
+	}
+	return (value);
+}
+
 char	*dollar_finder(char *args)
 {
-	int		i;
-	int		size;
-	int		last;
-	char	*str;
-	char	*tmp1;
-	char	*tmp2;
+	int i = 0;
+	int size = ft_strlen(args);
+	char *result = NULL;
+	char *temp = NULL;
 
-	str = NULL;
-	size = (int)ft_strlen(args);
-	i = 0;
-	last = 0;
-	while (i < size)
-	{
-		tmp1 = NULL;
-		tmp2 = NULL;
-		if (args[i] == '$')
-		{
-			if (args[i + 1] == '?')
-				tmp1 = ft_itoa(mini_shell()->exit_status);
-			else
-			{
-				last = i;
-				while (args[++i] && ft_isalpha(args[i]) == 1)
-					tmp2 = ft_substr(args, last, i);
-				tmp1 = ft_get_env(tmp2);
-				free(tmp2);
-			}
-			str = ft_strjoin(str, tmp1);
+	while (i < size) {
+		if (args[i] == '$') {
+			char *env_value = extract_env_value(args, &i);  // i will be updated inside
+			temp = result;
+			result = ft_strjoin(result, env_value);
+			free(temp);
+			free(env_value);
+		} else {
+			char next_part[2] = {args[i], '\0'};
+			temp = result;
+			result = ft_strjoin(result, next_part);
+			free(temp);
 		}
-		else
-		{
-			tmp1 = ft_strjoin(tmp1, &args[i]);
-			if (i == 0)
-				str = ft_strdup(tmp1);
-			else
-				ft_strlcat(str, tmp1, ft_strlen(tmp1));
-		}
-		free(tmp1);
 		i++;
 	}
-	return (str);
+	return result;
 }
 
 char	*hexpand(char *args)

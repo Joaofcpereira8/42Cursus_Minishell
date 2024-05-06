@@ -246,6 +246,7 @@ char		*ft_get_env(char *type);
  */
 char		**env_to_mat(t_list *env_list);
 char		**lst_to_mat(t_list *env_list);
+char		*create_env_string(t_env *env);
 // ---------- ENV_VAR_LIST ---------- //
 /**
  * @brief Usada no início do programa para criar a nossa própria

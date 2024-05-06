@@ -12,28 +12,36 @@
 
 #include "includes/minishell.h"
 
-void	expand_variable(t_token *token)
+void expand_variable(t_token *token)
 {
 	char	*value;
 	char	*key;
 	char	*tmp;
+	char	*new_str;
 
-	while (ft_strnstr(token->str, "$", ft_strlen(token->str)))
+	while ((tmp = ft_strnstr(token->str, "$", ft_strlen(token->str))))
 	{
-		key = find_key(token->str);
-		if (ft_strcmp(key, "$") == 0)
-			break ;
+		key = find_key(tmp);  // Extract key starting at '$'
+		if (key == NULL)
+			continue ;  // Continue if no key is found
 		if (!ft_strcmp(key, "$?"))
 			value = ft_itoa(mini_shell()->exit_status);
 		else
-			value = ft_get_env(key);
-		tmp = token->str;
-		token->str = ft_strtrim(ft_streplace(token->str, key, value), "\"");
-		ft_clean(tmp);
-		ft_clean(key);
-		ft_clean(value);
+			value = ft_get_env(key);  // Memory allocated here must be freed
+		if (value)
+		{
+			new_str = ft_streplace(token->str, key, value);  // Replace key with value
+			free(token->str);  // Free the old string
+			token->str = ft_strtrim(new_str, "\"");  // Trim and assign new string
+			free(new_str);  // Free the intermediate new string
+			free(value);  // Free the dynamically allocated value
+		}
+		free(key);  // Free the key after use
 	}
 }
+
+
+
 
 char	*find_key(char *str)
 {

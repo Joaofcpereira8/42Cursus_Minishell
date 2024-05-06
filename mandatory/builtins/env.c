@@ -37,32 +37,40 @@ void	env_update(void)
 	free(tmp);
 }
 
+char	*create_env_string(t_env *env)
+{
+	char	*tmp1;
+	char	*test;
+	char	*tmp2;
+
+	if (!env || !env->info)
+		return (NULL);
+	tmp1 = ft_strjoin(env->type, "=");
+	test = ft_strtrim(env->info, "\"");
+	if (env->info[0] == '"')
+		tmp2 = ft_strjoin(tmp1, test);
+	else
+		tmp2 = ft_strjoin(tmp1, env->info);
+	free(tmp1);
+	free(test);
+	return (tmp2);
+}
+
 char	**env_to_mat(t_list *env_list)
 {
-	t_env	*env;
-	char	*tmp1;
-	char	*tmp2;
 	char	**matrix;
-	char	*test;
+	char	*env_string;
 
 	matrix = ft_calloc(1, sizeof(char *));
 	if (!matrix)
 		return (NULL);
 	while (env_list)
 	{
-		env = (t_env *)env_list->content;
-		if (env->info)
+		env_string = create_env_string((t_env *)env_list->content);
+		if (env_string)
 		{
-			tmp1 = ft_strjoin(env->type, "=");
-			test = ft_strtrim(env->info, "\"");
-			if (env->info[0] == '"')
-				tmp2 = ft_strjoin(tmp1, test);
-			else
-				tmp2 = ft_strjoin(tmp1, env->info);
-			matrix = add_to_mat(matrix, ft_strdup(tmp2));
-			free(tmp1);
-			free(tmp2);
-			free(test);
+			matrix = add_to_mat(matrix, strdup(env_string));
+			free(env_string);
 		}
 		env_list = env_list->next;
 	}

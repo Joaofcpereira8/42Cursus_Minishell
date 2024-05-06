@@ -19,6 +19,7 @@ int	miniunset(char **args)
 	i = 0;
 	while (args[++i])
 		env_unset(args[i]);
+	mini_shell()->exit_status = 0;
 	return (0);
 }
 
