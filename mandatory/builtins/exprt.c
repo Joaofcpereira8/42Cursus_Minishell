@@ -18,6 +18,7 @@ void	miniexport(char **args, int flag, int i, int j)
 	{
 		mini_shell()->senv = lst_to_mat(mini_shell()->env_amb_list);
 		sort_export(-1, 0, arr_size(mini_shell()->senv));
+		mini_shell()->exit_status = 0;
 	}
 	while (args[++i])
 	{
