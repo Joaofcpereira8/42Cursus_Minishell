@@ -16,7 +16,6 @@ void	mini_exit2(char **args)
 {
 	mini_shell()->exit_status = ft_atoll(args[1]) % 256;
 	printf("exit\n");
-	printf("%i\n", mini_shell()->exit_status);
 	ft_free();
 	ft_free_all();
 }

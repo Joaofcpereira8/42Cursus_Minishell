@@ -29,7 +29,6 @@ void	input(void)
 			continue ;
 		add_history(mini_shell()->input);
 		figure_out();
-		printf("Exit status is -> %i\n", mini_shell()->exit_status);
 		ft_free();
 	}
 }
