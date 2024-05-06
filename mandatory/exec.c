@@ -60,7 +60,9 @@ void	exec_command(char **args)
 		if (joined_path)
 		{
 			if (access(joined_path, X_OK) == 0)
+			{
 				execve(joined_path, args, mini_shell()->env);
+			}
 			free(joined_path);
 		}
 		else if (!mini_shell()->path[i + 1])

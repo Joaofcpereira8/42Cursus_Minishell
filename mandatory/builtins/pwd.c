@@ -14,7 +14,6 @@
 
 int	minipdw(void)
 {
-	mini_shell()->cwd = getcwd(0, 0);
 	mini_shell()->exit_status = 0;
 	return (printf("%s\n", mini_shell()->cwd));
 }

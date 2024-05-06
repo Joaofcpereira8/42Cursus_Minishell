@@ -44,13 +44,16 @@ char	*dollar_finder(char *args)
 	char *temp = NULL;
 
 	while (i < size) {
-		if (args[i] == '$') {
+		if (args[i] == '$')
+		{
 			char *env_value = extract_env_value(args, &i);  // i will be updated inside
 			temp = result;
 			result = ft_strjoin(result, env_value);
 			free(temp);
 			free(env_value);
-		} else {
+		}
+		else
+		{
 			char next_part[2] = {args[i], '\0'};
 			temp = result;
 			result = ft_strjoin(result, next_part);
