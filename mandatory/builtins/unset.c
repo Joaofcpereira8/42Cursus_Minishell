@@ -6,7 +6,7 @@
 /*   By: jofilipe <jofilipe@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 12:34:37 by jofilipe          #+#    #+#             */
-/*   Updated: 2024/05/07 17:30:02 by bbento-e         ###   ########.fr       */
+/*   Updated: 2024/05/07 19:06:38 by bbento-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ int	miniunset(char **args)
 	i = 0;
 	while (args[++i])
 		env_unset(args[i]);
+	mini_shell()->close_p = -1;
 	mini_shell()->exit_status = 0;
 	return (0);
 }
@@ -49,6 +50,5 @@ int	env_unset(char *args)
 		prev = temp;
 		temp = temp->next;
 	}
-	mini_shell()->close_p = -1;
 	return (-1);
 }
