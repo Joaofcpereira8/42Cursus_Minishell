@@ -40,6 +40,7 @@ SRCS =	mandatory/main.c \
 		mandatory/utils4.c \
 		mandatory/redirect.c \
 		mandatory/heredoc.c \
+		mandatory/heredoc2.c \
 		mandatory/variable_global.c \
 		mandatory/env_var_list.c \
 		mandatory/tokens.c \

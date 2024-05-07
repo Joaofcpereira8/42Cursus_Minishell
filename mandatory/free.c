@@ -15,7 +15,7 @@
 void	ft_clean(void *value)
 {
 	if (value)
-		free((char *)value);
+		free(value);
 	value = NULL;
 }
 

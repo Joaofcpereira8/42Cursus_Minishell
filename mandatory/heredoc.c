@@ -12,66 +12,6 @@
 
 #include "includes/minishell.h"
 
-char	*extract_env_value(char *args, int *index)
-{
-	char	*value;
-	int		last;
-	char	*var_name;
-
-	value = NULL;
-	last = *index;
-	if (args[*index + 1] == '?')
-	{
-		value = ft_itoa(mini_shell()->exit_status);
-		*index += 2; // Skip $? sequence
-	}
-	else
-	{
-		while (args[++(*index)] && ft_isalpha(args[*index]))
-			continue ;  // Move index to end of variable name
-		var_name = ft_substr(args, last + 1, *index - (last + 1)); // +1 skips the '$'
-		value = ft_get_env(var_name);
-		free(var_name);
-	}
-	return (value);
-}
-
-char	*dollar_finder(char *args)
-{
-	int i = 0;
-	int size = ft_strlen(args);
-	char *result = NULL;
-	char *temp = NULL;
-
-	while (i < size) {
-		if (args[i] == '$')
-		{
-			char *env_value = extract_env_value(args, &i);  // i will be updated inside
-			temp = result;
-			result = ft_strjoin(result, env_value);
-			free(temp);
-			free(env_value);
-		}
-		else
-		{
-			char next_part[2] = {args[i], '\0'};
-			temp = result;
-			result = ft_strjoin(result, next_part);
-			free(temp);
-		}
-		i++;
-	}
-	return result;
-}
-
-char	*hexpand(char *args)
-{
-	char	*str;
-
-	str = dollar_finder(args);
-	free(args);
-	return (str);
-}
 
 void	hreader(char *args)
 {
@@ -101,15 +41,78 @@ void	hreader(char *args)
 	close(fd);
 }
 
-int	heredoc(char *args)
+char	*extract_env_value(char *args, int *index)
 {
-	heredoc_signals();
-	if (mini_shell()->fd_in > STDIN_FILENO)
-		close(mini_shell()->fd_in);
-	if (!fork())
-		hreader(args);
-	ignore_signals();
-	waitpid(0, NULL, 0);
-	signals();
-	return (open("heredoc", O_RDONLY));
+	char	*value;
+	char	*var_name;
+	int		last;
+
+	value = NULL;
+	var_name = NULL;
+	last = *index;
+	if (args[*index + 1] == '?')
+	{
+		*index += 2; // Skip $? sequence
+		return (ft_itoa(mini_shell()->exit_status));
+	}
+	*index += 1;
+	while (args[*index] && ft_isalpha(args[*index]))
+		*index += 1;
+	var_name = ft_substr(args, last + 1, *index - (last + 1)); // +1 skips the '$'
+	value = ft_get_env(var_name);
+	free(var_name);
+	return (value);
+}
+
+// Function to handle appending characters and expanding environment variables.
+char	*process_char(char *args, int *i, char *result)
+{
+	char	next_part[2];
+	char	*temp;
+	char	*env_value;
+
+	if (args[*i] == '$')
+	{
+		env_value = extract_env_value(args, i);
+		temp = result;
+		result = ft_strjoin(result, env_value);
+		free(temp);
+		free(env_value);
+	}
+	else
+	{
+		next_part[0] = args[*i];
+		next_part[1] = '\0';
+		temp = result;
+		result = ft_strjoin(result, next_part);
+		free(temp);
+	}
+	return (result);
+}
+
+// Main function to find and replace all "$" occurrences with their corresponding env values.
+char	*dollar_finder(char *args)
+{
+	int		i;
+	int		size;
+	char	*result;
+
+	i = 0;
+	result = NULL;
+	size = ft_strlen(args);
+	while (i < size)
+	{
+		result = process_char(args, &i, result);
+		i++;
+	}
+	return (result);
+}
+
+char	*hexpand(char *args)
+{
+	char	*str;
+
+	str = dollar_finder(args);
+	free(args);
+	return (str);
 }

@@ -19,11 +19,23 @@ char	*rm_quotes(char *arg)
 
 	len = strlen(arg);
 	if (len > 1 && ((arg[0] == '"' && arg[len - 1] == '"')
-		|| (arg[0] == '\'' && arg[len - 1] == '\'')))
+			|| (arg[0] == '\'' && arg[len - 1] == '\'')))
 	{
 		new_arg = ft_substr(arg, 1, len - 2);
-		free(arg);  // assuming arg was dynamically allocated
+		free(arg);
 		return (new_arg);
 	}
 	return (arg);
+}
+
+void	ft_get_oldpwd(void)
+{
+	char	*oldpwd;
+
+	oldpwd = NULL;
+	if (!oldpwd)
+		oldpwd = ft_get_env("OLDPWD");
+	if (!mini_shell()->oldpwd)
+		mini_shell()->oldpwd = ft_strdup(oldpwd);
+	ft_clean(oldpwd);
 }

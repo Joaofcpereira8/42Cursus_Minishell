@@ -119,6 +119,7 @@ typedef struct s_mini_env
 	char		**senv;
 	char		**path;
 	int			**pipes;
+	int			close_p;
 	char		*oldpwd;
 	t_list		*env_amb_list;
 	t_list		*env_token;
@@ -173,6 +174,11 @@ int			check_spec(char **str);
 // ----------- REDIRECTS ---------- //
 int			heredoc(char *args);
 int			redirects(t_meta_tok token, char *com);
+void		hreader(char *args);
+char		*hexpand(char *args);
+char		*dollar_finder(char *args);
+char		*process_char(char *args, int *i, char *result);
+char		*extract_env_value(char *args, int *index);
 
 // ------------ ERRORS ----------- //
 int			err_handler(char c, char *cmd, int ext_sts);
@@ -196,6 +202,7 @@ void		fd_close(int command_index);
 bool		is_last_command(int command_numbers);
 bool		is_built_in(char *command, char *arg);
 char		*rm_quotes(char *arg);
+void		ft_get_oldpwd(void);
 
 // ---------- VARIABLE_GLOBAL ---------- //
 t_mini_env	*mini_shell(void);

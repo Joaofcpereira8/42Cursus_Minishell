@@ -19,7 +19,8 @@ void	mini_init(char	**env)
 	env_update();
 	(mini_shell()->senv) = mini_shell()->env;
 	(mini_shell()->exit_status) = 0;
-	(mini_shell()->cwd) = getcwd(NULL, 0);
+	(mini_shell()->close_p) = -1;
+	(mini_shell()->cwd) = getcwd(0, 0);
 	(mini_shell()->fd_in) = STDIN_FILENO;
 	(mini_shell()->fd_out) = STDOUT_FILENO;
 }
