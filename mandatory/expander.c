@@ -21,6 +21,7 @@ void	expand_variable(t_token *token)
 
 	while ((tmp = ft_strnstr(token->str, "$", ft_strlen(token->str))))
 	{
+		//if (ft_strcmp(token->str[0], "$"))
 		key = find_key(tmp);  // Extract key starting at '$'
 		if (key == NULL)
 			continue ;  // Continue if no key is found
