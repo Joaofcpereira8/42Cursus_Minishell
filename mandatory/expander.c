@@ -12,6 +12,8 @@
 
 #include "includes/minishell.h"
 
+
+
 void	expand_variable(t_token *token)
 {
 	char	*value;
@@ -21,6 +23,8 @@ void	expand_variable(t_token *token)
 
 	while ((tmp = ft_strnstr(token->str, "$", ft_strlen(token->str))))
 	{
+		if (ft_strlen(token->str) == 1)
+			break ;
 		key = find_key(tmp);  // Extract key starting at '$'
 		if (key == NULL)
 			continue ;  // Continue if no key is found

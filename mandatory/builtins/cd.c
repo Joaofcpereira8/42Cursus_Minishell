@@ -16,6 +16,7 @@ int	handle_minus(void)
 {
 	char	*tmp;
 
+	ft_get_oldpwd();
 	if (!ft_strcmp(mini_shell()->oldpwd, mini_shell()->cwd))
 	{
 		printf("%s\n", mini_shell()->cwd);
@@ -26,6 +27,7 @@ int	handle_minus(void)
 		tmp = mini_shell()->cwd;
 		mini_shell()->cwd = mini_shell()->oldpwd;
 		mini_shell()->oldpwd = ft_strdup(tmp);
+		printf("%s\n", mini_shell()->cwd);
 		free(tmp);
 		return (0);
 	}
@@ -33,23 +35,27 @@ int	handle_minus(void)
 
 int	mini_cd(char **args)
 {
-	ft_get_oldpwd();
 	if (!args[1] && chdir(getenv("HOME")) == 0)
 	{
+		if (mini_shell()->oldpwd)
+			ft_clean(mini_shell()->oldpwd);
 		mini_shell()->oldpwd = mini_shell()->cwd;
 		mini_shell()->cwd = getcwd(0, 0);
 	}
 	else if (args[1][0] == '-' && !args[1][1])
 		return (handle_minus());
-	if (args[2])
+	else if (args[1] && args[2])
 		return (pars_error('w', 1));
-	else if (chdir(args[1]) == 0 || ((args[1][0] == ' ' || (args[1][0] == '~'
-		&& !args[1][1]) || (args[1][0] == '-' && args[1][1] == '-'
-		&& !args[1][2]) || !args[1]) && chdir("/home/") == 0))
+	else if (args[1])
 	{
-		ft_clean(mini_shell()->oldpwd);
-		mini_shell()->oldpwd = mini_shell()->cwd;
-		mini_shell()->cwd = getcwd(0, 0);
+		if (chdir(args[1]) == 0 || ((args[1][0] == ' ' || (args[1][0] == '~'
+			&& !args[1][1]) || (args[1][0] == '-' && args[1][1] == '-'
+			&& !args[1][2]) || !args[1]) && chdir("/home/") == 0))
+		{
+			ft_clean(mini_shell()->oldpwd);
+			mini_shell()->oldpwd = mini_shell()->cwd;
+			mini_shell()->cwd = getcwd(0, 0);
+		}
 	}
 	else
 		return (err_handler('d', args[1], 1));
