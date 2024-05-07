@@ -6,7 +6,7 @@
 /*   By: jofilipe <jofilipe@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/22 17:55:05 by jofilipe          #+#    #+#             */
-/*   Updated: 2024/04/02 11:56:10 by jofilipe         ###   ########.fr       */
+/*   Updated: 2024/05/07 17:48:57 by bbento-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,8 @@ pid_t	exec_is_fork(t_a_s_tree *command)
 		}
 		atribute_pipes_fd(command->index);
 		fd_duplicate();
-		close_all_pipes();
+		if (mini_shell()->close_p == 0)
+			close_all_pipes();
 		built_type(command->args);
 		ft_free();
 		ft_free_all();

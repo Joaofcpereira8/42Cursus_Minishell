@@ -6,7 +6,7 @@
 /*   By: jofilipe <jofilipe@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/21 18:50:32 by jofilipe          #+#    #+#             */
-/*   Updated: 2024/05/06 12:02:01 by bbento-e         ###   ########.fr       */
+/*   Updated: 2024/05/07 17:54:26 by bbento-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,9 @@ pid_t	execute_pipes(t_a_s_tree *node)
 	last = execute_pipes(node->right);
 	if (!pipe_or_redir(node->token))
 	{
+		mini_shell()->close_p = -1;
+		if (ft_strcmp(node->token->str, "cat") == 0)
+			mini_shell()->close_p = 0;
 		if (is_built_in(node->args[0], node->args[1]))
 			built_type(node->args);
 		else

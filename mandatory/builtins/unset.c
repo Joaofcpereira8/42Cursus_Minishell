@@ -6,7 +6,7 @@
 /*   By: jofilipe <jofilipe@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 12:34:37 by jofilipe          #+#    #+#             */
-/*   Updated: 2024/05/06 14:46:34 by bbento-e         ###   ########.fr       */
+/*   Updated: 2024/05/07 17:30:02 by bbento-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,5 +49,6 @@ int	env_unset(char *args)
 		prev = temp;
 		temp = temp->next;
 	}
+	mini_shell()->close_p = -1;
 	return (-1);
 }
