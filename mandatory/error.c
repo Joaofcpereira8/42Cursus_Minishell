@@ -31,6 +31,8 @@ int	err_handler(char c, char *cmd, int ext_sts)
 		printf("minishell: Error: Heredoc error\n");
 	else if (c == 'e')
 		printf("export: %s: Not a valid identifier\n", cmd);
+	else if (c == 'f')
+		printf("%s: command not found\n", cmd);
 	mini_shell()->exit_status = ext_sts;
 	return (-1);
 }

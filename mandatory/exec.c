@@ -69,6 +69,5 @@ void	exec_command(char **args)
 			perror("execve");
 		i++;
 	}
-	printf("%s: command not found\n", *args);
-	mini_shell()->exit_status = 127;
+	err_handler('f', args[0], 127);
 }

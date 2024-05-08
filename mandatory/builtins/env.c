@@ -23,6 +23,7 @@ void	minienv(t_list *env_amb_list)
 		printf("%s\n", mini_shell()->env[i]);
 		i++;
 	}
+	mini_shell()->exit_status = 0;
 }
 
 void	env_update(void)
@@ -95,7 +96,9 @@ char	*ft_get_env(char *type)
 		free(env_tmp->info);
 		env_tmp->info = trimmed_info;
 		if (!ft_strcmp(env_tmp->type, type))
+		{
 			return (ft_strdup(env_tmp->info));
+		}
 		current = current->next;
 	}
 	return (ft_strdup(""));

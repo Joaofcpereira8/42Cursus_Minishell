@@ -56,8 +56,8 @@ int	mini_cd(char **args)
 			mini_shell()->oldpwd = mini_shell()->cwd;
 			mini_shell()->cwd = getcwd(0, 0);
 		}
+		else
+			return (err_handler('d', args[1], 1));
 	}
-	else
-		return (err_handler('d', args[1], 1));
 	return (mini_shell()->exit_status = 0);
 }
