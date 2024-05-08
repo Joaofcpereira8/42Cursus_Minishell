@@ -183,7 +183,6 @@ int			err_handler(char c, char *cmd, int ext_sts);
 
 // ----------- UTILS ----------- //
 int			sz_env_list(char **env);
-void		free_array(char **arr);
 void		list_delete(void *list);
 int			is_every_space(char *str);
 int			ft_swap_env(char *swap, int i);

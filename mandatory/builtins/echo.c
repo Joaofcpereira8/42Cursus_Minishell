@@ -28,15 +28,15 @@ int	echo_valid(char **args)
 			while (args[i][j] != '\0')
 			{
 				if (args[i][j] != 'n')
-					return (i);  // Return the index of the first non-valid -n flag
+					return (i);
 				j++;
 			}
 		}
 		else
-			return (i);  // Return the index of the first non-flag argument
+			return (i);
 		i++;
 	}
-	return (size);  // If all are valid -n flags, start printing from here (effectively nothing to print)
+	return (size);
 }
 
 int	miniecho(char **args)
@@ -45,9 +45,8 @@ int	miniecho(char **args)
 	int	nl;
 	int	start_index;
 
-	nl = 1;  // Assume we need a newline by default
+	nl = 1;
 	start_index = echo_valid(args);
-	// If the first valid flag is a no-newline flag, suppress the newline
 	if (start_index > 1 && args[1][0] == '-' && args[1][1] == 'n')
 		nl = 0;
 	i = start_index;
@@ -55,7 +54,7 @@ int	miniecho(char **args)
 	{
 		printf("%s", args[i]);
 		if (args[i + 1])
-			printf(" ");  // Add space between words
+			printf(" ");
 		i++;
 	}
 	if (nl)

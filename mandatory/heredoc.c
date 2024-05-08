@@ -6,7 +6,7 @@
 /*   By: bbento-e <bbento-e@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 12:15:25 by bbento-e          #+#    #+#             */
-/*   Updated: 2024/05/06 12:26:56 by bbento-e         ###   ########.fr       */
+/*   Updated: 2024/05/08 15:40:36 by jofilipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,14 +51,19 @@ char	*extract_env_value(char *args, int *index)
 	last = *index;
 	if (args[*index + 1] == '?')
 	{
-		*index += 2; // Skip $? sequence
+		*index += 2;
 		return (ft_itoa(mini_shell()->exit_status));
 	}
 	*index += 1;
-	while (args[*index] && ft_isalpha(args[*index]))
+	while (args[*index] && (ft_isalpha(args[*index]) || args[*index] == '_'))
 		*index += 1;
-	var_name = ft_substr(args, last + 1, *index - (last + 1)); // +1 skips the '$'
+	var_name = ft_substr(args, last + 1, *index - (last + 1));
 	value = ft_get_env(var_name);
+	if (args[*index] && (args[*index] == '$' || args[*index] == ' '))
+		*index -= 1;
+	else if (args[*index] && !ft_isalpha(args[*index]))
+		while (args[*index] && args[*index] != ' ')
+			(*index)++;
 	free(var_name);
 	return (value);
 }
@@ -74,7 +79,7 @@ char	*process_char(char *args, int *i, char *result)
 	{
 		env_value = extract_env_value(args, i);
 		temp = result;
-		result = ft_strjoin(result, env_value);
+		result = ft_strjoin(temp, env_value);
 		free(temp);
 		free(env_value);
 	}
@@ -83,13 +88,12 @@ char	*process_char(char *args, int *i, char *result)
 		next_part[0] = args[*i];
 		next_part[1] = '\0';
 		temp = result;
-		result = ft_strjoin(result, next_part);
+		result = ft_strjoin(temp, next_part);
 		free(temp);
 	}
 	return (result);
 }
 
-// Main function to find and replace all "$" occurrences with their corresponding env values.
 char	*dollar_finder(char *args)
 {
 	int		i;

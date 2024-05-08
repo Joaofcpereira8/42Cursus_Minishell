@@ -6,7 +6,7 @@
 /*   By: bbento-e <bbento-e@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 18:54:00 by bbento-e          #+#    #+#             */
-/*   Updated: 2024/05/07 17:29:51 by bbento-e         ###   ########.fr       */
+/*   Updated: 2024/05/08 16:07:47 by jofilipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,7 @@ void	export_add(char *args, int flag, int i, int j)
 	lst = exp_alloc(args);
 	while (args[++j] != '\0')
 	{
-		if (args[j] != ' ')
+		if (args[j] != ' ' || flag == 1)
 		{
 			if (args[j] == '=' && flag == 0)
 			{
