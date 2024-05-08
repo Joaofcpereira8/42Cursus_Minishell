@@ -6,7 +6,7 @@
 /*   By: jofilipe <jofilipe@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 12:11:57 by bbento-e          #+#    #+#             */
-/*   Updated: 2024/05/06 12:19:04 by bbento-e         ###   ########.fr       */
+/*   Updated: 2024/05/08 12:27:36 by bbento-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ char	**env_to_mat(t_list *env_list)
 		env_string = create_env_string((t_env *)env_list->content);
 		if (env_string)
 		{
-			matrix = add_to_mat(matrix, strdup(env_string));
+			matrix = add_to_mat(matrix, ft_strdup(env_string));
 			free(env_string);
 		}
 		env_list = env_list->next;

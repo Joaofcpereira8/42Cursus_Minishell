@@ -17,7 +17,7 @@ char	*rm_quotes(char *arg)
 	size_t	len;
 	char	*new_arg;
 
-	len = strlen(arg);
+	len = ft_strlen(arg);
 	if (len > 1 && ((arg[0] == '"' && arg[len - 1] == '"')
 			|| (arg[0] == '\'' && arg[len - 1] == '\'')))
 	{
