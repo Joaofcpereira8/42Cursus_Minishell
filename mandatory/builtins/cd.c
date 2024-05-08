@@ -75,7 +75,7 @@ int	mini_cd(char **args)
 		return (change_directory(args[1]));
 	else if (args[1] && args[2])
 		return (pars_error('w', 1));
-	else if (args[1] && chdir(args[1]) == 0)
+	else if (args[1])
 		mini_cd2(args);
 	else
 		return (err_handler('d', args[1], 1));
