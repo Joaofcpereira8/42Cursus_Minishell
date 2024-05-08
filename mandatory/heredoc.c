@@ -12,7 +12,6 @@
 
 #include "includes/minishell.h"
 
-
 void	hreader(char *args)
 {
 	int		fd;

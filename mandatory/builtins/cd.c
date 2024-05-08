@@ -49,7 +49,7 @@ int	mini_cd(char **args)
 	else if (args[1])
 	{
 		if (chdir(args[1]) == 0 || ((args[1][0] == ' ' || (args[1][0] == '~'
-			&& !args[1][1]) || (args[1][0] == '-' && args[1][1] == '-'
+				&& !args[1][1]) || (args[1][0] == '-' && args[1][1] == '-'
 			&& !args[1][2]) || !args[1]) && chdir("/home/") == 0))
 		{
 			ft_clean(mini_shell()->oldpwd);
@@ -59,6 +59,5 @@ int	mini_cd(char **args)
 	}
 	else
 		return (err_handler('d', args[1], 1));
-	mini_shell()->exit_status = 0;
-	return (0);
+	return (mini_shell()->exit_status = 0);
 }

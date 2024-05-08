@@ -63,4 +63,3 @@ int	miniecho(char **args)
 	mini_shell()->exit_status = 0;
 	return (0);
 }
-

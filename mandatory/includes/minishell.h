@@ -163,17 +163,15 @@ void		printexp(int size);
 int			add_quo(t_env **lst);
 t_env		*exp_alloc(char *args);
 bool		exp_exists(char *args);
-int			slsh0(char *str, int i);
 void		ft_list_remove_if(t_list **list, char *args, bool *found);
 
 // ----------- INPUT_ANALYSIS ----------- //
 void		input(void);
 int			iseven(int s_trig);
-int			check_spec(char **str);
 
 // ----------- REDIRECTS ---------- //
-int			heredoc(char *args);
 int			redirects(t_meta_tok token, char *com);
+int			heredoc(char *args);
 void		hreader(char *args);
 char		*hexpand(char *args);
 char		*dollar_finder(char *args);

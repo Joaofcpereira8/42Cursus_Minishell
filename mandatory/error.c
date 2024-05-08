@@ -53,7 +53,7 @@ int	pars_error(char c, int ex_stat)
 		printf("minishell: bad assignment\n");
 	else if (c == 'z')
 		printf("minishell: Error: No such file or directory\n");
-	else if (c =='w')
+	else if (c == 'w')
 		printf("minishell: cd: too many arguments\n");
 	mini_shell()->exit_status = ex_stat;
 	return (0);

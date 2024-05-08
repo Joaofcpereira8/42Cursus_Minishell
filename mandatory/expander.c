@@ -12,8 +12,6 @@
 
 #include "includes/minishell.h"
 
-
-
 void	expand_variable(t_token *token)
 {
 	char	*value;
