@@ -33,9 +33,9 @@ int handle_minus(void)
 	}
 }
 
-int change_directory(char *path)
+int	change_directory(char *path)
 {
-	char *old;
+	char	*old;
 
 	old = mini_shell()->cwd;
 	chdir(mini_shell()->cwd);
@@ -45,7 +45,7 @@ int change_directory(char *path)
 		free(mini_shell()->oldpwd);
 		mini_shell()->oldpwd = old;
 	}
-	return 0;
+	return (0);
 }
 
 void mini_cd2(char **args)
