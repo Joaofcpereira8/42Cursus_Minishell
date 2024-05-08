@@ -24,20 +24,20 @@ void	expand_variable(t_token *token)
 	{
 		if (ft_strlen(token->str) == 1)
 			break ;
-		key = find_key(tmp);  // Extract key starting at '$'
-		if (!ft_strcmp(key, "$?"))
+		key = find_key(tmp);
+		if (ft_strcmp(key, "$?") == 0)
 			value = ft_itoa(mini_shell()->exit_status);
 		else
-			value = ft_get_env(key);  // Memory allocated here must be freed
+			value = ft_get_env(key);
 		if (value)
 		{
-			new_str = ft_streplace(token->str, key, value);  // Replace key with value
-			free(token->str);  // Free the old string
-			token->str = ft_strtrim(new_str, "\"");  // Trim and assign new string
-			free(new_str);  // Free the intermediate new string
-			free(value);  // Free the dynamically allocated value
+			new_str = ft_streplace(token->str, key, value);
+			free(token->str);
+			token->str = ft_strtrim(new_str, "\"");
+			free(new_str);
+			free(value);
 		}
-		free(key);  // Free the key after use
+		free(key);
 	}
 }
 

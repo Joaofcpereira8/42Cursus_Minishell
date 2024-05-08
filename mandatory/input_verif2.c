@@ -34,7 +34,7 @@ bool	input_analysis(int num_of_pipes, int num_of_commands)
 			if (next && !pipe_or_redir(next))
 				num_of_commands++;
 		}
-		scanner (NEXT);
+		scanner(NEXT);
 	}
 	if (num_of_pipes >= num_of_commands)
 		return (pars_error('p', 2));
