@@ -19,13 +19,12 @@ void	expand_variable(t_token *token)
 	char	*tmp;
 	char	*new_str;
 
-	while ((tmp = ft_strnstr(token->str, "$", ft_strlen(token->str))))
+	tmp = ft_strnstr(token->str, "$", ft_strlen(token->str));
+	while (ft_strnstr(token->str, "$", ft_strlen(token->str)))
 	{
 		if (ft_strlen(token->str) == 1)
 			break ;
 		key = find_key(tmp);  // Extract key starting at '$'
-		if (key == NULL)
-			continue ;  // Continue if no key is found
 		if (!ft_strcmp(key, "$?"))
 			value = ft_itoa(mini_shell()->exit_status);
 		else

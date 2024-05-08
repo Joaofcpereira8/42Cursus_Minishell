@@ -12,9 +12,9 @@
 
 #include "../includes/minishell.h"
 
-int handle_minus(void)
+int	handle_minus(void)
 {
-	char *tmp;
+	char	*tmp;
 
 	ft_get_oldpwd();
 	if (!ft_strcmp(mini_shell()->oldpwd, mini_shell()->cwd))
@@ -48,11 +48,11 @@ int	change_directory(char *path)
 	return (0);
 }
 
-void mini_cd2(char **args)
+void	mini_cd2(char **args)
 {
 	if (chdir(args[1]) == 0 || ((args[1][0] == ' ' || (args[1][0] == '~'
-		&& !args[1][1]) || (args[1][0] == '-' && args[1][1] == '-'
-		&& !args[1][2]) || !args[1]) && chdir("/home/") == 0))
+			&& !args[1][1]) || (args[1][0] == '-' && args[1][1] == '-'
+			&& !args[1][2]) || !args[1]) && chdir("/home/") == 0))
 	{
 		ft_clean(mini_shell()->oldpwd);
 		mini_shell()->oldpwd = mini_shell()->cwd;
@@ -60,7 +60,7 @@ void mini_cd2(char **args)
 	}
 }
 
-int mini_cd(char **args)
+int	mini_cd(char **args)
 {
 	if (!args[1] && chdir(getenv("HOME")) == 0)
 	{
