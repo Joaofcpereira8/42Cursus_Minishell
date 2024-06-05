@@ -16,9 +16,9 @@
 ## Installation
 
 1. **Clone the repository**:
-   ```bash
-   git clone https://github.com/yourusername/minishell.git
-   ```
+  ```bash
+  git clone https://github.com/yourusername/minishell.git
+  ```
 2. Navigate to the project directory:
   ```bash
   cd minishell
@@ -59,7 +59,7 @@ This project was evaluated and received an almost perfect score, highlighting it
 
 ## Acknowledgements
 - Special thanks to my instructors and peers who provided guidance and support throughout the development of this project.
-- And a special thanks to my colleague and project partner <a href="https://github.com/berestv" target="_blank">Bernardio</a>.
+- And a special thanks to my colleague and project partner <a href="https://github.com/berestv" target="_blank">Bernardo</a>.
 
 ## Attention
 The error that made us have 95 out of 100 is solved.
