@@ -17,7 +17,7 @@
 
 1. **Clone the repository**:
   ```bash
-  git clone https://github.com/yourusername/minishell.git
+  git clone git@github.com:Joaofcpereira8/42Cursus_Minishell.git
   ```
 2. Navigate to the project directory:
   ```bash
@@ -58,7 +58,7 @@ Final Note: 95
 This project was evaluated and received an almost perfect score, highlighting its quality and completeness.
 
 ## Acknowledgements
-- Special thanks to my instructors and peers who provided guidance and support throughout the development of this project.
+- Special thanks to my peers who provided guidance and support throughout the development of this project.
 - And a special thanks to my colleague and project partner <a href="https://github.com/berestv" target="_blank">Bernardo</a>.
 
 ## Attention
