@@ -7,7 +7,7 @@
 ## Features
 
 - **Command Execution**: Supports the execution of executable programs, both from absolute paths and relative paths.
-- **Built-in Commands**: Implements essential built-in shell commands such as `cd`, `echo`, `env`, `setenv`, `unsetenv`, and `exit` made by us.
+- **Built-in Commands**: Implements essential built-in shell commands such as `cd`, `echo`, `env`, `export`, `unset`, and `exit` made by us.
 - **Environment Variables**: Handles environment variables and allows for their manipulation using built-in commands.
 - **Pipes and Redirection**: Supports piping (`|`) and I/O redirection (`<`, `>`, `>>`).
 - **Signal Handling**: Manages common signals like `SIGINT` (Ctrl+C) and `SIGQUIT` (Ctrl+\).
