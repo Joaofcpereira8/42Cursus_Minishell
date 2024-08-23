@@ -10,7 +10,7 @@
 - **Built-in Commands**: Implements essential built-in shell commands such as `cd`, `echo`, `env`, `export`, `unset`, and `exit` made by us.
 - **Environment Variables**: Handles environment variables and allows for their manipulation using built-in commands.
 - **Pipes and Redirection**: Supports piping (`|`) and I/O redirection (`<`, `>`, `>>`).
-- **Signal Handling**: Manages common signals like `SIGINT` (Ctrl+C) and `SIGQUIT` (Ctrl+\).
+- **Signal Handling**: Manages common signals like `SIGINT` (Ctrl+C) and `SIGQUIT` (Ctrl+\\).
 - **Error Handling**: Provides comprehensive error messages for invalid commands and syntax errors, always updating the exit status.
 
 ## Installation
