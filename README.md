@@ -2,7 +2,7 @@
 
 ## Overview
 
-**Minishell** is a simple, Unix-like shell developed as part of my studies at 42 Porto. This project demonstrates my understanding of system programming, process management, and the implementation of shell features. Achieving a final note of 100, this project highlights my proficiency in C programming and system-level programming concepts.
+**Minishell** is a simple, Unix-like shell developed as part of my studies at 42 Porto. This project demonstrates my understanding of system programming, process management, and the implementation of shell features. Achieving a final note of 95, this project highlights my proficiency in C programming and system-level programming concepts.
 
 ## Features
 
